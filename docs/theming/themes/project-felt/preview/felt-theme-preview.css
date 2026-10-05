@@ -1625,6 +1625,28 @@
     /* !important needed to override shadow DOM :host border-width */
     border-width: 0 !important;
     line-height: var(--felt-preview-line-height-body-text);
+
+    /* Nested borderless disclosures aren't themed by Felt, but the
+       tokens above are inherited custom properties, so a borderless
+       disclosure slotted inside a themed default disclosure would
+       otherwise pick up the ancestor's hover fill and corner radius.
+       Reset them back to their unthemed defaults here. */
+    & rh-disclosure[variant~='borderless'] {
+      --rh-border-radius-default: initial;
+      --rh-box-shadow-sm: initial;
+      --rh-color-brand-red: initial;
+      --rh-color-border-subtle: initial;
+      --rh-color-surface: initial;
+      --rh-color-surface-lighter: initial;
+      --rh-color-surface-dark: initial;
+      --rh-border-width-md: initial;
+      --rh-color-interactive-primary-default: initial;
+      --rh-disclosure-summary-background-color-expanded: initial;
+      --rh-disclosure-padding-inline: initial;
+      --rh-disclosure-summary-outline-offset: initial;
+
+      line-height: initial;
+    }
   }
 
   /* Element: Alert */

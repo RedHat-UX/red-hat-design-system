@@ -14,6 +14,17 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
+details {
+  /**
+   * Trigger surface color at rest.
+   * Reset on every disclosure so a nested disclosure's closed trigger
+   * doesn't inherit an open ancestor's expanded fill through custom
+   * property inheritance. `details[open]` below overrides this with
+   * higher specificity.
+   */
+  --_summary-background-color: var(--rh-color-surface);
+}
+
 summary {
   /**
    * Trigger surface color.
