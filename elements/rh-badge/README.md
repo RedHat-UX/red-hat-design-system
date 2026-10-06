@@ -19,7 +19,7 @@ In the example, '11' would appear as '10+' on the badge because of the threshold
 ### Add state
 This adds a background color to the badge to indicate state.
 
-State options: 'info', 'success', 'moderate', 'important', 'critical'
+State options: 'neutral', 'info', 'success', 'caution', 'warning', 'danger'
 
 ```html
 <rh-badge number="1" state="success">1</rh-badge>
