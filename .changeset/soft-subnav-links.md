@@ -2,7 +2,7 @@
 "@rhds/elements": major
 ---
 
-`<rh-subnav>`: removed the deprecated `color-palette` attribute while continuing to adapt to its parent color scheme through `light-dark()`. `<rh-subnav>` no longer supports slotted `<a href>` elements; use `<rh-navigation-link>` elements for subnav links.
+`<rh-subnav>`: no longer supports slotted `<a href>` elements; use `<rh-navigation-link>` elements for subnav links.
 
 Before:
 
