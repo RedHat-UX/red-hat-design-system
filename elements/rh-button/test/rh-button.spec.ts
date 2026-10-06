@@ -15,4 +15,26 @@ describe('<rh-button>', function() {
         .and
         .to.be.an.instanceOf(RhButton);
   });
+
+  it('uses accessible-label as the button accessible name', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button accessible-label="Search">Search</rh-button>
+    `);
+    const button = element.shadowRoot?.querySelector('button');
+    const text = element.shadowRoot?.querySelector('#text')?.parentElement;
+
+    expect(button?.getAttribute('aria-label')).to.equal('Search');
+    expect(text?.getAttribute('aria-hidden')).to.equal('true');
+  });
+
+  it('does not use the deprecated label attribute', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button label="Search">Search</rh-button>
+    `);
+    const button = element.shadowRoot?.querySelector('button');
+    const text = element.shadowRoot?.querySelector('#text')?.parentElement;
+
+    expect(button?.hasAttribute('aria-label')).to.equal(false);
+    expect(text?.getAttribute('aria-hidden')).to.equal('false');
+  });
 });
