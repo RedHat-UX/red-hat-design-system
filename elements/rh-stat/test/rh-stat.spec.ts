@@ -86,7 +86,7 @@ describe('<rh-stat>', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot:not([name])');
         expect(slot?.length).to.equal(1);
         const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
-        expect(fontSize).to.equal('18px');
+        expect(fontSize).to.equal('16px');
       });
 
       it('displays icon', function() {
@@ -207,7 +207,7 @@ describe('<rh-stat>', function() {
       it('keeps the wide body size', async function() {
         await fixtureStat();
         const body = element.querySelector('p');
-        expect(window.getComputedStyle(body!).getPropertyValue('font-size')).to.equal('18px');
+        expect(window.getComputedStyle(body!).getPropertyValue('font-size')).to.equal('16px');
       });
 
       it('uses the compact body size when the stat is narrow', async function() {
