@@ -70,8 +70,6 @@ export class RhTag extends LitElement {
    * The color palette of the tag. Nine colors are available. Choose colors
    * that correspond to the tag's semantic meaning (e.g. red for errors,
    * green for success). Defaults to gray.
-   *
-   * Note: `cyan` is accepted but deprecated; use `teal` instead.
    */
   @property() color?:
     | 'red'
@@ -104,7 +102,7 @@ export class RhTag extends LitElement {
               disabled,
               hasIcon,
               compact: size === 'compact',
-              teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
+              teal: color === 'teal',
               [variant]: true,
               [color]: true })}">
         <!-- summary: decorative icon for screen reader and visual context

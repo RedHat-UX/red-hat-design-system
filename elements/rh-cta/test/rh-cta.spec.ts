@@ -6,8 +6,6 @@ import { RhCta } from '../rh-cta.js';
 
 import { tokens } from '@rhds/tokens';
 
-import '@patternfly/pfe-tools/test/stub-logger.js';
-
 describe('<rh-cta>', function() {
   it('should upgrade', async function() {
     const element = await createFixture<RhCta>(html`<rh-cta></rh-cta>`);
