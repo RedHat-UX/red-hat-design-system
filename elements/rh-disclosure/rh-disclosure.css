@@ -36,6 +36,24 @@ summary {
   /** Trigger corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
+  /**
+   * Trigger block-start/block-end border.
+   * Unset by default. `details[open]` below removes the block-end half
+   * so only the block-start border remains on an expanded trigger.
+   */
+  border-block:
+    /**
+     * Trigger border width.
+     * @cssprop --rh-disclosure-border-width
+     */
+    var(--rh-disclosure-border-width, 0)
+    solid
+    /**
+     * Trigger border color.
+     * @cssprop --rh-disclosure-border-color
+     */
+    var(--rh-disclosure-border-color, transparent);
+
   /** Trigger text color */
   color: var(--rh-color-text-primary);
   cursor: pointer;
@@ -82,8 +100,20 @@ summary {
       var(--rh-border-width-md, 2px)
       solid;
 
-    /** Focus outline color */
-    outline-color: var(--rh-color-interactive-primary-default);
+    /**
+     * Focus outline color.
+     * Falls back to the interactive-primary token used for the trigger's
+     * resting/hover text, so unthemed consumers get one consistent brand
+     * color. Themes that repurpose that token for text only (e.g. the
+     * borderless variant's gray-text treatment) can set this separately
+     * to keep the focus ring on-brand.
+     * @cssprop --rh-disclosure-summary-outline-color
+     */
+    outline-color:
+      var(
+          --rh-disclosure-summary-outline-color,
+          var(--rh-color-interactive-primary-default)
+        );
 
     /**
      * Offset of the outline on the trigger while focused or active.
@@ -158,6 +188,25 @@ summary {
    * Same property as the trigger, with the same 24px fallback.
    */
   padding-inline: var(--rh-disclosure-padding-inline, var(--rh-space-xl, 24px));
+
+  /**
+   * Panel block-end border.
+   * Unset by default; only visible while the panel is shown, so it
+   * doesn't need to be scoped to `details[open]`. Lines up with the
+   * block-start border left on the trigger above when expanded.
+   */
+  border-block-end:
+    /**
+     * Panel border width.
+     * @cssprop --rh-disclosure-border-width
+     */
+    var(--rh-disclosure-border-width, 0)
+    solid
+    /**
+     * Panel border color.
+     * @cssprop --rh-disclosure-border-color
+     */
+    var(--rh-disclosure-border-color, transparent);
 }
 
 ::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
@@ -189,6 +238,15 @@ details[open] {
 
   & #caret {
     transform: rotate(-180deg);
+  }
+
+  /**
+   * Drops the trigger's block-end border, leaving only the block-start
+   * border set above so the panel's own block-end border reads as the
+   * single rule between the two.
+   */
+  & summary {
+    border-block-end: 0;
   }
 
   &:before {
@@ -267,13 +325,28 @@ details[open] {
     }
 
     &:focus {
-      /** Borderless focus outline offset */
-      outline-offset: var(--rh-length-3xs, 2px);
+      /**
+       * Borderless focus outline offset.
+       * Reuses the same cssprop the default variant uses for its own
+       * (inset) offset, so themes can give borderless its own outset
+       * value without a second property.
+       * @cssprop --rh-disclosure-summary-outline-offset
+       */
+      outline-offset:
+        var(
+            --rh-disclosure-summary-outline-offset,
+            var(--rh-length-3xs, 2px)
+          );
     }
   }
 
   details[open] {
-    background-color: var(--_open-background-color);
+    /**
+     * Not set here. The open fill belongs on the trigger only; setting
+     * it on `details` would bleed through `#details-content`'s
+     * `transparent` background below, since that's an empty box over
+     * its container rather than a value with no color of its own.
+     */
 
     /** Borderless open panel corner radius */
     border-radius: var(--rh-border-radius-default, 3px);

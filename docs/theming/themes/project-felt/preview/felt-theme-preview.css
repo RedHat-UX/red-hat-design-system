@@ -1604,20 +1604,21 @@
 
   /* Element: Disclosure
      Active still draws the focus ring; Felt's active state is fill only.
-     Radius and inline padding are shared by the default and borderless
-     variants, so they're set once here for every rh-disclosure. */
+     Inline padding is shared by the default and borderless variants, so
+     it's set once here for every rh-disclosure. Corner radius differs
+     per variant, so it's set separately below. */
   & rh-disclosure {
-    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
   }
 
   /* Borderless keeps a plain trigger: no brand-blue text (either resting
-     or hover) and a transparent surface at rest, sharing the default
-     variant's radius and inline padding set above. Declared before the
-     `:not([variant~='borderless'])` rule below so its nested reset for
-     borderless hosts isn't flagged as having lower specificity than a
-     later, less-specific rule touching the same selector. */
+     or hover), a transparent surface at rest, and its own corner radius,
+     sharing the default variant's inline padding set above. Declared
+     before the `:not([variant~='borderless'])` rule below so its nested
+     reset for borderless hosts isn't flagged as having lower specificity
+     than a later, less-specific rule touching the same selector. */
   & rh-disclosure[variant~='borderless'] {
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-color-surface: transparent;
     --rh-color-interactive-primary-default:
       var(
@@ -1635,9 +1636,22 @@
             var(--rh-color-text-primary-on-dark, #ffffff)
           )
         );
+
+    /* The focus ring stays brand-blue even though the tokens above
+       repurpose --rh-color-interactive-primary-default/-hover for the
+       trigger's gray text — see the dedicated outline-color cssprop in
+       rh-disclosure.css. */
+    --rh-disclosure-summary-outline-color: var(--felt-preview-color-interactive-primary-default);
+
+    /* Matches the default variant's focus ring width. Offset is 0 (flush
+       against the trigger) rather than the default variant's inset, per
+       the borderless outset behavior documented in rh-disclosure.css. */
+    --rh-border-width-md: var(--felt-preview-border-width-lg);
+    --rh-disclosure-summary-outline-offset: 0;
   }
 
   & rh-disclosure:not([variant~='borderless']) {
+    --rh-border-radius-default: 0;
     --rh-box-shadow-sm: none;
     --rh-color-brand-red: transparent;
     --rh-color-border-subtle: transparent;
@@ -1646,6 +1660,12 @@
     --rh-color-surface-dark: var(--felt-preview-color-interactive-fill-plain-on-dark);
     --rh-border-width-md: var(--felt-preview-border-width-lg);
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+
+    /* Draws the rule between the collapsed trigger's own top/bottom
+       edges, and between the expanded trigger and panel — see the
+       block-start/block-end border declarations in rh-disclosure.css. */
+    --rh-disclosure-border-width: var(--felt-preview-border-width-sm);
+    --rh-disclosure-border-color: var(--felt-preview-color-border-subtle);
     --rh-disclosure-summary-background-color-expanded:
       var(
           --felt-preview-color-interactive-fill-plain-hover
@@ -1659,22 +1679,22 @@
     /* Borderless gets its own Felt treatment above, but the tokens below
        are inherited custom properties, so a borderless disclosure slotted
        inside a themed default disclosure would otherwise pick up the
-       default variant's hover fill, accent stripe, and outline values too.
+       default variant's hover fill, accent stripe, and border values too.
        Reset them back to unthemed so only the dedicated borderless rule
-       above applies. (Radius, inline padding, surface, and the
-       interactive-primary tokens don't need resetting here — the shared
-       rule and the borderless-specific rule above set them explicitly on
-       every borderless host, which always wins over inheritance
-       regardless of nesting.) */
+       above applies. (Radius, inline padding, surface, outline width,
+       outline offset, and the interactive-primary tokens don't need
+       resetting here — the shared rule and the borderless-specific rule
+       above set them explicitly on every borderless host, which always
+       wins over inheritance regardless of nesting.) */
     & rh-disclosure[variant~='borderless'] {
       --rh-box-shadow-sm: initial;
       --rh-color-brand-red: initial;
       --rh-color-border-subtle: initial;
       --rh-color-surface-lighter: initial;
       --rh-color-surface-dark: initial;
-      --rh-border-width-md: initial;
+      --rh-disclosure-border-width: initial;
+      --rh-disclosure-border-color: initial;
       --rh-disclosure-summary-background-color-expanded: initial;
-      --rh-disclosure-summary-outline-offset: initial;
 
       line-height: initial;
     }
