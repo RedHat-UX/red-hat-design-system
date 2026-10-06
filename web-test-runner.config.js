@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
-import { Worker } from 'node:worker_threads';
+import { fileURLToPath } from 'node:url';
 import { pfeTestRunnerConfig } from '@patternfly/pfe-tools/test/config.js';
+import { Piscina } from 'piscina';
 import {
   litcssOptions,
   resolveLightdomPath,
@@ -27,16 +28,13 @@ export default {
         }
         // SSR installs browser globals and registers custom elements in Node.
         // Give each fixture a fresh worker so that state stays out of the test server and other fixtures.
-        const worker = new Worker(new URL('./scripts/ssr-test-worker.js', import.meta.url), {
-          workerData: payload,
+        const pool = new Piscina({
+          filename: fileURLToPath(new URL('./scripts/ssr-test-worker.js', import.meta.url)),
         });
         try {
-          return await new Promise((resolve, reject) => {
-            worker.once('message', resolve);
-            worker.once('error', reject);
-          });
+          return await pool.run(payload);
         } finally {
-          await worker.terminate();
+          await pool.destroy();
         }
       },
     },
