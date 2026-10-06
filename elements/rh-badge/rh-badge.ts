@@ -34,9 +34,6 @@ export class RhBadge extends LitElement {
    * Background severity: `danger`, `warning`, `caution`, `neutral`, `success`, or `info`.
    * Defaults to `neutral`.
    *
-   * Legacy values are normalized: `moderate` → `warning`, `important` → `caution`,
-   * `critical` → `danger`, `note` → `info`.
-   *
    * @see [Guidelines](https://ux.redhat.com/elements/badge/guidelines/)
    */
   @property({ reflect: true }) state:
@@ -59,17 +56,11 @@ export class RhBadge extends LitElement {
    */
   @property({ reflect: true, type: Number }) threshold?: number;
 
-  /** Normalizes `state` to supported values (including deprecated aliases). */
+  /** Normalizes unsupported `state` values to `neutral`. */
   @observes('state', { waitFor: 'updated' })
   private stateChanged() {
     const state = this.state.toLowerCase();
     switch (state) {
-      // the first four are deprecated pre-DPO status names
-      case 'moderate': this.state = 'warning'; break;
-      case 'important': this.state = 'caution'; break;
-      case 'critical': this.state = 'danger'; break;
-      case 'note': this.state = 'info'; break;
-      // the following are DPO-approved status names
       case 'danger':
       case 'warning':
       case 'caution':
