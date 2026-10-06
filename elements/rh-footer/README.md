@@ -67,7 +67,7 @@ inline SVG from the [slotted logo demo][slotted-logo].
   <ul slot="links">
     <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
     <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
-    <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Console">Console</a></li>
+    <li><a href="https://console.redhat.com/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Console">Console</a></li>
   </ul>
   <h3 slot="links" data-analytics-text="Communicate">Communicate</h3>
   <ul slot="links">
