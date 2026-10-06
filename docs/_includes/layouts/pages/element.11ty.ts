@@ -480,7 +480,7 @@ export default class ElementsPage extends Renderer<Context> {
           <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-slots">
               <a href="#${tagName}-slots">Slots <rh-badge>${count}</rh-badge>
-                ${deprecatedSlotCount > 0 ? html` <rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
+                ${deprecatedSlotCount > 0 ? html` <rh-badge state="warning">${deprecatedSlotCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -552,7 +552,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
           <h${sublevel} id="${tagName}-attributes">
             <a href="#${tagName}-attributes">Attributes <rh-badge>${count}</rh-badge>
-              ${deprecatedAttrCount > 0 ? html` <rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
+              ${deprecatedAttrCount > 0 ? html` <rh-badge state="warning">${deprecatedAttrCount}</rh-badge>` : ``}
             </a>
           </h${sublevel}>
         </uxdot-copy-permalink>
@@ -632,7 +632,7 @@ export default class ElementsPage extends Renderer<Context> {
           <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-methods">
               <a href="#${tagName}-methods">Methods <rh-badge>${count}</rh-badge>
-                ${deprecatedMethodsCount > 0 ? html` <rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
+                ${deprecatedMethodsCount > 0 ? html` <rh-badge state="warning">${deprecatedMethodsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -701,7 +701,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-events">
               <a href="#${tagName}-events">Events <rh-badge>${count}</rh-badge>
-                ${deprecatedEventsCount > 0 ? html` <rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
+                ${deprecatedEventsCount > 0 ? html` <rh-badge state="warning">${deprecatedEventsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -770,7 +770,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-css-parts">
               <a href="#${tagName}-css-parts">CSS Shadow Parts <rh-badge>${count}</rh-badge>
-                ${deprecatedCssPartsCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
+                ${deprecatedCssPartsCount > 0 ? html` <rh-badge state="warning">${deprecatedCssPartsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -844,7 +844,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-css-properties">
               <a href="#${tagName}-css-properties">CSS Custom Properties <rh-badge>${count}</rh-badge>
-                ${deprecatedCssPropertiesCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
+                ${deprecatedCssPropertiesCount > 0 ? html` <rh-badge state="warning">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
