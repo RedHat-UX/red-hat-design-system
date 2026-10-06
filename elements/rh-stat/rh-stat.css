@@ -2,28 +2,28 @@
   display: block;
   container: stat / inline-size;
 
-  /** Title text size */
-  --_title-size: var(--rh-font-size-body-text-xl, 1.25rem);
+  /** Compact title text size */
+  --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
 
-  /** Body text size */
+  /** Compact body text size */
   --_body-size: var(--rh-font-size-body-text-md, 1rem);
 
-  /** Statistic text size */
-  --_statistic-size: var(--rh-font-size-heading-lg, 2.25rem);
+  /* 26px */
+  --_statistic-size: 1.625rem;
 }
 
-/* Large variant uses the desktop heading 2xl token. */
+/* Compact large variant uses 35px statistic text. */
 :host([size='large']) {
-  /** Large variant statistic text size */
-  --_statistic-size: var(--rh-font-size-heading-2xl, 3rem);
+  /* 35px */
+  --_statistic-size: 2.1875rem;
 
   /** Large variant statistic font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
 }
 
 /*
- * Deprecated `is-mobile` forces the compact type scale even when the stat is
- * wide. Same sizes as the container query below.
+ * Deprecated `is-mobile` keeps the compact type scale even when the stat is
+ * wide. These values explicitly reapply the compact scale.
  */
 :host([is-mobile]) {
   /** Compact title text size */
@@ -31,11 +31,14 @@
 
   /** Compact body text size */
   --_body-size: var(--rh-font-size-body-text-md, 1rem);
-  --_statistic-size: 1.625rem; /* 26px */
+
+  /* 26px */
+  --_statistic-size: 1.625rem;
 }
 
 :host([is-mobile][size='large']) {
-  --_statistic-size: 2.1875rem; /* 35px */
+  /* 35px */
+  --_statistic-size: 2.1875rem;
 }
 
 div {
@@ -67,28 +70,6 @@ span,
   color: var(--rh-color-icon-secondary);
 }
 
-.md {
-  /** Default icon size */
-  --rh-icon-size: var(--rh-size-icon-04, 40px);
-}
-
-.lg {
-  /** Large icon size */
-  --rh-icon-size: var(--rh-size-icon-06, 64px);
-}
-
-.md ::slotted([slot='icon']) {
-  /** Default slotted icon width */
-  width: var(--rh-size-icon-04, 40px);
-  aspect-ratio: 1;
-}
-
-.lg ::slotted([slot='icon']) {
-  /** Large slotted icon width */
-  width: var(--rh-size-icon-06, 64px);
-  aspect-ratio: 1;
-}
-
 .hasIcon ::slotted([slot='icon']),
 .hasIcon rh-icon {
   order: 1;
@@ -96,6 +77,35 @@ span,
   color: currentcolor;
   fill: currentcolor;
   margin-bottom: 16px;
+}
+
+.md {
+  /** Default icon size */
+  --rh-icon-size: var(--rh-size-icon-04, 40px);
+
+  & ::slotted([slot='icon']) {
+    /** Default slotted icon width */
+    width: var(--rh-size-icon-04, 40px);
+    aspect-ratio: 1;
+  }
+}
+
+.lg {
+  /** Large icon size */
+  --rh-icon-size: var(--rh-size-icon-06, 64px);
+
+  & ::slotted([slot='icon']) {
+    /** Large slotted icon width */
+    width: var(--rh-size-icon-06, 64px);
+    aspect-ratio: 1;
+  }
+}
+
+div:not(.hasIcon) #icon,
+div:not(.hasStatistic) #statistic,
+div:not(.hasTitle) #title,
+div:not(.hasCta) #cta {
+  display: none;
 }
 
 #title {
@@ -137,10 +147,10 @@ span,
 
   /** Margin above body text */
   margin-top: var(--rh-space-md, 8px);
-}
 
-#content ::slotted(p) {
-  font-size: var(--_body-size) !important;
+  & ::slotted(p) {
+    font-size: var(--_body-size) !important;
+  }
 }
 
 #cta {
@@ -156,36 +166,36 @@ span,
   margin-top: var(--rh-space-lg, 16px);
 }
 
-div:not(.hasIcon) #icon,
-div:not(.hasStatistic) #statistic,
-div:not(.hasTitle) #title,
-div:not(.hasCta) #cta {
-  display: none;
+:host([top='statistic']) {
+  & #statistic {
+    order: 1;
+  }
+
+  & #title {
+    order: 2;
+  }
 }
 
 /*
- * Compact type scale below the sm breakpoint (768px). The query cannot style
+ * Desktop type scale at the md breakpoint (768px). The query cannot style
  * :host, because the host is the container, so the sizes land on the inner div.
  */
-@container stat (max-width: 767px) {
-  div {
-    /** Compact title text size */
-    --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
+@container stat (min-width: 768px) {
+  :host(:not([is-mobile])) {
+    & div {
+      /** Title text size at containers >= md */
+      --_title-size: var(--rh-font-size-body-text-xl, 1.25rem);
 
-    /** Compact body text size */
-    --_body-size: var(--rh-font-size-body-text-md, 1rem);
-    --_statistic-size: 1.625rem; /* 26px */
+      /** Body text size at containers >= md */
+      --_body-size: var(--rh-font-size-body-text-md, 1rem);
+
+      /** Statistic text size at containers >= md */
+      --_statistic-size: var(--rh-font-size-heading-lg, 2.25rem);
+    }
   }
 
-  :host([size='large']) div {
-    --_statistic-size: 2.1875rem; /* 35px */
+  :host(:not([is-mobile])[size='large']) div {
+    /** Large variant statistic text size at containers >= md */
+    --_statistic-size: var(--rh-font-size-heading-2xl, 3rem);
   }
-}
-
-:host([top='statistic']) #statistic {
-  order: 1;
-}
-
-:host([top='statistic']) #title {
-  order: 2;
 }
