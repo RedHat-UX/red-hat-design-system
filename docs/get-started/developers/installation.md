@@ -235,18 +235,18 @@ convention.
 <rh-alert>Note: a future version of RHDS will remove the requirement to manually
 load these stylesheets</rh-alert>
 
-## Lightdom CSS shims
+## Lightdom undefined CSS
 
-Some elements have provided an _optional_ `-lightdom-shim.css` file to aid in limiting
+Some elements have provided an _optional_ `-lightdom-undefined.css` file to aid in limiting
 [CLS][cls] as much as possible, by styling some parts of the element before it has fully
-initialized (i.e., `:not(:defined)`). These "shims" are inherently different than the
+initialized (i.e., `:not(:defined)`). These stylesheets are inherently different than the
 required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until
-[Delcarative Shadow DOM][dsd] is more widely available; at which point the shims will
+[Delcarative Shadow DOM][dsd] is more widely available; at which point the undefined stylesheets will
 no longer be needed and will become deprecated.
 
 ```html rhcodeblock
 <link rel="stylesheet"
-      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-cta/rh-cta-lightdom-shim.css">
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-cta/rh-cta-lightdom-undefined.css">
 ```
 
 <uxdot-feedback>

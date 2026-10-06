@@ -10,8 +10,8 @@ describe('<rh-alert>', function() {
 
   beforeEach(async function() {
     element = await fixture<RhAlert>(html`
-      <rh-alert state="default">
-       <h3 slot="header">Default</h3>
+      <rh-alert state="neutral">
+        <h3 slot="header">Neutral</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
           egestas, a sollicitudin mauris tincidunt.</p>
         <button slot="actions" data-action="dismiss">Dismiss</button>
