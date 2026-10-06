@@ -28,7 +28,7 @@ const L2 = html`
  * Use it when content is too long for a single view. Authors must
  * provide a single `<ol>` with `<li><a>` page links where the active
  * page should have `aria-current="page"`. Tab navigates between controls;
- * Enter activates. Supports box and open variants, default and small sizes.
+ * Enter activates. Supports box and borderless variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
  */
@@ -76,12 +76,7 @@ export class RhPagination extends LitElement {
   @property({ reflect: true }) size: 'sm' | null = null;
 
   /** Visual variant. Accepts `'borderless'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
-  @property({ reflect: true, converter: {
-    fromAttribute(value: string | null) {
-      // Silent aliasing: convert 'open' to 'borderless'
-      return value === 'open' ? 'borderless' : value as 'borderless' | null;
-    },
-  } }) variant?: 'borderless' | null = null;
+  @property({ reflect: true }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
