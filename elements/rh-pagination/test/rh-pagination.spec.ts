@@ -24,6 +24,28 @@ describe('<rh-pagination>', function() {
         .to.be.an.instanceOf(RhPagination);
   });
 
+  describe('variant', function() {
+    it('supports the borderless variant', async function() {
+      const element = await createFixture<RhPagination>(html`
+        <rh-pagination variant="borderless">
+          <ol><li><a href="#1">1</a></li></ol>
+        </rh-pagination>
+      `);
+      await element.updateComplete;
+      expect(element.variant).to.equal('borderless');
+    });
+
+    it('does not alias the removed open variant', async function() {
+      const element = await createFixture<RhPagination>(html`
+        <rh-pagination variant="open">
+          <ol><li><a href="#1">1</a></li></ol>
+        </rh-pagination>
+      `);
+      await element.updateComplete;
+      expect(element.variant).to.equal('open');
+    });
+  });
+
   describe('after initial render', function() {
     let element: RhPagination;
     beforeEach(async function() {
