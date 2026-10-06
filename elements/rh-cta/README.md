@@ -10,7 +10,7 @@ As a link
 
 As a button
 ```html
-<rh-cta>
+<rh-cta variant="primary">
   <button>Watch live</button>
 </rh-cta>
 ```
