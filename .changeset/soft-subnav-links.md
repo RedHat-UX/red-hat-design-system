@@ -2,7 +2,7 @@
 "@rhds/elements": major
 ---
 
-`<rh-subnav>`: no longer supports slotted `<a href>` elements; use `<rh-navigation-link>` elements for subnav links.
+`<rh-subnav>`: removed deprecated support for slotted `<a href>` links. Use `<rh-navigation-link>` elements instead.
 
 Before:
 
