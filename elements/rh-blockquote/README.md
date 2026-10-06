@@ -1,5 +1,5 @@
 # Blockquote
-Blockquote is used to display quoted content with author names and titles.
+Blockquote displays a quotation with an author's name and subtitle.
 
 ## Usage
 This component is used as a call out within content pages.
