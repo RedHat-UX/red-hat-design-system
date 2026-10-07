@@ -92,7 +92,7 @@ describe('<rh-stat>', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot:not([name])');
         expect(slot?.length).to.equal(1);
         const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
-        expect(fontSize).to.equal('16px');
+        expect(fontSize).to.equal('18px');
       });
 
       it('displays icon', function() {
