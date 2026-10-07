@@ -1,4 +1,5 @@
-import { html, isServer, LitElement } from 'lit';
+import { isServer, LitElement } from 'lit';
+import { html, unsafeStatic } from 'lit/static-html.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -44,14 +45,10 @@ export class SchemeChangedEvent extends Event {
 export class RhSchemeDropdown extends LitElement {
   static styles = [styles];
 
-  /** Whether the light option is currently selected. */
-  #isLight = false;
-
-  /** Whether the dark option is currently selected. */
-  #isDark = false;
-
-  /** Whether the system default option is currently selected. */
-  #isSystem = false;
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   /**
    * Current color scheme setting. Reflects to the `scheme` attribute and
@@ -84,20 +81,24 @@ export class RhSchemeDropdown extends LitElement {
   @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
   /**
-   * Syncs the selected-state flags before each render so the
-   * template always reflects the current `scheme` value.
+   * Valid `<select>` value for the current `scheme`. Unknown or nullish
+   * values map to System (`light dark`) so `render()` and `updated()` stay aligned.
    */
-  protected override willUpdate(): void {
-    if (isServer) {
-      return;
-    }
-
-    this.#isLight = this.scheme === 'light';
-    this.#isDark = this.scheme === 'dark';
-    this.#isSystem = !this.#isLight && !this.#isDark;
+  get #resolvedScheme(): Scheme {
+    return this.scheme === 'light' || this.scheme === 'dark' ?
+      this.scheme
+      : 'light dark';
   }
 
   render() {
+    // IMPORTANT: no Lit child bindings (`${...}`) inside `<option>` — `<selectedcontent>`
+    // `cloneNode()` copies `<!--?lit-->` markers and breaks the template (lit#5349).
+    // Escaped `unsafeStatic` inlines labels without markers; Cannot use `.textContent`
+    // bindings because they flatten rich option content under `appearance: base-select`.
+    const labelSystem = unsafeStatic(this.#escapeHtml(this.accessibleLabelSystem ?? 'System'));
+    const labelLight = unsafeStatic(this.#escapeHtml(this.accessibleLabelLight ?? 'Light'));
+    const labelDark = unsafeStatic(this.#escapeHtml(this.accessibleLabelDark ?? 'Dark'));
+
     return html`
       <label for="scheme-dropdown" class="visually-hidden">${this.accessibleLabel}:</label>
       <select id="scheme-dropdown" @change="${this.#onChange}">
@@ -105,23 +106,69 @@ export class RhSchemeDropdown extends LitElement {
           <selectedcontent></selectedcontent>
           <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
         </button>
-        <option value="light dark" ?selected="${this.#isSystem}">
+        <option value="light dark"
+                ?selected="${this.#resolvedScheme === 'light dark'}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelSystem}</span>
+          <span class="option-text">${labelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="light" ?selected="${this.#isLight}">
+        <option value="light" ?selected="${this.#resolvedScheme === 'light'}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelLight}</span>
+          <span class="option-text">${labelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="dark" ?selected="${this.#isDark}">
+        <option value="dark" ?selected="${this.#resolvedScheme === 'dark'}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelDark}</span>
+          <span class="option-text">${labelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
       </select>
     `;
+  }
+
+  /**
+   * Syncs `select.value` and option `selected` attrs to `#resolvedScheme` after SSR
+   * hydration. Lit's `?selected` on `<option>` can stay stale otherwise.
+   * @param changed - Reactive properties that changed this update cycle
+   */
+  protected override updated(changed: Map<PropertyKey, unknown>): void {
+    super.updated(changed);
+    if (isServer) {
+      return;
+    }
+
+    const select = this.shadowRoot?.querySelector('select');
+    if (select) {
+      // Use the same fallback as render() so malformed scheme values keep System selected.
+      const value = this.#resolvedScheme;
+      if (select.value !== value) {
+        select.value = value;
+      }
+
+      // Realign `selected` attribute even when select.value already matches.
+      for (const option of select.options) {
+        if (option.value === value) {
+          option.setAttribute('selected', '');
+        } else {
+          option.removeAttribute('selected');
+        }
+      }
+    }
+  }
+
+  /**
+   * Escapes author-facing localization strings before inlining them
+   * with unsafeStatic. Required because unsafeStatic inserts raw
+   * HTML into the template. Nullish values fall back to English defaults
+   * via nullish coalescing (`??`).
+   * @param text - Plain text to escape for safe HTML inlining; nullish becomes ''.
+   */
+  #escapeHtml(text?: string | null): string {
+    return String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
   }
 
   /**

@@ -252,7 +252,11 @@ export default async function(
   });
 
   eleventyConfig.addCollection('sortedColor', async function(collectionApi) {
-    const colorCollection = collectionApi.getFilteredByTags('color');
+    // Keep this subnav to Foundations Color pages. Other sections can also
+    // tag pages `color` (e.g. AI guidelines Color), which would otherwise
+    // leak into Overview / Usage / Accessibility.
+    const colorCollection = collectionApi.getFilteredByTags('color')
+        .filter(item => typeof item.url === 'string' && item.url.startsWith('/foundations/color/'));
     return colorCollection.sort((a, b) => {
       if (a.data.order > b.data.order) {
         return 1;
