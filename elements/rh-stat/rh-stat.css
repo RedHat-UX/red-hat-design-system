@@ -136,6 +136,11 @@ div:not(.hasCta) #cta {
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
+:host([size='large']) #statistic {
+  /** Large variant statistic font weight */
+  font-weight: var(--rh-font-weight-heading-regular, 400);
+}
+
 #content {
   order: 3;
 
