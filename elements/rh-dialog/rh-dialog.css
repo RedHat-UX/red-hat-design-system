@@ -36,8 +36,10 @@
   background-color: var(--_dialog-backdrop-bg-color);
 }
 
-/* Prevent page from moving via wheel and touch gestures. Safari ignores this,
- * so the document scroll lock in rh-dialog.ts is still required */
+/* Prevent page from moving via wheel and touch gestures. Safari ignores this
+ * on a box that cannot scroll
+ * (https://bugs.webkit.org/show_bug.cgi?id=243452).
+ * The document scroll lock in rh-dialog.ts is still required. */
 #dialog:modal::backdrop {
   overflow: hidden;
   overscroll-behavior: contain;
