@@ -896,25 +896,7 @@
     --felt-preview-cta-padding-inline: var(--felt-preview-space-2xl);
     --felt-preview-cta-padding-block-compact: var(--felt-preview-space-md);
     --felt-preview-cta-padding-inline-compact: var(--felt-preview-space-xl);
-    --felt-preview-cta-border-width-hover: var(--felt-preview-border-width-md);
-    --felt-preview-cta-border-width-focus: var(--felt-preview-border-width-md);
     --felt-preview-cta-border-width-focus-ring: var(--felt-preview-border-width-lg);
-    --felt-preview-cta-border-width-active: var(--felt-preview-border-width-md);
-    --felt-preview-cta-border-offset:
-      calc(
-          var(--felt-preview-cta-border-width-hover)
-          - var(--felt-preview-border-width-sm)
-        );
-    --felt-preview-cta-border-offset-block:
-      calc(
-          var(--rh-space-lg, 16px)
-          - var(--felt-preview-cta-border-offset)
-        );
-    --felt-preview-cta-border-offset-inline:
-      calc(
-          var(--rh-space-2xl, 32px)
-          - var(--felt-preview-cta-border-offset)
-        );
     --felt-preview-cta-text-underline-offset: 4px;
     --felt-preview-cta-text-decoration-color: currentcolor;
     /* stylelint-disable-next-line @stylistic/max-line-length */
@@ -981,6 +963,15 @@
     }
 
     &[variant='secondary'] {
+      --felt-preview-cta-interaction-border-color:
+        var( --rh-cta-border-color,
+          var(--rh-color-border-strong,
+          light-dark(
+            var(--rh-color-border-strong-on-light, #151515),
+            var(--rh-color-border-strong-on-dark, #ffffff)
+          )
+        ));
+
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
       --felt-preview-cta-text-decoration-color:
         light-dark(
@@ -1009,24 +1000,6 @@
          the host outline ring handles the focus indicator */
       --rh-cta-focus-inner-border-color: transparent;
       --rh-cta-active-inner-border-color: transparent;
-
-      &::part(container):hover {
-        border-width: var(--felt-preview-cta-border-width-hover);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
-
-      &::part(container):focus-within {
-        border-width: var(--felt-preview-cta-border-width-focus);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
-
-      &::part(container):active {
-        border-width: var(--felt-preview-cta-border-width-active);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
     }
 
     &:not([variant]) {
@@ -1050,6 +1023,9 @@
 
     /* stylelint-disable-next-line no-descending-specificity */
     &:is([variant='tertiary'], [variant='brick']) {
+      /* stylelint-disable-next-line @stylistic/max-line-length */
+      --felt-preview-cta-interaction-border-color: var(--felt-preview-color-border-interactive-subtle-default);
+
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
       --felt-preview-cta-text-decoration-color:
         light-dark(
@@ -1085,27 +1061,33 @@
       }
 
       &::part(container):hover {
-        border-width: var(--felt-preview-cta-border-width-hover);
         color: var(--felt-preview-color-text-interactive-hover);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):focus-within {
-        border-width: var(--felt-preview-cta-border-width-focus);
         color: var(--felt-preview-color-text-interactive-focus);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):active {
-        border-width: var(--felt-preview-cta-border-width-active);
         color: var(--felt-preview-color-text-interactive-active);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
+      }
+    }
+
+    &:is([variant='secondary'], [variant='tertiary'], [variant='brick']) {
+      &::part(container):is(:hover, :focus-within, :active) {
+        border-width: var(--felt-preview-border-width-sm);
+        padding-block: var(--felt-preview-space-lg);
+        padding-inline: var(--felt-preview-space-2xl);
+        box-shadow:
+          inset 0 0 0
+          calc(
+              var(--felt-preview-border-width-md)
+              - var(--felt-preview-border-width-sm)
+            )
+          var(--felt-preview-cta-interaction-border-color);
       }
     }
 
@@ -1113,6 +1095,13 @@
       --rh-space-lg: var(--felt-preview-cta-padding-block-compact);
       --rh-space-2xl: var(--felt-preview-cta-padding-inline-compact);
       --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-sm);
+
+      &:is([variant='secondary'], [variant='tertiary'], [variant='brick']) {
+        &::part(container):is(:hover, :focus-within, :active) {
+          padding-block: var(--felt-preview-space-md);
+          padding-inline: var(--felt-preview-space-xl);
+        }
+      }
     }
   }
 
