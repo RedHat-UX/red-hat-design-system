@@ -15,4 +15,10 @@ describe('<rh-avatar>', function() {
           .to.be.an.instanceOf(RhAvatar);
     });
   });
+
+  it('should not expose the deprecated updatePattern method', async function() {
+    const element = await createFixture<RhAvatar>(html`<rh-avatar></rh-avatar>`);
+
+    expect(element).not.to.have.property('updatePattern');
+  });
 });
