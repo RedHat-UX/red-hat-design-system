@@ -1,0 +1,57 @@
+---
+description: Table with sortable columns and a link cell, with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+<link rel="stylesheet" href="../rh-table-lightdom.css">
+
+<style>
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <rh-table>
+    <table>
+      <caption>
+        Concerts
+      </caption>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Event<rh-sort-button></rh-sort-button>
+          </th>
+          <th scope="col">Venue<rh-sort-button></rh-sort-button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12 February</td>
+          <td><a href="#">Waltz with Strauss</a></td>
+          <td>Main Hall</td>
+        </tr>
+        <tr>
+          <td>24 March</td>
+          <td><a href="#">The Obelisks</a></td>
+          <td>West Wing</td>
+        </tr>
+        <tr>
+          <td>14 April</td>
+          <td><a href="#">The What</a></td>
+          <td>Main Hall</td>
+        </tr>
+      </tbody>
+    </table>
+    <small slot="summary">Dates and venues subject to change.</small>
+  </rh-table>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
