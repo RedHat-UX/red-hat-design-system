@@ -215,16 +215,16 @@
 .warn {
   --_current-step-color:
     light-dark(
-        /** @summary Warning step color in light mode */
+        /** @summary Warning step color for light scheme */
         var(--rh-color-yellow-50, #b98412),
-        /** @summary Warning step color in dark mode */
+        /** @summary Warning step color for dark scheme */
         var(--rh-color-yellow-30, #ffcc17)
       );
   --_current-step-label-color:
     light-dark(
-        /** @summary Warning step label color in light mode */
+        /** @summary Warning step label color for light scheme */
         var(--rh-color-yellow-60, #96640f),
-        /** @summary Warning step label color in dark mode */
+        /** @summary Warning step label color for dark scheme */
         var(--rh-color-yellow-20, #ffe072)
       ) !important;
 }

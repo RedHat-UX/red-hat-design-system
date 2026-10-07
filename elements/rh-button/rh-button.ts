@@ -54,15 +54,9 @@ export class RhButton extends LitElement {
    * Accessible name for the button, applied as `aria-label` on the internal
    * `<button>`. Use when the button has no visible text (e.g. icon-only
    * buttons like close or play). When set, slotted text is hidden with
-   * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
-   * Defaults to undefined.
+   * `aria-hidden="true"`. Defaults to undefined.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
-
-  /**
-   * @deprecated Use `accessible-label` instead.
-   */
-  @property() label?: string;
 
   /**
    * Form value submitted with the button when it triggers form submission.
@@ -126,15 +120,14 @@ export class RhButton extends LitElement {
   }
 
   override render() {
-    const { danger, variant } = this;
+    const { danger, variant, accessibleLabel } = this;
     const hasIcon = this.#hasIcon;
-    const label = this.accessibleLabel || this.label;
     return html`
       <!-- summary: internal button element
            description: |
              Native button element that receives focus via delegatesFocus.
              Screen readers announce this as a button with the label or slotted text. -->
-      <button aria-label="${ifDefined(label)}"
+      <button aria-label="${ifDefined(accessibleLabel)}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -155,12 +148,15 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!label) as 'true' | 'false'}><!-- summary: button text label
+        <span aria-hidden="${String(!!accessibleLabel) as 'true' | 'false'}">
+          <!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via
-                 aria-hidden when the label attribute is set. For close and play
-                 variants, text is visually hidden but remains accessible. --><slot id="text"></slot></span>
+                 aria-hidden when \`accessible-label\` is set. For close and play
+                 variants, text is visually hidden but remains accessible. -->
+          <slot id="text"></slot>
+        </span>
       </button>
     `;
   }
