@@ -207,9 +207,9 @@
     transparent;
   background-color:
     light-dark(
-        /** Grade box surface in light mode */
+        /** Grade box surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Grade box surface in dark mode */
+        /** Grade box surface for dark scheme */
         oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
       );
 
@@ -234,9 +234,9 @@
   &.sm {
     color:
       light-dark(
-          /** Small grade letter color in light mode */
+          /** Small grade letter color for light scheme */
           var(--_text-sm),
-          /** Small grade letter color in dark mode */
+          /** Small grade letter color for dark scheme */
           var(--rh-color-text-primary)
         );
 
@@ -244,9 +244,9 @@
     border-color: var(--_border-sm);
     background-color:
       light-dark(
-          /** Small box fill in light mode */
+          /** Small box fill for light scheme */
           var(--_fill-sm),
-          /** Small box fill in dark mode */
+          /** Small box fill for dark scheme */
           var(--rh-color-surface-darkest, #151515)
         );
   }
@@ -254,16 +254,16 @@
   &.md {
     border-color:
       light-dark(
-          /** Medium box border in light mode */
+          /** Medium box border for light scheme */
           var(--rh-color-border-subtle-on-light, #c7c7c7),
-          /** Medium box border in dark mode */
+          /** Medium box border for dark scheme */
           var(--rh-color-icon-subtle, #707070)
         );
     background-color:
       light-dark(
-          /** Medium box fill in light mode */
+          /** Medium box fill for light scheme */
           var(--rh-color-surface-lightest, #ffffff),
-          /** Medium box fill in dark mode */
+          /** Medium box fill for dark scheme */
           var(--rh-color-surface-darkest, #151515)
         );
     height: 100%;
@@ -324,9 +324,9 @@
         position: absolute;
         background-color:
           light-dark(
-              /** Active box fill in light mode */
+              /** Active box fill for light scheme */
               var(--_fill-lg),
-              /** Active box fill in dark mode */
+              /** Active box fill for dark scheme */
               var(--rh-color-surface-darkest, #151515)
             );
         border:

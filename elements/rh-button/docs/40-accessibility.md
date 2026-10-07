@@ -2,8 +2,8 @@
 
  - Ensure a button can be navigated to and interacted with via keyboard and other 
 assistive technologies
- - Provide unique and descriptive text content for a button or an aria-label if the 
-button does not contain visible text
+ - Provide unique and descriptive text content for a button. Set `accessible-label` on an
+icon-only `<rh-button>` to provide its accessible name.
  - Provide context that a link will open in a new tab or window when using a button 
 link
  - Do not place other interactive elements within a button

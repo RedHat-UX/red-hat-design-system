@@ -59,8 +59,6 @@ export class RhNavigationPrimary extends LitElement {
 
   #ro?: ResizeObserver;
 
-  #hydrated = false;
-
   #slots = new SlotController(this,
                               'logo',
                               'summary',
@@ -80,6 +78,9 @@ export class RhNavigationPrimary extends LitElement {
   @state() compact = true;
 
   @state() linksCompact = true;
+
+  @state()
+  private _hydrated = false;
 
   @state()
   private _overlayOpen = false;
@@ -204,7 +205,7 @@ export class RhNavigationPrimary extends LitElement {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
-      this.#hydrated = true;
+      this._hydrated = true;
       this.compact = this.offsetWidth < 1200;
       // Open links menu at desktop viewport
       this.linksCompact = this.offsetWidth < 1440;
@@ -237,11 +238,12 @@ export class RhNavigationPrimary extends LitElement {
 
 
   render() {
-    const { compact } = this;
+    // Match SSR even if the resize observer ran before the first client render.
+    const compact = this.hasUpdated ? this.compact : true;
     const subdomain = !!(this.siteName && this.siteHref);
     const classes = {
       compact,
-      dehydrated: !this.#hydrated,
+      dehydrated: !this._hydrated,
       subdomain: subdomain,
     };
 

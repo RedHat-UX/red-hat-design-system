@@ -25,9 +25,9 @@
     var(--rh-border-width-sm, 1px)
     solid
     light-dark(
-        /** Border color in light mode */
+        /** Border color for light scheme */
         var(--rh-color-gray-30, #c7c7c7),
-        /** Border color in dark mode */
+        /** Border color for dark scheme */
         var(--rh-color-gray-50, #707070)
       );
 
@@ -66,9 +66,9 @@
   background:
     var(--rh-menu-dropdown-panel-background,
       light-dark(
-        /** Menu panel background in light mode */
+        /** Menu panel background for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Menu panel background in dark mode */
+        /** Menu panel background for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       ));
 
@@ -112,9 +112,9 @@
 #menu-toggle {
   --_interactive-border-color:
     light-dark(
-        /** Interactive border color in light mode */
+        /** Interactive border color for light scheme */
         var(--rh-color-accent-base-on-light, #0066cc),
-        /** Interactive border color in dark mode */
+        /** Interactive border color for dark scheme */
         var(--rh-color-accent-base-on-dark, #92c5f9)
       );
 
@@ -150,9 +150,9 @@
   background:
     var(--rh-menu-dropdown-toggle-background,
       light-dark(
-        /** Toggle background in light mode */
+        /** Toggle background for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Toggle background in dark mode */
+        /** Toggle background for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       ));
   border: none;
@@ -270,9 +270,9 @@
       &:focus {
         background-color:
           light-dark(
-              /** Compact hover background in light mode */
+              /** Compact hover background for light scheme */
               var(--rh-color-surface-lighter, #f2f2f2),
-              /** Compact hover background in dark mode */
+              /** Compact hover background for dark scheme */
               var(--rh-color-surface-darker, #1f1f1f)
             );
       }
@@ -299,9 +299,9 @@
       background:
         var(--rh-menu-dropdown-compact-disabled-background,
           light-dark(
-            /** Disabled compact background in light mode */
+            /** Disabled compact background for light scheme */
             var(--rh-color-gray-30, #c7c7c7),
-            /** Disabled compact background in dark mode */
+            /** Disabled compact background for dark scheme */
             var(--rh-color-gray-40, #a3a3a3)
           ));
 
@@ -323,9 +323,9 @@
     cursor: not-allowed;
     background:
       light-dark(
-          /** Disabled background in light mode */
+          /** Disabled background for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Disabled background in dark mode */
+          /** Disabled background for dark scheme */
           var(--rh-color-gray-40, #a3a3a3)
         );
 
@@ -370,9 +370,9 @@ rh-menu::part(menu) {
   .action-icon rh-icon {
     color:
       light-dark(
-          /** Disabled text color in light mode */
+          /** Disabled text color for light scheme */
           var(--rh-color-gray-50, #707070),
-          /** Disabled text color in dark mode */
+          /** Disabled text color for dark scheme */
           var(--rh-color-gray-60, #4d4d4d)
         );
   }

@@ -1,8 +1,7 @@
 ---
-description: CTA rendering without JavaScript using lightdom CSS shim.
+description: CTA rendering without JavaScript using declarative shadow DOM.
 ---
-<link rel="stylesheet" href="../rh-cta-lightdom-shim.css">
-<p>&lt;rh-cta&gt; where JavaScript is not loaded, while loading a `lightdom-shim.css`.</p>
+<p>&lt;rh-cta&gt; where JavaScript is not loaded.</p>
 
 <section id="variants">
   <h2>Variants</h2>
@@ -75,12 +74,11 @@ description: CTA rendering without JavaScript using lightdom CSS shim.
   </header>
   <shadow-root>
     <template shadowrootmode="open">
-      <link rel="stylesheet" href="../rh-cta-lightdom-shim.css">
       <style>
         :host {
           width: 100%;
           padding: var(--rh-space-xl, 24px);
-          background-color: var(--rh-color-blue-50, #e7f1fa);
+          background-color: var(--rh-color-blue-10, #e0f0ff);
           display: flex;
           flex-flow: row wrap;
           gap: 16px;

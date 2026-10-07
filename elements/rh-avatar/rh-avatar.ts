@@ -130,7 +130,7 @@ export class RhAvatar extends LitElement {
 
   async updated(changed: PropertyValues<this>) {
     if ((changed.has('pattern') && this.pattern) || (changed.has('name') && this.#pattern)) {
-      this.updatePattern();
+      this.#updatePattern();
     }
   }
 
@@ -156,12 +156,8 @@ export class RhAvatar extends LitElement {
     }
   }
 
-  /**
-   * Re-renders the geometric pattern. Called automatically when `pattern`
-   * or `name` change; call manually after updating CSS custom properties.
-   * @deprecated a future version will remove this public method
-   */
-  async updatePattern() {
+  /** Re-renders the geometric pattern. */
+  async #updatePattern() {
     this.#pattern ??= await this.#initPattern();
     if (this.#pattern) {
       const size = parseInt(this.#style?.getPropertyValue('width') ?? '0');
