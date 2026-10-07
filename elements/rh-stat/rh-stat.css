@@ -204,6 +204,6 @@ div:not(.hasCta) #cta {
     --_statistic-size: var(--rh-font-size-heading-2xl, 3rem);
 
     /** Large variant body text size at containers >= md */
-    --_body-size: var(--rh-font-size-body-text-md, 1rem);
+    --_body-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 }
