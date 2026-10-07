@@ -1621,6 +1621,14 @@
   & rh-disclosure[variant~='borderless'] {
     --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-color-surface: transparent;
+
+    /* Hover/open trigger fill. rh-disclosure.css's borderless `details`
+       and `summary` rules read these two tokens (not the `-light`/`-dark`
+       pair the default variant uses) for their shared hover/open fill,
+       so Felt's semi-transparent interactive fill needs to land here
+       rather than on `--rh-color-surface-light`/`-dark`. */
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
     --rh-color-interactive-primary-default:
       var(
           --rh-color-text-primary,
@@ -1682,16 +1690,16 @@
        inside a themed default disclosure would otherwise pick up the
        default variant's hover fill, accent stripe, and border values too.
        Reset them back to unthemed so only the dedicated borderless rule
-       above applies. (Radius, inline padding, surface, outline width,
-       outline offset, and the interactive-primary tokens don't need
-       resetting here — the shared rule and the borderless-specific rule
-       above set them explicitly on every borderless host, which always
-       wins over inheritance regardless of nesting.) */
+       above applies. (Radius, inline padding, surface, surface-lighter,
+       outline width, outline offset, and the interactive-primary tokens
+       don't need resetting here — the shared rule and the
+       borderless-specific rule above set them explicitly on every
+       borderless host, which always wins over inheritance regardless of
+       nesting.) */
     & rh-disclosure[variant~='borderless'] {
       --rh-box-shadow-sm: initial;
       --rh-color-brand-red: initial;
       --rh-color-border-subtle: initial;
-      --rh-color-surface-lighter: initial;
       --rh-color-surface-dark: initial;
       --rh-disclosure-border-width: initial;
       --rh-disclosure-border-color: initial;
