@@ -11,11 +11,9 @@
   width: 100vw;
   height: 100vh;
   /* stylelint-disable rhds/no-unknown-token-name */
-  z-index:
-    /** Overlay stacking order */
-    var(--rh-navigation-secondary-overlay-z-index,
-      /** @deprecated use --rh-navigation-secondary-overlay-z-index */
-      var(--rh-secondary-nav-overlay-z-index, -1));
+
+  /** Overlay stacking order */
+  z-index: var(--rh-navigation-secondary-overlay-z-index, -1);
   /* stylelint-enable rhds/no-unknown-token-name */
 }
 
