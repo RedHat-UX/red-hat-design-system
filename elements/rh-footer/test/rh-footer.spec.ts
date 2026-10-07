@@ -237,6 +237,45 @@ describe('<rh-footer>', function() {
       });
     });
 
+    describe('logo heights match across rh-footer and rh-footer-universal', function() {
+      let wordmark: HTMLImageElement;
+      let fedora: SVGElement;
+
+      beforeEach(function() {
+        wordmark = element.querySelector('a[slot="logo"] img')!;
+        fedora = element.querySelector('rh-footer-universal')!
+            .shadowRoot!
+            .querySelector('.global-logo-image')!;
+      });
+
+      it('Mobile, portrait: both logos are --rh-size-icon-02', async function() {
+        await setViewport({ width: 360, height: 800 });
+        await element.updateComplete;
+        await aTimeout(200);
+
+        expect(getComputedStyle(wordmark).height).to.equal(tokens.get('--rh-size-icon-02'));
+        expect(getComputedStyle(fedora).height).to.equal(tokens.get('--rh-size-icon-02'));
+      });
+
+      it('Mobile, landscape: both logos are --rh-size-icon-03', async function() {
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xs')), height: 800 });
+        await element.updateComplete;
+        await aTimeout(200);
+
+        expect(getComputedStyle(wordmark).height).to.equal(tokens.get('--rh-size-icon-03'));
+        expect(getComputedStyle(fedora).height).to.equal(tokens.get('--rh-size-icon-03'));
+      });
+
+      it('Desktop: both logos remain --rh-size-icon-03', async function() {
+        await setViewport({ width: 1200, height: 800 });
+        await element.updateComplete;
+        await aTimeout(200);
+
+        expect(getComputedStyle(wordmark).height).to.equal(tokens.get('--rh-size-icon-03'));
+        expect(getComputedStyle(fedora).height).to.equal(tokens.get('--rh-size-icon-03'));
+      });
+    });
+
     describe('Tablet, landscape', function() {
       let element: RhFooter;
 

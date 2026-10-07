@@ -47,11 +47,16 @@
           {%- set sideNavCollection = collections[link.collection] %}
           {%- endif -%}
 
+          {# Tag-based collections can include pages from other sections
+             (e.g. AI guidelines Color is tagged accessibility). Only render
+             links whose URL belongs to this dropdown's section. #}
           {%- for sublink in sideNavCollection -%}
+          {%- if sublink.url.startsWith(link.url) -%}
           {%- set active = sublink.url === page.url -%}
           <rh-navigation-link href="{{ sublink.url }}" {{ 'current-page' if active }}>
             {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) -}}
           </rh-navigation-link>
+          {%- endif -%}
           {%- endfor -%}
           {% endif %}
     </rh-navigation-vertical-list>

@@ -145,9 +145,10 @@ subnav:
 
 ## Try it out
 
-To apply the Project Felt preview theme to all of the elements below, toggle the switch.
+Preview the Project Felt theme on the elements below. Toggle the switch to compare with the default styles.
 
 <rh-switch id="felt-theme-switch"
+            checked
             message-on="Project Felt preview theme"
             message-off="Off"></rh-switch>
 
@@ -250,13 +251,16 @@ To apply the Project Felt preview theme to all of the elements below, toggle the
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
       }
     }
-    feltSwitch.addEventListener('change', function() {
+    function applyFeltTheme() {
       for (const pattern of document.querySelectorAll('uxdot-pattern')) {
         pattern.shadowRoot
           ?.querySelector('#content')
           ?.classList.toggle('felt-preview', feltSwitch.checked);
       }
-    });
+    }
+
+    applyFeltTheme();
+    feltSwitch.addEventListener('change', applyFeltTheme);
   }
 
   const nav = document.querySelector('#demos-nav');
