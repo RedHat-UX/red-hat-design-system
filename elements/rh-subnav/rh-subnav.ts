@@ -2,11 +2,8 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
@@ -16,15 +13,12 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-subnav.css' with { type: 'css' };
 
 
-type LinkElement = HTMLAnchorElement | RhNavigationLink;
-
 /**
  * A subnavigation provides a horizontal list of links for navigating
- * related pages. Authors should slot `<rh-navigation-link>` elements
- * as children; authors should avoid slotting bare `<a>` elements, which
- * are deprecated. Each link must have visible text content for
- * accessibility. When more than one subnav appears on a page, authors
- * should set `accessible-label` so screen readers can distinguish them.
+ * related pages. Authors should slot `<rh-navigation-link>` elements as
+ * children. Each link must have visible text content for accessibility.
+ * When more than one subnav appears on a page, authors should set
+ * `accessible-label` so screen readers can distinguish them.
  *
  * Overflow scroll buttons appear when links exceed the available space.
  * All links are keyboard accessible via Tab and Enter.
@@ -35,7 +29,6 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
  *
  */
 @customElement('rh-subnav')
-@colorPalettes
 @themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
@@ -56,21 +49,9 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  #allLinkElements: LinkElement[] = [];
+  #allLinkElements: RhNavigationLink[] = [];
 
   #overflow = new OverflowController(this);
-
-  @state() private hasNavigationLinks = false;
-
-  /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   * @deprecated `<rh-subnav>` reacts to the parent set color-scheme and should not set its own color-palette.
-   * The color-palette attribute will be removed in a future release.
-   */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -91,14 +72,14 @@ export class RhSubnav extends LitElement {
   labelScrollRight = 'Scroll forward';
 
 
-  @query('#link-container') private linkList!: LinkElement;
+  @query('#link-container') private linkList!: HTMLElement;
 
 
   get #allLinks() {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: LinkElement[]) {
+  set #allLinks(links: RhNavigationLink[]) {
     this.#allLinkElements = links.filter(link => link);
   }
 
@@ -131,17 +112,15 @@ export class RhSubnav extends LitElement {
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
-        <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}">
+        <div id="link-container" role="list">
           <!--
             part:
               description: The scrollable link list container
             slot:
               summary: Sub navigation links
               description: |
-                Expects a collection of \`<rh-navigation-link>\` or
-                \`<a>\` elements. Each link must have text content
-                for screen readers. Slotting \`<a>\` elements is
-                deprecated; use \`<rh-navigation-link>\` instead.
+                Expects a collection of \`<rh-navigation-link>\` elements.
+                Each link must have text content for screen readers.
           -->
           <div part="links">
             <slot @slotchange="${this.#onSlotchange}"></slot>
@@ -163,21 +142,8 @@ export class RhSubnav extends LitElement {
   async #onSlotchange() {
     if (!isServer) {
       const slot = this.shadowRoot?.querySelector('slot');
-      const assignedElements = (slot?.assignedElements() || []) as LinkElement[];
-
-      // if slotted a elements remove active attribute replace it with aria-current="page"
-      for (const element of assignedElements) {
-        if (element instanceof HTMLAnchorElement) {
-          // if has active attribute remove it and set aria-current="page"
-          if (element.hasAttribute('active')) {
-            element.removeAttribute('active');
-            element.setAttribute('aria-current', 'page');
-          }
-        }
-      }
-
-      // Only use role="list" if we have rh-navigation-link elements
-      this.hasNavigationLinks = assignedElements.some(el => el instanceof RhNavigationLink);
+      const assignedElements = (slot?.assignedElements() || [])
+          .filter(el => el instanceof RhNavigationLink);
 
       this.#allLinks = assignedElements;
 

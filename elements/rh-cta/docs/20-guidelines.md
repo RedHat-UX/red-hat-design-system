@@ -28,6 +28,26 @@ Here is guidance on when to use a call to action vs. button.
 
 </rh-table>
 
+### HTML structure
+
+- When `href` is set on `<rh-cta>`, the component renders its own link. Do not put another link or button inside it.
+- Without `href`, the first child must be an `<a>` or `<button>`.
+- Use a link for navigation. If the action requires a button, avoid the default variant, which is styled as a link.
+
+```html rh-code-block
+<rh-cta href="/subscribe">Subscribe</rh-cta>
+
+<!-- Use a button variant for button actions. -->
+<rh-cta variant="primary">
+  <button type="button">Watch live</button>
+</rh-cta>
+
+<!-- Invalid: the default variant is styled as a link, but this is a button action. -->
+<rh-cta>
+  <button type="button">Watch live</button>
+</rh-cta>
+```
+
 ## Using styles or variants
 
 Some calls to action can be used more than once per page depending on their messaging and placement.

@@ -39,14 +39,6 @@ export class RhBlockquote extends LitElement {
   @property({ type: String }) subtitle?: string;
 
   /**
-   * built-in tooltip blockquote figure element.
-   * Defaults to 'Blockquote'.
-   *
-   * @deprecated use subtitle
-   */
-  @property({ type: String }) title = 'Blockquote';
-
-  /**
    * Sets the color palette for the blockquote and its child content.
    * Adapts text and icon colors for light or dark backgrounds.
    * Possible values are:
@@ -96,18 +88,12 @@ export class RhBlockquote extends LitElement {
             Screen readers announce this as attribution for the quote.
             Overrides the \`author\` attribute.
           --><slot name="author">${this.author}</slot></p>
-          <p id="title"><!--
+          <p id="subtitle"><!--
             Inline text for the author's job title or role.
             Screen readers announce this in the figcaption.
-            Deprecated: use \`subtitle\`.
-          --><slot name="title"></slot>
-            <!--
-              Inline text for the author's job title or role.
-              Screen readers announce this in the figcaption.
-              Overrides the \`subtitle\` attribute.
-              Should not contain long strings of text. May contain links.
-            -->
-             <slot name="subtitle">${this.subtitle}</slot>
+            Overrides the \`subtitle\` attribute.
+            Should not contain long strings of text. May contain links.
+          --><slot name="subtitle">${this.subtitle}</slot>
           </p>
         </figcaption>
       </figure>
