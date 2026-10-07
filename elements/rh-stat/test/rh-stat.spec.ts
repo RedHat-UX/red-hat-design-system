@@ -82,6 +82,12 @@ describe('<rh-stat>', function() {
         expect(fontSize).to.equal('48px');
       });
 
+      it('uses the large statistic font weight', function() {
+        const slot = element.shadowRoot?.querySelector('slot[name="statistic"]');
+        const fontWeight = window.getComputedStyle(slot!).getPropertyValue('font-weight');
+        expect(fontWeight).to.equal('400');
+      });
+
       it('has correct font size for description slot', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot:not([name])');
         expect(slot?.length).to.equal(1);
@@ -145,6 +151,12 @@ describe('<rh-stat>', function() {
         const slot = element.querySelector('[slot="statistic"]');
         const fontSize = window.getComputedStyle(slot!).getPropertyValue('font-size');
         expect(fontSize).to.equal('26px');
+      });
+
+      it('uses the default statistic font weight', function() {
+        const slot = element.querySelector('[slot="statistic"]');
+        const fontWeight = window.getComputedStyle(slot!).getPropertyValue('font-weight');
+        expect(fontWeight).to.equal('500');
       });
 
       it('uses the compact body size', function() {
