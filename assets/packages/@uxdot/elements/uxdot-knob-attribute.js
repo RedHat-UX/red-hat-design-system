@@ -14,6 +14,9 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { observes } from '@patternfly/pfe-core/decorators.js';
 const dequote = (x) => x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
 const ARRAY_OF_PAREN_TYPE_RE = /^\((.*)\)\[\]$/;
+// CEM resolves most unions to quoted literals, but leaves utility types such as
+// `Extract<Type, ('one' | 'two')>` intact. Match the literals in either form.
+const STRING_LITERAL_RE = /['"]([^'"]+)['"]/g;
 let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
     constructor() {
         super(...arguments);
@@ -48,9 +51,12 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
     render() {
         const options = __classPrivateFieldGet(this, _UxdotKnobAttribute_typeMembers, "f");
         const isIconSet = this.name === 'icon-set' || (this.tag === 'rh-icon' && this.name === 'set');
-        const isUnionType = options.length > 1
-            // case: `variant?: 'subtle'`
-            || (options.length === 1 && !!options.at(0)?.match(/^'.*'$/));
+        // Use the literal values when CEM includes them; this avoids rendering
+        // TypeScript syntax such as `Extract<...>` as a selectable option.
+        const literalOptions = Array.from(this.type?.matchAll(STRING_LITERAL_RE) ?? [], ([, option]) => option);
+        const unionOptions = literalOptions.length ? literalOptions : options;
+        // A single literal, such as `variant?: 'subtle'`, is still an enum.
+        const isUnionType = literalOptions.length > 0;
         // case: rh-code-block action field: `actions?: ('code'|'wrap')[]`
         const [, listAttrEnum] = this.type?.match(ARRAY_OF_PAREN_TYPE_RE) ?? [];
         const listAttrEnumMembers = listAttrEnum?.split('|') ?? [];
@@ -99,7 +105,7 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="enum"
                    value="${ifDefined(__classPrivateFieldGet(this, _UxdotKnobAttribute_values, "f").get(this.name))}">
-          <pf-option value="">Choose a Value</pf-option>${options.map(option => html `
+          <pf-option value="">Choose a Value</pf-option>${unionOptions.map(option => html `
           <pf-option>${dequote(option)}</pf-option>`)}
         </pf-select>` : this.name === 'color-palette' ? html `
         <rh-context-picker id="knob"
