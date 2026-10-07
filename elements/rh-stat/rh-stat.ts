@@ -5,7 +5,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
@@ -56,14 +55,14 @@ export class RhStat extends LitElement {
   @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
   /**
-   * Whether the statistic renders in a mobile layout with
-   * reduced font sizes. Managed internally via
-   * ScreenSizeController but can be set explicitly.
+   * Forces the compact type scale, including when the stat is wider than 768px.
+   * The compact scale otherwise applies on its own when the stat is narrower
+   * than 768px.
+   *
+   * @deprecated The compact layout is automatic when the stat is narrower
+   * than 768px. This attribute will be removed in a future release.
    */
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
-
-  /** Tracks viewport size to toggle mobile layout */
-  #screenSize = new ScreenSizeController(this);
 
   /** Manages slot presence detection for conditional rendering */
   #slots = new SlotController(this, null, 'icon', 'title', 'statistic', 'cta');
@@ -93,10 +92,9 @@ export class RhStat extends LitElement {
     const hasTitle = this.#slots.hasSlotted('title');
     const hasStatistic = this.#slots.hasSlotted('statistic');
     const hasCta = this.#slots.hasSlotted('cta');
-    const isMobile = this.isMobile || !this.#screenSize.matches.has('sm');
     const iconSize = this.size === 'default' ? 'md' : 'lg';
     return html`
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
+      <div class="${classMap({ hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
           <!-- Optional decorative icon above the data value.
                Accepts an \`rh-icon\` or inline SVG. Decorative
