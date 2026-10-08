@@ -1,5 +1,611 @@
 # @rhds/elements
 
+## 5.0.0
+### Major Changes
+
+- c2008f2: `<rh-accordion>`: renamed `rh-accordion-lightdom-shim.css` to `rh-accordion-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-accordion/rh-accordion-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-accordion/rh-accordion-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-announcement>`: renamed `rh-announcement-lightdom-shim.css` to `rh-announcement-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-announcement/rh-announcement-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-announcement/rh-announcement-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-audio-player>`: moved `:not(:defined)` styles to a new optional `rh-audio-player-lightdom-undefined.css` stylesheet.
+  
+  Load both stylesheets to retain `:not(:defined)` styles and avoid cumulative layout shift before the component loads.
+  
+  If the component is defined before its markup renders, as is common in single-page apps, or is server-side rendered using Declarative Shadow DOM, the stylesheet may not be necessary.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-audio-player/rh-audio-player-lightdom.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-audio-player/rh-audio-player-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-audio-player/rh-audio-player-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-pagination>`: removed support for the deprecated `open` variant. Use `borderless` instead.
+  
+  Before:
+  
+  ```html
+  <rh-pagination variant="open">
+    <ol><!-- page links --></ol>
+  </rh-pagination>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-pagination variant="borderless">
+    <ol><!-- page links --></ol>
+  </rh-pagination>
+  ```
+- c2008f2: `<rh-footer>`: removed deprecated `--rh-footer-nojs-min-height`. Target `rh-footer:not(:defined)` directly if a no-JS min-height is still needed.
+  
+  Before:
+  
+  ```css
+  rh-footer {
+    --rh-footer-nojs-min-height: 750px;
+  }
+  ```
+  
+  After:
+  
+  ```css
+  rh-footer:not(:defined) {
+    min-height: 750px;
+  }
+  ```
+- c2008f2: `<rh-navigation-primary>`: changed the `logo` slot to accept an inline SVG or `<img>` instead of an anchor wrapping the logo. Use the `logo-href` attribute to set the custom logo link destination. Use optional `logo-label` to override the logo's accessible name.
+  
+  This change does not affect implementations that already used the default logo and did not override the slot.
+  
+  Before:
+  
+  ```html
+  <rh-navigation-primary>
+    <a slot="logo" href="/">
+      <img src="red-hat-logo.svg" alt="Red Hat">
+    </a>
+    <!-- ... -->
+  </rh-navigation-primary>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-navigation-primary logo-href="/">
+    <img slot="logo" src="red-hat-logo.svg" alt="Red Hat">
+    <!-- ... -->
+  </rh-navigation-primary>
+  ```
+- c2008f2: `<rh-blockquote>`: removed the deprecated `title` property and `title` slot. Use the `subtitle` property or `subtitle` slot instead.
+  
+  Before:
+  
+  ```html
+  <rh-blockquote>
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="title">Software Engineer</span>
+  </rh-blockquote>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-blockquote>
+    <p>In open source, we feel strongly that to really do something well, you have to get a lot of people involved.</p>
+    <span slot="author">Linus Torvalds</span>
+    <span slot="subtitle">Software Engineer</span>
+  </rh-blockquote>
+  ```
+- c2008f2: `<rh-avatar>`: removed the deprecated `updatePattern()` method. Generated patterns continue to update automatically when `name` or `pattern` changes.
+  
+  Before:
+  
+  ```js
+  avatar.updatePattern();
+  ```
+  
+  After:
+  
+  ```js
+  avatar.name = 'Grace Hopper';
+  avatar.pattern = 'squares';
+  ```
+- c2008f2: `<rh-badge>`: removed deprecated `state` aliases (`moderate`, `important`, `critical`, and `note`) and their CSS selectors. Use `warning`, `caution`, `danger`, and `info`, respectively. Unsupported state values continue to normalize to `neutral`.
+  
+  Before:
+  
+  ```html
+  <rh-badge state="moderate">50</rh-badge>
+  <rh-badge state="important">50</rh-badge>
+  <rh-badge state="critical">50</rh-badge>
+  <rh-badge state="note">50</rh-badge>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-badge state="warning">50</rh-badge>
+  <rh-badge state="caution">50</rh-badge>
+  <rh-badge state="danger">50</rh-badge>
+  <rh-badge state="info">50</rh-badge>
+  ```
+- c2008f2: `<rh-footer>`: split light DOM CSS so `<rh-footer-universal>` loads its own stylesheet.
+  
+  `<rh-footer>` must load both stylesheets. `<rh-footer-universal>` used on its own loads only the universal footer's lightdom CSS.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+  ```
+  
+  After, for `<rh-footer>`:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">
+  ```
+  
+  After, for `<rh-footer-universal>` alone:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">
+  ```
+- c2008f2: `<rh-navigation-secondary>`: removed the deprecated `--rh-secondary-nav-overlay-z-index` CSS custom property alias. Use `--rh-navigation-secondary-overlay-z-index` instead.
+  
+  Before:
+  
+  ```css
+  rh-navigation-secondary {
+    --rh-secondary-nav-overlay-z-index: 100;
+  }
+  ```
+  
+  After:
+  
+  ```css
+  rh-navigation-secondary {
+    --rh-navigation-secondary-overlay-z-index: 100;
+  }
+  ```
+- c2008f2: `<rh-cta>`: renamed `rh-cta-lightdom-shim.css` to `rh-cta-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-cta/rh-cta-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-cta/rh-cta-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-disclosure>`: renamed `rh-disclosure-lightdom-shim.css` to `rh-disclosure-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-disclosure/rh-disclosure-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-disclosure/rh-disclosure-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-footer>` and `<rh-footer-universal>`: moved `:not(:defined)` styles to the optional `rh-footer-lightdom-undefined.css` and `rh-footer-universal-lightdom-undefined.css` stylesheets.
+  
+  Load the corresponding undefined stylesheets alongside the lightdom stylesheets to retain `:not(:defined)` styles and avoid cumulative layout shift before the components load.
+  
+  If the component is defined before its markup renders, as is common in single-page apps, or is server-side rendered using Declarative Shadow DOM, the stylesheet may not be necessary.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom-undefined.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-undefined.css">
+  ```
+  
+  When using `<rh-footer-universal>` alone, load only its lightdom stylesheet and optional undefined stylesheet:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-tooltip>`: removed support for deprecated CSS custom properties. Use the current
+  properties instead.
+  
+  Before:
+  
+  ```css
+  rh-tooltip {
+    --rh-tooltip__arrow--Width: 8px;
+    --rh-tooltip--MaxWidth: 20rem;
+    --rh-tooltip__content--PaddingTop: 8px;
+    --rh-tooltip__content--PaddingBottom: 8px;
+    --rh-tooltip__content--PaddingLeft: 12px;
+    --rh-tooltip__content--PaddingRight: 12px;
+    --rh-tooltip__content--FontSize: 1rem;
+    --rh-tooltip__content--Color: rebeccapurple;
+    --rh-tooltip__content--BackgroundColor: lavender;
+  }
+  ```
+  
+  After:
+  
+  ```css
+  rh-tooltip {
+    --rh-tooltip-arrow-size: 8px;
+    --rh-tooltip-max-width: 20rem;
+    --rh-tooltip-content-padding-block-start: 8px;
+    --rh-tooltip-content-padding-block-end: 8px;
+    --rh-tooltip-content-padding-inline-start: 12px;
+    --rh-tooltip-content-padding-inline-end: 12px;
+    --rh-tooltip-content-font-size: 1rem;
+    --rh-tooltip-content-color: rebeccapurple;
+    --rh-tooltip-content-background-color: lavender;
+  }
+  ```
+- c2008f2: `<rh-subnav>`: removed the deprecated `color-palette` attribute. It continues to adapt to its parent color scheme through `light-dark()`. To set a specific color context, apply `color-palette` to a parent container such as `<rh-surface>`.
+  
+  Before:
+  
+  ```html
+  <rh-subnav color-palette="dark">
+    <rh-navigation-link href="/">Home</rh-navigation-link>
+  </rh-subnav>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-surface color-palette="dark">
+    <rh-subnav>
+      <rh-navigation-link href="/">Home</rh-navigation-link>
+    </rh-subnav>
+  </rh-surface>
+  ```
+- c2008f2: `<rh-footer>`: added a light color scheme.
+  
+  #### ⛔️ Breaking changes with `<rh-footer>`
+  
+  Omitting `color-palette` now renders a light footer. Add `color-palette="darkest"` to keep a dark footer.
+  
+  If using a standalone `<rh-footer-universal>`, add `color-palette="darkest"` to keep a dark universal footer.
+  
+  **Before**
+  
+  ```html
+  <rh-footer>
+    <!-- ... -->
+    <rh-footer-universal slot="universal">
+      <!-- ... -->
+    </rh-footer-universal>
+  </rh-footer>
+  ```
+  
+  **After**
+  
+  ```html
+  <rh-footer color-palette="darkest">
+    <!-- ... -->
+    <rh-footer-universal slot="universal">
+      <!-- ... -->
+    </rh-footer-universal>
+  </rh-footer>
+  ```
+  
+  **Optional, but recommended**
+  
+  Slotted images that use `<img>` are not compatible with `light-dark()` CSS, to support user preference/switched light and dark schemes when a preset `color-palette` attribute is not present we suggest replacing the slotted `<img>` with a compatible inline `<svg>`.  For an example see the SVG from the [`<rh-footer>` slotted logo demo](https://ux.redhat.com/elements/footer/demos/#demo-slotted-logo).
+  
+  ```html
+  <!-- before: raster that only works on dark -->
+  <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" />
+  
+  <!-- after: inline SVG with light-dark() wordmark fill; copy from the `<rh-footer>` demos -->
+  <svg>…</svg>
+  ```
+- c2008f2: `<rh-navigation-secondary>`: moved `:not(:defined)` styles to a new optional `rh-navigation-secondary-lightdom-undefined.css` stylesheet.
+  
+  Load both stylesheets to retain `:not(:defined)` styles and avoid cumulative layout shift before the component loads.
+  
+  If the component is defined before its markup renders, as is common in single-page apps, or is server-side rendered using Declarative Shadow DOM, the stylesheet may not be necessary.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-navigation-secondary/rh-navigation-secondary-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-alert>`: removed the deprecated `note`, `default`, and `error` states. Use `info`, `neutral`, and `danger` instead.
+  
+  Before:
+  
+  ```html
+  <rh-alert state="note">...</rh-alert>
+  <rh-alert state="default">...</rh-alert>
+  <rh-alert state="error">...</rh-alert>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-alert state="info">...</rh-alert>
+  <rh-alert state="neutral">...</rh-alert>
+  <rh-alert state="danger">...</rh-alert>
+  ```
+- c2008f2: `<rh-footer>` and `<rh-footer-universal>`: changed the `logo` slot to accept an inline SVG, `<img>`, `<picture>`, or text instead of an anchor wrapping the logo. Use `logo-href` to set the logo link destination. Use optional `logo-label` to override the accessible name.
+  
+  This change does not affect implementations that already used the default logo and did not override the slot.
+  
+  The previously slotted `<a>` now nests inside the component's logo link and must be removed or risk of becoming invalid HTML. Use `logo-href` plus a mark or text instead. Data analytics will need to be moved to composed event capturing the click event retargeting.
+  
+  Before:
+  
+  ```html
+  <rh-footer>
+    <a slot="logo" href="/" data-analytics-category="Footer" data-analytics-text="Logo">
+      <img src="red-hat-logo.svg" alt="Red Hat">
+    </a>
+    <!-- ... -->
+  </rh-footer>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-footer logo-href="/">
+    <img slot="logo" src="red-hat-logo.svg" alt="Red Hat">
+    <!-- ... -->
+  </rh-footer>
+  ```
+  
+  Universal footer, before:
+  
+  ```html
+  <rh-footer-universal>
+    <a slot="logo" href="https://www.redhat.com/ja">
+      <svg><!-- fedora --></svg>
+    </a>
+  </rh-footer-universal>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-footer-universal logo-href="https://www.redhat.com/ja">
+    <svg slot="logo" role="img"><title>Red Hat</title><!-- fedora --></svg>
+  </rh-footer-universal>
+  ```
+  
+  Text logo:
+  
+  ```html
+  <rh-footer logo-href="https://docs.redhat.com">
+    <span slot="logo">Docs</span>
+  </rh-footer>
+  ```
+- c2008f2: `<rh-tag>`: removed the deprecated `cyan` color alias. Use `teal` instead.
+  
+  Before:
+  
+  ```html
+  <rh-tag color="cyan">Cyan</rh-tag>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-tag color="teal">Teal</rh-tag>
+  ```
+- c2008f2: `<rh-select>`: renamed `rh-select-lightdom-shim.css` to `rh-select-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-select/rh-select-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-select/rh-select-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-skip-link>`: renamed `rh-skip-link-lightdom-shim.css` to `rh-skip-link-lightdom-undefined.css`.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-skip-link/rh-skip-link-lightdom-shim.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-skip-link/rh-skip-link-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-subnav>`: removed deprecated support for slotted `<a href>` links. Use `<rh-navigation-link>` elements instead.
+  
+  Before:
+  
+  ```html
+  <rh-subnav>
+    <a href="#" active>Servers</a>
+  </rh-subnav>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-subnav>
+    <rh-navigation-link href="#" current-page>Servers</rh-navigation-link>
+  </rh-subnav>
+  ```
+- c2008f2: `<rh-subnav>`: moved `:not(:defined)` styles to a new optional `rh-subnav-lightdom-undefined.css` stylesheet.
+  
+  Load both stylesheets to retain `:not(:defined)` styles and avoid cumulative layout shift before the component loads.
+  
+  If the component is defined before its markup renders, as is common in single-page apps, or is server-side rendered using Declarative Shadow DOM, the stylesheet may not be necessary.
+  
+  Before:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-subnav/rh-subnav-lightdom.css">
+  ```
+  
+  After:
+  
+  ```html
+  <link rel="stylesheet" href="/path/to/rh-subnav/rh-subnav-lightdom.css">
+  <link rel="stylesheet" href="/path/to/rh-subnav/rh-subnav-lightdom-undefined.css">
+  ```
+- c2008f2: `<rh-button>`: removed the deprecated `label` attribute. Use `accessible-label` to set the button's accessible name.
+  
+  Before:
+  
+  ```html
+  <rh-button icon="search" label="Search"></rh-button>
+  ```
+  
+  After:
+  
+  ```html
+  <rh-button icon="search" accessible-label="Search"></rh-button>
+  ```
+
+### Minor Changes
+
+- c2008f2: `<rh-alert>`: added `close-label` attribute allowing authors to customize the accessible label on the close button for localization
+- c2008f2: `<rh-footer-links>`: added `accessible-label` to provide an accessible name for link groups.
+  `<rh-footer>`: added `social-links-label`
+  
+  For social links slotted into `tertiary`, set `accessible-label` on `<rh-footer-links role="list">`. See the [default demo](https://ux.redhat.com/elements/footer/demos/#demo-footer) for an example.
+  
+  For the legacy `slot="social-links"` pattern, `social-links-label` on `<rh-footer>` names the list. It defaults to "Red Hat social media links"; customize it only when the accounts are not corporate Red Hat.
+- c2008f2: `<rh-disclosure>`: added CSS custom properties (`--rh-disclosure-summary-background-color-expanded`, `--rh-disclosure-padding-inline`, `--rh-disclosure-summary-outline-offset`, `--rh-disclosure-border-width`, `--rh-disclosure-border-color`, `--rh-disclosure-summary-outline-color`)
+- c2008f2: `<rh-footer-universal>`: added the `logo-href` attribute allowing authors to override the default Red Hat homepage URL
+- c2008f2: `<rh-stat>`: size text from the stat's width, and deprecate `is-mobile`.
+  
+  Statistic, title, and body text use the compact sizes when the stat is under 768px wide. Remove `is-mobile`. To force those sizes on a wider stat, limit the width in CSS. The attribute still forces those sizes until a future release removes it.
+  
+  Before:
+  
+  ```html
+  <rh-stat is-mobile>
+    <span slot="statistic">40%</span>
+    <p>Faster builds</p>
+  </rh-stat>
+  ```
+  
+  After:
+  
+  ```css
+  rh-stat {
+    max-inline-size: 767px;
+  }
+  ```
+  
+  ```html
+  <rh-stat>
+    <span slot="statistic">40%</span>
+    <p>Faster builds</p>
+  </rh-stat>
+  ```
+- c2008f2: `<rh-tile>`: added the public CSS custom property `--rh-tile-background-color` for theming the default tile background.
+  
+  ```css
+  .themed-tile-container {
+    --rh-tile-background-color: rebeccapurple;
+  }
+  ```
+- c2008f2: `<rh-tile>`: added new public CSS custom properties for theming border width, border color per state, disabled text, and focus ring (`--rh-tile-border-width`, `--rh-tile-focus-border-width`, `--rh-tile-hover-border-color`, `--rh-tile-active-border-color`, `--rh-tile-disabled-text-color`, `--rh-tile-focus-outline-color`). Border color and width now shift on hover/focus/active states. Focus border styles also apply via `:host(:focus-within)` for checkable tiles.
+
+### Patch Changes
+
+- c2008f2: `<rh-audio-player>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-navigation-primary>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-tile>`: corrected server-side rendering behavior when used in `<rh-tile-group>`
+- c2008f2: `<rh-dialog>`: fixed the page staying unscrollable after a dialog is closed or removed
+- c2008f2: `<rh-menu>`: improved theming support
+- c2008f2: `<rh-chip-group>`: ensure themable loads the default theme
+- 782c682: `<rh-footer>`: align heights of footer wordmark and universal footer fedora logo at different viewports
+- c2008f2: `<rh-tile>`: ensured tiles have a visible background when no `color-palette` is specified.
+- c2008f2: `<rh-subnav>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-tile>`: fixed an issue where images with bleed enabled did not extend to the edges of the tile or align with its rounded corners
+- c2008f2: `<rh-disclosure>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-footer>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-back-to-top>`: improved theming support
+- c2008f2: `<rh-footer>`: updated default logo link to `https://www.redhat.com/en`
+- c2008f2: `<rh-scheme-dropdown>`: improved theming support
+- c2008f2: `<rh-jump-links>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-menu-dropdown>`: improved theming support
+- c2008f2: `<rh-tile>`: fixed surface color bleeding past the tile's rounded corners.
+- c2008f2: `<rh-pagination>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-navigation-primary>`: fixed navigation remaining in compact mode on desktop when resize observation runs before hydration.
+- c2008f2: `<rh-button>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-navigation-secondary>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-scheme-toggle>`: improved theming support
+- c2008f2: `<rh-select>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-navigation-vertical>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-footer-universal>`: restored the accessible footer heading when used without `<rh-footer>`
+- c2008f2: `<rh-announcement>`: adds default fallbacks for lightdom styles
+- c2008f2: `<rh-accordion>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-skip-link>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-context-demo>`: improved theming support
+- c2008f2: `<rh-skip-link>`: improved theming support
+- c2008f2: `<rh-table>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-cta>`: removed runtime validation warnings. Use a static HTML audit to check CTA markup structure and semantics.
+- c2008f2: `<rh-dialog>`: pressing Escape closes only the frontmost dialog when one dialog is open inside another
+- c2008f2: `<rh-tile>`: add default fallbacks for each RHDS token used
+- c2008f2: `<rh-breadcrumb>`: adds default fallbacks for lightdom styles
+- c2008f2: `<rh-navigation-vertical>`: improved accessibility of the navigation label for screen readers
+
 ## 4.2.2
 ### Patch Changes
 
