@@ -2655,7 +2655,7 @@
       text-underline-offset: max(5px, 0.28em);
 
       /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
-      &:is(:hover, :focus) {
+      &:is(:hover, :focus-visible) {
         color: var(--felt-preview-color-interactive-primary-hover);
         text-decoration-color: currentcolor;
         text-underline-offset: max(6px, 0.33em);
