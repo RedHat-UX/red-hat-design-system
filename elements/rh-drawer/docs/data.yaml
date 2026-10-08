@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-drawer
+name: Drawer
+type: element
+overallStatus: inProgress
+libraries:
+  figma: inProgress
+  rhds: inProgress
+  shared: inProgress
+  docs: inProgress
+relatedItems:
+  - dialog
+  - disclosure
+  - navigation-vertical
