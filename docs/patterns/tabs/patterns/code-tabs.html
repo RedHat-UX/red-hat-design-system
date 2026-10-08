@@ -33,8 +33,13 @@
 
 <style>
   .code-tabs {
-    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-    border-radius: var(--rh-border-radius-default);
+    border:
+      var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
+    border-radius: var(--rh-border-radius-default, 3px);
     max-width: 56rem; /* warning: magic number */
 
     & rh-tab-panel {

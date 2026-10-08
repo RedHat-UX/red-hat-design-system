@@ -46,17 +46,72 @@
 </script>
 
 <style>
+  /* stylelint-disable no-descending-specificity --
+   * CSS nesting creates a false positive: &:hover inside &:visited
+   * is a different selector than &:hover at the top level, but
+   * stylelint cannot distinguish them.
+   * See https://github.com/stylelint/stylelint/issues/4271 */
   a {
-    color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
-    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
-    &:active { color: var(--rh-color-interactive-primary-active); }
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+
+    &:hover {
+      color:
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
+    }
+
+    &:focus-within {
+      color:
+        var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+    }
+
+    &:active {
+      color:
+        var(--rh-color-interactive-primary-active,
+          light-dark(
+            var(--rh-color-interactive-primary-active-on-light, #003366),
+            var(--rh-color-interactive-primary-active-on-dark, #b9dafc)));
+    }
+
     &:visited {
-      color: var(--rh-color-interactive-primary-visited);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
-      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+      color:
+        var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)));
+      }
+
+      &:focus-within {
+        color:
+          var(--rh-color-interactive-primary-visited-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-focus-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff)));
+      }
+
+      &:active {
+        color:
+          var(--rh-color-interactive-primary-visited-active,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-active-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff)));
+      }
     }
   }
 </style>
-

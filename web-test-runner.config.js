@@ -1,7 +1,12 @@
 import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { pfeTestRunnerConfig } from '@patternfly/pfe-tools/test/config.js';
-import { litcssOptions, stripCssImportAttributesPlugin } from './web-dev-server.config.js';
+import { Piscina } from 'piscina';
+import {
+  litcssOptions,
+  resolveLightdomPath,
+  stripCssImportAttributesPlugin,
+} from './web-dev-server.config.js';
 
 const baseConfig = pfeTestRunnerConfig({
   litcssOptions,
@@ -15,6 +20,24 @@ export default {
   plugins: [
     stripCssImportAttributesPlugin(),
     ...baseConfig.plugins || [],
+    {
+      name: 'ssr-fixture',
+      async executeCommand({ command, payload }) {
+        if (command !== 'render-ssr-fixture') {
+          return;
+        }
+        // SSR installs browser globals and registers custom elements in Node.
+        // Give each fixture a fresh worker so that state stays out of the test server and other fixtures.
+        const pool = new Piscina({
+          filename: fileURLToPath(new URL('./scripts/ssr-test-worker.js', import.meta.url)),
+        });
+        try {
+          return await pool.run(payload);
+        } finally {
+          await pool.destroy();
+        }
+      },
+    },
   ],
   middleware: [
     /** redirect requests for /(lib|elements)/*.js to *.ts */
@@ -36,7 +59,7 @@ export default {
         return next();
       }
       const [, elementName, suffix] = match;
-      const filePath = join(process.cwd(), 'elements', elementName, `${elementName}-${suffix}.css`);
+      const filePath = await resolveLightdomPath(elementName, suffix);
       try {
         ctx.type = 'text/css';
         ctx.body = await readFile(filePath, 'utf-8');
@@ -46,4 +69,3 @@ export default {
     },
   ],
 };
-

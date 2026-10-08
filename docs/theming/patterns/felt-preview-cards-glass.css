@@ -1,0 +1,10 @@
+@import url('../../../styles/grid.css');
+
+rh-surface {
+  background: url('../project-felt/felt-preview-bg-light.jpg') no-repeat center center;
+  background-size: cover;
+
+  &[color-palette^='dark'] {
+    background-image: url('../project-felt/felt-preview-bg-dark.jpg');
+  }
+}

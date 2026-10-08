@@ -1,0 +1,4 @@
+/* Demo CSS only */
+rh-card:not(:last-child) {
+  margin-block-end: var(--rh-space-xl, 24px);
+}

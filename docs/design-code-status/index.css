@@ -1,0 +1,7 @@
+rh-tag {
+  text-transform: capitalize;
+}
+
+#web-component-status-table {
+  margin-block: var(--rh-space-3xl, 48px);
+}

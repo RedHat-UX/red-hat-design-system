@@ -1,6 +1,7 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-menu-item-group.css' with { type: 'css' };
 
 /**
@@ -16,6 +17,7 @@ import styles from './rh-menu-item-group.css' with { type: 'css' };
  * @alias Menu Dropdown
  */
 @customElement('rh-menu-item-group')
+@themable
 export class RhMenuItemGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 

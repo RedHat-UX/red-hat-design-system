@@ -32,7 +32,19 @@ navigation](/elements/navigation) to ensure a consistent user experience across 
 
 ## Color scheme
 
-The footer renders in the dark color scheme.
+The footer is available in both light and dark color schemes. The dark color scheme is more
+commonly used.
+
+### Light scheme
+
+<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
+  <img alt="Light scheme footer uses a light gray for the main footer and a white background for the universal footer with dark text and links."
+       src="../footer-style-scheme-light.svg"
+       width="1140"
+       height="743">
+</uxdot-example>
+
+### Dark scheme
 
 <uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt="Dark scheme footer uses a very dark gray for the main footer and a black background for the universal footer with light text and links."

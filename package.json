@@ -56,7 +56,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
-    "elements/*/*-lightdom-shim.css",
+    "elements/*/*-lightdom-undefined.css",
     "elements/rh-audio-player/i18n/*.json",
     "rh-*/*.css",
     "!elements/*/docs/**/*.{js,html,css,md}",
@@ -248,10 +248,20 @@
         "**/*.html"
       ]
     },
+    "compile:stylelint-plugin": {
+      "command": "tsc .stylelint/require-token-fallback.ts --outDir .stylelint --module nodenext --moduleResolution nodenext --esModuleInterop --skipLibCheck",
+      "files": [
+        ".stylelint/**/*.ts"
+      ],
+      "output": [
+        ".stylelint/**/*.js"
+      ]
+    },
     "stylelint": {
       "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss' 'docs/**/*.css' 'uxdot/**/*.css'",
       "dependencies": [
-        "analyze"
+        "analyze",
+        "compile:stylelint-plugin"
       ],
       "files": [
         "docs/**/*.scss",
@@ -292,7 +302,7 @@
     "@lit/context": "^1.1.6",
     "@patternfly/pfe-core": "^6.0.0",
     "@rhds/icons": "^2.2.0",
-    "@rhds/tokens": "^3.1.0",
+    "@rhds/tokens": "^3.2.0",
     "lit": "^3.3.3",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.8.1"

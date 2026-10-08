@@ -1,0 +1,20 @@
+---
+description: Back to top button with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+    min-block-size: 8rem;
+  }
+</style>
+
+<div class="felt-preview">
+  <p>Hover, focus, or click the button to see its interactive states.</p>
+  <rh-back-to-top visible="always" href="#top">Back to top</rh-back-to-top>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+</script>

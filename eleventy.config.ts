@@ -337,6 +337,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-tabs/rh-tabs.ts',
       'elements/rh-tag/rh-tag.ts',
       'elements/rh-tile/rh-tile.ts',
+      'elements/rh-tile/rh-tile-group.ts',
       'elements/rh-tooltip/rh-tooltip.ts',
       'elements/rh-video-embed/rh-video-embed.ts',
       'elements/rh-menu-dropdown/rh-menu-dropdown.ts',

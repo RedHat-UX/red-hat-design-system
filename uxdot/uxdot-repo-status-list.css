@@ -9,9 +9,9 @@
 }
 
 #inner-container {
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  margin-block-start: var(--rh-space-lg);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default, 3px);
+  margin-block-start: var(--rh-space-lg, 16px);
 }
 
 #header-container {
@@ -21,7 +21,7 @@
 }
 
 .checklist {
-  font-size: var(--rh-font-size-body-text-sm);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   position: absolute;
   inset-inline-end: 0;
   translate: 0 -4em;
@@ -46,27 +46,27 @@ dl {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--rh-space-lg);
-  margin-block: var(--rh-space-lg) !important;
-  margin-inline: var(--rh-space-xl) !important;
+  gap: var(--rh-space-lg, 16px);
+  margin-block: var(--rh-space-lg, 16px) !important;
+  margin-inline: var(--rh-space-xl, 24px) !important;
 
   @container host (width >= 768px) {
     flex-direction: row;
-    column-gap: var(--rh-space-lg);
+    column-gap: var(--rh-space-lg, 16px);
   }
 
   @container host (width >= 992px) {
-    column-gap: var(--rh-space-2xl);
+    column-gap: var(--rh-space-2xl, 32px);
   }
 
   & > div {
     display: flex;
-    column-gap: var(--rh-space-md);
+    column-gap: var(--rh-space-md, 8px);
     align-items: center;
 
     & > dt {
-      font-family: var(--rh-font-family-body-text);
-      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
     }
 
     & dd {

@@ -1,0 +1,34 @@
+.grid > rh-card {
+  display: grid;
+}
+
+rh-card > rh-icon[slot] {
+  color: var(--rh-color-accent-brand-on-light, #ee0000);
+  margin-block-end: var(--rh-space-lg, 16px);
+  display: inline;
+  place-content: unset;
+  aspect-ratio: unset;
+
+  --rh-icon-size: var(--rh-size-icon-07, 80px);
+}
+
+rh-card > p[slot],
+rh-card > h3[slot] {
+  margin-block: 0;
+}
+
+#section-encapsulation {
+  margin-block-start: var(--rh-space-2xl, 32px);
+}
+
+svg.image-block {
+  width: 100%;
+  max-width: 400px;
+  padding: var(--rh-space-lg, 16px);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+#learn-about-grid {
+  margin-block-start: var(--rh-space-2xl, 32px);
+}

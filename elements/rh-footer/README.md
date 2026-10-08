@@ -15,15 +15,28 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css" />
 ```
+
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
+
+To style the footer before JavaScript loads, also load the optional lightdom undefined stylesheets:
+
+```html
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom-undefined.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom-undefined.css" />
+```
+
+When using `<rh-footer-universal>` alone, only its universal undefined stylesheet is needed.
+
+The default Red Hat wordmark is built in. To slot a custom mark, copy the
+inline SVG from the [slotted logo demo][slotted-logo].
 
 ## Example
 
 ```html
-<rh-footer data-analytics-region="page-footer">
-  <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
-    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy" />
-  </a>
+<rh-footer color-palette="darkest"
+           data-analytics-region="page-footer">
   <div slot="header-secondary">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">
@@ -91,11 +104,13 @@ import '@rhds/elements/rh-footer/rh-footer.js';
       <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
     </ul>
     <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
-    <rh-footer-social-link slot="tertiary" icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+    <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
+      <rh-footer-social-link icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+      <rh-footer-social-link icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+      <rh-footer-social-link icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+    </rh-footer-links>
   </rh-footer-universal>
 </rh-footer>
 ```
@@ -111,11 +126,13 @@ improve page loading performance.
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 ```
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css">
 ```
 
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
+
 ```html
-<rh-footer-universal>
+<rh-footer-universal color-palette="darkest">
   <h3 slot="links-primary" data-analytics-text="Red Hat corporate links" hidden>Red Hat corporate links</h3>
   <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
     <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
@@ -137,11 +154,13 @@ import '@rhds/elements/rh-footer/rh-footer-universal.js';
     <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
   </ul>
   <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
-  <rh-footer-social-link slot="tertiary" icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+  <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
+    <rh-footer-social-link icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+    <rh-footer-social-link icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+    <rh-footer-social-link icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+    <rh-footer-social-link icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+    <rh-footer-social-link icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+  </rh-footer-links>
 </rh-footer-universal>
 ```
 
@@ -152,4 +171,5 @@ Please [open a discussion thread][qa] here on GitHub. The Design Systems team
 will help.
 
 [spec]: https://ux.redhat.com/elements/footer/
+[slotted-logo]: https://ux.redhat.com/elements/footer/demo/slotted-logo/
 [qa]: https://github.com/orgs/RedHat-UX/discussions/categories/q-a

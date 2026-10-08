@@ -94,6 +94,9 @@ export default class ElementsPage extends Renderer<Context> {
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
       '/styles/samp.css',
       ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
+      // Footer universal has its own lightdom CSS:
+      tagName === 'rh-footer'
+        && '/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css',
       isCodePage && '/styles/pages/code.css',
     ].filter(Boolean);
 
@@ -317,11 +320,21 @@ export default class ElementsPage extends Renderer<Context> {
     let content = '';
     // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
+      // `<rh-footer>` loads two lightdom stylesheets:
+      const isFooter = docsPage.tagName === 'rh-footer';
+      const stylesheetLinks = isFooter ? html`
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">` : html`
+          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">`;
       content += html`
         ${this.#header('Lightdom CSS', 3)}
 
         <p>This element requires you to load "Lightdom CSS" stylesheets for styling
            deeply slotted elements.</p>
+
+        ${isFooter ? html`
+        <p>Load both for <code>&lt;rh-footer&gt;</code>; load only <code>rh-footer-universal-lightdom.css</code> when using <code>&lt;rh-footer-universal&gt;</code> alone.</p>
+        ` : ''}
 
         <rh-alert state="info">
           <h4 id="lightdom-css-note" slot="header">Note</h4>
@@ -329,29 +342,35 @@ export default class ElementsPage extends Renderer<Context> {
         </rh-alert>
 
         <rh-code-block actions="copy" highlighting="prerendered">
-          ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
-          `.trim())}
+          ${this.highlight('html', dedent(stylesheetLinks))}
         </rh-code-block>
       `;
     }
     if (ctx.doc.hasLightdomShim) {
+      const isFooter = docsPage.tagName === 'rh-footer';
+      const undefinedStylesheetLinks = isFooter ? html`
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom-undefined.css">
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-undefined.css">` : html`
+          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-undefined.css">`;
       content += html`
-        ${this.#header('Lightdom CSS shim', 3)}
+        ${this.#header('Lightdom undefined CSS', 3)}
 
         <rh-alert state="warning">
           <h4 slot="header">Warning</h4>
-          <p>Lightdom CSS shims are an optional, temporary solution for reducing
+          <p>This optional stylesheet provides styles while the element is not yet defined
+             (<code>:not(:defined)</code>), which can reduce
              <abbr title="cumulative layout shift">CLS</abbr>.
-             <a href="/get-started/developers/installation/#lightdom-css-shims">
-               Learn more about lightdom CSS shims
+             <a href="/get-started/developers/installation/#lightdom-undefined-css">
+               Learn more about lightdom undefined CSS
              </a>.</p>
         </rh-alert>
 
+        ${isFooter ? html`
+        <p>Load both undefined stylesheets for <code>&lt;rh-footer&gt;</code>; load only <code>rh-footer-universal-lightdom-undefined.css</code> when using <code>&lt;rh-footer-universal&gt;</code> alone.</p>
+        ` : ''}
+
         <rh-code-block actions="copy" highlighting="prerendered">
-          ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css">
-          `.trim())}
+          ${this.highlight('html', dedent(undefinedStylesheetLinks))}
         </rh-code-block>
 
         <rh-alert state="info">
@@ -461,7 +480,7 @@ export default class ElementsPage extends Renderer<Context> {
           <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-slots">
               <a href="#${tagName}-slots">Slots <rh-badge>${count}</rh-badge>
-                ${deprecatedSlotCount > 0 ? html` <rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
+                ${deprecatedSlotCount > 0 ? html` <rh-badge state="warning">${deprecatedSlotCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -533,7 +552,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
           <h${sublevel} id="${tagName}-attributes">
             <a href="#${tagName}-attributes">Attributes <rh-badge>${count}</rh-badge>
-              ${deprecatedAttrCount > 0 ? html` <rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
+              ${deprecatedAttrCount > 0 ? html` <rh-badge state="warning">${deprecatedAttrCount}</rh-badge>` : ``}
             </a>
           </h${sublevel}>
         </uxdot-copy-permalink>
@@ -613,7 +632,7 @@ export default class ElementsPage extends Renderer<Context> {
           <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-methods">
               <a href="#${tagName}-methods">Methods <rh-badge>${count}</rh-badge>
-                ${deprecatedMethodsCount > 0 ? html` <rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
+                ${deprecatedMethodsCount > 0 ? html` <rh-badge state="warning">${deprecatedMethodsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -682,7 +701,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-events">
               <a href="#${tagName}-events">Events <rh-badge>${count}</rh-badge>
-                ${deprecatedEventsCount > 0 ? html` <rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
+                ${deprecatedEventsCount > 0 ? html` <rh-badge state="warning">${deprecatedEventsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -751,7 +770,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-css-parts">
               <a href="#${tagName}-css-parts">CSS Shadow Parts <rh-badge>${count}</rh-badge>
-                ${deprecatedCssPartsCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
+                ${deprecatedCssPartsCount > 0 ? html` <rh-badge state="warning">${deprecatedCssPartsCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>
@@ -825,7 +844,7 @@ export default class ElementsPage extends Renderer<Context> {
         <uxdot-copy-permalink class="h${sublevel}">
             <h${sublevel} id="${tagName}-css-properties">
               <a href="#${tagName}-css-properties">CSS Custom Properties <rh-badge>${count}</rh-badge>
-                ${deprecatedCssPropertiesCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
+                ${deprecatedCssPropertiesCount > 0 ? html` <rh-badge state="warning">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
               </a>
             </h${sublevel}>
           </uxdot-copy-permalink>

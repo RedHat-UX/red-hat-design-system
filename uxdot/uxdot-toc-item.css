@@ -9,19 +9,19 @@
    * pattern level style that should be in the pattern layer.
    */
   @container main (min-width: 1440px) {
-    padding-block-start: var(--_uxdot-toc-item-first-padding-block-start, var(--rh-space-md));
+    padding-block-start: var(--_uxdot-toc-item-first-padding-block-start, var(--rh-space-md, 8px));
   }
 }
 
 a {
   position: relative;
   outline: none;
-  padding-block-end: var(--_uxdot-toc-item-padding-block-end, var(--rh-space-lg));
+  padding-block-end: var(--_uxdot-toc-item-padding-block-end, var(--rh-space-lg, 16px));
   text-decoration: none;
   color: var(--rh-color-interactive-primary-default);
-  font-size: var(--_uxdot-toc-item-font-size, var(--rh-font-size-body-text-lg));
+  font-size: var(--_uxdot-toc-item-font-size, var(--rh-font-size-body-text-lg, 1.125rem));
   display: inline-flex;
-  gap: var(--rh-space-lg);
+  gap: var(--rh-space-lg, 16px);
   align-items: first baseline;
 
   svg {
@@ -68,11 +68,11 @@ slot[name='expanded'] {
 }
 
 ::slotted(uxdot-toc-list) {
-  --_uxdot-toc-item-padding-block-end: var(--rh-space-md);
+  --_uxdot-toc-item-padding-block-end: var(--rh-space-md, 8px);
   --_uxdot-toc-item-first-padding-block-start: 0;
   --_uxdot-toc-item-show-arrow: none;
-  --_uxdot-toc-item-font-size: var(--rh-font-size-body-text-md);
+  --_uxdot-toc-item-font-size: var(--rh-font-size-body-text-md, 1rem);
 
   margin-block-start: 0;
-  margin-inline-start: var(--rh-space-2xl);
+  margin-inline-start: var(--rh-space-2xl, 32px);
 }

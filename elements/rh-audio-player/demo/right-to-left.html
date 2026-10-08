@@ -149,17 +149,18 @@ description: Audio player with right-to-left Hebrew content demonstrating bidire
 </section>
 
 <link rel="stylesheet" href="../rh-audio-player-lightdom.css">
+<link rel="stylesheet" href="../rh-audio-player-lightdom-undefined.css">
 
 <style>
   #rtl {
-    margin: var(--rh-space-xl);
+    margin: var(--rh-space-xl, 24px);
     & label {
       display: flex;
       align-items: center;
     }
 
     & select {
-      margin-inline-end: var(--rh-space-md);
+      margin-inline-end: var(--rh-space-md, 8px);
       flex: 1 0 auto;
     }
   }

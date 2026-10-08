@@ -7,13 +7,13 @@ domains. It allows grouping of primary links, dropdown menus, event
 promotions, and utility actions into a single responsive bar. The element
 must contain at least one `rh-navigation-primary-item` in the default slot
 and should include an `accessible-label` when multiple navigation landmarks
-exist on the page. The `logo` slot allows branding customization; when
-overridden, the `logo-href` attribute will no longer function. Avoid
-leaving the default slot empty, as this results in an inaccessible
-hamburger menu.
+exist on the page. The `logo` slot accepts an inline `svg`, `img`, or
+`picture` element for branding customization. Slotted logos are automatically
+wrapped in a link; use `logo-href` to set its destination and `logo-label` to
+set its accessible name. Avoid leaving the default slot empty, as this results
+in an inaccessible hamburger menu.
 
 ## Usage
-
 
 ```html
 <rh-navigation-primary>

@@ -4,6 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -25,6 +27,7 @@ import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
  *        to determine the current state.
  */
 @customElement('rh-navigation-vertical-list')
+@themable
 export class RhNavigationVerticalList extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
@@ -138,4 +141,3 @@ declare global {
     'rh-navigation-vertical-list': RhNavigationVerticalList;
   }
 }
-

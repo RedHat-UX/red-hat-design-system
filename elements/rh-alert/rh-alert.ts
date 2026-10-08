@@ -117,16 +117,7 @@ export class RhAlert extends LitElement {
   };
 
   get #icon() {
-    const state = this.state.toLowerCase() as this['state'];
-    switch (state) {
-      // @ts-expect-error: support for deprecated props
-      case 'note': return ICONS.get('info');
-      // @ts-expect-error: support for deprecated props
-      case 'default': return ICONS.get('neutral');
-      // @ts-expect-error: support for deprecated props
-      case 'error': return ICONS.get('danger');
-      default: return ICONS.get(state);
-    }
+    return ICONS.get(this.#normalizeState(this.state));
   }
 
   /**
@@ -138,8 +129,6 @@ export class RhAlert extends LitElement {
    *  - `caution` - Indicates an action or notice which should immediately draw the attention
    *  - `info` - Indicates helpful information or a message with very little to no severity.
    *  - `success` - Indicates a success state, like if a process was completed without errors.
-   *
-   *  Note: 'note', 'default', and 'error' will also work, but are deprecated
    */
   @property({ reflect: true })
   state:
@@ -166,11 +155,14 @@ export class RhAlert extends LitElement {
 
   /**
    * Alert variants have different rules regarding their ability to be dismissed by a user.
-   * Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
+   * Neutral, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
    * Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
    * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
    */
   @property({ reflect: true, type: Boolean }) dismissable = false;
+
+  /** Accessible label for the close button, used for localization. */
+  @property({ attribute: 'close-label' }) closeLabel = 'Close';
 
   #slots = new SlotController(this, 'header', null, 'actions');
 
@@ -180,13 +172,8 @@ export class RhAlert extends LitElement {
     }
   }
 
-  #aliasState(state: string) {
+  #normalizeState(state: string) {
     switch (state.toLowerCase()) {
-      // the first three are deprecated pre-DPO status names
-      case 'note': return 'info';
-      case 'default': return 'neutral';
-      case 'error': return 'danger';
-      // the following are DPO-approved status names
       case 'danger':
       case 'warning':
       case 'caution':
@@ -212,7 +199,7 @@ export class RhAlert extends LitElement {
     const hasBody =
       _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
     const { variant = 'inline' } = this;
-    const state = this.#aliasState(this.state);
+    const state = this.#normalizeState(this.state);
     // this click listener delegates events from the footer slot
     // as such it doest not require a key listener.
     // eslint-disable-next-line lit-a11y/click-events-have-key-events
@@ -248,7 +235,7 @@ export class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         label="Close"
+                         accessible-label="${this.closeLabel}"
                          confirm
                          @click="${this.#onClose}"></rh-button>
             </div>`}

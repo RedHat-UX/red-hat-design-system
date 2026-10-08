@@ -1,5 +1,44 @@
 :host {
   display: block;
+  container: stat / inline-size;
+
+  /** Compact title text size */
+  --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /** Compact body text size */
+  --_body-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /* 26px */
+  --_statistic-size: 1.625rem;
+}
+
+/* Compact large variant uses 35px statistic text. */
+:host([size='large']) {
+  /* 35px */
+  --_statistic-size: 2.1875rem;
+
+  /** Large variant body text size */
+  --_body-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
+/*
+ * Deprecated `is-mobile` keeps the compact type scale even when the stat is
+ * wide. These values explicitly reapply the compact scale.
+ */
+:host([is-mobile]) {
+  /** Compact title text size */
+  --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /** Compact body text size */
+  --_body-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /* 26px */
+  --_statistic-size: 1.625rem;
+}
+
+:host([is-mobile][size='large']) {
+  /* 35px */
+  --_statistic-size: 2.1875rem;
 }
 
 div {
@@ -9,9 +48,9 @@ div {
 
   --_accent-color:
     light-dark(
-        /** Brand accent color in light mode */
+        /** Brand accent color for light scheme */
         var(--rh-color-text-brand-on-light, #ee0000),
-        /** Primary text accent color in dark mode */
+        /** Primary text accent color for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       );
 
@@ -31,28 +70,6 @@ span,
   color: var(--rh-color-icon-secondary);
 }
 
-.md {
-  /** Default icon size */
-  --rh-icon-size: var(--rh-size-icon-04, 40px);
-}
-
-.lg {
-  /** Large icon size */
-  --rh-icon-size: var(--rh-size-icon-06, 64px);
-}
-
-.md ::slotted([slot='icon']) {
-  /** Default slotted icon width */
-  width: var(--rh-size-icon-04, 40px);
-  aspect-ratio: 1;
-}
-
-.lg ::slotted([slot='icon']) {
-  /** Large slotted icon width */
-  width: var(--rh-size-icon-06, 64px);
-  aspect-ratio: 1;
-}
-
 .hasIcon ::slotted([slot='icon']),
 .hasIcon rh-icon {
   order: 1;
@@ -62,12 +79,41 @@ span,
   margin-bottom: 16px;
 }
 
+.md {
+  /** Default icon size */
+  --rh-icon-size: var(--rh-size-icon-04, 40px);
+
+  & ::slotted([slot='icon']) {
+    /** Default slotted icon width */
+    width: var(--rh-size-icon-04, 40px);
+    aspect-ratio: 1;
+  }
+}
+
+.lg {
+  /** Large icon size */
+  --rh-icon-size: var(--rh-size-icon-06, 64px);
+
+  & ::slotted([slot='icon']) {
+    /** Large slotted icon width */
+    width: var(--rh-size-icon-06, 64px);
+    aspect-ratio: 1;
+  }
+}
+
+div:not(.hasIcon) #icon,
+div:not(.hasStatistic) #statistic,
+div:not(.hasTitle) #title,
+div:not(.hasCta) #cta {
+  display: none;
+}
+
 #title {
   order: 1;
   color: var(--_accent-color);
 
   /** Title text size */
-  font-size: var(--rh-font-size-body-text-xl, 1.25rem);
+  font-size: var(--_title-size);
 
   /** Title font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -81,26 +127,35 @@ span,
   color: var(--_accent-color);
 
   /** Statistic text size */
-  font-size: var(--rh-font-size-heading-lg, 2.25rem);
+  font-size: var(--_statistic-size);
 
   /** Statistic font weight */
-  font-weight: var(--rh-font-weight-heading-regular, 400);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
 
   /** Statistic font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+}
+
+:host([size='large']) #statistic {
+  /** Large variant statistic font weight */
+  font-weight: var(--rh-font-weight-heading-regular, 400);
 }
 
 #content {
   order: 3;
 
   /** Body text size */
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-size: var(--_body-size);
 
   /** Body font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
   /** Margin above body text */
-  margin-top: var(--rh-space-sm, 6px);
+  margin-top: var(--rh-space-md, 8px);
+
+  & ::slotted(p) {
+    font-size: var(--_body-size) !important;
+  }
 }
 
 #cta {
@@ -116,31 +171,39 @@ span,
   margin-top: var(--rh-space-lg, 16px);
 }
 
-div:not(.hasIcon) #icon,
-div:not(.hasStatistic) #statistic,
-div:not(.hasTitle) #title,
-div:not(.hasCta) #cta {
-  display: none;
+:host([top='statistic']) {
+  & #statistic {
+    order: 1;
+  }
+
+  & #title {
+    order: 2;
+  }
 }
 
-.isMobile #content {
-  /** Mobile body text size */
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-}
+/*
+ * Desktop type scale at the md breakpoint (768px). The query cannot style
+ * :host, because the host is the container, so the sizes land on the inner div.
+ */
+@container stat (min-width: 768px) {
+  :host(:not([is-mobile])) {
+    & div {
+      /** Title text size at containers >= md */
+      --_title-size: var(--rh-font-size-body-text-xl, 1.25rem);
 
-.isMobile #statistic {
-  font-size: 32px;
-}
+      /** Body text size at containers >= md */
+      --_body-size: var(--rh-font-size-body-text-md, 1rem);
 
-:host([size='large']) #statistic {
-  /** Large variant statistic text size */
-  font-size: var(--rh-font-size-heading-2xl, 3rem);
-}
+      /** Statistic text size at containers >= md */
+      --_statistic-size: var(--rh-font-size-heading-lg, 2.25rem);
+    }
+  }
 
-:host([top='statistic']) #statistic {
-  order: 1;
-}
+  :host(:not([is-mobile])[size='large']) div {
+    /** Large variant statistic text size at containers >= md */
+    --_statistic-size: var(--rh-font-size-heading-2xl, 3rem);
 
-:host([top='statistic']) #title {
-  order: 2;
+    /** Large variant body text size at containers >= md */
+    --_body-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
 }

@@ -59,7 +59,12 @@ description: Health index in all sizes and grades on light and dark color contex
     gap: 2rem;
     & h2 {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-      color: var(--rh-color-text-primary);
+      color:
+        var(--rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          ));
     }
     & li {
       margin: 0;

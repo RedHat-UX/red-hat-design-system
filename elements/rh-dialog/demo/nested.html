@@ -1,0 +1,20 @@
+---
+description: "A large dialog that opens a small dialog from inside it. Both dialogs are in the light DOM."
+---
+<rh-button id="large-dialog-trigger">Open</rh-button>
+
+<rh-dialog trigger="large-dialog-trigger">
+  <h2 slot="header">Outer dialog</h2>
+  <rh-button id="small-dialog-trigger">Open nested dialog</rh-button>
+  <rh-dialog trigger="small-dialog-trigger" variant="small">
+    <h2 slot="header">Nested dialog</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <rh-cta slot="footer" href="#nested">Call to Action</rh-cta>
+  </rh-dialog>
+</rh-dialog>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-dialog/rh-dialog.js';
+</script>
