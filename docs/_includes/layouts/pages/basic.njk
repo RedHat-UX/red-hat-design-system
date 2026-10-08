@@ -7,6 +7,7 @@ layout: layouts/base.njk
 
 <script type="module" data-helmet>
   import "@uxdot/elements/uxdot-feedback.js"
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-footer/rh-footer.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
@@ -26,6 +27,7 @@ layout: layouts/base.njk
     {% include 'partials/component/header.njk' %}
     <div class="container">
       {{ content | safe }}
+      {% include "partials/component/pathfinder.njk" %}
       {% include "partials/component/edit-this-page.njk" %}
     </div>
   </article>

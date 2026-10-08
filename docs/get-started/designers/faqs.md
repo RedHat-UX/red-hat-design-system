@@ -5,12 +5,14 @@ heading: Designers
 permalink: /get-started/designers/faqs.html
 tags:
   - designers
+pathfinder: true
 subnav:
   collection: sortedDesigners
   order: 50
 ---
 
 <script type="module" data-helmet>
+
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
