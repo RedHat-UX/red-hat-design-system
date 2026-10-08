@@ -51,75 +51,75 @@ Released October 8, 2026
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
 | `<rh-accordion>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-accordion-lightdom-shim.css` to `rh-accordion-lightdom-undefined.css`. |
+| `<rh-alert>`: removed `note`, `default`, `error` states | {{j()}} | Removed the deprecated states. Use `info`, `neutral`, and `danger` instead. |
 | `<rh-announcement>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-announcement-lightdom-shim.css` to `rh-announcement-lightdom-undefined.css`. |
 | `<rh-audio-player>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to a new optional `rh-audio-player-lightdom-undefined.css` stylesheet. |
-| `<rh-pagination>`: removed `open` variant | {{j()}} | Removed the deprecated `open` variant. Use `borderless` instead. |
-| `<rh-footer>`: removed `--rh-footer-nojs-min-height` | {{j()}} | Removed the deprecated custom property. Target `rh-footer:not(:defined)` directly for a no-JS min-height. |
-| `<rh-navigation-primary>`: changed `logo` slot | {{j()}} | Logo slot now accepts an inline SVG or `<img>` instead of an anchor; use `logo-href` to set the link destination. |
-| `<rh-blockquote>`: removed `title` property/slot | {{j()}} | Removed the deprecated `title` property and slot. Use `subtitle` instead. |
 | `<rh-avatar>`: removed `updatePattern()` | {{j()}} | Removed the deprecated method. Patterns now update automatically when `name` or `pattern` changes. |
 | `<rh-badge>`: removed `state` aliases | {{j()}} | Removed deprecated `moderate`, `important`, `critical`, and `note` aliases. Use `warning`, `caution`, `danger`, and `info`. |
-| `<rh-footer>`: split universal footer stylesheet | {{j()}} | `<rh-footer-universal>` now loads its own light DOM stylesheet separately from `<rh-footer>`. |
-| `<rh-navigation-secondary>`: removed overlay z-index alias | {{j()}} | Removed the deprecated `--rh-secondary-nav-overlay-z-index` alias. Use `--rh-navigation-secondary-overlay-z-index`. |
+| `<rh-blockquote>`: removed `title` property/slot | {{j()}} | Removed the deprecated `title` property and slot. Use `subtitle` instead. |
+| `<rh-button>`: removed `label` attribute | {{j()}} | Removed the deprecated attribute. Use `accessible-label` to set the button's accessible name. |
 | `<rh-cta>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-cta-lightdom-shim.css` to `rh-cta-lightdom-undefined.css`. |
 | `<rh-disclosure>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-disclosure-lightdom-shim.css` to `rh-disclosure-lightdom-undefined.css`. |
-| `<rh-footer>`/`<rh-footer-universal>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to new optional lightdom-undefined stylesheets for both components. |
-| `<rh-tooltip>`: removed deprecated custom properties | {{j()}} | Removed support for legacy CSS custom property names. Use the current token names instead. |
-| `<rh-subnav>`: removed `color-palette` attribute | {{j()}} | Removed the deprecated attribute. Set `color-palette` on a parent such as `<rh-surface>` instead. |
 | `<rh-footer>`: added a light color scheme | {{j()}} | Footer now renders light by default. Add `color-palette="darkest"` to keep the previous dark appearance. |
-| `<rh-navigation-secondary>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to a new optional `rh-navigation-secondary-lightdom-undefined.css` stylesheet. |
-| `<rh-alert>`: removed `note`, `default`, `error` states | {{j()}} | Removed the deprecated states. Use `info`, `neutral`, and `danger` instead. |
 | `<rh-footer>`/`<rh-footer-universal>`: changed `logo` slot | {{j()}} | Logo slot now accepts inline SVG, `<img>`, `<picture>`, or text instead of an anchor; use `logo-href` for the link destination. |
-| `<rh-tag>`: removed `cyan` color alias | {{j()}} | Removed the deprecated alias. Use `teal` instead. |
+| `<rh-footer>`: removed `--rh-footer-nojs-min-height` | {{j()}} | Removed the deprecated custom property. Target `rh-footer:not(:defined)` directly for a no-JS min-height. |
+| `<rh-footer>`/`<rh-footer-universal>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to new optional lightdom-undefined stylesheets for both components. |
+| `<rh-footer>`: split universal footer stylesheet | {{j()}} | `<rh-footer-universal>` now loads its own light DOM stylesheet separately from `<rh-footer>`. |
+| `<rh-navigation-primary>`: changed `logo` slot | {{j()}} | Logo slot now accepts an inline SVG or `<img>` instead of an anchor; use `logo-href` to set the link destination. |
+| `<rh-navigation-secondary>`: removed overlay z-index alias | {{j()}} | Removed the deprecated `--rh-secondary-nav-overlay-z-index` alias. Use `--rh-navigation-secondary-overlay-z-index`. |
+| `<rh-navigation-secondary>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to a new optional `rh-navigation-secondary-lightdom-undefined.css` stylesheet. |
+| `<rh-pagination>`: removed `open` variant | {{j()}} | Removed the deprecated `open` variant. Use `borderless` instead. |
 | `<rh-select>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-select-lightdom-shim.css` to `rh-select-lightdom-undefined.css`. |
 | `<rh-skip-link>`: renamed lightdom shim stylesheet | {{j()}} | Renamed `rh-skip-link-lightdom-shim.css` to `rh-skip-link-lightdom-undefined.css`. |
+| `<rh-subnav>`: removed `color-palette` attribute | {{j()}} | Removed the deprecated attribute. Set `color-palette` on a parent such as `<rh-surface>` instead. |
 | `<rh-subnav>`: removed slotted `<a href>` support | {{j()}} | Removed deprecated support for slotted links. Use `<rh-navigation-link>` instead. |
 | `<rh-subnav>`: split `:not(:defined)` styles | {{j()}} | Moved `:not(:defined)` styles to a new optional `rh-subnav-lightdom-undefined.css` stylesheet. |
-| `<rh-button>`: removed `label` attribute | {{j()}} | Removed the deprecated attribute. Use `accessible-label` to set the button's accessible name. |
+| `<rh-tag>`: removed `cyan` color alias | {{j()}} | Removed the deprecated alias. Use `teal` instead. |
+| `<rh-tooltip>`: removed deprecated custom properties | {{j()}} | Removed support for legacy CSS custom property names. Use the current token names instead. |
 | `<rh-alert>`: added `close-label` attribute | {{i()}} | Lets authors customize the close button's accessible label for localization. |
-| `<rh-footer-links>`/`<rh-footer>`: added accessible labeling | {{i()}} | Added `accessible-label` for link groups and `social-links-label` for naming the legacy social links list. |
 | `<rh-disclosure>`: added theming CSS custom properties | {{i()}} | Added properties for summary background, padding, outline offset/color, and border width/color. |
+| `<rh-footer-links>`/`<rh-footer>`: added accessible labeling | {{i()}} | Added `accessible-label` for link groups and `social-links-label` for naming the legacy social links list. |
 | `<rh-footer-universal>`: added `logo-href` attribute | {{i()}} | Lets authors override the default Red Hat homepage URL. |
 | `<rh-stat>`: sized text from the stat's width | {{i()}} | Compact text sizing now applies automatically under 768px; deprecated `is-mobile` in favor of constraining width in CSS. |
 | `<rh-tile>`: added `--rh-tile-background-color` | {{i()}} | New public CSS custom property for theming the default tile background. |
 | `<rh-tile>`: added border and focus theming properties | {{i()}} | Added CSS custom properties for border width, per-state border color, disabled text, and focus ring. |
-| `<rh-audio-player>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-navigation-primary>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-tile>`: corrected SSR behavior | {{p()}} | Corrected server-side rendering behavior when used in `<rh-tile-group>`. |
-| `<rh-dialog>`: fixed unscrollable page | {{p()}} | Fixed the page staying unscrollable after a dialog is closed or removed. |
-| `<rh-menu>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-chip-group>`: fixed themable default | {{p()}} | Ensured themable loads the default theme. |
-| `<rh-footer>`: aligned logo heights | {{p()}} | Aligned heights of the footer wordmark and universal footer fedora logo at different viewports. |
-| `<rh-tile>`: fixed missing background | {{p()}} | Ensured tiles have a visible background when no `color-palette` is specified. |
-| `<rh-subnav>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-tile>`: fixed bleed image alignment | {{p()}} | Fixed images with bleed enabled not extending to the tile's edges or aligning with its rounded corners. |
-| `<rh-disclosure>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-footer>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-back-to-top>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-footer>`: updated default logo link | {{p()}} | Updated default logo link to `https://www.redhat.com/en`. |
-| `<rh-scheme-dropdown>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-jump-links>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-menu-dropdown>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-tile>`: fixed surface color bleed | {{p()}} | Fixed surface color bleeding past the tile's rounded corners. |
-| `<rh-pagination>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-navigation-primary>`: fixed compact mode regression | {{p()}} | Fixed navigation remaining in compact mode on desktop when resize observation runs before hydration. |
-| `<rh-button>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-navigation-secondary>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-scheme-toggle>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-select>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-navigation-vertical>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-footer-universal>`: restored accessible heading | {{p()}} | Restored the accessible footer heading when used without `<rh-footer>`. |
-| `<rh-announcement>`: added lightdom fallbacks | {{p()}} | Added default fallbacks for lightdom styles. |
 | `<rh-accordion>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-skip-link>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-announcement>`: added lightdom fallbacks | {{p()}} | Added default fallbacks for lightdom styles. |
+| `<rh-audio-player>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-back-to-top>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-breadcrumb>`: added lightdom fallbacks | {{p()}} | Added default fallbacks for lightdom styles. |
+| `<rh-button>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-chip-group>`: fixed themable default | {{p()}} | Ensured themable loads the default theme. |
 | `<rh-context-demo>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-skip-link>`: improved theming support | {{p()}} | Improved theming support. |
-| `<rh-table>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
 | `<rh-cta>`: removed runtime validation warnings | {{p()}} | Use a static HTML audit to check CTA markup structure and semantics instead. |
 | `<rh-dialog>`: fixed nested Escape handling | {{p()}} | Pressing Escape now closes only the frontmost dialog when one dialog is open inside another. |
-| `<rh-tile>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
-| `<rh-breadcrumb>`: added lightdom fallbacks | {{p()}} | Added default fallbacks for lightdom styles. |
+| `<rh-dialog>`: fixed unscrollable page | {{p()}} | Fixed the page staying unscrollable after a dialog is closed or removed. |
+| `<rh-disclosure>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-footer>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-footer>`: aligned logo heights | {{p()}} | Aligned heights of the footer wordmark and universal footer fedora logo at different viewports. |
+| `<rh-footer>`: updated default logo link | {{p()}} | Updated default logo link to `https://www.redhat.com/en`. |
+| `<rh-footer-universal>`: restored accessible heading | {{p()}} | Restored the accessible footer heading when used without `<rh-footer>`. |
+| `<rh-jump-links>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-menu>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-menu-dropdown>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-navigation-primary>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-navigation-primary>`: fixed compact mode regression | {{p()}} | Fixed navigation remaining in compact mode on desktop when resize observation runs before hydration. |
+| `<rh-navigation-secondary>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-navigation-vertical>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
 | `<rh-navigation-vertical>`: improved label accessibility | {{p()}} | Improved accessibility of the navigation label for screen readers. |
+| `<rh-pagination>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-scheme-dropdown>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-scheme-toggle>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-select>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-skip-link>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-skip-link>`: improved theming support | {{p()}} | Improved theming support. |
+| `<rh-subnav>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-table>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-tile>`: added token fallbacks | {{p()}} | Added default fallbacks for each RHDS token used. |
+| `<rh-tile>`: corrected SSR behavior | {{p()}} | Corrected server-side rendering behavior when used in `<rh-tile-group>`. |
+| `<rh-tile>`: fixed bleed image alignment | {{p()}} | Fixed images with bleed enabled not extending to the tile's edges or aligning with its rounded corners. |
+| `<rh-tile>`: fixed missing background | {{p()}} | Ensured tiles have a visible background when no `color-palette` is specified. |
+| `<rh-tile>`: fixed surface color bleed | {{p()}} | Fixed surface color bleeding past the tile's rounded corners. |
 
 </rh-table>
 
