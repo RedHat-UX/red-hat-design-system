@@ -572,7 +572,7 @@
       transition: background-size 0.45s ease;
     }
 
-    &::part(button):focus {
+    &::part(button):focus-visible {
       outline:
         var(--felt-preview-button-border-width-focus-ring)
         solid
@@ -592,7 +592,7 @@
         background-color: var(--felt-preview-color-interactive-primary-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         background-color: var(--felt-preview-color-interactive-primary-focus);
       }
 
@@ -605,7 +605,7 @@
           background-color: var(--felt-preview-color-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           background-color: var(--felt-preview-color-status-danger-focus);
         }
 
@@ -624,7 +624,7 @@
         --rh-border-width-sm: var(--felt-preview-button-border-width-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         --rh-color-text-primary: var(--felt-preview-color-text-interactive-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
       }
@@ -656,7 +656,7 @@
           --rh-color-status-danger: var(--felt-preview-color-text-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-status-danger: var(--felt-preview-color-text-status-danger-focus);
         }
@@ -677,7 +677,7 @@
         --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
         --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-focus);
@@ -708,7 +708,7 @@
           --rh-color-border-strong: var(--felt-preview-color-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-text-primary: var(--felt-preview-color-text-status-danger-focus);
@@ -738,7 +738,7 @@
       }
 
       &::part(button):hover,
-      &::part(button):focus,
+      &::part(button):focus-visible,
       &::part(button):active {
         --rh-color-blue-70: var(--felt-preview-color-interactive-tertiary-hover);
 
@@ -767,7 +767,7 @@
         }
 
         &::part(button):hover,
-        &::part(button):focus,
+        &::part(button):focus-visible,
         &::part(button):active {
           /* Dark scheme: text in interactive states is red-orange-20 */
           color: var(--felt-preview-color-text-status-danger-hover);
@@ -811,7 +811,7 @@
       }
 
       &::part(button):hover,
-      &::part(button):focus,
+      &::part(button):focus-visible,
       &::part(button):active {
         background-color: var(--felt-preview-color-interactive-fill-plain-hover);
       }
@@ -1881,11 +1881,11 @@
   }
 
   & rh-chip-group::part(btn-link):hover,
-  & rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):focus-visible {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  & rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):focus-visible {
     outline-offset: -1px;
   }
 
@@ -1955,7 +1955,7 @@
       text-underline-offset: max(5px, 0.28em) !important;
     }
 
-    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus, :active) {
+    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus-visible, :active) {
       text-decoration-color: currentcolor !important;
     }
 
