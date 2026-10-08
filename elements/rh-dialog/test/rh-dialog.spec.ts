@@ -232,4 +232,444 @@ describe('<rh-dialog>', function() {
       expect(element.returnValue, `returnValue after clicking outside`).to.equal('');
     });
   });
+
+  describe('nested dialogs', function() {
+    it('Escape closes only the inner dialog', async function() {
+      const outer = await createFixture<RhDialog>(html`
+        <rh-dialog>
+          <h2 slot="header">Outer</h2>
+          <rh-dialog id="inner-dialog">
+            <h2 slot="header">Inner</h2>
+            <p>Nested</p>
+          </rh-dialog>
+        </rh-dialog>
+      `);
+      const inner = outer.querySelector<RhDialog>('#inner-dialog')!;
+
+      outer.show();
+      await outer.updateComplete;
+      inner.show();
+      await inner.updateComplete;
+      await nextFrame();
+
+      // Focus inside the inner dialog so the key bubbles through both hosts.
+      inner.shadowRoot?.querySelector<HTMLElement>('[part="close-button"]')?.focus();
+      await press('Escape')();
+      await outer.updateComplete;
+      await inner.updateComplete;
+      await nextFrame();
+
+      expect(inner.open, 'inner dialog').to.be.false;
+      expect(outer.open, 'outer dialog').to.be.true;
+    });
+  });
+
+  describe('document scroll lock', function() {
+    // The lock is a document attribute, html[data-rh-dialog-scroll-lock].
+    // It must not write an inline overflow onto body, or that style outlives
+    // the dialog on a client-side navigation. A shadow host is invisible to
+    // document :has(), so the attribute is what locks those dialogs too.
+    function htmlOverflow() {
+      return getComputedStyle(document.documentElement).overflow;
+    }
+
+    function scrollLockAttribute() {
+      return document.documentElement.hasAttribute('data-rh-dialog-scroll-lock');
+    }
+
+    async function openDialog(dialog: RhDialog) {
+      dialog.show();
+      await dialog.updateComplete;
+      await nextFrame();
+    }
+
+    // Puts the dialog in an open shadow root. Document CSS cannot see that
+    // host, which is the case the attribute lock is for.
+    async function createShadowDialog() {
+      const host = await createFixture<HTMLDivElement>(html`<div></div>`);
+      const root = host.attachShadow({ mode: 'open' });
+      const dialog = document.createElement('rh-dialog') as RhDialog;
+      root.append(dialog);
+      await dialog.updateComplete;
+      return { host, dialog };
+    }
+
+    it('locks document scroll while open without an inline body style', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.equal('hidden');
+    });
+
+    it('releases document scroll after close()', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+      dialog.close('kept');
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(dialog.open).to.be.false;
+      expect(dialog.returnValue).to.equal('kept');
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('releases document scroll when open is set to false', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      let closeCount = 0;
+      dialog.addEventListener('close', () => {
+        closeCount++;
+      });
+      await openDialog(dialog);
+
+      dialog.open = false;
+      await dialog.updateComplete;
+      await nextFrame();
+
+      const native = dialog.shadowRoot?.querySelector('dialog');
+      expect(dialog.open, 'open').to.be.false;
+      expect(native?.open, 'native dialog').to.be.false;
+      expect(closeCount, 'close event').to.equal(1);
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('releases document scroll when the native dialog closes', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      let closed = false;
+      dialog.addEventListener('close', () => {
+        closed = true;
+      });
+      await openDialog(dialog);
+
+      // Same path as HTMLDialogElement.close(), which does not enter RhDialog.close().
+      dialog.shadowRoot?.querySelector('dialog')?.close('native-close');
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(dialog.open, 'open').to.be.false;
+      expect(dialog.returnValue, 'returnValue').to.equal('native-close');
+      expect(closed, 'close event').to.be.true;
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('keeps the lock when a native close leaves another dialog open', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.shadowRoot?.querySelector('dialog')?.close();
+      await first.updateComplete;
+      await nextFrame();
+
+      expect(first.open).to.be.false;
+      expect(second.open).to.be.true;
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+
+      second.close();
+      await second.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('releases document scroll when removed while open', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+      dialog.remove();
+      await nextFrame();
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('keeps the lock until the last open dialog closes', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.close();
+      await first.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+
+      second.close();
+      await second.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(document.body.style.overflow).to.equal('');
+    });
+
+    it('keeps the lock until the last open dialog is removed', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+
+      second.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('locks document scroll for a video dialog', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog type="video"></rh-dialog>`);
+      await openDialog(dialog);
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.equal('hidden');
+
+      dialog.close();
+      await dialog.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('locks document scroll for a dialog inside a shadow root', async function() {
+      const { dialog } = await createShadowDialog();
+      await openDialog(dialog);
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+    });
+
+    it('releases the shadow-root lock after close()', async function() {
+      const { dialog } = await createShadowDialog();
+      await openDialog(dialog);
+      dialog.close();
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('releases the shadow-root lock when removed while open', async function() {
+      const { host } = await createShadowDialog();
+      const dialog = host.shadowRoot!.querySelector('rh-dialog') as RhDialog;
+      await openDialog(dialog);
+      host.remove();
+      await nextFrame();
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('keeps the lock until the last open shadow dialog closes', async function() {
+      const first = await createShadowDialog();
+      const second = await createShadowDialog();
+      await openDialog(first.dialog);
+      await openDialog(second.dialog);
+
+      first.dialog.close();
+      await first.dialog.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+
+      second.dialog.close();
+      await second.dialog.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+      expect(document.body.style.overflow).to.equal('');
+    });
+
+    it('keeps the lock until the last open shadow dialog is removed', async function() {
+      const first = await createShadowDialog();
+      const second = await createShadowDialog();
+      await openDialog(first.dialog);
+      await openDialog(second.dialog);
+
+      first.host.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+
+      second.host.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    describe('show() before the first render', function() {
+      // `@query('#dialog')` is null until Lit renders. show() must not set
+      // `open` or keep the scroll lock until showModal() has succeeded.
+      async function cleanup(dialog: RhDialog) {
+        dialog.close();
+        dialog.remove();
+        await nextFrame();
+      }
+
+      it('opens the native dialog after connect, without locking early', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+        let opened = false;
+        dialog.addEventListener('open', () => {
+          opened = true;
+        });
+
+        try {
+          document.body.append(dialog);
+          // Shadow root exists, but the native <dialog> is not rendered yet.
+          dialog.show();
+          dialog.show();
+
+          expect(dialog.open, 'host open before render').to.be.false;
+          expect(dialog.shadowRoot?.querySelector('dialog'), 'native dialog before render').to.be.null;
+          expect(scrollLockAttribute(), 'lock before render').to.be.false;
+          expect(document.body.style.overflow).to.equal('');
+
+          await dialog.updateComplete;
+          await nextFrame();
+
+          const native = dialog.shadowRoot?.querySelector('dialog');
+          expect(dialog.open, 'host open').to.be.true;
+          expect(native?.open, 'native dialog open').to.be.true;
+          expect(opened, 'open event').to.be.true;
+          expect(scrollLockAttribute(), 'lock after open').to.be.true;
+          expect(htmlOverflow()).to.equal('hidden');
+          expect(document.body.style.overflow).to.equal('');
+
+          // Two early show() calls must take the lock only once.
+          dialog.close();
+          await dialog.updateComplete;
+          await nextFrame();
+          expect(dialog.open).to.be.false;
+          expect(native?.open, 'native dialog after close').to.be.false;
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('opens when show() is called before the element is connected', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          dialog.show();
+          expect(dialog.open, 'open before connect').to.be.false;
+          expect(scrollLockAttribute(), 'lock before connect').to.be.false;
+
+          document.body.append(dialog);
+          expect(dialog.open, 'open before render').to.be.false;
+          expect(scrollLockAttribute(), 'lock before render').to.be.false;
+
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open).to.be.true;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.be.true;
+          expect(scrollLockAttribute()).to.be.true;
+          expect(htmlOverflow()).to.equal('hidden');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('does not open or lock when removed before the first render', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+        const errors: unknown[] = [];
+        const onError = (event: ErrorEvent) => errors.push(event.message);
+        const onRejection = (event: PromiseRejectionEvent) => errors.push(String(event.reason));
+        window.addEventListener('error', onError);
+        window.addEventListener('unhandledrejection', onRejection);
+
+        try {
+          document.body.append(dialog);
+          dialog.show();
+          dialog.remove();
+          await nextFrame();
+
+          expect(dialog.open).to.be.false;
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+          expect(errors, 'showModal after removal').to.eql([]);
+        } finally {
+          window.removeEventListener('error', onError);
+          window.removeEventListener('unhandledrejection', onRejection);
+          dialog.remove();
+        }
+      });
+
+      it('does not open or lock when close() runs before the first render', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          dialog.show();
+          dialog.close('cancelled-early');
+          document.body.append(dialog);
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open).to.be.false;
+          expect(dialog.returnValue).to.equal('cancelled-early');
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.not.equal(true);
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+          expect(document.body.style.overflow).to.equal('');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('toggle() before the first render opens, and a second toggle cancels it', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          document.body.append(dialog);
+          dialog.toggle();
+          dialog.toggle();
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open, 'second toggle before render').to.be.false;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.not.equal(true);
+          expect(scrollLockAttribute()).to.be.false;
+
+          dialog.toggle();
+          await dialog.updateComplete;
+          await nextFrame();
+          expect(dialog.open, 'toggle after render').to.be.true;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog after later toggle').to.be.true;
+          expect(scrollLockAttribute()).to.be.true;
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+    });
+
+    it('does not lock document scroll for markup open until show()', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog open></rh-dialog>`);
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(dialog.open).to.be.true;
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+
+      await openDialog(dialog);
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+
+      dialog.close();
+      await dialog.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+  });
 });

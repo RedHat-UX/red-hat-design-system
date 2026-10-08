@@ -1,0 +1,69 @@
+---
+description: "Tall page behind a dialog. Document scroll locks while the dialog is open and returns when it closes or is removed from the page."
+---
+<p id="top">Scroll down to open the dialog. The page behind it should stay put, and the body element should not gain an inline overflow style.</p>
+
+<div class="spacer" aria-hidden="true"></div>
+
+<rh-button id="scroll-lock-trigger">Open dialog</rh-button>
+
+<fieldset>
+  <legend>Document scroll</legend>
+  <output id="scroll-lock-status">Checking…</output>
+</fieldset>
+
+<div class="spacer" aria-hidden="true"></div>
+
+<rh-dialog id="scroll-lock-dialog" trigger="scroll-lock-trigger">
+  <h2 slot="header">Page scroll is locked</h2>
+  <p>Wheel and trackpad gestures on the backdrop should not move the page. This dialog's own content should still scroll.</p>
+  <div id="dialog-scroll">Dialog content.</div>
+  <button type="button" id="remove-dialog">Remove dialog</button>
+</rh-dialog>
+
+<style>
+  .spacer {
+    /* One viewport tall, so the trigger starts below the fold and the page
+       can still scroll after the dialog closes. */
+    block-size: 100vh;
+  }
+
+  fieldset {
+    margin-block: var(--rh-space-lg, 16px);
+  }
+
+  #dialog-scroll {
+    block-size: 150vh;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-dialog/rh-dialog.js';
+
+  const dialog = document.getElementById('scroll-lock-dialog');
+  const status = document.getElementById('scroll-lock-status');
+  const removeButton = document.getElementById('remove-dialog');
+
+  // Shows whether the lock is the document rule or a leftover inline style.
+  // body style should stay empty. html overflow is hidden only while the
+  // dialog is open and connected.
+  function report() {
+    const inline = document.body.getAttribute('style');
+    const overflow = getComputedStyle(document.documentElement).overflow;
+    status.textContent = `body style: ${inline ?? '(none)'}; html overflow: ${overflow}`;
+  }
+
+  report();
+  dialog.addEventListener('open', report);
+  dialog.addEventListener('close', report);
+  dialog.addEventListener('cancel', report);
+
+  // Removes the open dialog without close(), which is what a route change
+  // does when the view unmounts. Scroll should return because the host is
+  // gone, not because close() cleared an inline style.
+  removeButton.addEventListener('click', () => {
+    dialog.remove();
+    report();
+  });
+</script>
