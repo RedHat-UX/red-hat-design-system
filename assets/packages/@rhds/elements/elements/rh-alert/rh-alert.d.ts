@@ -67,8 +67,6 @@ export declare class RhAlert extends LitElement {
      *  - `caution` - Indicates an action or notice which should immediately draw the attention
      *  - `info` - Indicates helpful information or a message with very little to no severity.
      *  - `success` - Indicates a success state, like if a process was completed without errors.
-     *
-     *  Note: 'note', 'default', and 'error' will also work, but are deprecated
      */
     state: 'danger' | 'warning' | 'caution' | 'neutral' | 'info' | 'success';
     /**
@@ -85,11 +83,13 @@ export declare class RhAlert extends LitElement {
     variant?: 'alternate' | 'toast' | 'inline';
     /**
      * Alert variants have different rules regarding their ability to be dismissed by a user.
-     * Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
+     * Neutral, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
      * Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
      * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
      */
     dismissable: boolean;
+    /** Accessible label for the close button, used for localization. */
+    closeLabel: string;
     connectedCallback(): void;
     render(): TemplateResult<1>;
 }

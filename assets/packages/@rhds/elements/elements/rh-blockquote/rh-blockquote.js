@@ -22,13 +22,6 @@ let RhBlockquote = class RhBlockquote extends LitElement {
     constructor() {
         super(...arguments);
         /**
-         * built-in tooltip blockquote figure element.
-         * Defaults to 'Blockquote'.
-         *
-         * @deprecated use subtitle
-         */
-        this.title = 'Blockquote';
-        /**
          * Controls the horizontal alignment of the blockquote content.
          * Use `center` for short quotes in visually prominent layouts.
          * Avoid centering long text, as it reduces readability.
@@ -67,18 +60,12 @@ let RhBlockquote = class RhBlockquote extends LitElement {
             Screen readers announce this as attribution for the quote.
             Overrides the \`author\` attribute.
           --><slot name="author">${this.author}</slot></p>
-          <p id="title"><!--
+          <p id="subtitle"><!--
             Inline text for the author's job title or role.
             Screen readers announce this in the figcaption.
-            Deprecated: use \`subtitle\`.
-          --><slot name="title"></slot>
-            <!--
-              Inline text for the author's job title or role.
-              Screen readers announce this in the figcaption.
-              Overrides the \`subtitle\` attribute.
-              Should not contain long strings of text. May contain links.
-            -->
-             <slot name="subtitle">${this.subtitle}</slot>
+            Overrides the \`subtitle\` attribute.
+            Should not contain long strings of text. May contain links.
+          --><slot name="subtitle">${this.subtitle}</slot>
           </p>
         </figcaption>
       </figure>
@@ -92,9 +79,6 @@ __decorate([
 __decorate([
     property({ type: String })
 ], RhBlockquote.prototype, "subtitle", void 0);
-__decorate([
-    property({ type: String })
-], RhBlockquote.prototype, "title", void 0);
 __decorate([
     property({ reflect: true, attribute: 'color-palette' })
 ], RhBlockquote.prototype, "colorPalette", void 0);

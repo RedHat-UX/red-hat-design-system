@@ -1,4 +1,4 @@
-var _RhStat_instances, _RhStat_screenSize, _RhStat_slots, _RhStat_mo, _RhStat_logger, _RhStat_onMutation;
+var _RhStat_instances, _RhStat_slots, _RhStat_mo, _RhStat_logger, _RhStat_onMutation;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -6,10 +6,9 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;--_accent-color:light-dark(var(--rh-color-text-brand-on-light,#e00),var(--rh-color-text-primary-on-dark,#fff));flex-direction:column;align-items:center;place-content:center space-around}::slotted(*),span{display:block;text-align:center}.hasIcon #icon{color:var(--rh-color-icon-secondary)}.md{--rh-icon-size:var(--rh-size-icon-04,40px)}.lg{--rh-icon-size:var(--rh-size-icon-06,64px)}.md ::slotted([slot=icon]){width:var(--rh-size-icon-04,40px);aspect-ratio:1}.lg ::slotted([slot=icon]){width:var(--rh-size-icon-06,64px);aspect-ratio:1}.hasIcon ::slotted([slot=icon]),.hasIcon rh-icon{order:1;display:block;color:currentcolor;fill:currentcolor;margin-bottom:16px}#title{order:1;font-size:var(--rh-font-size-body-text-xl,1.25rem);font-weight:var(--rh-font-weight-body-text-regular,400)}#statistic,#title{color:var(--_accent-color);font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)}#statistic{order:2;font-size:var(--rh-font-size-heading-lg,2.25rem);font-weight:var(--rh-font-weight-heading-regular,400)}#content{order:3;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);margin-top:var(--rh-space-sm,6px)}#content,#cta{font-size:var(--rh-font-size-body-text-lg,1.125rem)}#cta{order:4;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);margin-top:var(--rh-space-lg,16px)}div:not(.hasCta) #cta,div:not(.hasIcon) #icon,div:not(.hasStatistic) #statistic,div:not(.hasTitle) #title{display:none}.isMobile #content{font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile #statistic{font-size:32px}:host([size=large]) #statistic{font-size:var(--rh-font-size-heading-2xl,3rem)}:host([top=statistic]) #statistic{order:1}:host([top=statistic]) #title{order:2}`;
+const styles = css `:host{display:block;container:stat/inline-size;--_title-size:var(--rh-font-size-body-text-lg,1.125rem);--_body-size:var(--rh-font-size-body-text-md,1rem);--_statistic-size:1.625rem}:host([size=large]){--_statistic-size:2.1875rem;--_body-size:var(--rh-font-size-body-text-md,1rem)}:host([is-mobile]){--_title-size:var(--rh-font-size-body-text-lg,1.125rem);--_body-size:var(--rh-font-size-body-text-md,1rem);--_statistic-size:1.625rem}:host([is-mobile][size=large]){--_statistic-size:2.1875rem}div{width:100%;height:100%;display:flex;--_accent-color:light-dark(var(--rh-color-text-brand-on-light,#e00),var(--rh-color-text-primary-on-dark,#fff));flex-direction:column;align-items:center;place-content:center space-around}::slotted(*),span{display:block;text-align:center}.hasIcon #icon{color:var(--rh-color-icon-secondary)}.hasIcon ::slotted([slot=icon]),.hasIcon rh-icon{order:1;display:block;color:currentcolor;fill:currentcolor;margin-bottom:16px}.md{--rh-icon-size:var(--rh-size-icon-04,40px)}.md ::slotted([slot=icon]){width:var(--rh-size-icon-04,40px);aspect-ratio:1}.lg{--rh-icon-size:var(--rh-size-icon-06,64px)}.lg ::slotted([slot=icon]){width:var(--rh-size-icon-06,64px);aspect-ratio:1}div:not(.hasCta) #cta,div:not(.hasIcon) #icon,div:not(.hasStatistic) #statistic,div:not(.hasTitle) #title{display:none}#title{order:1;font-size:var(--_title-size);font-weight:var(--rh-font-weight-body-text-regular,400)}#statistic,#title{color:var(--_accent-color);font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)}#statistic{order:2;font-size:var(--_statistic-size);font-weight:var(--rh-font-weight-heading-medium,500)}:host([size=large]) #statistic{font-weight:var(--rh-font-weight-heading-regular,400)}#content{order:3;font-size:var(--_body-size);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);margin-top:var(--rh-space-md,8px)}#content ::slotted(p){font-size:var(--_body-size)!important}#cta{order:4;font-size:var(--rh-font-size-body-text-lg,1.125rem);font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);margin-top:var(--rh-space-lg,16px)}:host([top=statistic]) #statistic{order:1}:host([top=statistic]) #title{order:2}@container stat (min-width: 768px){:host(:not([is-mobile])) div{--_title-size:var(--rh-font-size-body-text-xl,1.25rem);--_body-size:var(--rh-font-size-body-text-md,1rem);--_statistic-size:var(--rh-font-size-heading-lg,2.25rem)}:host(:not([is-mobile])[size=large]) div{--_statistic-size:var(--rh-font-size-heading-2xl,3rem);--_body-size:var(--rh-font-size-body-text-lg,1.125rem)}}`;
 /**
  * A statistic showcases a data point or quick fact visually.
  * Elements must include a `statistic` slot and body text.
@@ -42,13 +41,14 @@ let RhStat = class RhStat extends LitElement {
          */
         this.size = 'default';
         /**
-         * Whether the statistic renders in a mobile layout with
-         * reduced font sizes. Managed internally via
-         * ScreenSizeController but can be set explicitly.
+         * Forces the compact type scale, including when the stat is wider than 768px.
+         * The compact scale otherwise applies on its own when the stat is narrower
+         * than 768px.
+         *
+         * @deprecated The compact layout is automatic when the stat is narrower
+         * than 768px. This attribute will be removed in a future release.
          */
         this.isMobile = false;
-        /** Tracks viewport size to toggle mobile layout */
-        _RhStat_screenSize.set(this, new ScreenSizeController(this));
         /** Manages slot presence detection for conditional rendering */
         _RhStat_slots.set(this, new SlotController(this, null, 'icon', 'title', 'statistic', 'cta'));
         /** Observes child list changes to validate required content */
@@ -73,10 +73,9 @@ let RhStat = class RhStat extends LitElement {
         const hasTitle = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('title');
         const hasStatistic = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('statistic');
         const hasCta = __classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('cta');
-        const isMobile = this.isMobile || !__classPrivateFieldGet(this, _RhStat_screenSize, "f").matches.has('sm');
         const iconSize = this.size === 'default' ? 'md' : 'lg';
         return html `
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
+      <div class="${classMap({ hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
           <!-- Optional decorative icon above the data value.
                Accepts an \`rh-icon\` or inline SVG. Decorative
@@ -117,7 +116,6 @@ let RhStat = class RhStat extends LitElement {
     `;
     }
 };
-_RhStat_screenSize = new WeakMap();
 _RhStat_slots = new WeakMap();
 _RhStat_mo = new WeakMap();
 _RhStat_logger = new WeakMap();

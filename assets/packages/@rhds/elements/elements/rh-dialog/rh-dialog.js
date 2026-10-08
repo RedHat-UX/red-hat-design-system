@@ -1,6 +1,6 @@
-var _RhDialog_instances, _RhDialog_screenSize, _RhDialog_headerId, _RhDialog_triggerElement, _RhDialog_header, _RhDialog_body, _RhDialog_headings, _RhDialog_cancelling, _RhDialog_slots, _RhDialog_onClick, _RhDialog_onNativeDialogCancel, _RhDialog_onKeyDown;
+var _RhDialog_instances, _RhDialog_screenSize, _RhDialog_headerId, _RhDialog_triggerElement, _RhDialog_header, _RhDialog_body, _RhDialog_headings, _RhDialog_cancelling, _RhDialog_closing, _RhDialog_lockedDocument, _RhDialog_pendingShow, _RhDialog_slots, _RhDialog_lockScroll, _RhDialog_unlockScroll, _RhDialog_onClick, _RhDialog_onNativeDialogCancel, _RhDialog_onNativeDialogClose, _RhDialog_onKeyDown;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -10,7 +10,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{--_dialog-backdrop-bg-color:oklch(from var(--rh-color-surface-darker,#1f1f1f) l c h/0.68);display:block;position:relative}[hidden]{display:none!important}.visually-hidden{block-size:1px;border:0;clip:rect(0,0,0,0);inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}#rhds-wrapper{--_offset:var(--rh-space-xl,24px);--_offset-top:var(--_offset);--_offset-right:var(--_offset);display:contents;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)}::backdrop{background-color:var(--_dialog-backdrop-bg-color)}#dialog{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));border-radius:var(--rh-border-radius-default,3px);border:0;box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559);box-sizing:border-box;color:var(--rh-color-text-primary);font-family:inherit;inline-size:100%;margin-inline:auto;max-block-size:var(--_box-max-block-size,calc(100vh - var(--rh-space-3xl, 48px)));max-inline-size:var(--_box-width,min(90%,1140px));overflow-y:auto;overscroll-behavior:contain;padding:var(--rh-space-xl,24px);position:fixed}:host([variant=small]) #dialog,:host([width=small]) #dialog{--_box-width:35rem}:host([variant=medium]) #dialog,:host([width=medium]) #dialog{--_box-width:52.5rem}:host([variant=large]) #dialog,:host([width=large]) #dialog{--_box-width:70rem}#content{margin-block-start:calc(var(--_offset-top)*-1)}#header{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));inset-block-start:0;margin-block-end:var(--rh-space-lg,16px);position:relative}#header:before{block-size:100%;inset-block-start:calc(var(--_offset-top)*-1)}#header:after,#header:before{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));content:"";inline-size:100%;position:absolute;z-index:-1}#header:after{block-size:var(--rh-space-lg,16px)}@media (min-height:768px){#header{position:sticky}}@media (min-width:768px) and (min-height:576px){#header{position:sticky}}@media (min-width:1200px){#header{margin-block-end:var(--rh-space-xl,24px)}}#header[hidden]+#body{max-inline-size:calc(100% - var(--rh-space-xl, 24px))}#header,#header[hidden]+#body{padding-inline-end:var(--rh-space-3xl,48px)}@media (min-width:1200px){#rhds-wrapper{--_offset:var(--rh-space-2xl,32px)}#dialog{padding:var(--rh-space-2xl,32px)}#content:has(#header[hidden]){--_offset-top:var(--rh-space-xl,24px)}#header[hidden]+#body{max-inline-size:calc(100% - var(--rh-space-2xl, 32px))}}#content ::slotted([slot=header]){margin-block:0!important}#header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot=header]){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-sm,1.5rem);font-weight:var(--rh-font-weight-body-text-regular,400)}#body ::slotted(p){margin-block:0 var(--rh-space-lg,16px)!important}#body ::slotted(p:last-of-type){margin-block-end:var(--rh-space-xl,24px)!important}#close-button{color:var(--rh-dialog-close-button-color,var(--rh-color-icon-secondary));cursor:pointer;display:block;inset-block-start:0;margin-inline-start:auto;max-inline-size:var(--rh-length-xl,24px);position:sticky;z-index:500}#close-button::part(button){background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));block-size:var(--rh-length-xl,24px);border-radius:var(--rh-border-radius-default,3px);inline-size:var(--rh-length-xl,24px)}:host([position=top]) #dialog{inline-size:100%;margin-block-start:var(--rh-space-2xl,32px);max-inline-size:var(--_box-width,calc(100% - var(--rh-space-2xl, 32px)))}#footer{align-items:center;display:flex;gap:var(--rh-space-md,8px)}:host([type=video]){--_dialog-backdrop-bg-color:rgb(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-60,60%));background-color:var(--_dialog-backdrop-bg-color)}:host([type=video]) #rhds-wrapper{--_offset:var(--rh-space-md,8px)}:host([type=video][open]) #dialog{--_aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);aspect-ratio:var(--_aspect-ratio);background-color:var(--_dialog-backdrop-bg-color);max-inline-size:var(--_box-width,min(90%,calc(90vh*var(--_aspect-ratio) + var(--_offset-top))));padding:0}:host([type=video]) #close-button{inset-inline-end:var(--_offset-right);inset-block-start:var(--_offset-top);margin-inline-end:0;position:absolute}:host([type=video]) #rhds-wrapper.mobile #close-button{--_offset-right:var(--rh-space-sm,6px)}:host([type=video]) #close-button::part(button){background-color:initial}:host([type=video]) #close-button::part(icon){color:var(--rh-dialog-close-button-color,var(--rh-color-surface-lightest,#fff));filter:drop-shadow(1px 0 1px var(--_dialog-backdrop-bg-color))}:host([type=video]) #content{margin-block-start:0;overflow:hidden;padding:0}:host([type=video]) #content,:host([type=video]) ::slotted(:not([slot])){aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);max-inline-size:none;inline-size:100%}:host([type=video]) ::slotted(:not([slot])){inset:0;position:absolute}`;
+const styles = css `:host{--_dialog-backdrop-bg-color:oklch(from var(--rh-color-surface-darker,#1f1f1f) l c h/0.68);display:block;position:relative}[hidden]{display:none!important}.visually-hidden{block-size:1px;border:0;clip:rect(0,0,0,0);inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}#rhds-wrapper{--_offset:var(--rh-space-xl,24px);--_offset-top:var(--_offset);--_offset-right:var(--_offset);display:contents;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)}::backdrop{background-color:var(--_dialog-backdrop-bg-color)}#dialog:modal::backdrop{overflow:hidden;overscroll-behavior:contain}#dialog{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));border-radius:var(--rh-border-radius-default,3px);border:0;box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559);box-sizing:border-box;color:var(--rh-color-text-primary);font-family:inherit;inline-size:100%;margin-inline:auto;max-block-size:var(--_box-max-block-size,calc(100vh - var(--rh-space-3xl, 48px)));max-inline-size:var(--_box-width,min(90%,1140px));overflow-y:auto;overscroll-behavior:contain;padding:var(--rh-space-xl,24px);position:fixed}:host([variant=small]) #dialog,:host([width=small]) #dialog{--_box-width:35rem}:host([variant=medium]) #dialog,:host([width=medium]) #dialog{--_box-width:52.5rem}:host([variant=large]) #dialog,:host([width=large]) #dialog{--_box-width:70rem}#content{margin-block-start:calc(var(--_offset-top)*-1)}#header{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));inset-block-start:0;margin-block-end:var(--rh-space-lg,16px);position:relative}#header:before{block-size:100%;inset-block-start:calc(var(--_offset-top)*-1)}#header:after,#header:before{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));content:"";inline-size:100%;position:absolute;z-index:-1}#header:after{block-size:var(--rh-space-lg,16px)}@media (min-height:768px){#header{position:sticky}}@media (min-width:768px) and (min-height:576px){#header{position:sticky}}@media (min-width:1200px){#header{margin-block-end:var(--rh-space-xl,24px)}}#header[hidden]+#body{max-inline-size:calc(100% - var(--rh-space-xl, 24px))}#header,#header[hidden]+#body{padding-inline-end:var(--rh-space-3xl,48px)}@media (min-width:1200px){#rhds-wrapper{--_offset:var(--rh-space-2xl,32px)}#dialog{padding:var(--rh-space-2xl,32px)}#content:has(#header[hidden]){--_offset-top:var(--rh-space-xl,24px)}#header[hidden]+#body{max-inline-size:calc(100% - var(--rh-space-2xl, 32px))}}#content ::slotted([slot=header]){margin-block:0!important}#header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot=header]){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-sm,1.5rem);font-weight:var(--rh-font-weight-body-text-regular,400)}#body ::slotted(p){margin-block:0 var(--rh-space-lg,16px)!important}#body ::slotted(p:last-of-type){margin-block-end:var(--rh-space-xl,24px)!important}#close-button{color:var(--rh-dialog-close-button-color,var(--rh-color-icon-secondary));cursor:pointer;display:block;inset-block-start:0;margin-inline-start:auto;max-inline-size:var(--rh-length-xl,24px);position:sticky;z-index:500}#close-button::part(button){background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-dark,#383838));block-size:var(--rh-length-xl,24px);border-radius:var(--rh-border-radius-default,3px);inline-size:var(--rh-length-xl,24px)}:host([position=top]) #dialog{inline-size:100%;margin-block-start:var(--rh-space-2xl,32px);max-inline-size:var(--_box-width,calc(100% - var(--rh-space-2xl, 32px)))}#footer{align-items:center;display:flex;gap:var(--rh-space-md,8px)}:host([type=video]){--_dialog-backdrop-bg-color:rgb(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-60,60%));background-color:var(--_dialog-backdrop-bg-color)}:host([type=video]) #rhds-wrapper{--_offset:var(--rh-space-md,8px)}:host([type=video][open]) #dialog{--_aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);aspect-ratio:var(--_aspect-ratio);background-color:var(--_dialog-backdrop-bg-color);max-inline-size:var(--_box-width,min(90%,calc(90vh*var(--_aspect-ratio) + var(--_offset-top))));padding:0}:host([type=video]) #close-button{inset-inline-end:var(--_offset-right);inset-block-start:var(--_offset-top);margin-inline-end:0;position:absolute}:host([type=video]) #rhds-wrapper.mobile #close-button{--_offset-right:var(--rh-space-sm,6px)}:host([type=video]) #close-button::part(button){background-color:initial}:host([type=video]) #close-button::part(icon){color:var(--rh-dialog-close-button-color,var(--rh-color-surface-lightest,#fff));filter:drop-shadow(1px 0 1px var(--_dialog-backdrop-bg-color))}:host([type=video]) #content{margin-block-start:0;overflow:hidden;padding:0}:host([type=video]) #content,:host([type=video]) ::slotted(:not([slot])){aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);max-inline-size:none;inline-size:100%}:host([type=video]) ::slotted(:not([slot])){inset:0;position:absolute}`;
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -27,7 +27,7 @@ export class DialogCloseEvent extends Event {
 }
 export class DialogOpenEvent extends Event {
     constructor(
-    /** The element that opened the dialog, or null if opened programmatically. */
+    /** Element from the `trigger` attribute or `setTrigger()`, or null if neither is set. */
     trigger) {
         super('open', { bubbles: true, cancelable: true });
         this.trigger = trigger;
@@ -37,6 +37,51 @@ async function pauseYoutube(iframe) {
     const { pauseVideo } = await import('./yt-api.js');
     await pauseVideo(iframe);
 }
+const DOCUMENT_SCROLL_LOCK_CSS = `html[data-rh-dialog-scroll-lock] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}`;
+const documentScrollLocks = new WeakMap();
+/**
+ * Count one more open dialog in `doc` and turn the lock on if it is the first.
+ * The sheet is installed once for that document. Later dialogs only bump the count.
+ * @param doc document that owns the open dialog
+ */
+function retainScrollLock(doc) {
+    if (isServer) {
+        return;
+    }
+    let entry = documentScrollLocks.get(doc);
+    if (!entry) {
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(DOCUMENT_SCROLL_LOCK_CSS);
+        doc.adoptedStyleSheets = [
+            ...doc.adoptedStyleSheets ?? [],
+            sheet,
+        ];
+        entry = { sheet, count: 0 };
+        documentScrollLocks.set(doc, entry);
+    }
+    entry.count++;
+    if (entry.count === 1) {
+        doc.documentElement?.setAttribute('data-rh-dialog-scroll-lock', '');
+    }
+}
+/**
+ * Count one fewer open dialog in `doc` and turn the lock off at zero.
+ * A release with no retained lock is ignored so close and disconnect can both run.
+ * @param doc document that owned the dialog being closed or removed
+ */
+function releaseScrollLock(doc) {
+    const entry = documentScrollLocks.get(doc);
+    if (!entry || entry.count === 0) {
+        return;
+    }
+    entry.count--;
+    if (entry.count === 0) {
+        doc.documentElement?.removeAttribute('data-rh-dialog-scroll-lock');
+    }
+}
 /**
  * Modal overlay for confirming decisions or collecting input. Traps focus and
  * blocks page interaction. Must have a heading or `accessible-label` for screen
@@ -45,12 +90,22 @@ async function pauseYoutube(iframe) {
  *
  * @summary Modal dialog for confirmations, errors, or required input
  *
- * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
- *   property (HTMLElement | null) holds the element that opened it.
- * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
- *   or programmatic `close()`. No detail properties.
- * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
- *   click or Escape. No detail properties.
+ * @fires {DialogOpenEvent} open - Fired when the dialog opens. The `trigger`
+ *   property is the element that opened the dialog, or null when no trigger
+ *   is set. Listen for this when you should move focus inside the dialog; the
+ *   close button takes focus by default. When the dialog closes, move focus
+ *   back to `trigger` for keyboard and screen reader users. You must handle a
+ *   null `trigger` when `show()` opens the dialog with no trigger set.
+ * @fires {DialogCloseEvent} close - Fired when the dialog closes from the close
+ *   button or `close()`. Use this when an action confirms a choice, and read
+ *   `returnValue` on the dialog. Enter or Space on the close button fires this
+ *   event; a screen reader announces that button as "Close Dialog". Escape
+ *   fires `cancel` instead. `preventDefault()` does not keep the dialog open.
+ * @fires {DialogCancelEvent} cancel - Fired when the user dismisses the dialog
+ *   with the Escape key, a backdrop click, or `cancel()`. Listen for this when
+ *   you should discard in-progress input. Screen reader and keyboard users both
+ *   dismiss with Escape. The close button and `close()` fire `close` instead.
+ *   `preventDefault()` does not keep the dialog open.
  */
 let RhDialog = class RhDialog extends LitElement {
     constructor() {
@@ -69,6 +124,25 @@ let RhDialog = class RhDialog extends LitElement {
         _RhDialog_body.set(this, []);
         _RhDialog_headings.set(this, []);
         _RhDialog_cancelling.set(this, false);
+        /**
+         * True while `close()` is inside the native `dialog.close()` call.
+         * That call fires `close` before `close()` sets `open` and releases the lock.
+         * The native handler uses this so it does not treat that event as a second close.
+         */
+        _RhDialog_closing.set(this, false);
+        /**
+         * The document this instance currently holds a scroll lock for.
+         * Stored so a second close or disconnect cannot decrement twice, and so a
+         * dialog that moves documents unlocks the document it actually locked.
+         */
+        _RhDialog_lockedDocument.set(this, null);
+        /**
+         * `show()` ran before the native `<dialog>` existed.
+         * `firstUpdated` opens it once that element is in the shadow root.
+         * `close()` clears it so a later render does not open a dialog the caller
+         * already closed.
+         */
+        _RhDialog_pendingShow.set(this, false);
         _RhDialog_slots.set(this, new SlotController(this, null, 'header', 'description', 'footer'));
     }
     connectedCallback() {
@@ -77,8 +151,36 @@ let RhDialog = class RhDialog extends LitElement {
         this.addEventListener('click', __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_onClick));
     }
     disconnectedCallback() {
-        super.disconnectedCallback();
+        // Release before Lit teardown. Removing an open dialog is what a route
+        // change does, and the lock must end without an inline body style.
+        // Also drop a show() that is still waiting for the first render, so it
+        // cannot call showModal() after the element is gone.
+        __classPrivateFieldSet(this, _RhDialog_pendingShow, false, "f");
+        __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_unlockScroll).call(this);
         __classPrivateFieldGet(this, _RhDialog_triggerElement, "f")?.removeEventListener('click', this.onTriggerClick);
+        super.disconnectedCallback();
+    }
+    /**
+     * Finish a `show()` that ran before the native `<dialog>` existed.
+     * The element is in the shadow root by this point. `show()` runs on the
+     * next microtask so setting `open` is not inside this update. Lit warns
+     * when a property changes in `firstUpdated`. The microtask still runs
+     * before `updateComplete` resolves for the caller.
+     * @param changedProperties properties changed on the first update
+     */
+    firstUpdated(changedProperties) {
+        super.firstUpdated(changedProperties);
+        if (!__classPrivateFieldGet(this, _RhDialog_pendingShow, "f")) {
+            return;
+        }
+        queueMicrotask(() => {
+            // `close()` and disconnect clear the flag. A canceled request must not open.
+            if (!__classPrivateFieldGet(this, _RhDialog_pendingShow, "f")) {
+                return;
+            }
+            __classPrivateFieldSet(this, _RhDialog_pendingShow, false, "f");
+            this.show();
+        });
     }
     render() {
         const headerId = (__classPrivateFieldGet(this, _RhDialog_header, "f") || __classPrivateFieldGet(this, _RhDialog_headings, "f").length) ? __classPrivateFieldGet(this, _RhDialog_headerId, "f") : undefined;
@@ -94,15 +196,16 @@ let RhDialog = class RhDialog extends LitElement {
           <!-- The dialog element -->
           <dialog id="dialog"
                   part="dialog"
-                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
-                  @cancel=${__classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_onNativeDialogCancel)}>
+                  aria-labelledby="${ifDefined(this.accessibleLabel ? undefined : headerId)}"
+                  aria-label="${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}"
+                  @cancel="${__classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_onNativeDialogCancel)}"
+                  @close="${__classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_onNativeDialogClose)}">
             <!-- The dialog's close button -->
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
                        type="button"
-                       @click=${this.close}>
+                       @click="${this.close}">
               <span class="visually-hidden">Close Dialog</span>
             </rh-button>
             <!-- The container for the dialog content -->
@@ -110,7 +213,7 @@ let RhDialog = class RhDialog extends LitElement {
               <!-- The container for the optional dialog header -->
               <div id="header"
                    part="header"
-                   ?hidden=${!hasHeader}>
+                   ?hidden="${!hasHeader}">
                 <!--
                   summary: Dialog heading
                   description: |
@@ -119,7 +222,7 @@ let RhDialog = class RhDialog extends LitElement {
                 -->
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
-                <div part="description" ?hidden=${!hasDescription}>
+                <div part="description" ?hidden="${!hasDescription}">
                   <!--
                     summary: Supplementary text below the heading
                     description: |
@@ -141,7 +244,7 @@ let RhDialog = class RhDialog extends LitElement {
               <!-- Actions footer container -->
               <div id="footer"
                    part="footer"
-                   ?hidden=${!hasFooter}>
+                   ?hidden="${!hasFooter}">
                 <!--
                   summary: Action buttons at the bottom of the dialog
                   description: |
@@ -174,6 +277,14 @@ let RhDialog = class RhDialog extends LitElement {
         }
     }
     async _openChanged(oldValue, open) {
+        // `open = false` hides the surface without calling `close()`. Drop the lock & the native modal.
+        // `#unlockScroll()` ignores a second call, so `close()` can unlock afterward.
+        if (oldValue === true && open === false) {
+            __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_unlockScroll).call(this);
+            if (this.dialog?.open) {
+                this.dialog.close();
+            }
+        }
         if (this.type === 'video') {
             if (oldValue === true && this.open === false) {
                 this.querySelector('video')?.pause?.();
@@ -191,14 +302,10 @@ let RhDialog = class RhDialog extends LitElement {
             return;
         }
         else if (open) {
-            // This prevents background scroll
-            document.body.style.overflow = 'hidden';
             await this.updateComplete;
             this.dispatchEvent(new DialogOpenEvent(__classPrivateFieldGet(this, _RhDialog_triggerElement, "f")));
         }
         else {
-            // Return scrollability
-            document.body.style.overflow = 'auto';
             const event = __classPrivateFieldGet(this, _RhDialog_cancelling, "f") ? new DialogCancelEvent() : new DialogCloseEvent();
             await this.updateComplete;
             this.dispatchEvent(event);
@@ -237,18 +344,38 @@ let RhDialog = class RhDialog extends LitElement {
     }
     /** Toggles the dialog open or closed. */
     toggle() {
-        if (!this.open) {
+        // `#pendingShow` is an open request that has not rendered yet.
+        // A second toggle cancels it, same as toggling a dialog that is already open.
+        // `open` is set only after `showModal()` succeeds, so it is not the signal here.
+        if (!this.open && !__classPrivateFieldGet(this, _RhDialog_pendingShow, "f")) {
             this.showModal();
-            this.open = true;
         }
         else {
             this.close();
         }
     }
-    /** Opens the dialog as a modal. */
+    /**
+     * Opens the dialog as a modal.
+     * `open` and the document scroll lock are set only after the native dialog
+     * exists and `showModal()` succeeds. A call before the first render is
+     * applied from `firstUpdated`.
+     */
     show() {
-        this.dialog?.showModal();
+        const { dialog } = this;
+        if (!dialog) {
+            // `@query('#dialog')` is null until the first render. Optional chaining
+            // would skip `showModal()` and still lock the page below.
+            if (!isServer && !this.hasUpdated) {
+                __classPrivateFieldSet(this, _RhDialog_pendingShow, true, "f");
+            }
+            return;
+        }
+        __classPrivateFieldSet(this, _RhDialog_pendingShow, false, "f");
+        // Throws if the dialog is not connected or is already modal.
+        // That throw skips `open` and the lock, so a failed show cannot stick.
+        dialog.showModal();
         this.open = true;
+        __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_lockScroll).call(this);
     }
     /** Opens the dialog as a modal. */
     showModal() {
@@ -260,14 +387,26 @@ let RhDialog = class RhDialog extends LitElement {
      * @param [returnValue] dialog return value
      */
     close(returnValue) {
+        // Drop a show() that is still waiting for the first render.
+        __classPrivateFieldSet(this, _RhDialog_pendingShow, false, "f");
         if (typeof returnValue === 'string') {
             this.returnValue = returnValue;
         }
         else {
             this.returnValue = '';
         }
-        this.dialog?.close();
+        // `#closing` covers a browser that fires `close` inside `dialog.close()`.
+        // Chromium queues that event instead, so the handler also ignores the
+        // echo after `open` is false and the lock is already released.
+        __classPrivateFieldSet(this, _RhDialog_closing, true, "f");
+        try {
+            this.dialog?.close();
+        }
+        finally {
+            __classPrivateFieldSet(this, _RhDialog_closing, false, "f");
+        }
         this.open = false;
+        __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_unlockScroll).call(this);
     }
 };
 _RhDialog_screenSize = new WeakMap();
@@ -277,8 +416,27 @@ _RhDialog_header = new WeakMap();
 _RhDialog_body = new WeakMap();
 _RhDialog_headings = new WeakMap();
 _RhDialog_cancelling = new WeakMap();
+_RhDialog_closing = new WeakMap();
+_RhDialog_lockedDocument = new WeakMap();
+_RhDialog_pendingShow = new WeakMap();
 _RhDialog_slots = new WeakMap();
 _RhDialog_instances = new WeakSet();
+_RhDialog_lockScroll = function _RhDialog_lockScroll() {
+    if (isServer || __classPrivateFieldGet(this, _RhDialog_lockedDocument, "f")) {
+        return;
+    }
+    const doc = this.ownerDocument;
+    retainScrollLock(doc);
+    __classPrivateFieldSet(this, _RhDialog_lockedDocument, doc, "f");
+};
+_RhDialog_unlockScroll = function _RhDialog_unlockScroll() {
+    const doc = __classPrivateFieldGet(this, _RhDialog_lockedDocument, "f");
+    if (!doc) {
+        return;
+    }
+    __classPrivateFieldSet(this, _RhDialog_lockedDocument, null, "f");
+    releaseScrollLock(doc);
+};
 _RhDialog_onClick = function _RhDialog_onClick(event) {
     const { open, content } = this;
     if (open) {
@@ -289,13 +447,38 @@ _RhDialog_onClick = function _RhDialog_onClick(event) {
         }
     }
 };
-_RhDialog_onNativeDialogCancel = function _RhDialog_onNativeDialogCancel() {
+_RhDialog_onNativeDialogCancel = function _RhDialog_onNativeDialogCancel(event) {
+    if (event.target !== this.dialog) {
+        return;
+    }
     this.cancel();
+};
+_RhDialog_onNativeDialogClose = function _RhDialog_onNativeDialogClose(event) {
+    const { dialog } = this;
+    // Ignore closes from nested dialogs, and a close that arrives before render.
+    if (!dialog || event.target !== dialog) {
+        return;
+    }
+    // `close()` already stored returnValue, cleared `open`, and released
+    // the lock. This event is the queued echo of that call.
+    if (!this.open && !__classPrivateFieldGet(this, _RhDialog_lockedDocument, "f")) {
+        return;
+    }
+    // A synchronous `close` event inside `close()` still sees `#closing`.
+    // Leave returnValue and `open` to that method. Still release the lock;
+    // the later `#unlockScroll()` in `close()` no-ops.
+    if (!__classPrivateFieldGet(this, _RhDialog_closing, "f")) {
+        this.returnValue = dialog.returnValue;
+        this.open = false;
+    }
+    __classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_unlockScroll).call(this);
 };
 _RhDialog_onKeyDown = function _RhDialog_onKeyDown(event) {
     switch (event.key) {
         case 'Escape':
         case 'Esc':
+            event.stopPropagation(); // For nested dialogs
+            event.preventDefault();
             this.cancel();
             return;
         case 'Enter':

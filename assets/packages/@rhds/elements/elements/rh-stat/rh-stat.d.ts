@@ -37,9 +37,12 @@ export declare class RhStat extends LitElement {
      */
     size: 'default' | 'large';
     /**
-     * Whether the statistic renders in a mobile layout with
-     * reduced font sizes. Managed internally via
-     * ScreenSizeController but can be set explicitly.
+     * Forces the compact type scale, including when the stat is wider than 768px.
+     * The compact scale otherwise applies on its own when the stat is narrower
+     * than 768px.
+     *
+     * @deprecated The compact layout is automatic when the stat is narrower
+     * than 768px. This attribute will be removed in a future release.
      */
     isMobile: boolean;
     connectedCallback(): void;

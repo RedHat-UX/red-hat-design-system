@@ -5,6 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observes } from '@patternfly/pfe-core/decorators.js';
@@ -172,7 +173,8 @@ __decorate([
     bound
 ], RhNavigationSecondaryDropdown.prototype, "_clickHandler", null);
 RhNavigationSecondaryDropdown = __decorate([
-    customElement('rh-navigation-secondary-dropdown')
+    customElement('rh-navigation-secondary-dropdown'),
+    themable
 ], RhNavigationSecondaryDropdown);
 export { RhNavigationSecondaryDropdown };
 //# sourceMappingURL=rh-navigation-secondary-dropdown.js.map

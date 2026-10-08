@@ -32,6 +32,7 @@ export declare class RhTileGroup extends LitElement {
      * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
      */
     colorPalette?: ColorPalette;
+    private groupContext;
     /**
      * All slotted tiles
      */
@@ -41,6 +42,7 @@ export declare class RhTileGroup extends LitElement {
      */
     get selected(): RhTile | RhTile[];
     constructor();
+    connectedCallback(): void;
     firstUpdated(): void;
     willUpdate(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
@@ -56,9 +58,7 @@ export declare class RhTileGroup extends LitElement {
      * @param tile tile to toggle
      */
     toggleItem(tile?: RhTile): void;
-    /**
-     * Updates slotted tiles to set properties and keyboard navigation
-     */
+    /** Updates slotted tiles and keyboard navigation. */
     updateItems(): void;
 }
 declare global {

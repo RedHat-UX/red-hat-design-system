@@ -54,9 +54,9 @@ input[type='range'] {
       );
   --_track-color:
     light-dark(
-        /** Range track in light mode */
+        /** Range track for light scheme */
         var(--rh-color-gray-30, #c7c7c7),
-        /** Range track in dark mode */
+        /** Range track for dark scheme */
         var(--rh-color-gray-50, #707070)
       );
 

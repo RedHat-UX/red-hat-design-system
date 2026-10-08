@@ -2,11 +2,6 @@
   display: block;
 }
 
-:host([color-palette]) {
-  /** Theme surface color token for subnav background */
-  background-color: var(--rh-color-surface);
-}
-
 [part='container'] {
   display: flex;
 }
@@ -26,68 +21,6 @@
   padding: 0;
 }
 
-::slotted(a) {
-  display: block !important;
-  white-space: nowrap !important;
-  padding:
-    /** Link block padding */
-    var(--rh-space-lg, 16px)
-    /** Link inline padding */
-    var(--rh-space-2xl, 32px) !important;
-  text-decoration: none !important;
-
-  /** Theme secondary text token for inactive links */
-  color: var(--rh-color-text-secondary) !important;
-  position: relative !important;
-}
-
-::slotted(a):after {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  border-block-end:
-    /** Link state indicator border block end width */
-    var(--rh-border-width-lg, 3px)
-    solid
-    transparent !important;
-}
-
-::slotted(a:hover),
-::slotted(a:active),
-::slotted(a:is([active], [aria-current='page'])) {
-  /** Theme primary text token for active links */
-  color: var(--rh-color-text-primary) !important;
-}
-
-::slotted(a:focus-visible):after,
-::slotted(a:hover):after {
-  /** Subtle border on hover and focus */
-  border-block-end-color: var(--rh-color-border-subtle) !important;
-}
-
-::slotted(a:active):after,
-::slotted(a:is([active], [aria-current='page'])):after {
-  /** Brand accent design token for current page */
-  border-block-end-color: var(--rh-color-accent-brand) !important;
-}
-
-::slotted(a:focus-visible) {
-  outline:
-    /** Focus outline width */
-    var(--rh-border-width-md, 2px)
-    solid
-    /** Focus outline color */
-    var(--rh-color-border-interactive) !important;
-  outline-offset: -2px !important;
-  border-radius: 10px !important;
-}
-
-::slotted(a:visited) {
-  /** Theme primary text token for visited links */
-  color: var(--rh-color-text-primary) !important;
-}
-
 ::slotted(rh-navigation-link) {
   --rh-navigation-link-white-space: nowrap;
   --_navigation-link-display: flex;
@@ -103,7 +36,7 @@
     var(--rh-subnav-link-padding-inline, var(--rh-space-2xl, 32px));
 
   /** Navigation link font size */
-  --_navigation-link-font-size: var(--rh-font-size-body-text-md);
+  --_navigation-link-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_navigation-link-text-decoration: none;
   --_navigation-link-text-decoration-style: none;
   --_navigation-link-text-decoration-line: none;

@@ -49,8 +49,6 @@ export declare class RhTag extends LitElement {
      * The color palette of the tag. Nine colors are available. Choose colors
      * that correspond to the tag's semantic meaning (e.g. red for errors,
      * green for success). Defaults to gray.
-     *
-     * Note: `cyan` is accepted but deprecated; use `teal` instead.
      */
     color?: 'red' | 'red-orange' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'purple' | 'gray';
     render(): TemplateResult<1>;

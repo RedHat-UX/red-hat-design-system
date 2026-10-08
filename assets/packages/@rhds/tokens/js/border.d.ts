@@ -16,6 +16,8 @@ export declare const ColorBorderSubtleOnLight: Color;
 export declare const ColorBorderSubtleOnDark: Color;
 export declare const ColorBorderInteractiveOnLight: Color;
 export declare const ColorBorderInteractiveOnDark: Color;
+export declare const ColorBorderFocusOnLight: Color;
+export declare const ColorBorderFocusOnDark: Color;
 export declare const ColorBorderDestructiveOnLight: Color;
 export declare const ColorBorderDestructiveOnDark: Color;
 export declare const ColorBorderStatusDangerOnLight: Color;

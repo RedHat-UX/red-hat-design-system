@@ -4,6 +4,7 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{position:fixed;z-index:1000;inset-inline-end:var(--rh-space-xl,24px);inset-block-end:var(--rh-space-xl,24px)}[part=trigger]{display:inline-flex;align-items:center;justify-content:center;color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));background-color:var(--rh-back-to-top-background-color,var(--rh-color-accent-base));text-decoration:none;font-size:var(--rh-font-size-body-text-xs,.75rem);padding-inline:var(--rh-space-md,8px);padding-block:var(--rh-space-xs,4px);border-radius:var(--rh-border-radius-pill,64px);gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);outline:var(--rh-border-width-md,2px) solid #0000;border:var(--rh-border-width-md,2px) solid #0000;pointer-events:all}[part=trigger]:is(:hover,:focus){outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-hover);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-border-strong-on-dark,#fff),var(--rh-color-border-strong-on-light,#151515));background-color:var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,0.75rem);vertical-align:-.125rem}@media (min-width:768px){:host{inset-inline-end:var(--rh-space-3xl,48px);inset-block-end:var(--rh-space-3xl,48px)}}`;
@@ -159,7 +160,8 @@ __decorate([
     property({ reflect: true })
 ], RhBackToTop.prototype, "href", void 0);
 RhBackToTop = __decorate([
-    customElement('rh-back-to-top')
+    customElement('rh-back-to-top'),
+    themable
 ], RhBackToTop);
 export { RhBackToTop };
 //# sourceMappingURL=rh-back-to-top.js.map

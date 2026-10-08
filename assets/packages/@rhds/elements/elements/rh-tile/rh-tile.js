@@ -1,4 +1,4 @@
-var _RhTile_instances, _RhTile_internals, _RhTile_logger, _RhTile_slots, _RhTile_isCheckable_get, _RhTile_input_get, _RhTile_setValidityFromInput, _RhTile_onClick, _RhTile_requestSelect, _RhTile_onKeydown, _RhTile_onKeyup;
+var _RhTile_instances, _RhTile_internals, _RhTile_logger, _RhTile_slots, _RhTile_isGroupMember_get, _RhTile_disabledGroup_get, _RhTile_radioGroup_get, _RhTile_isCheckable_get, _RhTile_input_get, _RhTile_setValidityFromInput, _RhTile_onClick, _RhTile_requestSelect, _RhTile_onKeydown, _RhTile_onKeyup;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -6,6 +6,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { consume } from '@lit/context';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -13,7 +14,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-heading-regular,400);line-height:var(--rh-line-height-body-text,1.5)}[hidden]{display:none!important}:host(:focus),:host(:focus-within){outline:none!important}#content,#inner,#outer,:host{display:flex;flex-direction:column}.compact #inner{flex-direction:row}#inner,#outer{flex:1 0 0}#content{height:100%}#outer{--_padding:var(--rh-space-2xl,32px);--_margin:var(--rh-space-lg,16px);--_interactive-color:var(--rh-tile-interactive-color,var(--rh-color-border-interactive));--_focus-interactive-color:var(--rh-tile-focus-interactive-color,var(--rh-color-interactive-primary-hover));--_text-color-secondary:var(--rh-tile-text-color-secondary,var(--rh-color-text-secondary));--_focus-background-color:light-dark(var(--rh-tile-focus-background-color,var(--rh-color-surface-lighter,#f2f2f2)),var(--rh-tile-focus-background-color,var(--rh-color-surface-darker,#1f1f1f)));--_disabled-background-color:light-dark(var(--rh-tile-disabled-background-color,var(--rh-color-surface-light,#e0e0e0)),var(--rh-tile-disabled-background-color,var(--rh-color-surface-dark,#383838)));--_border-color:var(--rh-tile-border-color,var(--rh-color-border-subtle));--_link-color:var(--rh-tile-link-color,var(--_interactive-color));position:relative;padding:var(--_padding);border-radius:var(--rh-border-radius-default,3px);border:var(--rh-border-width-sm,1px) solid var(--_border-color);color:var(--rh-tile-text-color,var(--rh-color-text-primary))}#outer ::slotted(*){margin-block:0 var(--_margin)}#outer #body ::slotted(:last-of-type),#outer ::slotted(:last-child){margin-block-end:0}#outer #body ::slotted(:first-of-type),#outer ::slotted(:first-child){margin-block-start:0}#outer ::slotted(a){color:var(--_link-color)!important}#outer #image{--_bleed:calc(0px - var(--_padding))}:is(#outer #image)::slotted(*),:is(#outer #image)>*{max-width:100%;margin-block:0 var(--_padding)}#outer #icon{--_size:var(--rh-size-icon-05,48px);margin-block-end:var(--rh-space-2xl,32px)}:is(#outer #icon):is(.compact,.checkable){--_size:var(--rh-size-icon-03,32px);--_padding:var(--rh-space-lg,16px);margin-block-end:0}:is(#outer #icon)::slotted(*),:is(#outer #icon)>*{width:100%;margin:0 var(--_padding) 0 0;max-width:var(--_size);max-height:var(--_size)}:is(#outer #title)::slotted(*),:is(#outer #title)>*{font-size:var(--rh-font-size-body-text-md,1rem)!important}:is(#outer #headline)::slotted(*),:is(#outer #headline)>*{margin-block-end:var(--_margin)!important;font-size:var(--rh-font-size-heading-xs,1.25rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important}#outer.bleed #image{margin:var(--_bleed) var(--_bleed) 0}#outer:active,#outer:focus,#outer:focus-within,#outer:hover{--_interactive-color:var(--_focus-interactive-color)}#outer:is(.desaturated,.checkable){--_link-color:var(--rh-tile-text-color,var(--rh-color-text-primary))}#outer.checkable{--_link-after-display:none}#outer.checkable #title{grid-column:1/2;grid-row:1/2}#outer.checkable #headline{grid-column:1/2;grid-row:2/3}#outer.checkable #header{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto}#outer:is(.compact,.checkable){--_padding:var(--rh-space-xl,24px)}#outer:is(.compact,.checkable) #inner{display:flex;align-items:flex-start;justify-content:space-between}#outer:is(.compact,.checkable) #icon{flex:0 0 auto}#outer:is(.compact,.checkable) #content{flex:1 1 auto;width:100%}#outer:is(.compact,.checkable) #headline::slotted([slot=headline]){font-size:var(--rh-font-size-body-text-lg,1.125rem)!important}#outer:is(.compact,.checkable) #body,#outer:is(.compact,.checkable) ::slotted([slot=footer]){font-size:var(--rh-font-size-body-text-sm,.875rem)!important}#outer:is(.compact,.checkable) ::slotted([slot=footer]){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}#outer.disabled{pointer-events:none!important;color:var(--_text-color-secondary)!important;background-color:var(--_disabled-background-color)!important;--_interactive-color:var(--_text-color-secondary)!important}:host(:focus-within) #outer{outline:3px solid var(--_interactive-color);outline-offset:2px}:host(:is(:hover,:focus-within)) #outer{background-color:var(--_focus-background-color)}#body,#footer-text,#headline,#icon,#image,#title{display:block}#footer{display:flex;justify-content:space-between;align-items:flex-end;margin-block-start:auto}#footer.empty{position:absolute;inset-block-end:var(--_padding);inset-inline-end:var(--_padding)}#outer:not(.checkable) #body:not(.empty):has(+.empty):after{content:"";float:right;width:var(--rh-space-2xl,32px);height:var(--rh-space-lg,16px)}#input-outer{grid-column:2/3;grid-row:1/3;place-self:flex-start flex-end;margin-block-end:var(--_margin);margin-inline-start:var(--_margin);accent-color:var(--_interactive-color)}input[type=radio]{flex:0 0 auto}rh-icon{pointer-events:none;color:var(--_interactive-color)}rh-icon[icon=arrow-right]{width:var(--rh-space-xl,24px);height:var(--rh-space-xl,24px);translate:0 0;transition:translate var(--_trans);--_trans:var(--rh-animation-speed,0.3s) var(--rh-animation-timing,cubic-bezier(0.465,0.183,0.153,0.946))}:host(:hover) #footer rh-icon[icon=arrow-right]{translate:3px 0}@supports not (translate:0 0){:host(:hover) #footer rh-icon{transform:translate(3px)}}svg{fill:var(--_text-color-secondary);width:var(--rh-space-xl,24px);height:var(--rh-space-xl,24px)}#body{margin:0 0 var(--_margin);font-size:var(--rh-font-size-body-text-md,1rem)}:is(#image,#tile,#headline,#body,#footer){z-index:2}:host([color-palette^=dark]){--_interactive-color:var(--rh-color-border-interactive-on-dark,#92c5f9);--_focus-interactive-color:var(--rh-color-interactive-primary-hover-on-dark,#b9dafc);--_text-color-secondary:var(--rh-color-text-secondary-on-dark,#c7c7c7);--_disabled-background-color:var(--rh-color-surface-dark,#383838);--_border-color:var(--rh-color-border-subtle-on-dark,#707070);color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=darkest]){background-color:var(--rh-color-surface-darkest,#151515)}:host([color-palette=darker]){background-color:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=dark]){background-color:var(--rh-color-surface-dark,#383838)}:host([color-palette^=light]){--_interactive-color:var(--rh-color-border-interactive-on-light,#06c);--_focus-interactive-color:var(--rh-color-interactive-primary-hover-on-light,#036);--_text-color-secondary:var(--rh-color-text-secondary-on-light,#4d4d4d);--_disabled-background-color:var(--rh-color-surface-light,#e0e0e0);--_border-color:var(--rh-color-border-subtle-on-light,#c7c7c7);color:var(--rh-color-text-primary-on-light,#151515)}:host([color-palette=lightest]){background-color:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){background-color:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){background-color:var(--rh-color-surface-light,#e0e0e0)}`;
+const styles = css `:host{font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-heading-regular,400);line-height:var(--rh-line-height-body-text,1.5)}[hidden]{display:none!important}:host(:focus),:host(:focus-within){outline:none!important}#content,#inner,#outer,:host{display:flex;flex-direction:column}.compact #inner{flex-direction:row}#inner,#outer{flex:1 0 0}#content{height:100%}#outer{--_padding:var(--rh-space-2xl,32px);--_margin:var(--rh-space-lg,16px);--_interactive-color:var(--rh-tile-interactive-color,var(--rh-color-border-interactive));--_focus-interactive-color:var(--rh-tile-focus-interactive-color,var(--rh-color-interactive-primary-hover));--_text-color-secondary:var(--rh-tile-text-color-secondary,var(--rh-color-text-secondary));--_background-color:var(--rh-tile-background-color,light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515))
+      );--_focus-background-color:light-dark(var(--rh-tile-focus-background-color,var(--rh-color-surface-lighter,#f2f2f2)),var(--rh-tile-focus-background-color,var(--rh-color-surface-darker,#1f1f1f)));--_disabled-background-color:light-dark(var(--rh-tile-disabled-background-color,var(--rh-color-surface-light,#e0e0e0)),var(--rh-tile-disabled-background-color,var(--rh-color-surface-dark,#383838)));--_border-color:var(--rh-tile-border-color,var(--rh-color-border-subtle));--_border-width:var(--rh-tile-border-width,var(--rh-border-width-sm,1px));--_focus-border-width:var(--rh-tile-focus-border-width,var(--rh-tile-border-width,var(--rh-border-width-sm,1px)));--_link-color:var(--rh-tile-link-color,var(--_interactive-color));position:relative;padding:var(--_padding);background-color:var(--_background-color);--_hover-border-color:var(--rh-tile-hover-border-color,var(--_focus-interactive-color));--_active-border-color:var(--rh-tile-active-border-color,var(--_hover-border-color));border-radius:var(--rh-border-radius-default,3px);border:var(--_border-width) solid var(--_border-color);color:var(--rh-tile-text-color,var(--rh-color-text-primary))}#outer ::slotted(*){margin-block:0 var(--_margin)}#outer #body ::slotted(:last-of-type),#outer ::slotted(:last-child){margin-block-end:0}#outer #body ::slotted(:first-of-type),#outer ::slotted(:first-child){margin-block-start:0}#outer ::slotted(a){color:var(--_link-color)!important}#outer #image{--_bleed:calc(0px - var(--_padding))}:is(#outer #image)::slotted(*),:is(#outer #image)>*{max-width:100%;margin-block:0 var(--_padding)}#outer #icon{--_size:var(--rh-size-icon-05,48px);margin-block-end:var(--rh-space-2xl,32px)}:is(#outer #icon):is(.compact,.checkable){--_size:var(--rh-size-icon-03,32px);--_padding:var(--rh-space-lg,16px);margin-block-end:0}:is(#outer #icon)::slotted(*),:is(#outer #icon)>*{width:100%;margin:0 var(--_padding) 0 0;max-width:var(--_size);max-height:var(--_size)}:is(#outer #title)::slotted(*),:is(#outer #title)>*{font-size:var(--rh-font-size-body-text-md,1rem)!important}:is(#outer #headline)::slotted(*),:is(#outer #headline)>*{margin-block-end:var(--_margin)!important;font-size:var(--rh-font-size-heading-xs,1.25rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important}#outer.bleed #image{margin:var(--_bleed) var(--_bleed) 0}:is(#outer.bleed #image)::slotted(*),:is(#outer.bleed #image)>*{--_bleed-radius:max(0px,calc(var(--rh-border-radius-default, 3px) - var(--rh-border-width-sm, 1px)));border-start-start-radius:var(--_bleed-radius);border-start-end-radius:var(--_bleed-radius)}#outer:active,#outer:focus,#outer:focus-within,#outer:hover{--_interactive-color:var(--_focus-interactive-color);--_link-color:var(--_focus-interactive-color)}#outer:hover{border-color:var(--_hover-border-color);box-shadow:inset 0 0 0 calc(var(--_focus-border-width) - var(--_border-width)) var(--_hover-border-color)}#outer:active,#outer:focus,#outer:focus-within{border-color:var(--_active-border-color);box-shadow:inset 0 0 0 calc(var(--_focus-border-width) - var(--_border-width)) var(--_active-border-color)}#outer:is(.desaturated,.checkable){--_link-color:var(--rh-tile-text-color,var(--rh-color-text-primary))}#outer.checkable{--_link-after-display:none}#outer.checkable #title{grid-column:1/2;grid-row:1/2}#outer.checkable #headline{grid-column:1/2;grid-row:2/3}#outer.checkable #header{display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto}#outer:is(.compact,.checkable){--_padding:var(--rh-space-xl,24px)}#outer:is(.compact,.checkable) #inner{display:flex;align-items:flex-start;justify-content:space-between}#outer:is(.compact,.checkable) #icon{flex:0 0 auto}#outer:is(.compact,.checkable) #content{flex:1 1 auto;width:100%}#outer:is(.compact,.checkable) #headline::slotted([slot=headline]){font-size:var(--rh-font-size-body-text-lg,1.125rem)!important}#outer:is(.compact,.checkable) #body,#outer:is(.compact,.checkable) ::slotted([slot=footer]){font-size:var(--rh-font-size-body-text-sm,.875rem)!important}#outer:is(.compact,.checkable) ::slotted([slot=footer]){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}#outer.disabled{pointer-events:none!important;color:var(--rh-tile-disabled-text-color,var(--_text-color-secondary))!important;background-color:var(--_disabled-background-color)!important;--_interactive-color:var(--_text-color-secondary)!important;--_link-color:var(--_text-color-secondary)!important}:host(:focus-within) #outer{outline:3px solid var(--rh-tile-focus-outline-color,var(--_interactive-color));outline-offset:var(--rh-tile-focus-outline-offset,2px);border-color:var(--_active-border-color);box-shadow:inset 0 0 0 calc(var(--_focus-border-width) - var(--_border-width)) var(--_active-border-color)}:host(:is(:hover,:focus-within)) #outer{background-color:var(--_focus-background-color)}#body,#footer-text,#headline,#icon,#image,#title{display:block}#footer{display:flex;justify-content:space-between;align-items:flex-end;margin-block-start:auto}#footer.empty{position:absolute;inset-block-end:var(--_padding);inset-inline-end:var(--_padding)}#outer:not(.checkable) #body:not(.empty):has(+.empty):after{content:"";float:right;width:var(--rh-space-2xl,32px);height:var(--rh-space-lg,16px)}#input-outer{grid-column:2/3;grid-row:1/3;place-self:flex-start flex-end;margin-block-end:var(--_margin);margin-inline-start:var(--_margin);accent-color:var(--_interactive-color)}input[type=radio]{flex:0 0 auto}rh-icon{pointer-events:none;color:var(--_interactive-color)}rh-icon[icon=arrow-right]{width:var(--rh-space-xl,24px);height:var(--rh-space-xl,24px);translate:0 0;transition:translate var(--_trans);--_trans:var(--rh-animation-speed,0.3s) var(--rh-animation-timing,cubic-bezier(0.465,0.183,0.153,0.946))}:host(:hover) #footer rh-icon[icon=arrow-right]{translate:3px 0}@supports not (translate:0 0){:host(:hover) #footer rh-icon{transform:translate(3px)}}svg{fill:var(--_text-color-secondary);width:var(--rh-space-xl,24px);height:var(--rh-space-xl,24px)}#body{margin:0 0 var(--_margin);font-size:var(--rh-font-size-body-text-md,1rem)}:is(#image,#tile,#headline,#body,#footer){z-index:2}:host([color-palette^=dark]){--_interactive-color:var(--rh-color-border-interactive-on-dark,#92c5f9);--_focus-interactive-color:var(--rh-color-interactive-primary-hover-on-dark,#b9dafc);--_text-color-secondary:var(--rh-color-text-secondary-on-dark,#c7c7c7);--_disabled-background-color:var(--rh-color-surface-dark,#383838);--_border-color:var(--rh-color-border-subtle-on-dark,#707070);color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette^=light]){--_interactive-color:var(--rh-color-border-interactive-on-light,#06c);--_focus-interactive-color:var(--rh-color-interactive-primary-hover-on-light,#036);--_text-color-secondary:var(--rh-color-text-secondary-on-light,#4d4d4d);--_disabled-background-color:var(--rh-color-surface-light,#e0e0e0);--_border-color:var(--rh-color-border-subtle-on-light,#c7c7c7);color:var(--rh-color-text-primary-on-light,#151515)}`;
+import { rhTileGroupContext } from './context.js';
 /**
  * Fired when a checkable tile is selected or deselected.
  * The `force` property, when true, indicates the tile must be selected
@@ -74,10 +77,6 @@ let RhTile = class RhTile extends LitElement {
          * Whether tile interaction is disabled
          */
         this.disabled = false;
-        // TODO(bennyp): https://lit.dev/docs/data/context/#content
-        this.disabledGroup = false;
-        // TODO(bennyp): https://lit.dev/docs/data/context/#content
-        this.radioGroup = false;
         _RhTile_internals.set(this, InternalsController.of(this));
         _RhTile_logger.set(this, new Logger(this));
         _RhTile_slots.set(this, new SlotController(this, 'image', 'icon', 'title', 'headline', null, 'footer'));
@@ -85,32 +84,37 @@ let RhTile = class RhTile extends LitElement {
         this.addEventListener('keyup', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeyup));
         this.addEventListener('click', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onClick));
     }
+    connectedCallback() {
+        super.connectedCallback();
+        if (this.hasUpdated) {
+            this.requestUpdate();
+        }
+    }
     /**
      * Update the internal accessible representation of the element's state
-     * @param changed - the reactive properties which changed this cycle, and their old values
      */
-    async willUpdate(changed) {
-        __classPrivateFieldGet(this, _RhTile_internals, "f").role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
+    async willUpdate() {
+        __classPrivateFieldGet(this, _RhTile_internals, "f").role = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get) ? 'radio' : __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? 'checkbox' : null;
         __classPrivateFieldGet(this, _RhTile_internals, "f").ariaChecked = !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? null : String(!!this.checked);
-        __classPrivateFieldGet(this, _RhTile_internals, "f").ariaDisabled = !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? null : String(!!this.disabled);
+        __classPrivateFieldGet(this, _RhTile_internals, "f").ariaDisabled = !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) ? null
+            : String(!!(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_disabledGroup_get) || this.disabled));
         __classPrivateFieldGet(this, _RhTile_internals, "f").ariaLabel =
             !(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.accessibleLabel) ? null : this.accessibleLabel;
-        if (changed.has('value') || changed.has('checked')) {
-            const formValue = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.checked ? this.value ?? null : null;
-            __classPrivateFieldGet(this, _RhTile_internals, "f").setFormValue(formValue);
-        }
-        if (this.checkable && !this.radioGroup) {
+        const formValue = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && this.checked ? this.value ?? null : null;
+        __classPrivateFieldGet(this, _RhTile_internals, "f").setFormValue(formValue);
+        if (__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get)) {
             this.setAttribute('tabindex', '0');
         }
-        else if (!this.radioGroup) {
+        else if (!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get)) {
             this.removeAttribute('tabindex');
         }
     }
     render() {
-        const { bleed, compact, checkable, checked, desaturated } = this;
-        const disabled = this.disabledGroup || this.disabled || __classPrivateFieldGet(this, _RhTile_internals, "f").formDisabled;
+        const { bleed, compact, checked, desaturated } = this;
+        const checkable = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get);
+        const disabled = __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_disabledGroup_get) || this.disabled || __classPrivateFieldGet(this, _RhTile_internals, "f").formDisabled;
         const hasSlottedIcon = __classPrivateFieldGet(this, _RhTile_slots, "f").hasSlotted('icon');
-        const linkIcon = this.checkable ? ''
+        const linkIcon = checkable ? ''
             : this.disabled ? 'ban'
                 : this.link === 'private' ? 'lock'
                     : this.link === 'external' ? 'external-link'
@@ -123,7 +127,7 @@ let RhTile = class RhTile extends LitElement {
              Hidden when the tile is checkable. -->
         <slot id="image"
               name="image"
-              ?hidden="${this.checkable}"
+              ?hidden="${checkable}"
         ></slot>
         <div id="inner">
           <!-- Place an inline rh-icon or svg element here.
@@ -140,14 +144,14 @@ let RhTile = class RhTile extends LitElement {
                    the headline. Hidden when checkable or compact. -->
               <slot id="title"
                     name="title"
-                    ?hidden="${this.checkable || this.compact}"></slot>
+                    ?hidden="${checkable || this.compact}"></slot>
               <!-- Block heading element. In a link tile, must
                    contain an anchor. In a checkable tile, this
                    labels the ARIA form control for screen readers. -->
               <slot id="headline" name="headline"></slot>
               <div id="input-outer" aria-hidden="true" ?hidden="${!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get)}" ?inert="${!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get)}">
                 <input id="input"
-                       type="${this.radioGroup ? 'radio' : 'checkbox'}"
+                       type="${__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get) ? 'radio' : 'checkbox'}"
                        tabindex="-1"
                        ?checked="${checked}"
                        ?disabled="${disabled}"></input>
@@ -171,10 +175,10 @@ let RhTile = class RhTile extends LitElement {
         this.requestUpdate();
     }
     async formStateRestoreCallback(state, mode) {
-        if (this.checkable && mode === 'restore') {
+        if (__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get) && mode === 'restore') {
             const [maybeControlMode, maybeValue] = state.split('/');
             if (maybeValue ?? maybeControlMode === this.value) {
-                __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this, !!this.radioGroup);
+                __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this, !!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get));
             }
         }
     }
@@ -194,8 +198,17 @@ _RhTile_internals = new WeakMap();
 _RhTile_logger = new WeakMap();
 _RhTile_slots = new WeakMap();
 _RhTile_instances = new WeakSet();
+_RhTile_isGroupMember_get = function _RhTile_isGroupMember_get() {
+    return this.tileGroupContext !== undefined;
+};
+_RhTile_disabledGroup_get = function _RhTile_disabledGroup_get() {
+    return __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isGroupMember_get) && !!this.tileGroupContext?.disabled;
+};
+_RhTile_radioGroup_get = function _RhTile_radioGroup_get() {
+    return __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isGroupMember_get) && !!this.tileGroupContext?.radio;
+};
 _RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
-    return !!this.radioGroup || this.checkable;
+    return __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isGroupMember_get) || this.checkable;
 };
 _RhTile_input_get = function _RhTile_input_get() {
     return this.shadowRoot.getElementById('input');
@@ -214,10 +227,10 @@ _RhTile_onClick = function _RhTile_onClick(event) {
     }
 };
 _RhTile_requestSelect = function _RhTile_requestSelect(force) {
-    if (this.checkable
+    if (__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get)
         && !this.disabled
-        && !this.disabledGroup) {
-        if (this.radioGroup) {
+        && !__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_disabledGroup_get)) {
+        if (__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_radioGroup_get)) {
             this.dispatchEvent(new TileSelectEvent(force));
         }
         else {
@@ -228,7 +241,7 @@ _RhTile_requestSelect = function _RhTile_requestSelect(force) {
 _RhTile_onKeydown = function _RhTile_onKeydown(event) {
     switch (event.key) {
         case ' ':
-            if (event.target === this && this.checkable) {
+            if (event.target === this && __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_isCheckable_get)) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
             }
@@ -287,11 +300,9 @@ __decorate([
     property()
 ], RhTile.prototype, "link", void 0);
 __decorate([
+    consume({ context: rhTileGroupContext, subscribe: true }),
     state()
-], RhTile.prototype, "disabledGroup", void 0);
-__decorate([
-    state()
-], RhTile.prototype, "radioGroup", void 0);
+], RhTile.prototype, "tileGroupContext", void 0);
 RhTile = __decorate([
     customElement('rh-tile'),
     colorPalettes,

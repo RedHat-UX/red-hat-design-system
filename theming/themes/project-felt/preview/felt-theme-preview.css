@@ -7,6 +7,7 @@
 /* Base-level "tokens" / CSS custom props */
 :root {
   /* Fonts/Type */
+  --felt-preview-font-size-body-text-xs: 0.75rem;
   --felt-preview-font-size-body-text-sm: 0.875rem;
   --felt-preview-font-size-body-text-md: 1rem;
   --felt-preview-line-height-body-text: 1.5;
@@ -502,6 +503,7 @@
 
   /* Box shadows */
   --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+  --felt-preview-box-shadow-sm: 0 1px 6px rgba(41, 41, 41, 0.15);
 
   /* Brand accent */
   --felt-preview-color-brand-accent:
@@ -572,7 +574,7 @@
       transition: background-size 0.45s ease;
     }
 
-    &::part(button):focus {
+    &::part(button):focus-visible {
       outline:
         var(--felt-preview-button-border-width-focus-ring)
         solid
@@ -592,7 +594,7 @@
         background-color: var(--felt-preview-color-interactive-primary-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         background-color: var(--felt-preview-color-interactive-primary-focus);
       }
 
@@ -605,7 +607,7 @@
           background-color: var(--felt-preview-color-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           background-color: var(--felt-preview-color-status-danger-focus);
         }
 
@@ -624,7 +626,7 @@
         --rh-border-width-sm: var(--felt-preview-button-border-width-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         --rh-color-text-primary: var(--felt-preview-color-text-interactive-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
       }
@@ -656,7 +658,7 @@
           --rh-color-status-danger: var(--felt-preview-color-text-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-status-danger: var(--felt-preview-color-text-status-danger-focus);
         }
@@ -677,7 +679,7 @@
         --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-hover);
       }
 
-      &::part(button):focus {
+      &::part(button):focus-visible {
         --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
         --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-focus);
@@ -708,7 +710,7 @@
           --rh-color-border-strong: var(--felt-preview-color-status-danger-hover);
         }
 
-        &::part(button):focus {
+        &::part(button):focus-visible {
           --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-status-danger: var(--felt-preview-color-status-danger-focus);
           --rh-color-text-primary: var(--felt-preview-color-text-status-danger-focus);
@@ -738,7 +740,7 @@
       }
 
       &::part(button):hover,
-      &::part(button):focus,
+      &::part(button):focus-visible,
       &::part(button):active {
         --rh-color-blue-70: var(--felt-preview-color-interactive-tertiary-hover);
 
@@ -767,7 +769,7 @@
         }
 
         &::part(button):hover,
-        &::part(button):focus,
+        &::part(button):focus-visible,
         &::part(button):active {
           /* Dark scheme: text in interactive states is red-orange-20 */
           color: var(--felt-preview-color-text-status-danger-hover);
@@ -811,7 +813,7 @@
       }
 
       &::part(button):hover,
-      &::part(button):focus,
+      &::part(button):focus-visible,
       &::part(button):active {
         background-color: var(--felt-preview-color-interactive-fill-plain-hover);
       }
@@ -894,25 +896,7 @@
     --felt-preview-cta-padding-inline: var(--felt-preview-space-2xl);
     --felt-preview-cta-padding-block-compact: var(--felt-preview-space-md);
     --felt-preview-cta-padding-inline-compact: var(--felt-preview-space-xl);
-    --felt-preview-cta-border-width-hover: var(--felt-preview-border-width-md);
-    --felt-preview-cta-border-width-focus: var(--felt-preview-border-width-md);
     --felt-preview-cta-border-width-focus-ring: var(--felt-preview-border-width-lg);
-    --felt-preview-cta-border-width-active: var(--felt-preview-border-width-md);
-    --felt-preview-cta-border-offset:
-      calc(
-          var(--felt-preview-cta-border-width-hover)
-          - var(--felt-preview-border-width-sm)
-        );
-    --felt-preview-cta-border-offset-block:
-      calc(
-          var(--rh-space-lg, 16px)
-          - var(--felt-preview-cta-border-offset)
-        );
-    --felt-preview-cta-border-offset-inline:
-      calc(
-          var(--rh-space-2xl, 32px)
-          - var(--felt-preview-cta-border-offset)
-        );
     --felt-preview-cta-text-underline-offset: 4px;
     --felt-preview-cta-text-decoration-color: currentcolor;
     /* stylelint-disable-next-line @stylistic/max-line-length */
@@ -979,6 +963,15 @@
     }
 
     &[variant='secondary'] {
+      --felt-preview-cta-interaction-border-color:
+        var( --rh-cta-border-color,
+          var(--rh-color-border-strong,
+          light-dark(
+            var(--rh-color-border-strong-on-light, #151515),
+            var(--rh-color-border-strong-on-dark, #ffffff)
+          )
+        ));
+
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
       --felt-preview-cta-text-decoration-color:
         light-dark(
@@ -1007,24 +1000,6 @@
          the host outline ring handles the focus indicator */
       --rh-cta-focus-inner-border-color: transparent;
       --rh-cta-active-inner-border-color: transparent;
-
-      &::part(container):hover {
-        border-width: var(--felt-preview-cta-border-width-hover);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
-
-      &::part(container):focus-within {
-        border-width: var(--felt-preview-cta-border-width-focus);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
-
-      &::part(container):active {
-        border-width: var(--felt-preview-cta-border-width-active);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
-      }
     }
 
     &:not([variant]) {
@@ -1048,6 +1023,9 @@
 
     /* stylelint-disable-next-line no-descending-specificity */
     &:is([variant='tertiary'], [variant='brick']) {
+      /* stylelint-disable-next-line @stylistic/max-line-length */
+      --felt-preview-cta-interaction-border-color: var(--felt-preview-color-border-interactive-subtle-default);
+
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
       --felt-preview-cta-text-decoration-color:
         light-dark(
@@ -1083,27 +1061,33 @@
       }
 
       &::part(container):hover {
-        border-width: var(--felt-preview-cta-border-width-hover);
         color: var(--felt-preview-color-text-interactive-hover);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):focus-within {
-        border-width: var(--felt-preview-cta-border-width-focus);
         color: var(--felt-preview-color-text-interactive-focus);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):active {
-        border-width: var(--felt-preview-cta-border-width-active);
         color: var(--felt-preview-color-text-interactive-active);
         border-color: var(--felt-preview-color-border-interactive-subtle-default);
-        padding-block: var(--felt-preview-cta-border-offset-block);
-        padding-inline: var(--felt-preview-cta-border-offset-inline);
+      }
+    }
+
+    &:is([variant='secondary'], [variant='tertiary'], [variant='brick']) {
+      &::part(container):is(:hover, :focus-within, :active) {
+        border-width: var(--felt-preview-border-width-sm);
+        padding-block: var(--felt-preview-space-lg);
+        padding-inline: var(--felt-preview-space-2xl);
+        box-shadow:
+          inset 0 0 0
+          calc(
+              var(--felt-preview-border-width-md)
+              - var(--felt-preview-border-width-sm)
+            )
+          var(--felt-preview-cta-interaction-border-color);
       }
     }
 
@@ -1111,6 +1095,13 @@
       --rh-space-lg: var(--felt-preview-cta-padding-block-compact);
       --rh-space-2xl: var(--felt-preview-cta-padding-inline-compact);
       --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-sm);
+
+      &:is([variant='secondary'], [variant='tertiary'], [variant='brick']) {
+        &::part(container):is(:hover, :focus-within, :active) {
+          padding-block: var(--felt-preview-space-md);
+          padding-inline: var(--felt-preview-space-xl);
+        }
+      }
     }
   }
 
@@ -1601,6 +1592,112 @@
     }
   }
 
+  /* Element: Disclosure
+     Active still draws the focus ring; Felt's active state is fill only.
+     Inline padding is shared by the default and borderless variants, so
+     it's set once here for every rh-disclosure. Corner radius differs
+     per variant, so it's set separately below. */
+  & rh-disclosure {
+    --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
+  }
+
+  /* Borderless keeps a plain trigger: no brand-blue text (either resting
+     or hover), a transparent surface at rest, and its own corner radius,
+     sharing the default variant's inline padding set above. Declared
+     before the `:not([variant~='borderless'])` rule below so its nested
+     reset for borderless hosts isn't flagged as having lower specificity
+     than a later, less-specific rule touching the same selector. */
+  & rh-disclosure[variant~='borderless'] {
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
+    --rh-color-surface: transparent;
+
+    /* Hover/open trigger fill. rh-disclosure.css's borderless `details`
+       and `summary` rules read these two tokens (not the `-light`/`-dark`
+       pair the default variant uses) for their shared hover/open fill,
+       so Felt's semi-transparent interactive fill needs to land here
+       rather than on `--rh-color-surface-light`/`-dark`. */
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
+    --rh-color-interactive-primary-default:
+      var(
+          --rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          )
+        );
+    --rh-color-interactive-primary-hover:
+      var(
+          --rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          )
+        );
+
+    /* The focus ring stays brand-blue even though the tokens above
+       repurpose --rh-color-interactive-primary-default/-hover for the
+       trigger's gray text — see the dedicated outline-color cssprop in
+       rh-disclosure.css. */
+    --rh-disclosure-summary-outline-color: var(--felt-preview-color-interactive-primary-default);
+
+    /* Matches the default variant's focus ring width. Offset is 0 (flush
+       against the trigger) rather than the default variant's inset, per
+       the borderless outset behavior documented in rh-disclosure.css. */
+    --rh-border-width-md: var(--felt-preview-border-width-lg);
+    --rh-disclosure-summary-outline-offset: 0;
+  }
+
+  & rh-disclosure:not([variant~='borderless']) {
+    --rh-border-radius-default: 0;
+    --rh-box-shadow-sm: none;
+    --rh-color-brand-red: transparent;
+    --rh-color-border-subtle: transparent;
+    --rh-color-surface: transparent;
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-dark: var(--felt-preview-color-interactive-fill-plain-on-dark);
+    --rh-border-width-md: var(--felt-preview-border-width-lg);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+
+    /* Draws the rule between the collapsed trigger's own top/bottom
+       edges, and between the expanded trigger and panel — see the
+       block-start/block-end border declarations in rh-disclosure.css. */
+    --rh-disclosure-border-width: var(--felt-preview-border-width-sm);
+    --rh-disclosure-border-color: var(--felt-preview-color-border-subtle);
+    --rh-disclosure-summary-background-color-expanded:
+      var(
+          --felt-preview-color-interactive-fill-plain-hover
+        );
+    --rh-disclosure-summary-outline-offset: calc(-1 * var(--felt-preview-border-width-lg));
+
+    /* !important needed to override shadow DOM :host border-width */
+    border-width: 0 !important;
+    line-height: var(--felt-preview-line-height-body-text);
+
+    /* Borderless gets its own Felt treatment above, but the tokens below
+       are inherited custom properties, so a borderless disclosure slotted
+       inside a themed default disclosure would otherwise pick up the
+       default variant's hover fill, accent stripe, and border values too.
+       Reset them back to unthemed so only the dedicated borderless rule
+       above applies. (Radius, inline padding, surface, surface-lighter,
+       outline width, outline offset, and the interactive-primary tokens
+       don't need resetting here — the shared rule and the
+       borderless-specific rule above set them explicitly on every
+       borderless host, which always wins over inheritance regardless of
+       nesting.) */
+    & rh-disclosure[variant~='borderless'] {
+      --rh-box-shadow-sm: initial;
+      --rh-color-brand-red: initial;
+      --rh-color-border-subtle: initial;
+      --rh-color-surface-dark: initial;
+      --rh-disclosure-border-width: initial;
+      --rh-disclosure-border-color: initial;
+      --rh-disclosure-summary-background-color-expanded: initial;
+
+      line-height: initial;
+    }
+  }
+
   /* Element: Alert */
   & rh-alert {
     --felt-preview-alert-border-color: var(--rh-color-teal-50, #37a3a3);
@@ -1881,11 +1978,11 @@
   }
 
   & rh-chip-group::part(btn-link):hover,
-  & rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):focus-visible {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  & rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):focus-visible {
     outline-offset: -1px;
   }
 
@@ -1955,7 +2052,7 @@
       text-underline-offset: max(5px, 0.28em) !important;
     }
 
-    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus, :active) {
+    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus-visible, :active) {
       text-decoration-color: currentcolor !important;
     }
 
@@ -2325,6 +2422,309 @@
           border-radius: var(--felt-preview-border-radius-pill);
         }
       }
+    }
+  }
+
+  /* Element: Tile */
+  & rh-tile {
+    /* Surface: default background */
+    --rh-color-surface:
+      var(
+          --felt-preview-color-surface-primary
+        );
+
+    /* Border radius → Felt 16px rounded */
+    --rh-border-radius-default:
+      var(
+          --felt-preview-border-radius-default
+        );
+
+    /* Default border: subtle gray, 1px */
+    --rh-tile-border-color:
+      var(
+          --felt-preview-color-border-interactive-subtle-default
+        );
+
+    /* Border thickens to 2px on hover/focus/active */
+    --rh-tile-focus-border-width:
+      var(
+          --felt-preview-border-width-md
+        );
+
+    /* Hover border: lighter blue */
+    --rh-tile-hover-border-color:
+      var(
+          --felt-preview-color-border-interactive-subtle-hover
+        );
+
+    /* Active/focus border: darker blue */
+    --rh-tile-active-border-color:
+      var(
+          --felt-preview-color-border-interactive-subtle-active
+        );
+
+    /* Arrow icon color */
+    --rh-tile-interactive-color:
+      var(
+          --felt-preview-color-icon-interactive-default
+        );
+
+    /* Hover/focus/active icon color */
+    --rh-tile-focus-interactive-color:
+      var(
+          --felt-preview-color-icon-interactive-hover
+        );
+
+    /* Default heading/link color */
+    --rh-tile-link-color:
+      var(
+          --felt-preview-color-text-interactive-default
+        );
+
+    /* Hover/focus surface stays flat (no gray shift) */
+    --rh-tile-focus-background-color:
+      var(
+          --felt-preview-color-surface-primary
+        );
+
+    /* Focus ring matches active/focus border color */
+    --rh-tile-focus-outline-color:
+      var(
+          --felt-preview-color-border-interactive-subtle-active
+        );
+
+    /* Focus ring offset per Felt guidelines */
+    --rh-tile-focus-outline-offset: 3px;
+
+    /* Default size: 24px padding (Figma "Default") */
+    --rh-space-2xl: var(--rh-space-xl, 24px);
+
+    /* Large size: 32px padding, bigger heading and body */
+    &.large {
+      --rh-space-2xl: 32px;
+      --rh-font-size-heading-xs:
+        var(
+            --rh-font-size-heading-sm,
+            1.5rem
+          );
+      --rh-font-size-body-text-md:
+        var(
+            --rh-font-size-body-text-lg,
+            1.125rem
+          );
+
+      /* Large only: headline → body and body → footer gaps are 24px
+         (title → headline stays 4px via the [slot='title'] override below) */
+      --rh-space-lg: 24px;
+    }
+
+    /* Disabled: gray-30/gray-40, no border */
+    --rh-tile-disabled-background-color:
+      light-dark(
+          var(--felt-preview-color-gray-30),
+          var(--felt-preview-color-gray-40)
+        );
+    --rh-tile-disabled-text-color:
+      var(
+          --felt-preview-color-text-status-on-disabled
+        );
+
+    &[disabled] {
+      --rh-tile-border-color: transparent;
+      --rh-tile-link-color:
+        var(
+            --felt-preview-color-text-status-on-disabled
+          );
+      --rh-tile-interactive-color:
+        var(
+            --felt-preview-color-icon-status-on-disabled
+          );
+      --rh-color-text-secondary:
+        var(
+            --felt-preview-color-text-status-on-disabled
+          );
+    }
+
+    /* Suppress heading underline on interactive states */
+    & [slot='headline'] a {
+      text-decoration: none !important;
+    }
+
+    /* Suppress headline link focus outline (tile shows its own) */
+    & [slot='headline'] a:focus {
+      outline: none;
+    }
+
+    /* Title: 4px gap to headline (default and large sizes) */
+    & [slot='title'] {
+      margin-block-end: 4px !important;
+    }
+
+    /* Footer: secondary color, sm size (14px at default and large sizes) */
+    & [slot='footer'] {
+      color:
+        var(
+            --rh-color-text-secondary,
+            light-dark(
+              var(--rh-color-text-secondary-on-light, #4d4d4d),
+              var(--rh-color-text-secondary-on-dark, #c7c7c7)
+            )
+          );
+      font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    }
+
+    /* Compact + selectable: 16px padding, 8px heading-body gap, md heading */
+    &[compact],
+    &[checkable] {
+      --rh-space-xl: var(--felt-preview-space-lg);
+      --rh-space-lg: var(--felt-preview-space-md);
+      --rh-font-size-body-text-lg: var(--rh-font-size-body-text-md, 1rem);
+    }
+
+    /* Round bleed image top corners to match inner border radius */
+    &[bleed] [slot='image'] {
+      border-start-start-radius:
+        calc(
+            var(--felt-preview-border-radius-default) - 1px
+          );
+      border-start-end-radius:
+        calc(
+            var(--felt-preview-border-radius-default) - 1px
+          );
+    }
+  }
+
+  /* Element: Table
+     `<thead>`, `<th>`, `<td>`, and `<a>` are the author's own light-DOM
+     content (rh-table only wraps a slotted `<table>`), so these are
+     plain descendant selectors -- no `::part()` needed, matching the
+     structure already used in rh-table-lightdom.css. */
+  & rh-table {
+    /* Row hover: same subtle fill used for hover states across the theme.
+       The public token only feeds the light branch of light-dark() in
+       rh-table.css, so dark mode still paints white at 10% opacity.
+       The tr:hover rule below beats rh-table-lightdom.css in both schemes. */
+    --rh-table-row-background-hover-color: var(--felt-preview-color-interactive-fill-plain-hover);
+
+    /* Row border: the component's fallback (--rh-color-border-subtle-on-light)
+       doesn't adapt to dark mode, so it reads too bright there. Felt's
+       border-subtle token does. */
+    --rh-table-row-border:
+      var(--felt-preview-border-width-sm)
+      solid
+      var(--felt-preview-color-border-subtle);
+
+    & tr:hover {
+      background: var(--felt-preview-color-interactive-fill-plain-hover);
+    }
+
+    & thead {
+      & th {
+        /* Felt: extra-small, medium-weight header labels (base theme:
+           inherited body-md size, bold weight) */
+        font-size: var(--felt-preview-font-size-body-text-xs);
+        font-weight: var(--rh-font-weight-body-text-medium, 500);
+      }
+
+      & rh-sort-button {
+        /* Felt: 8px gap between the header label and the sort button */
+        margin-inline-start: var(--felt-preview-space-md);
+      }
+    }
+
+    /* Felt body cells: 14px / 21px (0.875rem × 1.5), with 16px block
+       padding (base theme: 24px). */
+    & td {
+      font-size: var(--felt-preview-font-size-body-text-sm);
+      line-height: var(--felt-preview-line-height-body-text);
+      padding-block: var(--felt-preview-space-lg);
+    }
+
+    & [slot='summary'] {
+      /* Felt: 14px summary text (base theme: body-md, 1rem) */
+      font-size: var(--felt-preview-font-size-body-text-sm);
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
+    & a {
+      color: var(--felt-preview-color-interactive-primary-default);
+      text-decoration:
+        underline dashed
+        var(--felt-preview-border-width-sm)
+        var(--felt-preview-color-interactive-secondary-underline-default);
+      text-underline-offset: max(5px, 0.28em);
+
+      /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
+      &:is(:hover, :focus-visible) {
+        color: var(--felt-preview-color-interactive-primary-hover);
+        text-decoration-color: currentcolor;
+        text-underline-offset: max(6px, 0.33em);
+      }
+    }
+  }
+
+  /* Sort buttons live inside `<th>` next to the header label; give them
+     the same rounded "plain action" hover/focus pill used for other
+     low-emphasis controls throughout the theme (e.g. rh-menu-dropdown
+     items, rh-jump-link). */
+  & rh-sort-button {
+    &::part(sort-button) {
+      padding: var(--felt-preview-space-xs) var(--felt-preview-space-md);
+      border-radius: var(--felt-preview-border-radius-action-plain);
+
+      /* Felt: muted icon color, matching other low-emphasis icons in the
+         theme. The sort icon has no color of its own -- rh-sort-button.css
+         sets it to `currentcolor`, inheriting from this part -- so setting
+         `color` here covers it without a second part selector. Reuses
+         --felt-preview-color-icon-subtle, which already carries the
+         gray-50/gray-40 pairing asked for in review --
+         --felt-preview-color-icon-secondary is a different, already-in-use
+         token (see rh-alert/rh-cta above), so it isn't repurposed here. */
+      color: var(--felt-preview-color-icon-subtle);
+    }
+
+    &::part(sort-button):is(:hover, :focus-visible) {
+      background-color: var(--felt-preview-color-interactive-fill-plain-hover);
+    }
+  }
+
+  /* Element: Back to Top */
+  & rh-back-to-top {
+    /* Default-state background (component's own escape hatch) */
+    --rh-back-to-top-background-color: var(--felt-preview-color-interactive-primary-default);
+
+    &::part(trigger) {
+      /* Felt: 8px content gap (base theme uses 4px) */
+      gap: var(--felt-preview-space-md);
+
+      /* Elevation on default/hover/active; focus keeps the same shadow */
+      box-shadow: var(--felt-preview-box-shadow-sm);
+    }
+
+    /* Felt hover/active/focus don't get the base theme's border+outline ring;
+       only :focus-visible re-introduces a ring, further down. Colors (not
+       widths) are reset here to avoid layout shift when states change. */
+    &::part(trigger):is(:hover, :active, :focus) {
+      border-color: transparent;
+      outline-color: transparent;
+    }
+
+    &::part(trigger):hover {
+      background-color: var(--felt-preview-color-interactive-primary-hover);
+    }
+
+    &::part(trigger):active {
+      background-color: var(--felt-preview-color-interactive-primary-active);
+    }
+
+    &::part(trigger):focus-visible {
+      background-color: var(--felt-preview-color-interactive-primary-focus);
+      box-shadow: var(--felt-preview-box-shadow-sm);
+      outline:
+        var(--felt-preview-border-width-lg)
+        solid
+        var(--felt-preview-color-interactive-primary-default);
+      outline-offset: var(--felt-preview-border-width-lg);
     }
   }
 }

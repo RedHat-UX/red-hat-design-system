@@ -24,13 +24,6 @@ export declare class RhBlockquote extends LitElement {
      */
     subtitle?: string;
     /**
-     * built-in tooltip blockquote figure element.
-     * Defaults to 'Blockquote'.
-     *
-     * @deprecated use subtitle
-     */
-    title: string;
-    /**
      * Sets the color palette for the blockquote and its child content.
      * Adapts text and icon colors for light or dark backgrounds.
      * Possible values are:

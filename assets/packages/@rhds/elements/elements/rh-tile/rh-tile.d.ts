@@ -1,4 +1,4 @@
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement } from 'lit';
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -103,14 +103,13 @@ export declare class RhTile extends LitElement {
     colorPalette?: ColorPalette;
     /** When set to "private", the icon representing the link changes from an arrow to a padlock */
     link?: 'private' | 'public' | 'external';
-    private disabledGroup;
-    private radioGroup;
+    private tileGroupContext?;
     constructor();
+    connectedCallback(): void;
     /**
      * Update the internal accessible representation of the element's state
-     * @param changed - the reactive properties which changed this cycle, and their old values
      */
-    willUpdate(changed: PropertyValues<this>): Promise<void>;
+    willUpdate(): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
     formDisabledCallback(): Promise<void>;
     formStateRestoreCallback(state: string, mode: string): Promise<void>;

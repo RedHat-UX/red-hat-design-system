@@ -1,13 +1,15 @@
-var _RhTileGroup_instances, _RhTileGroup_tiles, _RhTileGroup_tabindex, _RhTileGroup_internals, _RhTileGroup_selectTile, _RhTileGroup_onSelect, _RhTileGroup_onSlotchange;
+var _RhTileGroup_instances, _RhTileGroup_tiles, _RhTileGroup_tabindex, _RhTileGroup_internals, _RhTileGroup_updateGroupContext, _RhTileGroup_selectTile, _RhTileGroup_onSelect, _RhTileGroup_onSlotchange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { provide } from '@lit/context';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { RhTile, TileSelectEvent } from './rh-tile.js';
+import { rhTileGroupContext } from './context.js';
 import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
@@ -50,31 +52,35 @@ let RhTileGroup = class RhTileGroup extends LitElement {
          */
         this.radio = false;
         _RhTileGroup_tiles.set(this, []);
+        this.groupContext = Object.freeze({
+            disabled: false,
+            radio: false,
+        });
         _RhTileGroup_tabindex.set(this, RovingTabindexController.of(this, {
             getItems: () => __classPrivateFieldGet(this, _RhTileGroup_tiles, "f"),
         }));
         _RhTileGroup_internals.set(this, InternalsController.of(this));
-        this.addEventListener('slotchange', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSlotchange));
         this.addEventListener('select', __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSelect));
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_updateGroupContext).call(this);
     }
     firstUpdated() {
         this.updateItems();
     }
     willUpdate(changed) {
+        if (changed.has('disabled') || changed.has('radio')) {
+            __classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_updateGroupContext).call(this);
+        }
         __classPrivateFieldGet(this, _RhTileGroup_internals, "f").ariaDisabled = String(!!this.disabled);
         __classPrivateFieldGet(this, _RhTileGroup_internals, "f").role = this.radio ? 'radiogroup' : null;
         let selected;
         for (const tile of __classPrivateFieldGet(this, _RhTileGroup_tiles, "f")) {
             if (changed.has('radio')) {
-                // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-                tile.radioGroup = this.radio;
                 if (this.radio && !selected && tile.checked) {
                     selected = tile;
                 }
-            }
-            if (changed.has('disabled')) {
-                // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-                tile.disabledGroup = this.disabled;
             }
         }
         if (changed.has('radio')) {
@@ -86,7 +92,8 @@ let RhTileGroup = class RhTileGroup extends LitElement {
         return html `
       <!-- Place \`rh-tile\` elements here. Each tile must have a
            headline slot with descriptive text for screen readers. -->
-      <slot class="${classMap({ radio })}"></slot>
+      <slot class="${classMap({ radio })}"
+            @slotchange="${__classPrivateFieldGet(this, _RhTileGroup_instances, "m", _RhTileGroup_onSlotchange)}"></slot>
     `;
     }
     /** Sets focus on active tile */
@@ -114,25 +121,28 @@ let RhTileGroup = class RhTileGroup extends LitElement {
             this.selectItem(tile);
         }
     }
-    /**
-     * Updates slotted tiles to set properties and keyboard navigation
-     */
+    /** Updates slotted tiles and keyboard navigation. */
     updateItems() {
-        __classPrivateFieldSet(this, _RhTileGroup_tiles, [...this.querySelectorAll('rh-tile')], "f");
-        __classPrivateFieldGet(this, _RhTileGroup_tiles, "f").forEach(tile => {
-            tile.checkable = true;
-            // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-            tile.radioGroup = this.radio;
-            // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-            tile.disabledGroup = this.disabled;
+        // A descendant query is used instead of @queryAssignedElements so tiles can
+        // be placed inside ordinary wrapper elements while still belonging to the group.
+        const tiles = [...this.querySelectorAll('rh-tile')];
+        __classPrivateFieldSet(this, _RhTileGroup_tiles, tiles, "f");
+        __classPrivateFieldGet(this, _RhTileGroup_tabindex, "f").items = tiles;
+        for (const tile of tiles) {
             tile.id || (tile.id = getRandomId('rh-tile'));
-        });
+        }
     }
 };
 _RhTileGroup_tiles = new WeakMap();
 _RhTileGroup_tabindex = new WeakMap();
 _RhTileGroup_internals = new WeakMap();
 _RhTileGroup_instances = new WeakSet();
+_RhTileGroup_updateGroupContext = function _RhTileGroup_updateGroupContext() {
+    this.groupContext = Object.freeze({
+        disabled: this.disabled,
+        radio: this.radio,
+    });
+};
 _RhTileGroup_selectTile = function _RhTileGroup_selectTile(tileToSelect, force) {
     if (this.radio) {
         for (const tile of __classPrivateFieldGet(this, _RhTileGroup_tiles, "f")) {
@@ -144,7 +154,7 @@ _RhTileGroup_selectTile = function _RhTileGroup_selectTile(tileToSelect, force) 
     }
 };
 _RhTileGroup_onSelect = function _RhTileGroup_onSelect(event) {
-    if (event instanceof TileSelectEvent) {
+    if (event instanceof TileSelectEvent && __classPrivateFieldGet(this, _RhTileGroup_tiles, "f").includes(event.target)) {
         if (this.disabled) {
             event.preventDefault();
             return false;
@@ -167,6 +177,9 @@ __decorate([
 __decorate([
     property({ reflect: true, attribute: 'color-palette' })
 ], RhTileGroup.prototype, "colorPalette", void 0);
+__decorate([
+    provide({ context: rhTileGroupContext })
+], RhTileGroup.prototype, "groupContext", void 0);
 RhTileGroup = __decorate([
     customElement('rh-tile-group'),
     colorPalettes,

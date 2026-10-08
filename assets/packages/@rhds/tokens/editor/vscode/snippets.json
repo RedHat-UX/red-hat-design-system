@@ -357,6 +357,38 @@
     ],
     "description": "Interactive border color (dark theme)"
   },
+  "rh-color-border-focus": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderfocus"
+    ],
+    "body": [
+      "var(--rh-color-border-focus${1:, light-dark(var(--rh-color-border-focus-on-light, #0066cc), var(--rh-color-border-focus-on-dark, #92c5f9))})$2"
+    ],
+    "description": "Responsive `border-focus` color value. Typically read-only - use a themeable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-focus-on-light` on a themable container with a light color palette and `--rh-color-border-focus-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-focus-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderfocusonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-border-focus-on-light${1:, #0066cc})$2"
+    ],
+    "description": "Focus border color (light theme)"
+  },
+  "rh-color-border-focus-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderfocusondark",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-border-focus-on-dark${1:, #92c5f9})$2"
+    ],
+    "description": "Focus border color (dark theme)"
+  },
   "rh-color-border-destructive": {
     "scope": "css,scss",
     "prefix": [
@@ -753,6 +785,16 @@
     ],
     "description": "Alert - Success title text"
   },
+  "rh-color-green-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen80",
+      "183301"
+    ],
+    "body": [
+      "var(--rh-color-green-80${1:, #183301})$2"
+    ]
+  },
   "rh-color-green-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -877,6 +919,24 @@
     ],
     "body": [
       "var(--rh-color-green-70-rgb${1:, 32 77 0})$2"
+    ]
+  },
+  "rh-color-green-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen80hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-80-hsl${1:, 92.39999999999999 96.15384615384616% 10.196078431372548%})$2"
+    ]
+  },
+  "rh-color-green-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen80rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-80-rgb${1:, 24 51 1})$2"
     ]
   },
   "rh-color-orange-10": {
@@ -1547,6 +1607,16 @@
     ],
     "description": "Alert - Info title text"
   },
+  "rh-color-blue-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue80",
+      "032142"
+    ],
+    "body": [
+      "var(--rh-color-blue-80${1:, #032142})$2"
+    ]
+  },
   "rh-color-blue-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -1671,6 +1741,24 @@
     ],
     "body": [
       "var(--rh-color-blue-70-rgb${1:, 0 51 102})$2"
+    ]
+  },
+  "rh-color-blue-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue80hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-80-hsl${1:, 211.42857142857144 91.30434782608695% 13.529411764705884%})$2"
+    ]
+  },
+  "rh-color-blue-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue80rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-80-rgb${1:, 3 33 66})$2"
     ]
   },
   "rh-color-white": {
@@ -2313,6 +2401,16 @@
       "var(--rh-color-red-orange-70${1:, #731f00})$2"
     ]
   },
+  "rh-color-red-orange-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange80",
+      "4c1405"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-80${1:, #4c1405})$2"
+    ]
+  },
   "rh-color-red-orange-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -2437,6 +2535,24 @@
     ],
     "body": [
       "var(--rh-color-red-orange-70-rgb${1:, 115 31 0})$2"
+    ]
+  },
+  "rh-color-red-orange-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange80hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-80-hsl${1:, 12.67605633802817 87.65432098765433% 15.88235294117647%})$2"
+    ]
+  },
+  "rh-color-red-orange-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange80rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-80-rgb${1:, 76 20 5})$2"
     ]
   },
   "rh-color-red-5": {

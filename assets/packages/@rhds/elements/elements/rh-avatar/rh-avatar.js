@@ -1,4 +1,4 @@
-var _RhAvatar_instances, _RhAvatar_style, _RhAvatar_pattern, _RhAvatar_normalize, _RhAvatar_initPattern;
+var _RhAvatar_instances, _RhAvatar_style, _RhAvatar_pattern, _RhAvatar_normalize, _RhAvatar_initPattern, _RhAvatar_updatePattern;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -87,21 +87,7 @@ let RhAvatar = class RhAvatar extends LitElement {
     }
     async updated(changed) {
         if ((changed.has('pattern') && this.pattern) || (changed.has('name') && __classPrivateFieldGet(this, _RhAvatar_pattern, "f"))) {
-            this.updatePattern();
-        }
-    }
-    /**
-     * Re-renders the geometric pattern. Called automatically when `pattern`
-     * or `name` change; call manually after updating CSS custom properties.
-     * @deprecated a future version will remove this public method
-     */
-    async updatePattern() {
-        __classPrivateFieldSet(this, _RhAvatar_pattern, __classPrivateFieldGet(this, _RhAvatar_pattern, "f") ?? await __classPrivateFieldGet(this, _RhAvatar_instances, "m", _RhAvatar_initPattern).call(this), "f");
-        if (__classPrivateFieldGet(this, _RhAvatar_pattern, "f")) {
-            const size = parseInt(__classPrivateFieldGet(this, _RhAvatar_style, "f")?.getPropertyValue('width') ?? '0');
-            const colors = __classPrivateFieldGet(this, _RhAvatar_style, "f")?.getPropertyValue('--_colors')?.split(/\s+/) ?? [];
-            const { name, pattern } = this;
-            __classPrivateFieldGet(this, _RhAvatar_pattern, "f").render({ size, colors, name, pattern });
+            __classPrivateFieldGet(this, _RhAvatar_instances, "m", _RhAvatar_updatePattern).call(this);
         }
     }
 };
@@ -122,6 +108,17 @@ _RhAvatar_initPattern = async function _RhAvatar_initPattern() {
     if (canvas) {
         __classPrivateFieldSet(this, _RhAvatar_style, __classPrivateFieldGet(this, _RhAvatar_style, "f") ?? getComputedStyle(canvas), "f");
         return new RandomPatternController(this, canvas);
+    }
+};
+_RhAvatar_updatePattern = 
+/** Re-renders the geometric pattern. */
+async function _RhAvatar_updatePattern() {
+    __classPrivateFieldSet(this, _RhAvatar_pattern, __classPrivateFieldGet(this, _RhAvatar_pattern, "f") ?? await __classPrivateFieldGet(this, _RhAvatar_instances, "m", _RhAvatar_initPattern).call(this), "f");
+    if (__classPrivateFieldGet(this, _RhAvatar_pattern, "f")) {
+        const size = parseInt(__classPrivateFieldGet(this, _RhAvatar_style, "f")?.getPropertyValue('width') ?? '0');
+        const colors = __classPrivateFieldGet(this, _RhAvatar_style, "f")?.getPropertyValue('--_colors')?.split(/\s+/) ?? [];
+        const { name, pattern } = this;
+        __classPrivateFieldGet(this, _RhAvatar_pattern, "f").render({ size, colors, name, pattern });
     }
 };
 RhAvatar.styles = [styles];

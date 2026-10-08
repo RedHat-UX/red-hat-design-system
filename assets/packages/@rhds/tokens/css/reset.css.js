@@ -64,6 +64,10 @@ export default css `
   --rh-color-border-interactive-on-light: #0066cc;
   /* Interactive border color (dark theme) */
   --rh-color-border-interactive-on-dark: #92c5f9;
+  /* Focus border color (light theme) */
+  --rh-color-border-focus-on-light: #0066cc;
+  /* Focus border color (dark theme) */
+  --rh-color-border-focus-on-dark: #92c5f9;
   /* Destructive border color (light theme) */
   --rh-color-border-destructive-on-light: #b1380b;
   /* Destructive border color (dark theme) */
@@ -119,6 +123,7 @@ export default css `
   --rh-color-green-60: #3d7317;
   /* Alert - Success title text */
   --rh-color-green-70: #204d00;
+  --rh-color-green-80: #183301;
   --rh-color-green-10-hsl: 95.00000000000003 60.00000000000004% 92.15686274509804%;
   --rh-color-green-10-rgb: 233 247 223;
   --rh-color-green-20-hsl: 95.55555555555556 65.85365853658536% 83.92156862745097%;
@@ -133,6 +138,8 @@ export default css `
   --rh-color-green-60-rgb: 61 115 23;
   --rh-color-green-70-hsl: 95.06493506493506 100% 15.098039215686274%;
   --rh-color-green-70-rgb: 32 77 0;
+  --rh-color-green-80-hsl: 92.39999999999999 96.15384615384616% 10.196078431372548%;
+  --rh-color-green-80-rgb: 24 51 1;
   /* Label - Filled (Orange) background color */
   --rh-color-orange-10: #ffe8cc;
   --rh-color-orange-20: #fccb8f;
@@ -218,6 +225,7 @@ export default css `
   --rh-color-blue-60: #004d99;
   /* Alert - Info title text */
   --rh-color-blue-70: #003366;
+  --rh-color-blue-80: #032142;
   --rh-color-blue-10-hsl: 209.03225806451616 100% 93.92156862745098%;
   --rh-color-blue-10-rgb: 224 240 255;
   --rh-color-blue-20-hsl: 210.44776119402988 91.78082191780825% 85.68627450980392%;
@@ -232,6 +240,8 @@ export default css `
   --rh-color-blue-60-rgb: 0 77 153;
   --rh-color-blue-70-hsl: 210 100% 20%;
   --rh-color-blue-70-rgb: 0 51 102;
+  --rh-color-blue-80-hsl: 211.42857142857144 91.30434782608695% 13.529411764705884%;
+  --rh-color-blue-80-rgb: 3 33 66;
   /* Lightest surface (light scheme) or primary text (dark scheme) */
   --rh-color-white: #ffffff;
   /* Tertiary surface (light scheme) */
@@ -316,6 +326,7 @@ export default css `
   --rh-color-red-orange-50: #f0561d;
   --rh-color-red-orange-60: #b1380b;
   --rh-color-red-orange-70: #731f00;
+  --rh-color-red-orange-80: #4c1405;
   --rh-color-red-orange-10-hsl: 15.789473684210513 100% 92.54901960784314%;
   --rh-color-red-orange-10-rgb: 255 227 217;
   --rh-color-red-orange-20-hsl: 15.903614457831333 91.20879120879121% 82.15686274509804%;
@@ -330,6 +341,8 @@ export default css `
   --rh-color-red-orange-60-rgb: 177 56 11;
   --rh-color-red-orange-70-hsl: 16.17391304347826 100% 22.54901960784314%;
   --rh-color-red-orange-70-rgb: 115 31 0;
+  --rh-color-red-orange-80-hsl: 12.67605633802817 87.65432098765433% 15.88235294117647%;
+  --rh-color-red-orange-80-rgb: 76 20 5;
   --rh-color-red-5: #fef0f0;
   --rh-color-red-10: #fce3e3;
   /* Lightest brand red */
@@ -775,4 +788,4 @@ export default css `
   /* 128px spacer */
   --rh-space-7xl: 128px;
 }`;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVzZXQuY3NzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsicmVzZXQuY3NzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0dBSUc7QUFFSCxPQUFPLEVBQUUsR0FBRyxFQUFFLE1BQU0sS0FBSyxDQUFDO0FBQUMsZUFBZSxHQUFHLENBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBa3dCM0MsQ0FBQyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVzZXQuY3NzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsicmVzZXQuY3NzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0dBSUc7QUFFSCxPQUFPLEVBQUUsR0FBRyxFQUFFLE1BQU0sS0FBSyxDQUFDO0FBQUMsZUFBZSxHQUFHLENBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztFQSt3QjNDLENBQUMifQ==

@@ -63,7 +63,7 @@
   border-radius: var(--rh-border-radius-default, 3px);
 
   /** Small shadow design token for dropdown elevation */
-  box-shadow: var(--rh-box-shadow-sm);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 
   /** Medium spacing design token for vertical padding */
   padding-block: var(--rh-space-md, 8px);

@@ -25,9 +25,9 @@
   justify-content: center;
   color:
     light-dark(
-        /** Trigger text color in light mode */
+        /** Trigger text color for light scheme */
         var(--rh-color-text-primary-on-dark, #ffffff),
-        /** Trigger text color in dark mode */
+        /** Trigger text color for dark scheme */
         var(--rh-color-text-primary-on-light, #151515)
       );
   background-color:
@@ -79,9 +79,9 @@
     var(--rh-border-width-md, 2px)
     solid
     light-dark(
-        /** Trigger hover/focus border color in light mode */
+        /** Trigger hover/focus border color for light scheme */
         var(--rh-color-border-strong-on-dark, #ffffff),
-        /** Trigger hover/focus border color in dark mode */
+        /** Trigger hover/focus border color for dark scheme */
         var(--rh-color-border-strong-on-light, #151515)
       );
 

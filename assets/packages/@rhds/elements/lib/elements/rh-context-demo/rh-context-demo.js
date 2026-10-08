@@ -7,6 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const style = css `:host{display:block;min-height:100%;height:max-content;color:var(--rh-color-text-primary);background:var(--rh-color-surface)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));min-height:100%;height:max-content}`;
 let RhContextDemo = class RhContextDemo extends LitElement {
@@ -72,7 +73,8 @@ __decorate([
 ], RhContextDemo.prototype, "colorPaletteChanged", null);
 RhContextDemo = __decorate([
     customElement('rh-context-demo'),
-    colorPalettes
+    colorPalettes,
+    themable
 ], RhContextDemo);
 export { RhContextDemo };
 //# sourceMappingURL=rh-context-demo.js.map

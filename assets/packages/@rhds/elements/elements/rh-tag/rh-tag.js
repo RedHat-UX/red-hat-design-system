@@ -59,7 +59,7 @@ let RhTag = class RhTag extends LitElement {
             disabled,
             hasIcon,
             compact: size === 'compact',
-            teal: color === 'cyan' /* cyan deprecated */ || color === 'teal',
+            teal: color === 'teal',
             [variant]: true,
             [color]: true
         })}">

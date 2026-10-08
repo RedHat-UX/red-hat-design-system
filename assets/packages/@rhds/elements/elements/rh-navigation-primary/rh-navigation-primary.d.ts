@@ -28,6 +28,7 @@ export declare class RhNavigationPrimary extends LitElement {
      */
     compact: boolean;
     linksCompact: boolean;
+    private _hydrated;
     private _overlayOpen;
     private _hamburgerOpen;
     private _linksMenuOpen;
@@ -76,9 +77,17 @@ export declare class RhNavigationPrimary extends LitElement {
      */
     siteHref?: string;
     /**
-     * Sets the `href` for the default logo link. Avoid changing this value
-     * unless the site requires a non-root landing page for the logo. Defaults
-     * to `'/'`.
+     * Optional accessible name for the logo link. When set, applied as
+     * `aria-label` on the wrapping `<a>` and overrides slotted text, SVG
+     * `<title>`, or `img` `alt`. Leave unset so the slotted mark or the
+     * default SVG title names the link. Defaults to `''`.
+     */
+    logoLabel: string;
+    /**
+     * Sets the `href` for the logo link. Applies whether or not the `logo` slot
+     * is overridden. Avoid changing this value except for a locale-specific
+     * redhat.com homepage (e.g. `https://www.redhat.com/ja`). Defaults to
+     * `'https://www.redhat.com/en'`.
      */
     logoHref: string;
     constructor();

@@ -31,6 +31,11 @@ import { css } from 'lit'; export default css`
       var(--rh-color-border-interactive-on-light, #0066cc),
       var(--rh-color-border-interactive-on-dark, #92c5f9)
     );
+  --rh-color-border-focus:
+    light-dark(
+      var(--rh-color-border-focus-on-light, #0066cc),
+      var(--rh-color-border-focus-on-dark, #92c5f9)
+    );
   --rh-color-border-destructive:
     light-dark(
       var(--rh-color-border-destructive-on-light, #b1380b),

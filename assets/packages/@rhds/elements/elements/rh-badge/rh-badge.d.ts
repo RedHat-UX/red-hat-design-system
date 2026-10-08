@@ -22,9 +22,6 @@ export declare class RhBadge extends LitElement {
      * Background severity: `danger`, `warning`, `caution`, `neutral`, `success`, or `info`.
      * Defaults to `neutral`.
      *
-     * Legacy values are normalized: `moderate` → `warning`, `important` → `caution`,
-     * `critical` → `danger`, `note` → `info`.
-     *
      * @see [Guidelines](https://ux.redhat.com/elements/badge/guidelines/)
      */
     state: 'danger' | 'warning' | 'caution' | 'neutral' | 'success' | 'info';
@@ -37,7 +34,7 @@ export declare class RhBadge extends LitElement {
      * Upper bound for `number`; when `number` is greater, the badge shows `threshold+`.
      */
     threshold?: number;
-    /** Normalizes `state` to supported values (including deprecated aliases). */
+    /** Normalizes unsupported `state` values to `neutral`. */
     private stateChanged;
     render(): import("lit-html").TemplateResult<1>;
 }

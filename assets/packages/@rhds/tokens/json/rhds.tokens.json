@@ -1370,6 +1370,154 @@
           ]
         }
       },
+      "focus": {
+        "_": {
+          "$value": "light-dark(var(--rh-color-border-focus-on-light, #0066cc), var(--rh-color-border-focus-on-dark, #92c5f9))",
+          "$description": "Responsive `border-focus` color value. Typically read-only - use a themeable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-focus-on-light` on a themable container with a light color palette and `--rh-color-border-focus-on-dark` on a themable container with a dark color palette.",
+          "filePath": "tokens/color/border.yml",
+          "isSource": true,
+          "$type": "color",
+          "original": {
+            "$value": [
+              "{color.border.focus.on-light}",
+              "{color.border.focus.on-dark}"
+            ],
+            "$description": "Responsive `border-focus` color value. Typically read-only - use a themeable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-focus-on-light` on a themable container with a light color palette and `--rh-color-border-focus-on-dark` on a themable container with a dark color palette.",
+            "$type": "color"
+          },
+          "name": "rh-color-border-focus",
+          "attributes": {
+            "category": "color",
+            "type": "border",
+            "item": "focus",
+            "subitem": "_",
+            "hex": "000000",
+            "rgb": {
+              "r": 0,
+              "g": 0,
+              "b": 0,
+              "a": 1
+            },
+            "hsl": {
+              "h": 0,
+              "s": 0,
+              "l": 0,
+              "a": 1
+            },
+            "hsv": {
+              "h": 0,
+              "s": 0,
+              "v": 0,
+              "a": 1
+            },
+            "isLight": false
+          },
+          "path": [
+            "color",
+            "border",
+            "focus",
+            "_"
+          ]
+        },
+        "on-light": {
+          "$value": "#0066cc",
+          "$description": "Focus border color (light theme)",
+          "attributes": {
+            "category": "border",
+            "type": "color",
+            "item": "focus",
+            "subitem": "on-light",
+            "hex": "0066cc",
+            "rgb": {
+              "r": 0,
+              "g": 102,
+              "b": 204,
+              "a": 1
+            },
+            "hsl": {
+              "h": 210,
+              "s": 100,
+              "l": 40,
+              "a": 1
+            },
+            "hsv": {
+              "h": 210,
+              "s": 1,
+              "v": 0.8,
+              "a": 1
+            },
+            "isLight": false
+          },
+          "filePath": "tokens/color/border.yml",
+          "isSource": true,
+          "$type": "color",
+          "original": {
+            "$value": "{color.blue.50}",
+            "$description": "Focus border color (light theme)",
+            "attributes": {
+              "category": "border",
+              "type": "color"
+            },
+            "$type": "color"
+          },
+          "name": "rh-color-border-focus-on-light",
+          "path": [
+            "color",
+            "border",
+            "focus",
+            "on-light"
+          ]
+        },
+        "on-dark": {
+          "$value": "#92c5f9",
+          "$description": "Focus border color (dark theme)",
+          "attributes": {
+            "category": "border",
+            "type": "color",
+            "item": "focus",
+            "subitem": "on-dark",
+            "hex": "92c5f9",
+            "rgb": {
+              "r": 146,
+              "g": 197,
+              "b": 249,
+              "a": 1
+            },
+            "hsl": {
+              "h": 210.29126213592232,
+              "s": 89.56521739130436,
+              "l": 77.45098039215685,
+              "a": 1
+            },
+            "hsv": {
+              "h": 210.29126213592232,
+              "s": 0.4136546184738956,
+              "v": 0.9764705882352941,
+              "a": 1
+            },
+            "isLight": true
+          },
+          "filePath": "tokens/color/border.yml",
+          "isSource": true,
+          "$type": "color",
+          "original": {
+            "$value": "{color.blue.30}",
+            "$description": "Focus border color (dark theme)",
+            "attributes": {
+              "category": "border",
+              "type": "color"
+            },
+            "$type": "color"
+          },
+          "name": "rh-color-border-focus-on-dark",
+          "path": [
+            "color",
+            "border",
+            "focus",
+            "on-dark"
+          ]
+        }
+      },
       "destructive": {
         "_": {
           "$value": "light-dark(var(--rh-color-border-destructive-on-light, #b1380b), var(--rh-color-border-destructive-on-dark, #f0561d))",
@@ -2874,12 +3022,34 @@
       "10": {
         "$value": "#e9f7df",
         "$description": "Alert - success background",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              10,
+              0,
+              15,
+              10
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#E9F7DF",
           "$description": "Alert - success background",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                10,
+                0,
+                15,
+                10
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-10",
@@ -2917,12 +3087,34 @@
       "20": {
         "$value": "#d1f1bb",
         "$description": "Label - Filled (Green) border color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              20,
+              0,
+              30,
+              10
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#D1F1BB",
           "$description": "Label - Filled (Green) border color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                20,
+                0,
+                30,
+                10
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-20",
@@ -2959,11 +3151,33 @@
       },
       "30": {
         "$value": "#afdc8f",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              40,
+              0,
+              50,
+              10
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#AFDC8F",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                40,
+                0,
+                50,
+                10
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-30",
@@ -3000,11 +3214,33 @@
       },
       "40": {
         "$value": "#87bb62",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              60,
+              0,
+              80,
+              10
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#87BB62",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                60,
+                0,
+                80,
+                10
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-40",
@@ -3041,11 +3277,35 @@
       },
       "50": {
         "$value": "#63993d",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              70,
+              0,
+              100,
+              10
+            ],
+            "pantone": "7737 C"
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#63993D",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                70,
+                0,
+                100,
+                10
+              ],
+              "pantone": "7737 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-50",
@@ -3083,12 +3343,34 @@
       "60": {
         "$value": "#3d7317",
         "$description": "Alert - Success accent",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              75,
+              0,
+              100,
+              30
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#3D7317",
           "$description": "Alert - Success accent",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                75,
+                0,
+                100,
+                30
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-60",
@@ -3126,12 +3408,34 @@
       "70": {
         "$value": "#204d00",
         "$description": "Alert - Success title text",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              65,
+              0,
+              100,
+              60
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/green.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#204D00",
           "$description": "Alert - Success title text",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                65,
+                0,
+                100,
+                60
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-green-70",
@@ -3164,6 +3468,47 @@
           "color",
           "green",
           "70"
+        ]
+      },
+      "80": {
+        "$value": "#183301",
+        "filePath": "tokens/color/crayon/green.yml",
+        "isSource": true,
+        "$type": "color",
+        "original": {
+          "$value": "#183301",
+          "$type": "color"
+        },
+        "name": "rh-color-green-80",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "80",
+          "hex": "183301",
+          "rgb": {
+            "r": 24,
+            "g": 51,
+            "b": 1,
+            "a": 1
+          },
+          "hsl": {
+            "h": 92.39999999999999,
+            "s": 96.15384615384616,
+            "l": 10.196078431372548,
+            "a": 1
+          },
+          "hsv": {
+            "h": 92.39999999999999,
+            "s": 0.9803921568627452,
+            "v": 0.2,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "green",
+          "80"
         ]
       },
       "$extensions": {
@@ -3746,18 +4091,122 @@
           "green",
           "70-rgb"
         ]
+      },
+      "80-hsl": {
+        "$value": "92.39999999999999 96.15384615384616% 10.196078431372548%",
+        "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-80) h s l / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.green.80}",
+          "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-80) h s l / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-green-80-hsl",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "80-hsl",
+          "hex": "183301",
+          "rgb": {
+            "r": 24,
+            "g": 51,
+            "b": 1,
+            "a": 1
+          },
+          "hsl": {
+            "h": 92.39999999999999,
+            "s": 96.15384615384616,
+            "l": 10.196078431372548,
+            "a": 1
+          },
+          "hsv": {
+            "h": 92.39999999999999,
+            "s": 0.9803921568627452,
+            "v": 0.2,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "green",
+          "80-hsl"
+        ]
+      },
+      "80-rgb": {
+        "$value": "24 51 1",
+        "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-80) r g b / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.green.80}",
+          "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-80) r g b / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-green-80-rgb",
+        "attributes": {
+          "category": "color",
+          "type": "green",
+          "item": "80-rgb",
+          "hex": "183301",
+          "rgb": {
+            "r": 24,
+            "g": 51,
+            "b": 1,
+            "a": 1
+          },
+          "hsl": {
+            "h": 92.39999999999999,
+            "s": 96.15384615384616,
+            "l": 10.196078431372548,
+            "a": 1
+          },
+          "hsv": {
+            "h": 92.39999999999999,
+            "s": 0.9803921568627452,
+            "v": 0.2,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "green",
+          "80-rgb"
+        ]
       }
     },
     "orange": {
       "10": {
         "$value": "#ffe8cc",
         "$description": "Label - Filled (Orange) background color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              10,
+              20,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FFE8CC",
           "$description": "Label - Filled (Orange) background color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                10,
+                20,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-10",
@@ -3794,11 +4243,35 @@
       },
       "20": {
         "$value": "#fccb8f",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              20,
+              50,
+              0
+            ],
+            "pantone": "149 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FCCB8F",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                20,
+                50,
+                0
+              ],
+              "pantone": "149 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-20",
@@ -3836,12 +4309,36 @@
       "30": {
         "$value": "#f8ae54",
         "$description": "Label - Filled (Orange) border color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              35,
+              75,
+              0
+            ],
+            "pantone": "157 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F8AE54",
           "$description": "Label - Filled (Orange) border color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                35,
+                75,
+                0
+              ],
+              "pantone": "157 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-30",
@@ -3879,12 +4376,36 @@
       "40": {
         "$value": "#f5921b",
         "$description": "Label - Filled (Orange) accent color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              50,
+              100,
+              0
+            ],
+            "pantone": "144 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F5921B",
           "$description": "Label - Filled (Orange) accent color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                50,
+                100,
+                0
+              ],
+              "pantone": "144 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-40",
@@ -3922,12 +4443,36 @@
       "50": {
         "$value": "#ca6c0f",
         "$description": "Label - Filled (Orange) accent color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              75,
+              100,
+              10
+            ],
+            "pantone": "2019 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#CA6C0F",
           "$description": "Label - Filled (Orange) accent color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                75,
+                100,
+                10
+              ],
+              "pantone": "2019 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-50",
@@ -3964,11 +4509,35 @@
       },
       "60": {
         "$value": "#9e4a06",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              10,
+              80,
+              100,
+              10
+            ],
+            "pantone": "2020 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#9E4A06",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                10,
+                80,
+                100,
+                10
+              ],
+              "pantone": "2020 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-60",
@@ -4006,12 +4575,36 @@
       "70": {
         "$value": "#732e00",
         "$description": "Label - Filled (Orange) text color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              20,
+              90,
+              100,
+              20
+            ],
+            "pantone": "2021 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#732E00",
           "$description": "Label - Filled (Orange) text color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                20,
+                90,
+                100,
+                20
+              ],
+              "pantone": "2021 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-70",
@@ -4048,11 +4641,35 @@
       },
       "80": {
         "$value": "#4d1f00",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              20,
+              90,
+              100,
+              60
+            ],
+            "pantone": "168 C"
+          }
+        },
         "filePath": "tokens/color/crayon/orange.yml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#4D1F00",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                20,
+                90,
+                100,
+                60
+              ],
+              "pantone": "168 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-orange-80",
@@ -6422,12 +7039,34 @@
       "10": {
         "$value": "#e0f0ff",
         "$description": "Alert - Info background",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              10,
+              5,
+              0,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#E0F0FF",
           "$description": "Alert - Info background",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                10,
+                5,
+                0,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-10",
@@ -6465,12 +7104,36 @@
       "20": {
         "$value": "#b9dafc",
         "$description": "Label - Filled (Blue) border color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              35,
+              10,
+              0,
+              0
+            ],
+            "pantone": "277 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#B9DAFC",
           "$description": "Label - Filled (Blue) border color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                35,
+                10,
+                0,
+                0
+              ],
+              "pantone": "277 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-20",
@@ -6508,12 +7171,36 @@
       "30": {
         "$value": "#92c5f9",
         "$description": "Inline link (dark theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              60,
+              20,
+              0,
+              0
+            ],
+            "pantone": "278 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#92C5F9",
           "$description": "Inline link (dark theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                60,
+                20,
+                0,
+                0
+              ],
+              "pantone": "278 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-30",
@@ -6551,12 +7238,36 @@
       "40": {
         "$value": "#4394e5",
         "$description": "Alert - Info accent",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              70,
+              35,
+              0,
+              0
+            ],
+            "pantone": "279 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#4394E5",
           "$description": "Alert - Info accent",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                70,
+                35,
+                0,
+                0
+              ],
+              "pantone": "279 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-40",
@@ -6594,12 +7305,36 @@
       "50": {
         "$value": "#0066cc",
         "$description": "Label - Filled (Blue) accent color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              85,
+              55,
+              0,
+              5
+            ],
+            "pantone": "2387 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#0066CC",
           "$description": "Label - Filled (Blue) accent color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                85,
+                55,
+                0,
+                5
+              ],
+              "pantone": "2387 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-50",
@@ -6637,12 +7372,36 @@
       "60": {
         "$value": "#004d99",
         "$description": "Inline link hover (light theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              100,
+              80,
+              0,
+              10
+            ],
+            "pantone": "4152 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#004D99",
           "$description": "Inline link hover (light theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                100,
+                80,
+                0,
+                10
+              ],
+              "pantone": "4152 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-60",
@@ -6680,12 +7439,36 @@
       "70": {
         "$value": "#003366",
         "$description": "Alert - Info title text",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              100,
+              85,
+              20,
+              20
+            ],
+            "pantone": "4154 C"
+          }
+        },
         "filePath": "tokens/color/crayon/blue.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#003366",
           "$description": "Alert - Info title text",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                100,
+                85,
+                20,
+                20
+              ],
+              "pantone": "4154 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-blue-70",
@@ -6718,6 +7501,47 @@
           "color",
           "blue",
           "70"
+        ]
+      },
+      "80": {
+        "$value": "#032142",
+        "filePath": "tokens/color/crayon/blue.yaml",
+        "isSource": true,
+        "$type": "color",
+        "original": {
+          "$value": "#032142",
+          "$type": "color"
+        },
+        "name": "rh-color-blue-80",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "80",
+          "hex": "032142",
+          "rgb": {
+            "r": 3,
+            "g": 33,
+            "b": 66,
+            "a": 1
+          },
+          "hsl": {
+            "h": 211.42857142857144,
+            "s": 91.30434782608695,
+            "l": 13.529411764705884,
+            "a": 1
+          },
+          "hsv": {
+            "h": 211.42857142857144,
+            "s": 0.9545454545454545,
+            "v": 0.25882352941176473,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "blue",
+          "80"
         ]
       },
       "$extensions": {
@@ -7299,11 +8123,105 @@
           "blue",
           "70-rgb"
         ]
+      },
+      "80-hsl": {
+        "$value": "211.42857142857144 91.30434782608695% 13.529411764705884%",
+        "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-80) h s l / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.blue.80}",
+          "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-80) h s l / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-blue-80-hsl",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "80-hsl",
+          "hex": "032142",
+          "rgb": {
+            "r": 3,
+            "g": 33,
+            "b": 66,
+            "a": 1
+          },
+          "hsl": {
+            "h": 211.42857142857144,
+            "s": 91.30434782608695,
+            "l": 13.529411764705884,
+            "a": 1
+          },
+          "hsv": {
+            "h": 211.42857142857144,
+            "s": 0.9545454545454545,
+            "v": 0.25882352941176473,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "blue",
+          "80-hsl"
+        ]
+      },
+      "80-rgb": {
+        "$value": "3 33 66",
+        "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-80) r g b / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.blue.80}",
+          "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-80) r g b / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-blue-80-rgb",
+        "attributes": {
+          "category": "color",
+          "type": "blue",
+          "item": "80-rgb",
+          "hex": "032142",
+          "rgb": {
+            "r": 3,
+            "g": 33,
+            "b": 66,
+            "a": 1
+          },
+          "hsl": {
+            "h": 211.42857142857144,
+            "s": 91.30434782608695,
+            "l": 13.529411764705884,
+            "a": 1
+          },
+          "hsv": {
+            "h": 211.42857142857144,
+            "s": 0.9545454545454545,
+            "v": 0.25882352941176473,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "blue",
+          "80-rgb"
+        ]
       }
     },
     "white": {
       "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
       "$value": "#ffffff",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pantone": "White C"
+        }
+      },
       "attributes": {
         "type": "gray",
         "category": "color",
@@ -7334,6 +8252,18 @@
       "original": {
         "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
         "$value": "#ffffff",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "pantone": "White C"
+          }
+        },
         "attributes": {
           "type": "gray"
         },
@@ -7349,6 +8279,17 @@
       "10": {
         "$value": "#f2f2f2",
         "$description": "Tertiary surface (light scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              5
+            ]
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7380,6 +8321,17 @@
         "original": {
           "$value": "#F2F2F2",
           "$description": "Tertiary surface (light scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                5
+              ]
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7395,6 +8347,18 @@
       "20": {
         "$value": "#e0e0e0",
         "$description": "Secondary surface (light scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              12
+            ],
+            "pantone": "420 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7426,6 +8390,18 @@
         "original": {
           "$value": "#E0E0E0",
           "$description": "Secondary surface (light scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                12
+              ],
+              "pantone": "420 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7441,6 +8417,18 @@
       "30": {
         "$value": "#c7c7c7",
         "$description": "Subtle borders (light scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              22
+            ],
+            "pantone": "421 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7472,6 +8460,18 @@
         "original": {
           "$value": "#C7C7C7",
           "$description": "Subtle borders (light scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                22
+              ],
+              "pantone": "421 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7487,6 +8487,18 @@
       "40": {
         "$value": "#a3a3a3",
         "$description": "Subtle icon (hover state)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              36
+            ],
+            "pantone": "422 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7518,6 +8530,18 @@
         "original": {
           "$value": "#A3A3A3",
           "$description": "Subtle icon (hover state)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                36
+              ],
+              "pantone": "422 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7533,6 +8557,17 @@
       "45": {
         "$value": "#8c8c8c",
         "$description": "Call to action text decoration (unified theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              46
+            ]
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7564,6 +8599,17 @@
         "original": {
           "$value": "#8C8C8C",
           "$description": "Call to action text decoration (unified theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                46
+              ]
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7579,6 +8625,18 @@
       "50": {
         "$value": "#707070",
         "$description": "Subtle icon",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              56
+            ],
+            "pantone": "423 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7610,6 +8668,18 @@
         "original": {
           "$value": "#707070",
           "$description": "Subtle icon",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                56
+              ],
+              "pantone": "423 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7625,6 +8695,18 @@
       "60": {
         "$value": "#4d4d4d",
         "$description": "Secondary text (light scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              70
+            ],
+            "pantone": "424 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7656,6 +8738,18 @@
         "original": {
           "$value": "#4D4D4D",
           "$description": "Secondary text (light scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                70
+              ],
+              "pantone": "424 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7671,6 +8765,18 @@
       "70": {
         "$value": "#383838",
         "$description": "Tertiary surface (dark scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              78
+            ],
+            "pantone": "425 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7702,6 +8808,18 @@
         "original": {
           "$value": "#383838",
           "$description": "Tertiary surface (dark scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                78
+              ],
+              "pantone": "425 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7717,6 +8835,17 @@
       "80": {
         "$value": "#292929",
         "$description": "Alternative tertiary surface (not available for use with context provider)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              84
+            ]
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7748,6 +8877,17 @@
         "original": {
           "$value": "#292929",
           "$description": "Alternative tertiary surface (not available for use with context provider)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                84
+              ]
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7763,6 +8903,18 @@
       "90": {
         "$value": "#1f1f1f",
         "$description": "Secondary surface (dark scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              88
+            ],
+            "pantone": "426 C"
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7794,6 +8946,18 @@
         "original": {
           "$value": "#1F1F1F",
           "$description": "Secondary surface (dark scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                88
+              ],
+              "pantone": "426 C"
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -7809,6 +8973,17 @@
       "95": {
         "$value": "#151515",
         "$description": "Primary surface (dark scheme) or primary text (light scheme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              0,
+              0,
+              100
+            ]
+          }
+        },
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7840,6 +9015,17 @@
         "original": {
           "$value": "#151515",
           "$description": "Primary surface (dark scheme) or primary text (light scheme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                0,
+                0,
+                100
+              ]
+            }
+          },
           "attributes": {
             "type": "gray"
           },
@@ -8765,6 +9951,18 @@
     "black": {
       "$value": "#000000",
       "$description": "Brand black (avoid using)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            60,
+            40,
+            40,
+            100
+          ],
+          "pantone": "Black C"
+        }
+      },
       "attributes": {
         "type": "gray",
         "category": "color",
@@ -8795,6 +9993,18 @@
       "original": {
         "$value": "#000000",
         "$description": "Brand black (avoid using)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              60,
+              40,
+              40,
+              100
+            ],
+            "pantone": "Black C"
+          }
+        },
         "attributes": {
           "type": "gray"
         },
@@ -8810,12 +10020,34 @@
       "10": {
         "$value": "#ece6ff",
         "$description": "Label - Filled (Purple) background color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              10,
+              10,
+              0,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#ECE6FF",
           "$description": "Label - Filled (Purple) background color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                10,
+                10,
+                0,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-10",
@@ -8853,12 +10085,34 @@
       "20": {
         "$value": "#d0c5f4",
         "$description": "Inline link visited hover (dark theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              20,
+              25,
+              0,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#D0C5F4",
           "$description": "Inline link visited hover (dark theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                20,
+                25,
+                0,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-20",
@@ -8895,11 +10149,35 @@
       },
       "30": {
         "$value": "#b6a6e9",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              35,
+              40,
+              0,
+              0
+            ],
+            "pantone": "2092 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#B6A6E9",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                35,
+                40,
+                0,
+                0
+              ],
+              "pantone": "2092 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-30",
@@ -8937,12 +10215,36 @@
       "40": {
         "$value": "#876fd4",
         "$description": "Inline link visited (dark theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              60,
+              65,
+              0,
+              0
+            ],
+            "pantone": "2101 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#876FD4",
           "$description": "Inline link visited (dark theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                60,
+                65,
+                0,
+                0
+              ],
+              "pantone": "2101 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-40",
@@ -8979,11 +10281,35 @@
       },
       "50": {
         "$value": "#5e40be",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              75,
+              80,
+              0,
+              0
+            ],
+            "pantone": "2097 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#5E40BE",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                75,
+                80,
+                0,
+                0
+              ],
+              "pantone": "2097 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-50",
@@ -9021,12 +10347,36 @@
       "60": {
         "$value": "#3d2785",
         "$description": "Inline link visited (light theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              90,
+              100,
+              10,
+              0
+            ],
+            "pantone": "2105 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#3D2785",
           "$description": "Inline link visited (light theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                90,
+                100,
+                10,
+                0
+              ],
+              "pantone": "2105 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-60",
@@ -9064,12 +10414,36 @@
       "70": {
         "$value": "#21134d",
         "$description": "Inline link visited hover (light theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              100,
+              100,
+              20,
+              40
+            ],
+            "pantone": "273 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#21134D",
           "$description": "Inline link visited hover (light theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                100,
+                100,
+                20,
+                40
+              ],
+              "pantone": "273 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-70",
@@ -9106,11 +10480,35 @@
       },
       "80": {
         "$value": "#1b0d33",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              90,
+              100,
+              20,
+              75
+            ],
+            "pantone": "2695 C"
+          }
+        },
         "filePath": "tokens/color/crayon/purple.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#1B0D33",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                90,
+                100,
+                20,
+                75
+              ],
+              "pantone": "2695 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-purple-80",
@@ -9811,11 +11209,33 @@
     "red-orange": {
       "10": {
         "$value": "#ffe3d9",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              15,
+              10,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FFE3D9",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                15,
+                10,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-10",
@@ -9852,11 +11272,33 @@
       },
       "20": {
         "$value": "#fbbea8",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              30,
+              30,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FBBEA8",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                30,
+                30,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-20",
@@ -9893,11 +11335,33 @@
       },
       "30": {
         "$value": "#f89b78",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              50,
+              50,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F89B78",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                50,
+                50,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-30",
@@ -9934,11 +11398,33 @@
       },
       "40": {
         "$value": "#f4784a",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              70,
+              80,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F4784A",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                70,
+                80,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-40",
@@ -9975,11 +11461,35 @@
       },
       "50": {
         "$value": "#f0561d",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              80,
+              100,
+              0
+            ],
+            "pantone": "165 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F0561D",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                80,
+                100,
+                0
+              ],
+              "pantone": "165 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-50",
@@ -10016,11 +11526,33 @@
       },
       "60": {
         "$value": "#b1380b",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              90,
+              100,
+              20
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#B1380B",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                90,
+                100,
+                20
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-60",
@@ -10057,11 +11589,33 @@
       },
       "70": {
         "$value": "#731f00",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              90,
+              100,
+              40
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red-orange.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#731F00",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                90,
+                100,
+                40
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-orange-70",
@@ -10094,6 +11648,47 @@
           "color",
           "red-orange",
           "70"
+        ]
+      },
+      "80": {
+        "$value": "#4c1405",
+        "filePath": "tokens/color/crayon/red-orange.yaml",
+        "isSource": true,
+        "$type": "color",
+        "original": {
+          "$value": "#4C1405",
+          "$type": "color"
+        },
+        "name": "rh-color-red-orange-80",
+        "attributes": {
+          "category": "color",
+          "type": "red-orange",
+          "item": "80",
+          "hex": "4c1405",
+          "rgb": {
+            "r": 76,
+            "g": 20,
+            "b": 5,
+            "a": 1
+          },
+          "hsl": {
+            "h": 12.67605633802817,
+            "s": 87.65432098765433,
+            "l": 15.88235294117647,
+            "a": 1
+          },
+          "hsv": {
+            "h": 12.67605633802817,
+            "s": 0.9342105263157895,
+            "v": 0.2980392156862745,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "red-orange",
+          "80"
         ]
       },
       "$extensions": {
@@ -10676,16 +12271,120 @@
           "red-orange",
           "70-rgb"
         ]
+      },
+      "80-hsl": {
+        "$value": "12.67605633802817 87.65432098765433% 15.88235294117647%",
+        "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-80) h s l / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.red-orange.80}",
+          "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-80) h s l / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-red-orange-80-hsl",
+        "attributes": {
+          "category": "color",
+          "type": "red-orange",
+          "item": "80-hsl",
+          "hex": "4c1405",
+          "rgb": {
+            "r": 76,
+            "g": 20,
+            "b": 5,
+            "a": 1
+          },
+          "hsl": {
+            "h": 12.67605633802817,
+            "s": 87.65432098765433,
+            "l": 15.88235294117647,
+            "a": 1
+          },
+          "hsv": {
+            "h": 12.67605633802817,
+            "s": 0.9342105263157895,
+            "v": 0.2980392156862745,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "red-orange",
+          "80-hsl"
+        ]
+      },
+      "80-rgb": {
+        "$value": "76 20 5",
+        "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-80) r g b / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.red-orange.80}",
+          "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-80) r g b / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-red-orange-80-rgb",
+        "attributes": {
+          "category": "color",
+          "type": "red-orange",
+          "item": "80-rgb",
+          "hex": "4c1405",
+          "rgb": {
+            "r": 76,
+            "g": 20,
+            "b": 5,
+            "a": 1
+          },
+          "hsl": {
+            "h": 12.67605633802817,
+            "s": 87.65432098765433,
+            "l": 15.88235294117647,
+            "a": 1
+          },
+          "hsv": {
+            "h": 12.67605633802817,
+            "s": 0.9342105263157895,
+            "v": 0.2980392156862745,
+            "a": 1
+          },
+          "isLight": false
+        },
+        "path": [
+          "color",
+          "red-orange",
+          "80-rgb"
+        ]
       }
     },
     "red": {
       "5": {
         "$value": "#fef0f0",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              6,
+              1,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FEF0F0",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                6,
+                1,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-5",
@@ -10722,11 +12421,33 @@
       },
       "10": {
         "$value": "#fce3e3",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              12,
+              6,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FCE3E3",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                12,
+                6,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-10",
@@ -10764,12 +12485,36 @@
       "20": {
         "$value": "#fbc5c5",
         "$description": "Lightest brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              27,
+              13,
+              0
+            ],
+            "pantone": "176 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FBC5C5",
           "$description": "Lightest brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                27,
+                13,
+                0
+              ],
+              "pantone": "176 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-20",
@@ -10807,12 +12552,36 @@
       "30": {
         "$value": "#f9a8a8",
         "$description": "Lighter brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              41,
+              23,
+              0
+            ],
+            "pantone": "177 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F9A8A8",
           "$description": "Lighter brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                41,
+                23,
+                0
+              ],
+              "pantone": "177 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-30",
@@ -10850,12 +12619,36 @@
       "40": {
         "$value": "#f56e6e",
         "$description": "Light brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              70,
+              47,
+              0
+            ],
+            "pantone": "178 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#F56E6E",
           "$description": "Light brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                70,
+                47,
+                0
+              ],
+              "pantone": "178 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-40",
@@ -10893,12 +12686,36 @@
       "50": {
         "$value": "#ee0000",
         "$description": "Brand red (light and dark theme)",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              98,
+              85,
+              0
+            ],
+            "pantone": "1788 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#EE0000",
           "$description": "Brand red (light and dark theme)",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                98,
+                85,
+                0
+              ],
+              "pantone": "1788 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-50",
@@ -10936,12 +12753,36 @@
       "60": {
         "$value": "#a60000",
         "$description": "Dark brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              98,
+              85,
+              35
+            ],
+            "pantone": "1805 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#A60000",
           "$description": "Dark brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                98,
+                85,
+                35
+              ],
+              "pantone": "1805 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-60",
@@ -10979,12 +12820,36 @@
       "70": {
         "$value": "#5f0000",
         "$description": "Darker brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              98,
+              85,
+              70
+            ],
+            "pantone": "1815 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#5F0000",
           "$description": "Darker brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                98,
+                85,
+                70
+              ],
+              "pantone": "1815 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-70",
@@ -11022,12 +12887,36 @@
       "80": {
         "$value": "#3f0000",
         "$description": "Darkest brand red",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              98,
+              85,
+              85
+            ],
+            "pantone": "1817 C"
+          }
+        },
         "filePath": "tokens/color/crayon/red.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#3F0000",
           "$description": "Darkest brand red",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                98,
+                85,
+                85
+              ],
+              "pantone": "1817 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-red-80",
@@ -11812,12 +13701,34 @@
       "10": {
         "$value": "#daf2f2",
         "$description": "Alert - Default background",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              10,
+              0,
+              2,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#DAF2F2",
           "$description": "Alert - Default background",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                10,
+                0,
+                2,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-10",
@@ -11854,11 +13765,33 @@
       },
       "20": {
         "$value": "#b9e5e5",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              20,
+              0,
+              7,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#B9E5E5",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                20,
+                0,
+                7,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-20",
@@ -11896,12 +13829,36 @@
       "30": {
         "$value": "#9ad8d8",
         "$description": "Label (Cyan) border color",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              30,
+              5,
+              10,
+              0
+            ],
+            "pantone": "5523 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#9AD8D8",
           "$description": "Label (Cyan) border color",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                30,
+                5,
+                10,
+                0
+              ],
+              "pantone": "5523 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-30",
@@ -11938,11 +13895,35 @@
       },
       "40": {
         "$value": "#63bdbd",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              45,
+              10,
+              20,
+              0
+            ],
+            "pantone": "5503 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#63BDBD",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                45,
+                10,
+                20,
+                0
+              ],
+              "pantone": "5503 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-40",
@@ -11980,12 +13961,36 @@
       "50": {
         "$value": "#37a3a3",
         "$description": "Alert - Default accent",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              80,
+              10,
+              30,
+              10
+            ],
+            "pantone": "2234 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#37A3A3",
           "$description": "Alert - Default accent",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                80,
+                10,
+                30,
+                10
+              ],
+              "pantone": "2234 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-50",
@@ -12022,11 +14027,35 @@
       },
       "60": {
         "$value": "#147878",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              90,
+              10,
+              35,
+              20
+            ],
+            "pantone": "2237 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#147878",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                90,
+                10,
+                35,
+                20
+              ],
+              "pantone": "2237 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-60",
@@ -12064,12 +14093,36 @@
       "70": {
         "$value": "#004d4d",
         "$description": "Alert - Default title text",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              95,
+              40,
+              55,
+              40
+            ],
+            "pantone": "7722 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#004D4D",
           "$description": "Alert - Default title text",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                95,
+                40,
+                55,
+                40
+              ],
+              "pantone": "7722 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-70",
@@ -12106,11 +14159,35 @@
       },
       "80": {
         "$value": "#003333",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              95,
+              40,
+              55,
+              70
+            ],
+            "pantone": "4168 C"
+          }
+        },
         "filePath": "tokens/color/crayon/teal.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#003333",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                95,
+                40,
+                55,
+                70
+              ],
+              "pantone": "4168 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-teal-80",
@@ -12812,12 +14889,34 @@
       "10": {
         "$value": "#fff4cc",
         "$description": "Alert - Warning background",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              5,
+              25,
+              0
+            ]
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FFF4CC",
           "$description": "Alert - Warning background",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                5,
+                25,
+                0
+              ]
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-10",
@@ -12854,11 +14953,35 @@
       },
       "20": {
         "$value": "#ffe072",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              10,
+              50,
+              0
+            ],
+            "pantone": "2002 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FFE072",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                10,
+                50,
+                0
+              ],
+              "pantone": "2002 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-20",
@@ -12895,11 +15018,35 @@
       },
       "30": {
         "$value": "#ffcc17",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              15,
+              100,
+              0
+            ],
+            "pantone": "108 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#FFCC17",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                15,
+                100,
+                0
+              ],
+              "pantone": "108 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-30",
@@ -12937,12 +15084,36 @@
       "40": {
         "$value": "#dca614",
         "$description": "Alert - Warning accent",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              35,
+              100,
+              0
+            ],
+            "pantone": "110 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#DCA614",
           "$description": "Alert - Warning accent",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                35,
+                100,
+                0
+              ],
+              "pantone": "110 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-40",
@@ -12979,11 +15150,35 @@
       },
       "50": {
         "$value": "#b98412",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              0,
+              55,
+              100,
+              20
+            ],
+            "pantone": "3547 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#B98412",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                0,
+                55,
+                100,
+                20
+              ],
+              "pantone": "3547 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-50",
@@ -13020,11 +15215,35 @@
       },
       "60": {
         "$value": "#96640f",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              30,
+              70,
+              100,
+              20
+            ],
+            "pantone": "4027 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#96640F",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                30,
+                70,
+                100,
+                20
+              ],
+              "pantone": "4027 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-60",
@@ -13062,12 +15281,36 @@
       "70": {
         "$value": "#73480b",
         "$description": "Alert - Warning title text",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              40,
+              85,
+              100,
+              40
+            ],
+            "pantone": "732 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#73480B",
           "$description": "Alert - Warning title text",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                40,
+                85,
+                100,
+                40
+              ],
+              "pantone": "732 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-70",
@@ -13104,11 +15347,35 @@
       },
       "80": {
         "$value": "#54330b",
+        "$extensions": {
+          "com.redhat.print": {
+            "colorSpace": "cmyk",
+            "components": [
+              40,
+              80,
+              100,
+              60
+            ],
+            "pantone": "4625 C"
+          }
+        },
         "filePath": "tokens/color/crayon/yellow.yaml",
         "isSource": true,
         "$type": "color",
         "original": {
           "$value": "#54330B",
+          "$extensions": {
+            "com.redhat.print": {
+              "colorSpace": "cmyk",
+              "components": [
+                40,
+                80,
+                100,
+                60
+              ],
+              "pantone": "4625 C"
+            }
+          },
           "$type": "color"
         },
         "name": "rh-color-yellow-80",

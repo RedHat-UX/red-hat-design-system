@@ -15,13 +15,23 @@ export declare class RhFooterLinks extends LitElement {
     /**
      * Visually hides the header slot content while preserving it for screen
      * readers. The `aria-labelledby` association remains active regardless
-     * of this setting. USE when the heading should be accessible but not
+     * of this setting. Use when the heading should be accessible but not
      * visible (e.g. social links group). Defaults to false.
      */
     headerHidden: boolean;
+    /**
+     * Accessible name for this link group, applied as `aria-label` on the host
+     * when no `header` is slotted. Use to name a social links list
+     * (`role="list"`). Localize surrounding words; keep "Red Hat" except in
+     * Simplified Chinese (`红帽`). Override only when the accounts are not
+     * corporate Red Hat. Defaults to undefined. A slotted header still wins
+     * via `aria-labelledby` on the inner `<ul>`.
+     */
+    accessibleLabel?: string;
     protected slots: SlotController;
     connectedCallback(): void;
     updateAccessibility(): void;
+    updated(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

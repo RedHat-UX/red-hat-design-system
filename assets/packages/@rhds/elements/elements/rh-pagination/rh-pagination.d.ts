@@ -5,7 +5,7 @@ import { LitElement } from 'lit';
  * Use it when content is too long for a single view. Authors must
  * provide a single `<ol>` with `<li><a>` page links where the active
  * page should have `aria-current="page"`. Tab navigates between controls;
- * Enter activates. Supports box and open variants, default and small sizes.
+ * Enter activates. Supports box and borderless variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
  */

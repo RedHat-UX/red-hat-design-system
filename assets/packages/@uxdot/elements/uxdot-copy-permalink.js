@@ -5,8 +5,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark))
+const styles = css `:host{display:flex;margin-block-end:var(--rh-space-lg,16px);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default,3px);display:none;align-items:center}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))
     );color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}`;
 let UxdotCopyPermalink = class UxdotCopyPermalink extends LitElement {
     constructor() {
@@ -52,6 +53,7 @@ __decorate([
     property({ attribute: 'copied-text' })
 ], UxdotCopyPermalink.prototype, "copiedText", void 0);
 UxdotCopyPermalink = __decorate([
+    themable,
     customElement('uxdot-copy-permalink')
 ], UxdotCopyPermalink);
 export { UxdotCopyPermalink };

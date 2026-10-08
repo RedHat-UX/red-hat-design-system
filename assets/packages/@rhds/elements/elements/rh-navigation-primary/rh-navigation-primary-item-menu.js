@@ -4,6 +4,7 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 import { css } from "lit";
@@ -68,7 +69,8 @@ __decorate([
     state()
 ], RhNavigationPrimaryItemMenu.prototype, "compact", void 0);
 RhNavigationPrimaryItemMenu = __decorate([
-    customElement('rh-navigation-primary-item-menu')
+    customElement('rh-navigation-primary-item-menu'),
+    themable
 ], RhNavigationPrimaryItemMenu);
 export { RhNavigationPrimaryItemMenu };
 //# sourceMappingURL=rh-navigation-primary-item-menu.js.map

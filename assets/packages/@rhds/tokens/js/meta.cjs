@@ -9,7 +9,7 @@ class TokenMetaMap {
   get size(): number { return this.#map.size; }
   [Symbol.iterator]() { return this.#map[Symbol.iterator](); }
   constructor(entries: Record<TokenName, DesignToken>) { this.#map = new Map(Object.entries(entries)) as Map<TokenName, DesignToken>; }
-  get(key: '--rh-animation-speed' | '--rh-animation-timing' | '--rh-border-width-sm' | '--rh-border-width-md' | '--rh-border-width-lg' | '--rh-border-radius-sharp' | '--rh-border-radius-default' | '--rh-border-radius-pill' | '--rh-breakpoint-2xs-max' | '--rh-breakpoint-xs' | '--rh-breakpoint-xs-max' | '--rh-breakpoint-sm' | '--rh-breakpoint-sm-max' | '--rh-breakpoint-md' | '--rh-breakpoint-md-max' | '--rh-breakpoint-lg' | '--rh-breakpoint-lg-max' | '--rh-breakpoint-xl' | '--rh-breakpoint-xl-max' | '--rh-breakpoint-2xl' | '--rh-color-accent-base' | '--rh-color-accent-base-on-light' | '--rh-color-accent-base-on-dark' | '--rh-color-accent-brand' | '--rh-color-accent-brand-on-light' | '--rh-color-accent-brand-on-dark' | '--rh-color-border-strong' | '--rh-color-border-strong-on-light' | '--rh-color-border-strong-on-dark' | '--rh-color-border-subtle' | '--rh-color-border-subtle-on-light' | '--rh-color-border-subtle-on-dark' | '--rh-color-border-interactive' | '--rh-color-border-interactive-on-light' | '--rh-color-border-interactive-on-dark' | '--rh-color-border-destructive' | '--rh-color-border-destructive-on-light' | '--rh-color-border-destructive-on-dark' | '--rh-color-border-status-danger' | '--rh-color-border-status-danger-on-light' | '--rh-color-border-status-danger-on-dark' | '--rh-color-border-status-caution' | '--rh-color-border-status-caution-on-light' | '--rh-color-border-status-caution-on-dark' | '--rh-color-border-status-warning' | '--rh-color-border-status-warning-on-light' | '--rh-color-border-status-warning-on-dark' | '--rh-color-border-status-neutral' | '--rh-color-border-status-neutral-on-light' | '--rh-color-border-status-neutral-on-dark' | '--rh-color-border-status-info' | '--rh-color-border-status-info-on-light' | '--rh-color-border-status-info-on-dark' | '--rh-color-border-status-success' | '--rh-color-border-status-success-on-light' | '--rh-color-border-status-success-on-dark' | '--rh-color-brand-red' | '--rh-color-brand-red-on-light' | '--rh-color-brand-red-on-dark' | '--rh-color-brand-red-lightest' | '--rh-color-brand-red-lighter' | '--rh-color-brand-red-light' | '--rh-color-brand-red-dark' | '--rh-color-brand-red-darker' | '--rh-color-brand-red-darkest' | '--rh-color-green-10' | '--rh-color-green-20' | '--rh-color-green-30' | '--rh-color-green-40' | '--rh-color-green-50' | '--rh-color-green-60' | '--rh-color-green-70' | '--rh-color-green-10-hsl' | '--rh-color-green-10-rgb' | '--rh-color-green-20-hsl' | '--rh-color-green-20-rgb' | '--rh-color-green-30-hsl' | '--rh-color-green-30-rgb' | '--rh-color-green-40-hsl' | '--rh-color-green-40-rgb' | '--rh-color-green-50-hsl' | '--rh-color-green-50-rgb' | '--rh-color-green-60-hsl' | '--rh-color-green-60-rgb' | '--rh-color-green-70-hsl' | '--rh-color-green-70-rgb' | '--rh-color-orange-10' | '--rh-color-orange-20' | '--rh-color-orange-30' | '--rh-color-orange-40' | '--rh-color-orange-50' | '--rh-color-orange-60' | '--rh-color-orange-70' | '--rh-color-orange-80' | '--rh-color-orange-10-hsl' | '--rh-color-orange-10-rgb' | '--rh-color-orange-20-hsl' | '--rh-color-orange-20-rgb' | '--rh-color-orange-30-hsl' | '--rh-color-orange-30-rgb' | '--rh-color-orange-40-hsl' | '--rh-color-orange-40-rgb' | '--rh-color-orange-50-hsl' | '--rh-color-orange-50-rgb' | '--rh-color-orange-60-hsl' | '--rh-color-orange-60-rgb' | '--rh-color-orange-70-hsl' | '--rh-color-orange-70-rgb' | '--rh-color-orange-80-hsl' | '--rh-color-orange-80-rgb' | '--rh-color-icon-primary' | '--rh-color-icon-primary-on-light' | '--rh-color-icon-primary-on-dark' | '--rh-color-icon-secondary' | '--rh-color-icon-secondary-on-light' | '--rh-color-icon-secondary-on-dark' | '--rh-color-icon-subtle' | '--rh-color-icon-subtle-hover' | '--rh-color-icon-status-danger' | '--rh-color-icon-status-danger-on-light' | '--rh-color-icon-status-danger-on-dark' | '--rh-color-icon-status-caution' | '--rh-color-icon-status-caution-on-light' | '--rh-color-icon-status-caution-on-dark' | '--rh-color-icon-status-warning' | '--rh-color-icon-status-warning-on-light' | '--rh-color-icon-status-warning-on-dark' | '--rh-color-icon-status-default' | '--rh-color-icon-status-default-on-light' | '--rh-color-icon-status-default-on-dark' | '--rh-color-icon-status-neutral' | '--rh-color-icon-status-neutral-on-light' | '--rh-color-icon-status-neutral-on-dark' | '--rh-color-icon-status-info' | '--rh-color-icon-status-info-on-light' | '--rh-color-icon-status-info-on-dark' | '--rh-color-icon-status-success' | '--rh-color-icon-status-success-on-light' | '--rh-color-icon-status-success-on-dark' | '--rh-color-canvas-white' | '--rh-color-canvas-black' | '--rh-color-canvas-white-hsl' | '--rh-color-canvas-white-rgb' | '--rh-color-canvas-black-hsl' | '--rh-color-canvas-black-rgb' | '--rh-color-blue-10' | '--rh-color-blue-20' | '--rh-color-blue-30' | '--rh-color-blue-40' | '--rh-color-blue-50' | '--rh-color-blue-60' | '--rh-color-blue-70' | '--rh-color-blue-10-hsl' | '--rh-color-blue-10-rgb' | '--rh-color-blue-20-hsl' | '--rh-color-blue-20-rgb' | '--rh-color-blue-30-hsl' | '--rh-color-blue-30-rgb' | '--rh-color-blue-40-hsl' | '--rh-color-blue-40-rgb' | '--rh-color-blue-50-hsl' | '--rh-color-blue-50-rgb' | '--rh-color-blue-60-hsl' | '--rh-color-blue-60-rgb' | '--rh-color-blue-70-hsl' | '--rh-color-blue-70-rgb' | '--rh-color-white' | '--rh-color-gray-10' | '--rh-color-gray-20' | '--rh-color-gray-30' | '--rh-color-gray-40' | '--rh-color-gray-45' | '--rh-color-gray-50' | '--rh-color-gray-60' | '--rh-color-gray-70' | '--rh-color-gray-80' | '--rh-color-gray-90' | '--rh-color-gray-95' | '--rh-color-gray-10-hsl' | '--rh-color-gray-10-rgb' | '--rh-color-gray-20-hsl' | '--rh-color-gray-20-rgb' | '--rh-color-gray-30-hsl' | '--rh-color-gray-30-rgb' | '--rh-color-gray-40-hsl' | '--rh-color-gray-40-rgb' | '--rh-color-gray-45-hsl' | '--rh-color-gray-45-rgb' | '--rh-color-gray-50-hsl' | '--rh-color-gray-50-rgb' | '--rh-color-gray-60-hsl' | '--rh-color-gray-60-rgb' | '--rh-color-gray-70-hsl' | '--rh-color-gray-70-rgb' | '--rh-color-gray-80-hsl' | '--rh-color-gray-80-rgb' | '--rh-color-gray-90-hsl' | '--rh-color-gray-90-rgb' | '--rh-color-gray-95-hsl' | '--rh-color-gray-95-rgb' | '--rh-color-black' | '--rh-color-purple-10' | '--rh-color-purple-20' | '--rh-color-purple-30' | '--rh-color-purple-40' | '--rh-color-purple-50' | '--rh-color-purple-60' | '--rh-color-purple-70' | '--rh-color-purple-80' | '--rh-color-purple-10-hsl' | '--rh-color-purple-10-rgb' | '--rh-color-purple-20-hsl' | '--rh-color-purple-20-rgb' | '--rh-color-purple-30-hsl' | '--rh-color-purple-30-rgb' | '--rh-color-purple-40-hsl' | '--rh-color-purple-40-rgb' | '--rh-color-purple-50-hsl' | '--rh-color-purple-50-rgb' | '--rh-color-purple-60-hsl' | '--rh-color-purple-60-rgb' | '--rh-color-purple-70-hsl' | '--rh-color-purple-70-rgb' | '--rh-color-purple-80-hsl' | '--rh-color-purple-80-rgb' | '--rh-color-red-orange-10' | '--rh-color-red-orange-20' | '--rh-color-red-orange-30' | '--rh-color-red-orange-40' | '--rh-color-red-orange-50' | '--rh-color-red-orange-60' | '--rh-color-red-orange-70' | '--rh-color-red-orange-10-hsl' | '--rh-color-red-orange-10-rgb' | '--rh-color-red-orange-20-hsl' | '--rh-color-red-orange-20-rgb' | '--rh-color-red-orange-30-hsl' | '--rh-color-red-orange-30-rgb' | '--rh-color-red-orange-40-hsl' | '--rh-color-red-orange-40-rgb' | '--rh-color-red-orange-50-hsl' | '--rh-color-red-orange-50-rgb' | '--rh-color-red-orange-60-hsl' | '--rh-color-red-orange-60-rgb' | '--rh-color-red-orange-70-hsl' | '--rh-color-red-orange-70-rgb' | '--rh-color-red-5' | '--rh-color-red-10' | '--rh-color-red-20' | '--rh-color-red-30' | '--rh-color-red-40' | '--rh-color-red-50' | '--rh-color-red-60' | '--rh-color-red-70' | '--rh-color-red-80' | '--rh-color-red-5-hsl' | '--rh-color-red-5-rgb' | '--rh-color-red-10-hsl' | '--rh-color-red-10-rgb' | '--rh-color-red-20-hsl' | '--rh-color-red-20-rgb' | '--rh-color-red-30-hsl' | '--rh-color-red-30-rgb' | '--rh-color-red-40-hsl' | '--rh-color-red-40-rgb' | '--rh-color-red-50-hsl' | '--rh-color-red-50-rgb' | '--rh-color-red-60-hsl' | '--rh-color-red-60-rgb' | '--rh-color-red-70-hsl' | '--rh-color-red-70-rgb' | '--rh-color-red-80-hsl' | '--rh-color-red-80-rgb' | '--rh-color-teal-10' | '--rh-color-teal-20' | '--rh-color-teal-30' | '--rh-color-teal-40' | '--rh-color-teal-50' | '--rh-color-teal-60' | '--rh-color-teal-70' | '--rh-color-teal-80' | '--rh-color-teal-10-hsl' | '--rh-color-teal-10-rgb' | '--rh-color-teal-20-hsl' | '--rh-color-teal-20-rgb' | '--rh-color-teal-30-hsl' | '--rh-color-teal-30-rgb' | '--rh-color-teal-40-hsl' | '--rh-color-teal-40-rgb' | '--rh-color-teal-50-hsl' | '--rh-color-teal-50-rgb' | '--rh-color-teal-60-hsl' | '--rh-color-teal-60-rgb' | '--rh-color-teal-70-hsl' | '--rh-color-teal-70-rgb' | '--rh-color-teal-80-hsl' | '--rh-color-teal-80-rgb' | '--rh-color-yellow-10' | '--rh-color-yellow-20' | '--rh-color-yellow-30' | '--rh-color-yellow-40' | '--rh-color-yellow-50' | '--rh-color-yellow-60' | '--rh-color-yellow-70' | '--rh-color-yellow-80' | '--rh-color-yellow-10-hsl' | '--rh-color-yellow-10-rgb' | '--rh-color-yellow-20-hsl' | '--rh-color-yellow-20-rgb' | '--rh-color-yellow-30-hsl' | '--rh-color-yellow-30-rgb' | '--rh-color-yellow-40-hsl' | '--rh-color-yellow-40-rgb' | '--rh-color-yellow-50-hsl' | '--rh-color-yellow-50-rgb' | '--rh-color-yellow-60-hsl' | '--rh-color-yellow-60-rgb' | '--rh-color-yellow-70-hsl' | '--rh-color-yellow-70-rgb' | '--rh-color-yellow-80-hsl' | '--rh-color-yellow-80-rgb' | '--rh-color-interactive-primary-default' | '--rh-color-interactive-primary-default-on-light' | '--rh-color-interactive-primary-default-on-dark' | '--rh-color-interactive-primary-hover' | '--rh-color-interactive-primary-hover-on-light' | '--rh-color-interactive-primary-hover-on-dark' | '--rh-color-interactive-primary-active' | '--rh-color-interactive-primary-active-on-light' | '--rh-color-interactive-primary-active-on-dark' | '--rh-color-interactive-primary-focus' | '--rh-color-interactive-primary-focus-on-light' | '--rh-color-interactive-primary-focus-on-dark' | '--rh-color-interactive-primary-visited-default' | '--rh-color-interactive-primary-visited-default-on-light' | '--rh-color-interactive-primary-visited-default-on-dark' | '--rh-color-interactive-primary-visited-hover' | '--rh-color-interactive-primary-visited-hover-on-light' | '--rh-color-interactive-primary-visited-hover-on-dark' | '--rh-color-interactive-primary-visited-active' | '--rh-color-interactive-primary-visited-active-on-light' | '--rh-color-interactive-primary-visited-active-on-dark' | '--rh-color-interactive-primary-visited-focus' | '--rh-color-interactive-primary-visited-focus-on-light' | '--rh-color-interactive-primary-visited-focus-on-dark' | '--rh-color-interactive-secondary-default' | '--rh-color-interactive-secondary-default-on-light' | '--rh-color-interactive-secondary-default-on-dark' | '--rh-color-interactive-secondary-hover' | '--rh-color-interactive-secondary-hover-on-light' | '--rh-color-interactive-secondary-hover-on-dark' | '--rh-color-interactive-secondary-active' | '--rh-color-interactive-secondary-active-on-light' | '--rh-color-interactive-secondary-active-on-dark' | '--rh-color-interactive-secondary-focus' | '--rh-color-interactive-secondary-focus-on-light' | '--rh-color-interactive-secondary-focus-on-dark' | '--rh-color-interactive-secondary-visited-default' | '--rh-color-interactive-secondary-visited-default-on-light' | '--rh-color-interactive-secondary-visited-default-on-dark' | '--rh-color-interactive-secondary-visited-hover' | '--rh-color-interactive-secondary-visited-hover-on-light' | '--rh-color-interactive-secondary-visited-hover-on-dark' | '--rh-color-interactive-secondary-visited-active' | '--rh-color-interactive-secondary-visited-active-on-light' | '--rh-color-interactive-secondary-visited-active-on-dark' | '--rh-color-interactive-secondary-visited-focus' | '--rh-color-interactive-secondary-visited-focus-on-light' | '--rh-color-interactive-secondary-visited-focus-on-dark' | '--rh-color-interactive-blue-lightest' | '--rh-color-interactive-blue-lighter' | '--rh-color-interactive-blue-darker' | '--rh-color-interactive-blue-darkest' | '--rh-color-interactive-purple-lightest' | '--rh-color-interactive-purple-lighter' | '--rh-color-interactive-purple-darker' | '--rh-color-interactive-purple-darkest' | '--rh-color-status-danger' | '--rh-color-status-danger-on-light' | '--rh-color-status-danger-on-dark' | '--rh-color-status-caution' | '--rh-color-status-caution-on-light' | '--rh-color-status-caution-on-dark' | '--rh-color-status-warning' | '--rh-color-status-warning-on-light' | '--rh-color-status-warning-on-dark' | '--rh-color-status-neutral' | '--rh-color-status-neutral-on-light' | '--rh-color-status-neutral-on-dark' | '--rh-color-status-note' | '--rh-color-status-note-on-light' | '--rh-color-status-note-on-dark' | '--rh-color-status-info' | '--rh-color-status-info-on-light' | '--rh-color-status-info-on-dark' | '--rh-color-status-success' | '--rh-color-status-success-on-light' | '--rh-color-status-success-on-dark' | '--rh-color-surface' | '--rh-color-surface-lightest' | '--rh-color-surface-lighter' | '--rh-color-surface-light' | '--rh-color-surface-dark' | '--rh-color-surface-dark-alt' | '--rh-color-surface-darker' | '--rh-color-surface-darkest' | '--rh-color-surface-status-danger' | '--rh-color-surface-status-danger-on-light' | '--rh-color-surface-status-danger-on-dark' | '--rh-color-surface-status-caution' | '--rh-color-surface-status-caution-on-light' | '--rh-color-surface-status-caution-on-dark' | '--rh-color-surface-status-warning' | '--rh-color-surface-status-warning-on-light' | '--rh-color-surface-status-warning-on-dark' | '--rh-color-surface-status-default' | '--rh-color-surface-status-default-on-light' | '--rh-color-surface-status-default-on-dark' | '--rh-color-surface-status-neutral' | '--rh-color-surface-status-neutral-on-light' | '--rh-color-surface-status-neutral-on-dark' | '--rh-color-surface-status-info' | '--rh-color-surface-status-info-on-light' | '--rh-color-surface-status-info-on-dark' | '--rh-color-surface-status-success' | '--rh-color-surface-status-success-on-light' | '--rh-color-surface-status-success-on-dark' | '--rh-color-text-primary' | '--rh-color-text-primary-on-light' | '--rh-color-text-primary-on-dark' | '--rh-color-text-secondary' | '--rh-color-text-secondary-on-light' | '--rh-color-text-secondary-on-dark' | '--rh-color-text-brand' | '--rh-color-text-brand-on-light' | '--rh-color-text-brand-on-dark' | '--rh-color-white-hsl' | '--rh-color-white-rgb' | '--rh-color-black-hsl' | '--rh-color-black-rgb' | '--rh-font-family-heading' | '--rh-font-family-body-text' | '--rh-font-family-code' | '--rh-font-family-lang-ar' | '--rh-font-family-lang-he' | '--rh-font-family-lang-ja' | '--rh-font-family-lang-ko' | '--rh-font-family-lang-hi' | '--rh-font-family-lang-th' | '--rh-font-family-lang-zh-cn' | '--rh-font-family-lang-zh-hk' | '--rh-font-size-body-text-xs' | '--rh-font-size-body-text-sm' | '--rh-font-size-body-text-md' | '--rh-font-size-body-text-lg' | '--rh-font-size-body-text-xl' | '--rh-font-size-body-text-2xl' | '--rh-font-size-code-xs' | '--rh-font-size-code-sm' | '--rh-font-size-code-md' | '--rh-font-size-code-lg' | '--rh-font-size-code-xl' | '--rh-font-size-code-2xl' | '--rh-font-size-heading-xs' | '--rh-font-size-heading-sm' | '--rh-font-size-heading-md' | '--rh-font-size-heading-lg' | '--rh-font-size-heading-xl' | '--rh-font-size-heading-2xl' | '--rh-letter-spacing-body-text' | '--rh-size-icon-01' | '--rh-size-icon-02' | '--rh-size-icon-03' | '--rh-size-icon-04' | '--rh-size-icon-05' | '--rh-size-icon-06' | '--rh-size-icon-07' | '--rh-size-icon-08' | '--rh-size-icon-09' | '--rh-media-xs' | '--rh-media-sm' | '--rh-media-md' | '--rh-media-lg' | '--rh-media-xl' | '--rh-media-2xl' | '--rh-opacity-0' | '--rh-opacity-10' | '--rh-opacity-20' | '--rh-opacity-30' | '--rh-opacity-40' | '--rh-opacity-50' | '--rh-opacity-60' | '--rh-opacity-70' | '--rh-opacity-80' | '--rh-opacity-90' | '--rh-opacity-100' | '--rh-box-shadow-sm' | '--rh-box-shadow-md' | '--rh-box-shadow-lg' | '--rh-box-shadow-xl' | '--rh-length-4xs' | '--rh-length-3xs' | '--rh-length-2xs' | '--rh-length-xs' | '--rh-length-sm' | '--rh-length-md' | '--rh-length-lg' | '--rh-length-xl' | '--rh-length-2xl' | '--rh-length-3xl' | '--rh-length-4xl' | '--rh-length-5xl' | '--rh-length-6xl' | '--rh-length-7xl' | '--rh-space-xs' | '--rh-space-sm' | '--rh-space-md' | '--rh-space-lg' | '--rh-space-xl' | '--rh-space-2xl' | '--rh-space-3xl' | '--rh-space-4xl' | '--rh-space-5xl' | '--rh-space-6xl' | '--rh-space-7xl'): DesignToken<string>;
+  get(key: '--rh-animation-speed' | '--rh-animation-timing' | '--rh-border-width-sm' | '--rh-border-width-md' | '--rh-border-width-lg' | '--rh-border-radius-sharp' | '--rh-border-radius-default' | '--rh-border-radius-pill' | '--rh-breakpoint-2xs-max' | '--rh-breakpoint-xs' | '--rh-breakpoint-xs-max' | '--rh-breakpoint-sm' | '--rh-breakpoint-sm-max' | '--rh-breakpoint-md' | '--rh-breakpoint-md-max' | '--rh-breakpoint-lg' | '--rh-breakpoint-lg-max' | '--rh-breakpoint-xl' | '--rh-breakpoint-xl-max' | '--rh-breakpoint-2xl' | '--rh-color-accent-base' | '--rh-color-accent-base-on-light' | '--rh-color-accent-base-on-dark' | '--rh-color-accent-brand' | '--rh-color-accent-brand-on-light' | '--rh-color-accent-brand-on-dark' | '--rh-color-border-strong' | '--rh-color-border-strong-on-light' | '--rh-color-border-strong-on-dark' | '--rh-color-border-subtle' | '--rh-color-border-subtle-on-light' | '--rh-color-border-subtle-on-dark' | '--rh-color-border-interactive' | '--rh-color-border-interactive-on-light' | '--rh-color-border-interactive-on-dark' | '--rh-color-border-focus' | '--rh-color-border-focus-on-light' | '--rh-color-border-focus-on-dark' | '--rh-color-border-destructive' | '--rh-color-border-destructive-on-light' | '--rh-color-border-destructive-on-dark' | '--rh-color-border-status-danger' | '--rh-color-border-status-danger-on-light' | '--rh-color-border-status-danger-on-dark' | '--rh-color-border-status-caution' | '--rh-color-border-status-caution-on-light' | '--rh-color-border-status-caution-on-dark' | '--rh-color-border-status-warning' | '--rh-color-border-status-warning-on-light' | '--rh-color-border-status-warning-on-dark' | '--rh-color-border-status-neutral' | '--rh-color-border-status-neutral-on-light' | '--rh-color-border-status-neutral-on-dark' | '--rh-color-border-status-info' | '--rh-color-border-status-info-on-light' | '--rh-color-border-status-info-on-dark' | '--rh-color-border-status-success' | '--rh-color-border-status-success-on-light' | '--rh-color-border-status-success-on-dark' | '--rh-color-brand-red' | '--rh-color-brand-red-on-light' | '--rh-color-brand-red-on-dark' | '--rh-color-brand-red-lightest' | '--rh-color-brand-red-lighter' | '--rh-color-brand-red-light' | '--rh-color-brand-red-dark' | '--rh-color-brand-red-darker' | '--rh-color-brand-red-darkest' | '--rh-color-green-10' | '--rh-color-green-20' | '--rh-color-green-30' | '--rh-color-green-40' | '--rh-color-green-50' | '--rh-color-green-60' | '--rh-color-green-70' | '--rh-color-green-80' | '--rh-color-green-10-hsl' | '--rh-color-green-10-rgb' | '--rh-color-green-20-hsl' | '--rh-color-green-20-rgb' | '--rh-color-green-30-hsl' | '--rh-color-green-30-rgb' | '--rh-color-green-40-hsl' | '--rh-color-green-40-rgb' | '--rh-color-green-50-hsl' | '--rh-color-green-50-rgb' | '--rh-color-green-60-hsl' | '--rh-color-green-60-rgb' | '--rh-color-green-70-hsl' | '--rh-color-green-70-rgb' | '--rh-color-green-80-hsl' | '--rh-color-green-80-rgb' | '--rh-color-orange-10' | '--rh-color-orange-20' | '--rh-color-orange-30' | '--rh-color-orange-40' | '--rh-color-orange-50' | '--rh-color-orange-60' | '--rh-color-orange-70' | '--rh-color-orange-80' | '--rh-color-orange-10-hsl' | '--rh-color-orange-10-rgb' | '--rh-color-orange-20-hsl' | '--rh-color-orange-20-rgb' | '--rh-color-orange-30-hsl' | '--rh-color-orange-30-rgb' | '--rh-color-orange-40-hsl' | '--rh-color-orange-40-rgb' | '--rh-color-orange-50-hsl' | '--rh-color-orange-50-rgb' | '--rh-color-orange-60-hsl' | '--rh-color-orange-60-rgb' | '--rh-color-orange-70-hsl' | '--rh-color-orange-70-rgb' | '--rh-color-orange-80-hsl' | '--rh-color-orange-80-rgb' | '--rh-color-icon-primary' | '--rh-color-icon-primary-on-light' | '--rh-color-icon-primary-on-dark' | '--rh-color-icon-secondary' | '--rh-color-icon-secondary-on-light' | '--rh-color-icon-secondary-on-dark' | '--rh-color-icon-subtle' | '--rh-color-icon-subtle-hover' | '--rh-color-icon-status-danger' | '--rh-color-icon-status-danger-on-light' | '--rh-color-icon-status-danger-on-dark' | '--rh-color-icon-status-caution' | '--rh-color-icon-status-caution-on-light' | '--rh-color-icon-status-caution-on-dark' | '--rh-color-icon-status-warning' | '--rh-color-icon-status-warning-on-light' | '--rh-color-icon-status-warning-on-dark' | '--rh-color-icon-status-default' | '--rh-color-icon-status-default-on-light' | '--rh-color-icon-status-default-on-dark' | '--rh-color-icon-status-neutral' | '--rh-color-icon-status-neutral-on-light' | '--rh-color-icon-status-neutral-on-dark' | '--rh-color-icon-status-info' | '--rh-color-icon-status-info-on-light' | '--rh-color-icon-status-info-on-dark' | '--rh-color-icon-status-success' | '--rh-color-icon-status-success-on-light' | '--rh-color-icon-status-success-on-dark' | '--rh-color-canvas-white' | '--rh-color-canvas-black' | '--rh-color-canvas-white-hsl' | '--rh-color-canvas-white-rgb' | '--rh-color-canvas-black-hsl' | '--rh-color-canvas-black-rgb' | '--rh-color-blue-10' | '--rh-color-blue-20' | '--rh-color-blue-30' | '--rh-color-blue-40' | '--rh-color-blue-50' | '--rh-color-blue-60' | '--rh-color-blue-70' | '--rh-color-blue-80' | '--rh-color-blue-10-hsl' | '--rh-color-blue-10-rgb' | '--rh-color-blue-20-hsl' | '--rh-color-blue-20-rgb' | '--rh-color-blue-30-hsl' | '--rh-color-blue-30-rgb' | '--rh-color-blue-40-hsl' | '--rh-color-blue-40-rgb' | '--rh-color-blue-50-hsl' | '--rh-color-blue-50-rgb' | '--rh-color-blue-60-hsl' | '--rh-color-blue-60-rgb' | '--rh-color-blue-70-hsl' | '--rh-color-blue-70-rgb' | '--rh-color-blue-80-hsl' | '--rh-color-blue-80-rgb' | '--rh-color-white' | '--rh-color-gray-10' | '--rh-color-gray-20' | '--rh-color-gray-30' | '--rh-color-gray-40' | '--rh-color-gray-45' | '--rh-color-gray-50' | '--rh-color-gray-60' | '--rh-color-gray-70' | '--rh-color-gray-80' | '--rh-color-gray-90' | '--rh-color-gray-95' | '--rh-color-gray-10-hsl' | '--rh-color-gray-10-rgb' | '--rh-color-gray-20-hsl' | '--rh-color-gray-20-rgb' | '--rh-color-gray-30-hsl' | '--rh-color-gray-30-rgb' | '--rh-color-gray-40-hsl' | '--rh-color-gray-40-rgb' | '--rh-color-gray-45-hsl' | '--rh-color-gray-45-rgb' | '--rh-color-gray-50-hsl' | '--rh-color-gray-50-rgb' | '--rh-color-gray-60-hsl' | '--rh-color-gray-60-rgb' | '--rh-color-gray-70-hsl' | '--rh-color-gray-70-rgb' | '--rh-color-gray-80-hsl' | '--rh-color-gray-80-rgb' | '--rh-color-gray-90-hsl' | '--rh-color-gray-90-rgb' | '--rh-color-gray-95-hsl' | '--rh-color-gray-95-rgb' | '--rh-color-black' | '--rh-color-purple-10' | '--rh-color-purple-20' | '--rh-color-purple-30' | '--rh-color-purple-40' | '--rh-color-purple-50' | '--rh-color-purple-60' | '--rh-color-purple-70' | '--rh-color-purple-80' | '--rh-color-purple-10-hsl' | '--rh-color-purple-10-rgb' | '--rh-color-purple-20-hsl' | '--rh-color-purple-20-rgb' | '--rh-color-purple-30-hsl' | '--rh-color-purple-30-rgb' | '--rh-color-purple-40-hsl' | '--rh-color-purple-40-rgb' | '--rh-color-purple-50-hsl' | '--rh-color-purple-50-rgb' | '--rh-color-purple-60-hsl' | '--rh-color-purple-60-rgb' | '--rh-color-purple-70-hsl' | '--rh-color-purple-70-rgb' | '--rh-color-purple-80-hsl' | '--rh-color-purple-80-rgb' | '--rh-color-red-orange-10' | '--rh-color-red-orange-20' | '--rh-color-red-orange-30' | '--rh-color-red-orange-40' | '--rh-color-red-orange-50' | '--rh-color-red-orange-60' | '--rh-color-red-orange-70' | '--rh-color-red-orange-80' | '--rh-color-red-orange-10-hsl' | '--rh-color-red-orange-10-rgb' | '--rh-color-red-orange-20-hsl' | '--rh-color-red-orange-20-rgb' | '--rh-color-red-orange-30-hsl' | '--rh-color-red-orange-30-rgb' | '--rh-color-red-orange-40-hsl' | '--rh-color-red-orange-40-rgb' | '--rh-color-red-orange-50-hsl' | '--rh-color-red-orange-50-rgb' | '--rh-color-red-orange-60-hsl' | '--rh-color-red-orange-60-rgb' | '--rh-color-red-orange-70-hsl' | '--rh-color-red-orange-70-rgb' | '--rh-color-red-orange-80-hsl' | '--rh-color-red-orange-80-rgb' | '--rh-color-red-5' | '--rh-color-red-10' | '--rh-color-red-20' | '--rh-color-red-30' | '--rh-color-red-40' | '--rh-color-red-50' | '--rh-color-red-60' | '--rh-color-red-70' | '--rh-color-red-80' | '--rh-color-red-5-hsl' | '--rh-color-red-5-rgb' | '--rh-color-red-10-hsl' | '--rh-color-red-10-rgb' | '--rh-color-red-20-hsl' | '--rh-color-red-20-rgb' | '--rh-color-red-30-hsl' | '--rh-color-red-30-rgb' | '--rh-color-red-40-hsl' | '--rh-color-red-40-rgb' | '--rh-color-red-50-hsl' | '--rh-color-red-50-rgb' | '--rh-color-red-60-hsl' | '--rh-color-red-60-rgb' | '--rh-color-red-70-hsl' | '--rh-color-red-70-rgb' | '--rh-color-red-80-hsl' | '--rh-color-red-80-rgb' | '--rh-color-teal-10' | '--rh-color-teal-20' | '--rh-color-teal-30' | '--rh-color-teal-40' | '--rh-color-teal-50' | '--rh-color-teal-60' | '--rh-color-teal-70' | '--rh-color-teal-80' | '--rh-color-teal-10-hsl' | '--rh-color-teal-10-rgb' | '--rh-color-teal-20-hsl' | '--rh-color-teal-20-rgb' | '--rh-color-teal-30-hsl' | '--rh-color-teal-30-rgb' | '--rh-color-teal-40-hsl' | '--rh-color-teal-40-rgb' | '--rh-color-teal-50-hsl' | '--rh-color-teal-50-rgb' | '--rh-color-teal-60-hsl' | '--rh-color-teal-60-rgb' | '--rh-color-teal-70-hsl' | '--rh-color-teal-70-rgb' | '--rh-color-teal-80-hsl' | '--rh-color-teal-80-rgb' | '--rh-color-yellow-10' | '--rh-color-yellow-20' | '--rh-color-yellow-30' | '--rh-color-yellow-40' | '--rh-color-yellow-50' | '--rh-color-yellow-60' | '--rh-color-yellow-70' | '--rh-color-yellow-80' | '--rh-color-yellow-10-hsl' | '--rh-color-yellow-10-rgb' | '--rh-color-yellow-20-hsl' | '--rh-color-yellow-20-rgb' | '--rh-color-yellow-30-hsl' | '--rh-color-yellow-30-rgb' | '--rh-color-yellow-40-hsl' | '--rh-color-yellow-40-rgb' | '--rh-color-yellow-50-hsl' | '--rh-color-yellow-50-rgb' | '--rh-color-yellow-60-hsl' | '--rh-color-yellow-60-rgb' | '--rh-color-yellow-70-hsl' | '--rh-color-yellow-70-rgb' | '--rh-color-yellow-80-hsl' | '--rh-color-yellow-80-rgb' | '--rh-color-interactive-primary-default' | '--rh-color-interactive-primary-default-on-light' | '--rh-color-interactive-primary-default-on-dark' | '--rh-color-interactive-primary-hover' | '--rh-color-interactive-primary-hover-on-light' | '--rh-color-interactive-primary-hover-on-dark' | '--rh-color-interactive-primary-active' | '--rh-color-interactive-primary-active-on-light' | '--rh-color-interactive-primary-active-on-dark' | '--rh-color-interactive-primary-focus' | '--rh-color-interactive-primary-focus-on-light' | '--rh-color-interactive-primary-focus-on-dark' | '--rh-color-interactive-primary-visited-default' | '--rh-color-interactive-primary-visited-default-on-light' | '--rh-color-interactive-primary-visited-default-on-dark' | '--rh-color-interactive-primary-visited-hover' | '--rh-color-interactive-primary-visited-hover-on-light' | '--rh-color-interactive-primary-visited-hover-on-dark' | '--rh-color-interactive-primary-visited-active' | '--rh-color-interactive-primary-visited-active-on-light' | '--rh-color-interactive-primary-visited-active-on-dark' | '--rh-color-interactive-primary-visited-focus' | '--rh-color-interactive-primary-visited-focus-on-light' | '--rh-color-interactive-primary-visited-focus-on-dark' | '--rh-color-interactive-secondary-default' | '--rh-color-interactive-secondary-default-on-light' | '--rh-color-interactive-secondary-default-on-dark' | '--rh-color-interactive-secondary-hover' | '--rh-color-interactive-secondary-hover-on-light' | '--rh-color-interactive-secondary-hover-on-dark' | '--rh-color-interactive-secondary-active' | '--rh-color-interactive-secondary-active-on-light' | '--rh-color-interactive-secondary-active-on-dark' | '--rh-color-interactive-secondary-focus' | '--rh-color-interactive-secondary-focus-on-light' | '--rh-color-interactive-secondary-focus-on-dark' | '--rh-color-interactive-secondary-visited-default' | '--rh-color-interactive-secondary-visited-default-on-light' | '--rh-color-interactive-secondary-visited-default-on-dark' | '--rh-color-interactive-secondary-visited-hover' | '--rh-color-interactive-secondary-visited-hover-on-light' | '--rh-color-interactive-secondary-visited-hover-on-dark' | '--rh-color-interactive-secondary-visited-active' | '--rh-color-interactive-secondary-visited-active-on-light' | '--rh-color-interactive-secondary-visited-active-on-dark' | '--rh-color-interactive-secondary-visited-focus' | '--rh-color-interactive-secondary-visited-focus-on-light' | '--rh-color-interactive-secondary-visited-focus-on-dark' | '--rh-color-interactive-blue-lightest' | '--rh-color-interactive-blue-lighter' | '--rh-color-interactive-blue-darker' | '--rh-color-interactive-blue-darkest' | '--rh-color-interactive-purple-lightest' | '--rh-color-interactive-purple-lighter' | '--rh-color-interactive-purple-darker' | '--rh-color-interactive-purple-darkest' | '--rh-color-status-danger' | '--rh-color-status-danger-on-light' | '--rh-color-status-danger-on-dark' | '--rh-color-status-caution' | '--rh-color-status-caution-on-light' | '--rh-color-status-caution-on-dark' | '--rh-color-status-warning' | '--rh-color-status-warning-on-light' | '--rh-color-status-warning-on-dark' | '--rh-color-status-neutral' | '--rh-color-status-neutral-on-light' | '--rh-color-status-neutral-on-dark' | '--rh-color-status-note' | '--rh-color-status-note-on-light' | '--rh-color-status-note-on-dark' | '--rh-color-status-info' | '--rh-color-status-info-on-light' | '--rh-color-status-info-on-dark' | '--rh-color-status-success' | '--rh-color-status-success-on-light' | '--rh-color-status-success-on-dark' | '--rh-color-surface' | '--rh-color-surface-lightest' | '--rh-color-surface-lighter' | '--rh-color-surface-light' | '--rh-color-surface-dark' | '--rh-color-surface-dark-alt' | '--rh-color-surface-darker' | '--rh-color-surface-darkest' | '--rh-color-surface-status-danger' | '--rh-color-surface-status-danger-on-light' | '--rh-color-surface-status-danger-on-dark' | '--rh-color-surface-status-caution' | '--rh-color-surface-status-caution-on-light' | '--rh-color-surface-status-caution-on-dark' | '--rh-color-surface-status-warning' | '--rh-color-surface-status-warning-on-light' | '--rh-color-surface-status-warning-on-dark' | '--rh-color-surface-status-default' | '--rh-color-surface-status-default-on-light' | '--rh-color-surface-status-default-on-dark' | '--rh-color-surface-status-neutral' | '--rh-color-surface-status-neutral-on-light' | '--rh-color-surface-status-neutral-on-dark' | '--rh-color-surface-status-info' | '--rh-color-surface-status-info-on-light' | '--rh-color-surface-status-info-on-dark' | '--rh-color-surface-status-success' | '--rh-color-surface-status-success-on-light' | '--rh-color-surface-status-success-on-dark' | '--rh-color-text-primary' | '--rh-color-text-primary-on-light' | '--rh-color-text-primary-on-dark' | '--rh-color-text-secondary' | '--rh-color-text-secondary-on-light' | '--rh-color-text-secondary-on-dark' | '--rh-color-text-brand' | '--rh-color-text-brand-on-light' | '--rh-color-text-brand-on-dark' | '--rh-color-white-hsl' | '--rh-color-white-rgb' | '--rh-color-black-hsl' | '--rh-color-black-rgb' | '--rh-font-family-heading' | '--rh-font-family-body-text' | '--rh-font-family-code' | '--rh-font-family-lang-ar' | '--rh-font-family-lang-he' | '--rh-font-family-lang-ja' | '--rh-font-family-lang-ko' | '--rh-font-family-lang-hi' | '--rh-font-family-lang-th' | '--rh-font-family-lang-zh-cn' | '--rh-font-family-lang-zh-hk' | '--rh-font-size-body-text-xs' | '--rh-font-size-body-text-sm' | '--rh-font-size-body-text-md' | '--rh-font-size-body-text-lg' | '--rh-font-size-body-text-xl' | '--rh-font-size-body-text-2xl' | '--rh-font-size-code-xs' | '--rh-font-size-code-sm' | '--rh-font-size-code-md' | '--rh-font-size-code-lg' | '--rh-font-size-code-xl' | '--rh-font-size-code-2xl' | '--rh-font-size-heading-xs' | '--rh-font-size-heading-sm' | '--rh-font-size-heading-md' | '--rh-font-size-heading-lg' | '--rh-font-size-heading-xl' | '--rh-font-size-heading-2xl' | '--rh-letter-spacing-body-text' | '--rh-size-icon-01' | '--rh-size-icon-02' | '--rh-size-icon-03' | '--rh-size-icon-04' | '--rh-size-icon-05' | '--rh-size-icon-06' | '--rh-size-icon-07' | '--rh-size-icon-08' | '--rh-size-icon-09' | '--rh-media-xs' | '--rh-media-sm' | '--rh-media-md' | '--rh-media-lg' | '--rh-media-xl' | '--rh-media-2xl' | '--rh-opacity-0' | '--rh-opacity-10' | '--rh-opacity-20' | '--rh-opacity-30' | '--rh-opacity-40' | '--rh-opacity-50' | '--rh-opacity-60' | '--rh-opacity-70' | '--rh-opacity-80' | '--rh-opacity-90' | '--rh-opacity-100' | '--rh-box-shadow-sm' | '--rh-box-shadow-md' | '--rh-box-shadow-lg' | '--rh-box-shadow-xl' | '--rh-length-4xs' | '--rh-length-3xs' | '--rh-length-2xs' | '--rh-length-xs' | '--rh-length-sm' | '--rh-length-md' | '--rh-length-lg' | '--rh-length-xl' | '--rh-length-2xl' | '--rh-length-3xl' | '--rh-length-4xl' | '--rh-length-5xl' | '--rh-length-6xl' | '--rh-length-7xl' | '--rh-space-xs' | '--rh-space-sm' | '--rh-space-md' | '--rh-space-lg' | '--rh-space-xl' | '--rh-space-2xl' | '--rh-space-3xl' | '--rh-space-4xl' | '--rh-space-5xl' | '--rh-space-6xl' | '--rh-space-7xl'): DesignToken<string>;
   get(key: '--rh-font-weight-body-text-regular' | '--rh-font-weight-body-text-medium' | '--rh-font-weight-code-regular' | '--rh-font-weight-code-medium' | '--rh-font-weight-heading-regular' | '--rh-font-weight-heading-medium' | '--rh-font-weight-heading-bold' | '--rh-line-height-heading' | '--rh-line-height-body-text' | '--rh-line-height-code'): DesignToken<number>;
   get(key: TokenName): DesignToken;
   get(key: string): null;
@@ -1375,6 +1375,155 @@ exports.tokens = new TokenMetaMap({
       "on-dark"
     ],
     "key": "{color.border.interactive.on-dark}"
+  },
+  "--rh-color-border-focus": {
+    "$value": "light-dark(var(--rh-color-border-focus-on-light, #0066cc), var(--rh-color-border-focus-on-dark, #92c5f9))",
+    "$description": "Responsive `border-focus` color value. Typically read-only - use a themeable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-focus-on-light` on a themable container with a light color palette and `--rh-color-border-focus-on-dark` on a themable container with a dark color palette.",
+    "filePath": "tokens/color/border.yml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": [
+        "{color.border.focus.on-light}",
+        "{color.border.focus.on-dark}"
+      ],
+      "$description": "Responsive `border-focus` color value. Typically read-only - use a themeable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-focus-on-light` on a themable container with a light color palette and `--rh-color-border-focus-on-dark` on a themable container with a dark color palette.",
+      "$type": "color"
+    },
+    "name": "rh-color-border-focus",
+    "attributes": {
+      "category": "color",
+      "type": "border",
+      "item": "focus",
+      "subitem": "_",
+      "hex": "000000",
+      "rgb": {
+        "r": 0,
+        "g": 0,
+        "b": 0,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 0,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0,
+        "v": 0,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "border",
+      "focus",
+      "_"
+    ],
+    "key": "{color.border.focus._}"
+  },
+  "--rh-color-border-focus-on-light": {
+    "$value": "#0066cc",
+    "$description": "Focus border color (light theme)",
+    "attributes": {
+      "category": "border",
+      "type": "color",
+      "item": "focus",
+      "subitem": "on-light",
+      "hex": "0066cc",
+      "rgb": {
+        "r": 0,
+        "g": 102,
+        "b": 204,
+        "a": 1
+      },
+      "hsl": {
+        "h": 210,
+        "s": 100,
+        "l": 40,
+        "a": 1
+      },
+      "hsv": {
+        "h": 210,
+        "s": 1,
+        "v": 0.8,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "filePath": "tokens/color/border.yml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "{color.blue.50}",
+      "$description": "Focus border color (light theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color"
+      },
+      "$type": "color"
+    },
+    "name": "rh-color-border-focus-on-light",
+    "path": [
+      "color",
+      "border",
+      "focus",
+      "on-light"
+    ],
+    "key": "{color.border.focus.on-light}"
+  },
+  "--rh-color-border-focus-on-dark": {
+    "$value": "#92c5f9",
+    "$description": "Focus border color (dark theme)",
+    "attributes": {
+      "category": "border",
+      "type": "color",
+      "item": "focus",
+      "subitem": "on-dark",
+      "hex": "92c5f9",
+      "rgb": {
+        "r": 146,
+        "g": 197,
+        "b": 249,
+        "a": 1
+      },
+      "hsl": {
+        "h": 210.29126213592232,
+        "s": 89.56521739130436,
+        "l": 77.45098039215685,
+        "a": 1
+      },
+      "hsv": {
+        "h": 210.29126213592232,
+        "s": 0.4136546184738956,
+        "v": 0.9764705882352941,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "filePath": "tokens/color/border.yml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "{color.blue.30}",
+      "$description": "Focus border color (dark theme)",
+      "attributes": {
+        "category": "border",
+        "type": "color"
+      },
+      "$type": "color"
+    },
+    "name": "rh-color-border-focus-on-dark",
+    "path": [
+      "color",
+      "border",
+      "focus",
+      "on-dark"
+    ],
+    "key": "{color.border.focus.on-dark}"
   },
   "--rh-color-border-destructive": {
     "$value": "light-dark(var(--rh-color-border-destructive-on-light, #b1380b), var(--rh-color-border-destructive-on-dark, #f0561d))",
@@ -2875,12 +3024,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-green-10": {
     "$value": "#e9f7df",
     "$description": "Alert - success background",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          10,
+          0,
+          15,
+          10
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#E9F7DF",
       "$description": "Alert - success background",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            10,
+            0,
+            15,
+            10
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-10",
@@ -2919,12 +3090,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-green-20": {
     "$value": "#d1f1bb",
     "$description": "Label - Filled (Green) border color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          20,
+          0,
+          30,
+          10
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#D1F1BB",
       "$description": "Label - Filled (Green) border color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            20,
+            0,
+            30,
+            10
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-20",
@@ -2962,11 +3155,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-30": {
     "$value": "#afdc8f",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          40,
+          0,
+          50,
+          10
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#AFDC8F",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            40,
+            0,
+            50,
+            10
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-30",
@@ -3004,11 +3219,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-40": {
     "$value": "#87bb62",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          60,
+          0,
+          80,
+          10
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#87BB62",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            60,
+            0,
+            80,
+            10
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-40",
@@ -3046,11 +3283,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-50": {
     "$value": "#63993d",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          70,
+          0,
+          100,
+          10
+        ],
+        "pantone": "7737 C"
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#63993D",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            70,
+            0,
+            100,
+            10
+          ],
+          "pantone": "7737 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-50",
@@ -3089,12 +3350,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-green-60": {
     "$value": "#3d7317",
     "$description": "Alert - Success accent",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          75,
+          0,
+          100,
+          30
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#3D7317",
       "$description": "Alert - Success accent",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            75,
+            0,
+            100,
+            30
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-60",
@@ -3133,12 +3416,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-green-70": {
     "$value": "#204d00",
     "$description": "Alert - Success title text",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          65,
+          0,
+          100,
+          60
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/green.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#204D00",
       "$description": "Alert - Success title text",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            65,
+            0,
+            100,
+            60
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-green-70",
@@ -3173,6 +3478,48 @@ exports.tokens = new TokenMetaMap({
       "70"
     ],
     "key": "{color.green.70}"
+  },
+  "--rh-color-green-80": {
+    "$value": "#183301",
+    "filePath": "tokens/color/crayon/green.yml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "#183301",
+      "$type": "color"
+    },
+    "name": "rh-color-green-80",
+    "attributes": {
+      "category": "color",
+      "type": "green",
+      "item": "80",
+      "hex": "183301",
+      "rgb": {
+        "r": 24,
+        "g": 51,
+        "b": 1,
+        "a": 1
+      },
+      "hsl": {
+        "h": 92.39999999999999,
+        "s": 96.15384615384616,
+        "l": 10.196078431372548,
+        "a": 1
+      },
+      "hsv": {
+        "h": 92.39999999999999,
+        "s": 0.9803921568627452,
+        "v": 0.2,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "green",
+      "80"
+    ],
+    "key": "{color.green.80}"
   },
   "--rh-color-green-10-hsl": {
     "$value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
@@ -3762,15 +4109,121 @@ exports.tokens = new TokenMetaMap({
     ],
     "key": "{color.green.70-rgb}"
   },
+  "--rh-color-green-80-hsl": {
+    "$value": "92.39999999999999 96.15384615384616% 10.196078431372548%",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-80) h s l / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.green.80}",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-80) h s l / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-green-80-hsl",
+    "attributes": {
+      "category": "color",
+      "type": "green",
+      "item": "80-hsl",
+      "hex": "183301",
+      "rgb": {
+        "r": 24,
+        "g": 51,
+        "b": 1,
+        "a": 1
+      },
+      "hsl": {
+        "h": 92.39999999999999,
+        "s": 96.15384615384616,
+        "l": 10.196078431372548,
+        "a": 1
+      },
+      "hsv": {
+        "h": 92.39999999999999,
+        "s": 0.9803921568627452,
+        "v": 0.2,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "green",
+      "80-hsl"
+    ],
+    "key": "{color.green.80-hsl}"
+  },
+  "--rh-color-green-80-rgb": {
+    "$value": "24 51 1",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-80) r g b / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.green.80}",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-80) r g b / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-green-80-rgb",
+    "attributes": {
+      "category": "color",
+      "type": "green",
+      "item": "80-rgb",
+      "hex": "183301",
+      "rgb": {
+        "r": 24,
+        "g": 51,
+        "b": 1,
+        "a": 1
+      },
+      "hsl": {
+        "h": 92.39999999999999,
+        "s": 96.15384615384616,
+        "l": 10.196078431372548,
+        "a": 1
+      },
+      "hsv": {
+        "h": 92.39999999999999,
+        "s": 0.9803921568627452,
+        "v": 0.2,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "green",
+      "80-rgb"
+    ],
+    "key": "{color.green.80-rgb}"
+  },
   "--rh-color-orange-10": {
     "$value": "#ffe8cc",
     "$description": "Label - Filled (Orange) background color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          10,
+          20,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FFE8CC",
       "$description": "Label - Filled (Orange) background color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            10,
+            20,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-10",
@@ -3808,11 +4261,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-20": {
     "$value": "#fccb8f",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          20,
+          50,
+          0
+        ],
+        "pantone": "149 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FCCB8F",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            20,
+            50,
+            0
+          ],
+          "pantone": "149 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-20",
@@ -3851,12 +4328,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-orange-30": {
     "$value": "#f8ae54",
     "$description": "Label - Filled (Orange) border color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          35,
+          75,
+          0
+        ],
+        "pantone": "157 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F8AE54",
       "$description": "Label - Filled (Orange) border color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            35,
+            75,
+            0
+          ],
+          "pantone": "157 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-30",
@@ -3895,12 +4396,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-orange-40": {
     "$value": "#f5921b",
     "$description": "Label - Filled (Orange) accent color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          50,
+          100,
+          0
+        ],
+        "pantone": "144 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F5921B",
       "$description": "Label - Filled (Orange) accent color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            50,
+            100,
+            0
+          ],
+          "pantone": "144 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-40",
@@ -3939,12 +4464,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-orange-50": {
     "$value": "#ca6c0f",
     "$description": "Label - Filled (Orange) accent color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          75,
+          100,
+          10
+        ],
+        "pantone": "2019 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#CA6C0F",
       "$description": "Label - Filled (Orange) accent color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            75,
+            100,
+            10
+          ],
+          "pantone": "2019 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-50",
@@ -3982,11 +4531,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-60": {
     "$value": "#9e4a06",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          10,
+          80,
+          100,
+          10
+        ],
+        "pantone": "2020 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#9E4A06",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            10,
+            80,
+            100,
+            10
+          ],
+          "pantone": "2020 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-60",
@@ -4025,12 +4598,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-orange-70": {
     "$value": "#732e00",
     "$description": "Label - Filled (Orange) text color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          20,
+          90,
+          100,
+          20
+        ],
+        "pantone": "2021 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#732E00",
       "$description": "Label - Filled (Orange) text color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            20,
+            90,
+            100,
+            20
+          ],
+          "pantone": "2021 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-70",
@@ -4068,11 +4665,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-80": {
     "$value": "#4d1f00",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          20,
+          90,
+          100,
+          60
+        ],
+        "pantone": "168 C"
+      }
+    },
     "filePath": "tokens/color/crayon/orange.yml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#4D1F00",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            20,
+            90,
+            100,
+            60
+          ],
+          "pantone": "168 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-orange-80",
@@ -6446,12 +7067,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-10": {
     "$value": "#e0f0ff",
     "$description": "Alert - Info background",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          10,
+          5,
+          0,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#E0F0FF",
       "$description": "Alert - Info background",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            10,
+            5,
+            0,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-10",
@@ -6490,12 +7133,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-20": {
     "$value": "#b9dafc",
     "$description": "Label - Filled (Blue) border color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          35,
+          10,
+          0,
+          0
+        ],
+        "pantone": "277 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#B9DAFC",
       "$description": "Label - Filled (Blue) border color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            35,
+            10,
+            0,
+            0
+          ],
+          "pantone": "277 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-20",
@@ -6534,12 +7201,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-30": {
     "$value": "#92c5f9",
     "$description": "Inline link (dark theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          60,
+          20,
+          0,
+          0
+        ],
+        "pantone": "278 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#92C5F9",
       "$description": "Inline link (dark theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            60,
+            20,
+            0,
+            0
+          ],
+          "pantone": "278 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-30",
@@ -6578,12 +7269,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-40": {
     "$value": "#4394e5",
     "$description": "Alert - Info accent",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          70,
+          35,
+          0,
+          0
+        ],
+        "pantone": "279 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#4394E5",
       "$description": "Alert - Info accent",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            70,
+            35,
+            0,
+            0
+          ],
+          "pantone": "279 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-40",
@@ -6622,12 +7337,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-50": {
     "$value": "#0066cc",
     "$description": "Label - Filled (Blue) accent color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          85,
+          55,
+          0,
+          5
+        ],
+        "pantone": "2387 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#0066CC",
       "$description": "Label - Filled (Blue) accent color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            85,
+            55,
+            0,
+            5
+          ],
+          "pantone": "2387 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-50",
@@ -6666,12 +7405,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-60": {
     "$value": "#004d99",
     "$description": "Inline link hover (light theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          100,
+          80,
+          0,
+          10
+        ],
+        "pantone": "4152 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#004D99",
       "$description": "Inline link hover (light theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            100,
+            80,
+            0,
+            10
+          ],
+          "pantone": "4152 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-60",
@@ -6710,12 +7473,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-blue-70": {
     "$value": "#003366",
     "$description": "Alert - Info title text",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          100,
+          85,
+          20,
+          20
+        ],
+        "pantone": "4154 C"
+      }
+    },
     "filePath": "tokens/color/crayon/blue.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#003366",
       "$description": "Alert - Info title text",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            100,
+            85,
+            20,
+            20
+          ],
+          "pantone": "4154 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-blue-70",
@@ -6750,6 +7537,48 @@ exports.tokens = new TokenMetaMap({
       "70"
     ],
     "key": "{color.blue.70}"
+  },
+  "--rh-color-blue-80": {
+    "$value": "#032142",
+    "filePath": "tokens/color/crayon/blue.yaml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "#032142",
+      "$type": "color"
+    },
+    "name": "rh-color-blue-80",
+    "attributes": {
+      "category": "color",
+      "type": "blue",
+      "item": "80",
+      "hex": "032142",
+      "rgb": {
+        "r": 3,
+        "g": 33,
+        "b": 66,
+        "a": 1
+      },
+      "hsl": {
+        "h": 211.42857142857144,
+        "s": 91.30434782608695,
+        "l": 13.529411764705884,
+        "a": 1
+      },
+      "hsv": {
+        "h": 211.42857142857144,
+        "s": 0.9545454545454545,
+        "v": 0.25882352941176473,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "blue",
+      "80"
+    ],
+    "key": "{color.blue.80}"
   },
   "--rh-color-blue-10-hsl": {
     "$value": "209.03225806451616 100% 93.92156862745098%",
@@ -7339,9 +8168,105 @@ exports.tokens = new TokenMetaMap({
     ],
     "key": "{color.blue.70-rgb}"
   },
+  "--rh-color-blue-80-hsl": {
+    "$value": "211.42857142857144 91.30434782608695% 13.529411764705884%",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-80) h s l / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.blue.80}",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-80) h s l / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-blue-80-hsl",
+    "attributes": {
+      "category": "color",
+      "type": "blue",
+      "item": "80-hsl",
+      "hex": "032142",
+      "rgb": {
+        "r": 3,
+        "g": 33,
+        "b": 66,
+        "a": 1
+      },
+      "hsl": {
+        "h": 211.42857142857144,
+        "s": 91.30434782608695,
+        "l": 13.529411764705884,
+        "a": 1
+      },
+      "hsv": {
+        "h": 211.42857142857144,
+        "s": 0.9545454545454545,
+        "v": 0.25882352941176473,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "blue",
+      "80-hsl"
+    ],
+    "key": "{color.blue.80-hsl}"
+  },
+  "--rh-color-blue-80-rgb": {
+    "$value": "3 33 66",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-80) r g b / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.blue.80}",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-80) r g b / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-blue-80-rgb",
+    "attributes": {
+      "category": "color",
+      "type": "blue",
+      "item": "80-rgb",
+      "hex": "032142",
+      "rgb": {
+        "r": 3,
+        "g": 33,
+        "b": 66,
+        "a": 1
+      },
+      "hsl": {
+        "h": 211.42857142857144,
+        "s": 91.30434782608695,
+        "l": 13.529411764705884,
+        "a": 1
+      },
+      "hsv": {
+        "h": 211.42857142857144,
+        "s": 0.9545454545454545,
+        "v": 0.25882352941176473,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "blue",
+      "80-rgb"
+    ],
+    "key": "{color.blue.80-rgb}"
+  },
   "--rh-color-white": {
     "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
     "$value": "#ffffff",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "pantone": "White C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7372,6 +8297,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
       "$value": "#ffffff",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pantone": "White C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7387,6 +8324,17 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-10": {
     "$value": "#f2f2f2",
     "$description": "Tertiary surface (light scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          5
+        ]
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7418,6 +8366,17 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#F2F2F2",
       "$description": "Tertiary surface (light scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            5
+          ]
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7434,6 +8393,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-20": {
     "$value": "#e0e0e0",
     "$description": "Secondary surface (light scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          12
+        ],
+        "pantone": "420 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7465,6 +8436,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#E0E0E0",
       "$description": "Secondary surface (light scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            12
+          ],
+          "pantone": "420 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7481,6 +8464,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-30": {
     "$value": "#c7c7c7",
     "$description": "Subtle borders (light scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          22
+        ],
+        "pantone": "421 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7512,6 +8507,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#C7C7C7",
       "$description": "Subtle borders (light scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            22
+          ],
+          "pantone": "421 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7528,6 +8535,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-40": {
     "$value": "#a3a3a3",
     "$description": "Subtle icon (hover state)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          36
+        ],
+        "pantone": "422 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7559,6 +8578,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#A3A3A3",
       "$description": "Subtle icon (hover state)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            36
+          ],
+          "pantone": "422 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7575,6 +8606,17 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-45": {
     "$value": "#8c8c8c",
     "$description": "Call to action text decoration (unified theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          46
+        ]
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7606,6 +8648,17 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#8C8C8C",
       "$description": "Call to action text decoration (unified theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            46
+          ]
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7622,6 +8675,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-50": {
     "$value": "#707070",
     "$description": "Subtle icon",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          56
+        ],
+        "pantone": "423 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7653,6 +8718,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#707070",
       "$description": "Subtle icon",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            56
+          ],
+          "pantone": "423 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7669,6 +8746,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-60": {
     "$value": "#4d4d4d",
     "$description": "Secondary text (light scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          70
+        ],
+        "pantone": "424 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7700,6 +8789,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#4D4D4D",
       "$description": "Secondary text (light scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            70
+          ],
+          "pantone": "424 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7716,6 +8817,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-70": {
     "$value": "#383838",
     "$description": "Tertiary surface (dark scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          78
+        ],
+        "pantone": "425 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7747,6 +8860,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#383838",
       "$description": "Tertiary surface (dark scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            78
+          ],
+          "pantone": "425 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7763,6 +8888,17 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-80": {
     "$value": "#292929",
     "$description": "Alternative tertiary surface (not available for use with context provider)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          84
+        ]
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7794,6 +8930,17 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#292929",
       "$description": "Alternative tertiary surface (not available for use with context provider)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            84
+          ]
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7810,6 +8957,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-90": {
     "$value": "#1f1f1f",
     "$description": "Secondary surface (dark scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          88
+        ],
+        "pantone": "426 C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7841,6 +9000,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#1F1F1F",
       "$description": "Secondary surface (dark scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            88
+          ],
+          "pantone": "426 C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -7857,6 +9028,17 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-gray-95": {
     "$value": "#151515",
     "$description": "Primary surface (dark scheme) or primary text (light scheme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          0,
+          0,
+          100
+        ]
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7888,6 +9070,17 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#151515",
       "$description": "Primary surface (dark scheme) or primary text (light scheme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            0,
+            0,
+            100
+          ]
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -8828,6 +10021,18 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-black": {
     "$value": "#000000",
     "$description": "Brand black (avoid using)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          60,
+          40,
+          40,
+          100
+        ],
+        "pantone": "Black C"
+      }
+    },
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -8858,6 +10063,18 @@ exports.tokens = new TokenMetaMap({
     "original": {
       "$value": "#000000",
       "$description": "Brand black (avoid using)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            60,
+            40,
+            40,
+            100
+          ],
+          "pantone": "Black C"
+        }
+      },
       "attributes": {
         "type": "gray"
       },
@@ -8873,12 +10090,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-purple-10": {
     "$value": "#ece6ff",
     "$description": "Label - Filled (Purple) background color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          10,
+          10,
+          0,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#ECE6FF",
       "$description": "Label - Filled (Purple) background color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            10,
+            10,
+            0,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-10",
@@ -8917,12 +10156,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-purple-20": {
     "$value": "#d0c5f4",
     "$description": "Inline link visited hover (dark theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          20,
+          25,
+          0,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#D0C5F4",
       "$description": "Inline link visited hover (dark theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            20,
+            25,
+            0,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-20",
@@ -8960,11 +10221,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-30": {
     "$value": "#b6a6e9",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          35,
+          40,
+          0,
+          0
+        ],
+        "pantone": "2092 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#B6A6E9",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            35,
+            40,
+            0,
+            0
+          ],
+          "pantone": "2092 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-30",
@@ -9003,12 +10288,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-purple-40": {
     "$value": "#876fd4",
     "$description": "Inline link visited (dark theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          60,
+          65,
+          0,
+          0
+        ],
+        "pantone": "2101 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#876FD4",
       "$description": "Inline link visited (dark theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            60,
+            65,
+            0,
+            0
+          ],
+          "pantone": "2101 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-40",
@@ -9046,11 +10355,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-50": {
     "$value": "#5e40be",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          75,
+          80,
+          0,
+          0
+        ],
+        "pantone": "2097 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#5E40BE",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            75,
+            80,
+            0,
+            0
+          ],
+          "pantone": "2097 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-50",
@@ -9089,12 +10422,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-purple-60": {
     "$value": "#3d2785",
     "$description": "Inline link visited (light theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          90,
+          100,
+          10,
+          0
+        ],
+        "pantone": "2105 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#3D2785",
       "$description": "Inline link visited (light theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            90,
+            100,
+            10,
+            0
+          ],
+          "pantone": "2105 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-60",
@@ -9133,12 +10490,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-purple-70": {
     "$value": "#21134d",
     "$description": "Inline link visited hover (light theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          100,
+          100,
+          20,
+          40
+        ],
+        "pantone": "273 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#21134D",
       "$description": "Inline link visited hover (light theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            100,
+            100,
+            20,
+            40
+          ],
+          "pantone": "273 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-70",
@@ -9176,11 +10557,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-80": {
     "$value": "#1b0d33",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          90,
+          100,
+          20,
+          75
+        ],
+        "pantone": "2695 C"
+      }
+    },
     "filePath": "tokens/color/crayon/purple.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#1B0D33",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            90,
+            100,
+            20,
+            75
+          ],
+          "pantone": "2695 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-purple-80",
@@ -9890,11 +11295,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-10": {
     "$value": "#ffe3d9",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          15,
+          10,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FFE3D9",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            15,
+            10,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-10",
@@ -9932,11 +11359,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-20": {
     "$value": "#fbbea8",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          30,
+          30,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FBBEA8",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            30,
+            30,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-20",
@@ -9974,11 +11423,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-30": {
     "$value": "#f89b78",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          50,
+          50,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F89B78",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            50,
+            50,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-30",
@@ -10016,11 +11487,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-40": {
     "$value": "#f4784a",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          70,
+          80,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F4784A",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            70,
+            80,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-40",
@@ -10058,11 +11551,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-50": {
     "$value": "#f0561d",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          80,
+          100,
+          0
+        ],
+        "pantone": "165 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F0561D",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            80,
+            100,
+            0
+          ],
+          "pantone": "165 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-50",
@@ -10100,11 +11617,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-60": {
     "$value": "#b1380b",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          90,
+          100,
+          20
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#B1380B",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            90,
+            100,
+            20
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-60",
@@ -10142,11 +11681,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-70": {
     "$value": "#731f00",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          90,
+          100,
+          40
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red-orange.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#731F00",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            90,
+            100,
+            40
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-orange-70",
@@ -10181,6 +11742,48 @@ exports.tokens = new TokenMetaMap({
       "70"
     ],
     "key": "{color.red-orange.70}"
+  },
+  "--rh-color-red-orange-80": {
+    "$value": "#4c1405",
+    "filePath": "tokens/color/crayon/red-orange.yaml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "#4C1405",
+      "$type": "color"
+    },
+    "name": "rh-color-red-orange-80",
+    "attributes": {
+      "category": "color",
+      "type": "red-orange",
+      "item": "80",
+      "hex": "4c1405",
+      "rgb": {
+        "r": 76,
+        "g": 20,
+        "b": 5,
+        "a": 1
+      },
+      "hsl": {
+        "h": 12.67605633802817,
+        "s": 87.65432098765433,
+        "l": 15.88235294117647,
+        "a": 1
+      },
+      "hsv": {
+        "h": 12.67605633802817,
+        "s": 0.9342105263157895,
+        "v": 0.2980392156862745,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "red-orange",
+      "80"
+    ],
+    "key": "{color.red-orange.80}"
   },
   "--rh-color-red-orange-10-hsl": {
     "$value": "15.789473684210513 100% 92.54901960784314%",
@@ -10770,13 +12373,119 @@ exports.tokens = new TokenMetaMap({
     ],
     "key": "{color.red-orange.70-rgb}"
   },
+  "--rh-color-red-orange-80-hsl": {
+    "$value": "12.67605633802817 87.65432098765433% 15.88235294117647%",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-80) h s l / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.red-orange.80}",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-80) h s l / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-red-orange-80-hsl",
+    "attributes": {
+      "category": "color",
+      "type": "red-orange",
+      "item": "80-hsl",
+      "hex": "4c1405",
+      "rgb": {
+        "r": 76,
+        "g": 20,
+        "b": 5,
+        "a": 1
+      },
+      "hsl": {
+        "h": 12.67605633802817,
+        "s": 87.65432098765433,
+        "l": 15.88235294117647,
+        "a": 1
+      },
+      "hsv": {
+        "h": 12.67605633802817,
+        "s": 0.9342105263157895,
+        "v": 0.2980392156862745,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "red-orange",
+      "80-hsl"
+    ],
+    "key": "{color.red-orange.80-hsl}"
+  },
+  "--rh-color-red-orange-80-rgb": {
+    "$value": "76 20 5",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-80) r g b / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.red-orange.80}",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-80) r g b / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-red-orange-80-rgb",
+    "attributes": {
+      "category": "color",
+      "type": "red-orange",
+      "item": "80-rgb",
+      "hex": "4c1405",
+      "rgb": {
+        "r": 76,
+        "g": 20,
+        "b": 5,
+        "a": 1
+      },
+      "hsl": {
+        "h": 12.67605633802817,
+        "s": 87.65432098765433,
+        "l": 15.88235294117647,
+        "a": 1
+      },
+      "hsv": {
+        "h": 12.67605633802817,
+        "s": 0.9342105263157895,
+        "v": 0.2980392156862745,
+        "a": 1
+      },
+      "isLight": false
+    },
+    "path": [
+      "color",
+      "red-orange",
+      "80-rgb"
+    ],
+    "key": "{color.red-orange.80-rgb}"
+  },
   "--rh-color-red-5": {
     "$value": "#fef0f0",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          6,
+          1,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FEF0F0",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            6,
+            1,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-5",
@@ -10814,11 +12523,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-10": {
     "$value": "#fce3e3",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          12,
+          6,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FCE3E3",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            12,
+            6,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-10",
@@ -10857,12 +12588,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-20": {
     "$value": "#fbc5c5",
     "$description": "Lightest brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          27,
+          13,
+          0
+        ],
+        "pantone": "176 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FBC5C5",
       "$description": "Lightest brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            27,
+            13,
+            0
+          ],
+          "pantone": "176 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-20",
@@ -10901,12 +12656,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-30": {
     "$value": "#f9a8a8",
     "$description": "Lighter brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          41,
+          23,
+          0
+        ],
+        "pantone": "177 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F9A8A8",
       "$description": "Lighter brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            41,
+            23,
+            0
+          ],
+          "pantone": "177 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-30",
@@ -10945,12 +12724,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-40": {
     "$value": "#f56e6e",
     "$description": "Light brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          70,
+          47,
+          0
+        ],
+        "pantone": "178 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#F56E6E",
       "$description": "Light brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            70,
+            47,
+            0
+          ],
+          "pantone": "178 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-40",
@@ -10989,12 +12792,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-50": {
     "$value": "#ee0000",
     "$description": "Brand red (light and dark theme)",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          98,
+          85,
+          0
+        ],
+        "pantone": "1788 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#EE0000",
       "$description": "Brand red (light and dark theme)",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            98,
+            85,
+            0
+          ],
+          "pantone": "1788 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-50",
@@ -11033,12 +12860,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-60": {
     "$value": "#a60000",
     "$description": "Dark brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          98,
+          85,
+          35
+        ],
+        "pantone": "1805 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#A60000",
       "$description": "Dark brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            98,
+            85,
+            35
+          ],
+          "pantone": "1805 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-60",
@@ -11077,12 +12928,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-70": {
     "$value": "#5f0000",
     "$description": "Darker brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          98,
+          85,
+          70
+        ],
+        "pantone": "1815 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#5F0000",
       "$description": "Darker brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            98,
+            85,
+            70
+          ],
+          "pantone": "1815 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-70",
@@ -11121,12 +12996,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-red-80": {
     "$value": "#3f0000",
     "$description": "Darkest brand red",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          98,
+          85,
+          85
+        ],
+        "pantone": "1817 C"
+      }
+    },
     "filePath": "tokens/color/crayon/red.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#3F0000",
       "$description": "Darkest brand red",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            98,
+            85,
+            85
+          ],
+          "pantone": "1817 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-red-80",
@@ -11921,12 +13820,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-teal-10": {
     "$value": "#daf2f2",
     "$description": "Alert - Default background",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          10,
+          0,
+          2,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#DAF2F2",
       "$description": "Alert - Default background",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            10,
+            0,
+            2,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-10",
@@ -11964,11 +13885,33 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-20": {
     "$value": "#b9e5e5",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          20,
+          0,
+          7,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#B9E5E5",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            20,
+            0,
+            7,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-20",
@@ -12007,12 +13950,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-teal-30": {
     "$value": "#9ad8d8",
     "$description": "Label (Cyan) border color",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          30,
+          5,
+          10,
+          0
+        ],
+        "pantone": "5523 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#9AD8D8",
       "$description": "Label (Cyan) border color",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            30,
+            5,
+            10,
+            0
+          ],
+          "pantone": "5523 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-30",
@@ -12050,11 +14017,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-40": {
     "$value": "#63bdbd",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          45,
+          10,
+          20,
+          0
+        ],
+        "pantone": "5503 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#63BDBD",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            45,
+            10,
+            20,
+            0
+          ],
+          "pantone": "5503 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-40",
@@ -12093,12 +14084,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-teal-50": {
     "$value": "#37a3a3",
     "$description": "Alert - Default accent",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          80,
+          10,
+          30,
+          10
+        ],
+        "pantone": "2234 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#37A3A3",
       "$description": "Alert - Default accent",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            80,
+            10,
+            30,
+            10
+          ],
+          "pantone": "2234 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-50",
@@ -12136,11 +14151,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-60": {
     "$value": "#147878",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          90,
+          10,
+          35,
+          20
+        ],
+        "pantone": "2237 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#147878",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            90,
+            10,
+            35,
+            20
+          ],
+          "pantone": "2237 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-60",
@@ -12179,12 +14218,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-teal-70": {
     "$value": "#004d4d",
     "$description": "Alert - Default title text",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          95,
+          40,
+          55,
+          40
+        ],
+        "pantone": "7722 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#004D4D",
       "$description": "Alert - Default title text",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            95,
+            40,
+            55,
+            40
+          ],
+          "pantone": "7722 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-70",
@@ -12222,11 +14285,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-80": {
     "$value": "#003333",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          95,
+          40,
+          55,
+          70
+        ],
+        "pantone": "4168 C"
+      }
+    },
     "filePath": "tokens/color/crayon/teal.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#003333",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            95,
+            40,
+            55,
+            70
+          ],
+          "pantone": "4168 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-teal-80",
@@ -12937,12 +15024,34 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-yellow-10": {
     "$value": "#fff4cc",
     "$description": "Alert - Warning background",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          5,
+          25,
+          0
+        ]
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FFF4CC",
       "$description": "Alert - Warning background",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            5,
+            25,
+            0
+          ]
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-10",
@@ -12980,11 +15089,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-20": {
     "$value": "#ffe072",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          10,
+          50,
+          0
+        ],
+        "pantone": "2002 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FFE072",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            10,
+            50,
+            0
+          ],
+          "pantone": "2002 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-20",
@@ -13022,11 +15155,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-30": {
     "$value": "#ffcc17",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          15,
+          100,
+          0
+        ],
+        "pantone": "108 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#FFCC17",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            15,
+            100,
+            0
+          ],
+          "pantone": "108 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-30",
@@ -13065,12 +15222,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-yellow-40": {
     "$value": "#dca614",
     "$description": "Alert - Warning accent",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          35,
+          100,
+          0
+        ],
+        "pantone": "110 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#DCA614",
       "$description": "Alert - Warning accent",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            35,
+            100,
+            0
+          ],
+          "pantone": "110 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-40",
@@ -13108,11 +15289,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-50": {
     "$value": "#b98412",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          0,
+          55,
+          100,
+          20
+        ],
+        "pantone": "3547 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#B98412",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            0,
+            55,
+            100,
+            20
+          ],
+          "pantone": "3547 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-50",
@@ -13150,11 +15355,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-60": {
     "$value": "#96640f",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          30,
+          70,
+          100,
+          20
+        ],
+        "pantone": "4027 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#96640F",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            30,
+            70,
+            100,
+            20
+          ],
+          "pantone": "4027 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-60",
@@ -13193,12 +15422,36 @@ exports.tokens = new TokenMetaMap({
   "--rh-color-yellow-70": {
     "$value": "#73480b",
     "$description": "Alert - Warning title text",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          40,
+          85,
+          100,
+          40
+        ],
+        "pantone": "732 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#73480B",
       "$description": "Alert - Warning title text",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            40,
+            85,
+            100,
+            40
+          ],
+          "pantone": "732 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-70",
@@ -13236,11 +15489,35 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-80": {
     "$value": "#54330b",
+    "$extensions": {
+      "com.redhat.print": {
+        "colorSpace": "cmyk",
+        "components": [
+          40,
+          80,
+          100,
+          60
+        ],
+        "pantone": "4625 C"
+      }
+    },
     "filePath": "tokens/color/crayon/yellow.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "#54330B",
+      "$extensions": {
+        "com.redhat.print": {
+          "colorSpace": "cmyk",
+          "components": [
+            40,
+            80,
+            100,
+            60
+          ],
+          "pantone": "4625 C"
+        }
+      },
       "$type": "color"
     },
     "name": "rh-color-yellow-80",

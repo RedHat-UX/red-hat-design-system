@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Pattern | Red Hat Design System</title>
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body class="felt-preview">
+    <link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-row {
+    /* `transform` establishes a new containing block for the fixed-position
+       `rh-back-to-top`, so it sticks to this demo box instead of escaping
+       to the real page viewport (where it would collide with the docs
+       site's own back-to-top button). */
+    transform: translate(0);
+    margin-block: var(--rh-space-2xl, 32px);
+    min-block-size: 8rem;
+  }
+</style>
+
+<div class="example-row">
+  <p>Hover, focus, or click the button to see its interactive states.</p>
+  <rh-back-to-top   visible="always" href="#top"><template shadowroot="open" shadowrootmode="open"><style>:host{z-index:1000;position:fixed;inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px)}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}[part=trigger]{color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));background-color: var(--rh-back-to-top-background-color, var(--rh-color-accent-base));font-size:var(--rh-font-size-body-text-xs,.75rem);padding-inline:var(--rh-space-md,8px);padding-block:var(--rh-space-xs,4px);border-radius:var(--rh-border-radius-pill,64px);justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);outline: var(--rh-border-width-md,2px) solid transparent;border: var(--rh-border-width-md,2px) solid transparent;pointer-events:all;text-decoration:none;display:inline-flex}[part=trigger]:is(:hover,:focus){outline: var(--rh-border-width-md,2px) solid  var(--rh-color-interactive-primary-hover);border: var(--rh-border-width-md,2px) solid light-dark( var(--rh-color-border-strong-on-dark,#fff), var(--rh-color-border-strong-on-light,#151515));background-color:var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,.75rem);vertical-align:-.125rem}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part LiYNwB5qsa4=-->
+      <!-- summary: anchor link that triggers scroll to top
+           description: |
+             The clickable link element that navigates to the top of the page or specified target.
+             This part can be styled to customize the button's appearance including hover states,
+             borders, shadows, and positioning. The button uses a pill shape with the accent color
+             background and includes both text and an upward caret icon. -->
+      <!--lit-node 1--><a href="#top"  part="trigger">
+        <!-- summary: link text content (default slot)
+             description: |
+               Text displayed within the back to top button. Defaults to
+               "Back to top" if not provided. Serves as the ARIA accessible
+               name for the anchor link (per WCAG 2.5.3 Label in Name).
+               Use visible, descriptive text so screen readers announce
+               the link purpose; avoid icon-only content without a label. -->
+        <slot>Back to top</slot>
+        <!--lit-node 4--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part W69xz2nd3h4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29 22a.997.997 0 0 1-.707-.293L16 9.414 3.707 21.707a.999.999 0 1 1-1.414-1.414L14.939 7.646a1.501 1.501 0 0 1 2.121 0l12.646 12.646a.999.999 0 0 1-.707 1.707Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </a>
+    <!--/lit-part--></template>Back to top</rh-back-to-top>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+</script>
+
+  
+
+</body></html>

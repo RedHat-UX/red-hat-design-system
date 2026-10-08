@@ -11,15 +11,48 @@
   display: block;
 
   /** Disclosure body font family */
-  font-family: var(--rh-font-family-body-text);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+}
+
+details {
+  /**
+   * Trigger surface color at rest.
+   * Reset on every disclosure so a nested disclosure's closed trigger
+   * doesn't inherit an open ancestor's expanded fill through custom
+   * property inheritance. `details[open]` below overrides this with
+   * higher specificity.
+   */
+  --_summary-background-color: var(--rh-color-surface);
 }
 
 summary {
-  /** Trigger surface color */
-  background-color: var(--rh-color-surface);
+  /**
+   * Trigger surface color.
+   * Open disclosures can replace this with
+   * `--rh-disclosure-summary-background-color-expanded`.
+   */
+  background-color: var(--_summary-background-color, var(--rh-color-surface));
 
   /** Trigger corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /**
+   * Trigger block-start/block-end border.
+   * Unset by default. `details[open]` below removes the block-end half
+   * so only the block-start border remains on an expanded trigger.
+   */
+  border-block:
+    /**
+     * Trigger border width.
+     * @cssprop --rh-disclosure-border-width
+     */
+    var(--rh-disclosure-border-width, 0)
+    solid
+    /**
+     * Trigger border color.
+     * @cssprop --rh-disclosure-border-color
+     */
+    var(--rh-disclosure-border-color, transparent);
 
   /** Trigger text color */
   color: var(--rh-color-text-primary);
@@ -35,8 +68,13 @@ summary {
   /** Trigger block padding */
   padding-block: var(--rh-space-lg, 16px);
 
-  /** Trigger inline padding */
-  padding-inline: var(--rh-space-xl, 24px);
+  /**
+   * Inline padding for the trigger and the panel.
+   * Falls back to the 24px spacer.
+   * The compact size keeps its own inline padding.
+   * @cssprop --rh-disclosure-padding-inline
+   */
+  padding-inline: var(--rh-disclosure-padding-inline, var(--rh-space-xl, 24px));
 
   &::-webkit-details-marker,
   &::marker {
@@ -48,9 +86,9 @@ summary {
   &:focus {
     background-color:
       light-dark(
-          /** Trigger hover surface in light mode */
+          /** Trigger hover surface for light scheme */
           var(--rh-color-surface-lighter, #f2f2f2),
-          /** Trigger hover surface in dark mode */
+          /** Trigger hover surface for dark scheme */
           var(--rh-color-surface-dark, #383838)
         );
   }
@@ -62,16 +100,35 @@ summary {
       var(--rh-border-width-md, 2px)
       solid;
 
-    /** Focus outline color */
-    outline-color: var(--rh-color-interactive-primary-default);
-    outline-offset: -2px;
+    /**
+     * Focus outline color.
+     * Falls back to the interactive-primary token used for the trigger's
+     * resting/hover text, so unthemed consumers get one consistent brand
+     * color. Themes that repurpose that token for text only (e.g. the
+     * borderless variant's gray-text treatment) can set this separately
+     * to keep the focus ring on-brand.
+     * @cssprop --rh-disclosure-summary-outline-color
+     */
+    outline-color:
+      var(
+          --rh-disclosure-summary-outline-color,
+          var(--rh-color-interactive-primary-default)
+        );
+
+    /**
+     * Offset of the outline on the trigger while focused or active.
+     * Defaults to `-2px`, which insets the ring.
+     * Borderless focus keeps its own outset.
+     * @cssprop --rh-disclosure-summary-outline-offset
+     */
+    outline-offset: var(--rh-disclosure-summary-outline-offset, -2px);
     position: relative;
     z-index: 2;
   }
 
   & ::slotted([slot='summary']) {
     /** Slotted summary font family */
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
     /** Slotted summary text size */
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
@@ -86,11 +143,16 @@ summary {
 }
 
 #caret {
-  /** Caret icon inline size */
-  inline-size: var(--rh-space-lg, 16px);
+  /**
+   * Caret icon inline size.
+   * Reads the same `--rh-icon-size` the compact variant sets on this
+   * icon, so the host box shrinks along with the glyph instead of
+   * leaving the compact caret floating in an oversized box.
+   */
+  inline-size: var(--rh-icon-size, var(--rh-space-lg, 16px));
 
   /** Caret icon block size */
-  block-size: var(--rh-space-lg, 16px);
+  block-size: var(--rh-icon-size, var(--rh-space-lg, 16px));
   transition: 0.2s;
   will-change: rotate;
   position: relative;
@@ -121,8 +183,30 @@ summary {
     /** Panel block-end padding */
     var(--rh-space-xl, 24px);
 
-  /** Panel inline padding */
-  padding-inline: var(--rh-space-xl, 24px);
+  /**
+   * Inline padding for the panel.
+   * Same property as the trigger, with the same 24px fallback.
+   */
+  padding-inline: var(--rh-disclosure-padding-inline, var(--rh-space-xl, 24px));
+
+  /**
+   * Panel block-end border.
+   * Unset by default; only visible while the panel is shown, so it
+   * doesn't need to be scoped to `details[open]`. Lines up with the
+   * block-start border left on the trigger above when expanded.
+   */
+  border-block-end:
+    /**
+     * Panel border width.
+     * @cssprop --rh-disclosure-border-width
+     */
+    var(--rh-disclosure-border-width, 0)
+    solid
+    /**
+     * Panel border color.
+     * @cssprop --rh-disclosure-border-color
+     */
+    var(--rh-disclosure-border-color, transparent);
 }
 
 ::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
@@ -138,8 +222,31 @@ details[open] {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
 
+  /**
+   * Background of the open trigger at rest.
+   * Falls back to the trigger surface, so the panel can keep that color
+   * while the open summary uses another fill.
+   * Hover, focus, and active keep their own fills.
+   * The borderless variant keeps its own open fill.
+   * @cssprop --rh-disclosure-summary-background-color-expanded
+   */
+  --_summary-background-color:
+    var(
+        --rh-disclosure-summary-background-color-expanded,
+        var(--rh-color-surface)
+      );
+
   & #caret {
     transform: rotate(-180deg);
+  }
+
+  /**
+   * Drops the trigger's block-end border, leaving only the block-start
+   * border set above so the panel's own block-end border reads as the
+   * single rule between the two.
+   */
+  & summary {
+    border-block-end: 0;
   }
 
   &:before {
@@ -196,9 +303,9 @@ details[open] {
 :host([variant~='borderless']) {
   --_hover-background-color:
     light-dark(
-        /** Borderless hover surface in light mode */
+        /** Borderless hover surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Borderless hover surface in dark mode */
+        /** Borderless hover surface for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   --_open-background-color: var(--_hover-background-color);
@@ -218,13 +325,28 @@ details[open] {
     }
 
     &:focus {
-      /** Borderless focus outline offset */
-      outline-offset: var(--rh-length-3xs, 2px);
+      /**
+       * Borderless focus outline offset.
+       * Reuses the same cssprop the default variant uses for its own
+       * (inset) offset, so themes can give borderless its own outset
+       * value without a second property.
+       * @cssprop --rh-disclosure-summary-outline-offset
+       */
+      outline-offset:
+        var(
+            --rh-disclosure-summary-outline-offset,
+            var(--rh-length-3xs, 2px)
+          );
     }
   }
 
   details[open] {
-    background-color: var(--_open-background-color);
+    /**
+     * Not set here. The open fill belongs on the trigger only; setting
+     * it on `details` would bleed through `#details-content`'s
+     * `transparent` background below, since that's an empty box over
+     * its container rather than a value with no color of its own.
+     */
 
     /** Borderless open panel corner radius */
     border-radius: var(--rh-border-radius-default, 3px);
@@ -241,9 +363,9 @@ details[open] {
       &:focus {
         background-color:
           light-dark(
-              /** Borderless open hover surface in light mode */
+              /** Borderless open hover surface for light scheme */
               var(--rh-color-surface-light, #e0e0e0),
-              /** Borderless open hover surface in dark mode */
+              /** Borderless open hover surface for dark scheme */
               var(--rh-color-surface-dark, #383838)
             );
       }

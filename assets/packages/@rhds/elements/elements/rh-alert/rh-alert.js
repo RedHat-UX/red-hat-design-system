@@ -1,4 +1,4 @@
-var _RhAlert_instances, _RhAlert_icon_get, _RhAlert_slots, _RhAlert_onClose, _RhAlert_aliasState, _RhAlert_close, _RhAlert_onActionsClick;
+var _RhAlert_instances, _RhAlert_icon_get, _RhAlert_slots, _RhAlert_onClose, _RhAlert_normalizeState, _RhAlert_close, _RhAlert_onActionsClick;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -64,17 +64,17 @@ let RhAlert = class RhAlert extends LitElement {
          *  - `caution` - Indicates an action or notice which should immediately draw the attention
          *  - `info` - Indicates helpful information or a message with very little to no severity.
          *  - `success` - Indicates a success state, like if a process was completed without errors.
-         *
-         *  Note: 'note', 'default', and 'error' will also work, but are deprecated
          */
         this.state = 'neutral';
         /**
          * Alert variants have different rules regarding their ability to be dismissed by a user.
-         * Default, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
+         * Neutral, Info, and Success Inline alerts can be dismissed by a user selecting the close button.
          * Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
          * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
          */
         this.dismissable = false;
+        /** Accessible label for the close button, used for localization. */
+        this.closeLabel = 'Close';
         _RhAlert_slots.set(this, new SlotController(this, 'header', null, 'actions'));
     }
     /**
@@ -117,7 +117,7 @@ let RhAlert = class RhAlert extends LitElement {
         const hasActions = _isServer || __classPrivateFieldGet(this, _RhAlert_slots, "f").hasSlotted('actions');
         const hasBody = _isServer || __classPrivateFieldGet(this, _RhAlert_slots, "f").hasSlotted(SlotController.default);
         const { variant = 'inline' } = this;
-        const state = __classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_aliasState).call(this, this.state);
+        const state = __classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_normalizeState).call(this, this.state);
         // this click listener delegates events from the footer slot
         // as such it doest not require a key listener.
         // eslint-disable-next-line lit-a11y/click-events-have-key-events
@@ -153,7 +153,7 @@ let RhAlert = class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         label="Close"
+                         accessible-label="${this.closeLabel}"
                          confirm
                          @click="${__classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_onClose)}"></rh-button>
             </div>`}
@@ -173,29 +173,15 @@ let RhAlert = class RhAlert extends LitElement {
 _RhAlert_slots = new WeakMap();
 _RhAlert_instances = new WeakSet();
 _RhAlert_icon_get = function _RhAlert_icon_get() {
-    const state = this.state.toLowerCase();
-    switch (state) {
-        // @ts-expect-error: support for deprecated props
-        case 'note': return ICONS.get('info');
-        // @ts-expect-error: support for deprecated props
-        case 'default': return ICONS.get('neutral');
-        // @ts-expect-error: support for deprecated props
-        case 'error': return ICONS.get('danger');
-        default: return ICONS.get(state);
-    }
+    return ICONS.get(__classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_normalizeState).call(this, this.state));
 };
 _RhAlert_onClose = function _RhAlert_onClose() {
     if (this.dispatchEvent(new AlertCloseEvent('close'))) {
         __classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_close).call(this);
     }
 };
-_RhAlert_aliasState = function _RhAlert_aliasState(state) {
+_RhAlert_normalizeState = function _RhAlert_normalizeState(state) {
     switch (state.toLowerCase()) {
-        // the first three are deprecated pre-DPO status names
-        case 'note': return 'info';
-        case 'default': return 'neutral';
-        case 'error': return 'danger';
-        // the following are DPO-approved status names
         case 'danger':
         case 'warning':
         case 'caution':
@@ -233,6 +219,9 @@ __decorate([
 __decorate([
     property({ reflect: true, type: Boolean })
 ], RhAlert.prototype, "dismissable", void 0);
+__decorate([
+    property({ attribute: 'close-label' })
+], RhAlert.prototype, "closeLabel", void 0);
 RhAlert = __decorate([
     customElement('rh-alert'),
     themable

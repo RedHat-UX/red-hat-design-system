@@ -14,7 +14,6 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
  *
  */
 export declare class RhCta extends LitElement {
-    #private;
     static readonly styles: CSSStyleSheet[];
     /**
      * Visual importance: `primary` (red fill), `secondary` (bordered),

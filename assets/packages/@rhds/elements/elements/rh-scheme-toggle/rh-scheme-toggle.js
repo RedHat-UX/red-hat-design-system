@@ -5,6 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:block}fieldset{flex-flow:var(--rh-scheme-toggle-flex-flow,row nowrap);align-items:var(--rh-scheme-toggle-align-items,center);gap:var(--rh-scheme-toggle-gap,var(--rh-space-lg,16px));border:0;display:flex;margin:0;padding:0}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{align-items:center;background-color:initial;border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);display:flex;height:var(--rh-space-2xl,32px);justify-content:center;position:relative;width:var(--rh-space-3xl,48px)}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-default);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}input{appearance:none;border-radius:inherit;inset:0;margin:0;outline-offset:4px;padding:0;position:absolute}input:focus-visible{outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);transition:none}rh-icon{z-index:2}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}`;
 /**
@@ -180,7 +181,8 @@ __decorate([
     observes('scheme')
 ], RhSchemeToggle.prototype, "schemeChanged", null);
 RhSchemeToggle = __decorate([
-    customElement('rh-scheme-toggle')
+    customElement('rh-scheme-toggle'),
+    themable
 ], RhSchemeToggle);
 export { RhSchemeToggle };
 //# sourceMappingURL=rh-scheme-toggle.js.map
