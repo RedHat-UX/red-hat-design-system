@@ -294,16 +294,16 @@ export class RhDialog extends LitElement {
           <!-- The dialog element -->
           <dialog id="dialog"
                   part="dialog"
-                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
-                  @cancel=${this.#onNativeDialogCancel}
-                  @close=${this.#onNativeDialogClose}>
+                  aria-labelledby="${ifDefined(this.accessibleLabel ? undefined : headerId)}"
+                  aria-label="${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}"
+                  @cancel="${this.#onNativeDialogCancel}"
+                  @close="${this.#onNativeDialogClose}">
             <!-- The dialog's close button -->
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
                        type="button"
-                       @click=${this.close}>
+                       @click="${this.close}">
               <span class="visually-hidden">Close Dialog</span>
             </rh-button>
             <!-- The container for the dialog content -->
@@ -311,7 +311,7 @@ export class RhDialog extends LitElement {
               <!-- The container for the optional dialog header -->
               <div id="header"
                    part="header"
-                   ?hidden=${!hasHeader}>
+                   ?hidden="${!hasHeader}">
                 <!--
                   summary: Dialog heading
                   description: |
@@ -320,7 +320,7 @@ export class RhDialog extends LitElement {
                 -->
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
-                <div part="description" ?hidden=${!hasDescription}>
+                <div part="description" ?hidden="${!hasDescription}">
                   <!--
                     summary: Supplementary text below the heading
                     description: |
@@ -342,7 +342,7 @@ export class RhDialog extends LitElement {
               <!-- Actions footer container -->
               <div id="footer"
                    part="footer"
-                   ?hidden=${!hasFooter}>
+                   ?hidden="${!hasFooter}">
                 <!--
                   summary: Action buttons at the bottom of the dialog
                   description: |
