@@ -1,15 +1,14 @@
-import type { CSSResult, CSSResultOrNative, LitElement, ReactiveController } from 'lit';
+import type { CSSResult, LitElement, ReactiveController } from 'lit';
 import type { RenderInfo } from '@lit-labs/ssr';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
 import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
-import type { Thunk, ThunkedRenderResult } from '@lit-labs/ssr/lib/render-result.js';
+import type { ThunkedRenderResult } from '@lit-labs/ssr/lib/render-result.js';
 
 import '@patternfly/pfe-core/ssr-shims.js';
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
 import { register } from 'node:module';
-import { register as registerTS } from 'tsx/esm/api';
 
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -28,8 +27,8 @@ interface WorkerInitData {
 
 const { imports } = Piscina.workerData as WorkerInitData;
 
-registerTS();
-register('./lit-css-node.ts', import.meta.url);
+register('./lit-css-node.js', import.meta.url);
+register('./lit-html-minifier-node.js', import.meta.url);
 
 /* eslint-disable no-console */
 for (const bareSpec of imports) {
@@ -38,11 +37,16 @@ for (const bareSpec of imports) {
     throw new Error(`${bareSpec} does not appear to be an element module`);
   }
   if (!customElements.get(conventionalTagName)) {
-    const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
+    const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace(
+      /\.ts$/,
+      '.js'
+    );
     try {
       await import(spec);
       if (!customElements.get(conventionalTagName)) {
-        throw new Error(`${conventionalTagName} declaration loaded, but not defined!`);
+        throw new Error(
+          `${conventionalTagName} declaration loaded, but not defined!`
+        );
       }
     } catch (e) {
       console.warn((e as Error)?.message?.trim() || e);
@@ -52,86 +56,116 @@ for (const bareSpec of imports) {
 }
 /* eslint-enable no-console */
 
-class RHDSSSRableRenderer extends LitElementRenderer {
-  static styleCache = new Map<string, Thunk>();
+const specifierMap = new Map<string, string>();
+const styleIdentityMap = new WeakMap<object, string>();
 
-  static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
+class RHDSSSRableRenderer extends LitElementRenderer {
+  // Eagerly processed CSS strings, not thunks. connectedCallback() must store
+  // the final CSS in specifierMap before rendering so post-processing can build
+  // the shared <style type="module"> blocks for <head>. A thunk would be too late.
+  static styleCache = new Map<string, string>();
+
+  static isRHDSSSRController(
+    ctrl: ReactiveController
+  ): ctrl is RHDSSSRController {
     return !!(ctrl as RHDSSSRController).isRHDSSSRController;
   }
 
+  #specifiers: string[] = [];
+
   getControllers() {
-    const element = (this.element as LitElement & { _$EO: Set<ReactiveController> });
-    return Array.from(element._$EO ?? new Set())
-        .filter(RHDSSSRableRenderer.isRHDSSSRController);
+    const element = this.element as LitElement & {
+      _$EO: Set<ReactiveController>;
+    };
+    return Array.from(element._$EO ?? new Set()).filter(
+      RHDSSSRableRenderer.isRHDSSSRController
+    );
   }
 
-  override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
-    return [
-      // Render styles.
-      this.#renderStyles(),
-      // Thunk that sets up controllers first, then renders template
-      async () => {
-        for (const controller of this.getControllers()) {
-          if (controller.ssrSetup) {
-            await controller.ssrSetup(renderInfo);
-          }
-        }
-        return renderValue(
-          // @ts-expect-error: if upstream can do it, so can we
-          this.element.render(),
-          renderInfo,
+  override connectedCallback() {
+    super.connectedCallback();
+    const styles =
+      (this.element.constructor as typeof LitElement).elementStyles ?? [];
+    const unnamed = styles.filter(s =>
+      !styleIdentityMap.has(s)
+      && !(s as CSSResult & { specifier?: string }).specifier);
+    for (const style of styles) {
+      const specifier = styleIdentityMap.get(style)
+          ?? (style as CSSResult & { specifier?: string }).specifier
+          ?? (unnamed.length === 1 ?
+              this.tagName.toLowerCase()
+              : `${this.tagName.toLowerCase()}-${unnamed.indexOf(style)}`);
+      styleIdentityMap.set(style, specifier);
+      this.#specifiers.push(specifier);
+      if (!specifierMap.has(specifier)) {
+        specifierMap.set(
+          specifier,
+          this.#processCSS((style as CSSResult).cssText, specifier),
         );
-      },
-    ];
-  }
-
-  #renderStyles(): Thunk {
-    const styles = (this.element.constructor as typeof LitElement).elementStyles;
-    if (styles !== undefined && styles.length > 0) {
-      return () => [
-        '<style>',
-        ...this.thunkStyles(styles),
-        '</style>',
-      ];
-    } else {
-      return () => '';
+      }
     }
   }
 
-  private thunkStyles(styles: CSSResultOrNative[]): Thunk[] {
-    return styles.flatMap(style => {
-      const { cssText } = style as CSSResult;
-      if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
-        const processed = () => {
-          try {
-            const { code } = transform({
-              filename: 'constructed-stylesheet.css',
-              code: Buffer.from(cssText),
-              minify: true,
-              include: Features.Nesting,
-            });
-            // Fix lightningcss normalizing inherit to normal for color-scheme
-            // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
-            return code
-                .toString()
-                .replaceAll(
-                  'color-scheme:normal',
-                  'color-scheme:inherit',
-                );
-          } catch {
-            return cssText;
-          }
-        };
-        RHDSSSRableRenderer.styleCache.set(cssText, processed);
+  override renderAttributes() {
+    const result = super.renderAttributes();
+    if (this.#specifiers.length > 0) {
+      result.push(
+        ` shadowrootadoptedstylesheets="${this.#specifiers.join(' ')}"`
+      );
+    }
+    return result;
+  }
+
+  override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
+    const result: ThunkedRenderResult = [];
+
+    if (this.#specifiers.length > 0) {
+      result.push(`<!--@adopted:${this.#specifiers.join(' ')}-->`);
+    }
+
+    result.push(async () => {
+      for (const controller of this.getControllers()) {
+        if (controller.ssrSetup) {
+          await controller.ssrSetup(renderInfo);
+        }
       }
-      return [RHDSSSRableRenderer.styleCache.get(cssText)!];
+      return renderValue(
+        // @ts-expect-error: if upstream can do it, so can we
+        this.element.render(),
+        renderInfo
+      );
     });
+
+    return result;
+  }
+
+  #processCSS(cssText: string, cacheKey?: string): string {
+    const key = cacheKey ?? cssText;
+    if (!RHDSSSRableRenderer.styleCache.has(key)) {
+      try {
+        const { code } = transform({
+          filename: 'constructed-stylesheet.css',
+          code: Buffer.from(cssText),
+          minify: true,
+          include: Features.Nesting,
+        });
+        // Fix lightningcss normalizing inherit to normal for color-scheme
+        // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
+        RHDSSSRableRenderer.styleCache.set(
+          key,
+          code
+              .toString()
+              .replaceAll('color-scheme:normal', 'color-scheme:inherit')
+        );
+      } catch {
+        RHDSSSRableRenderer.styleCache.set(key, cssText);
+      }
+    }
+    return RHDSSSRableRenderer.styleCache.get(key)!;
   }
 }
 
-const elementRenderers = [
-  RHDSSSRableRenderer,
-];
+const elementRenderers = [RHDSSSRableRenderer];
 
 class UnsafeHTMLStringsArray extends Array {
   public raw: readonly string[];
@@ -142,18 +176,52 @@ class UnsafeHTMLStringsArray extends Array {
   }
 }
 
+function postProcessAdoptedStyleSheets(html: string): string {
+  if (specifierMap.size === 0) {
+    return html;
+  }
+
+  const TEMPLATE_RE = new RegExp(
+    '(<template\\s+shadowroot="[^"]*"\\s+shadowrootmode="[^"]*"'
+      + '(?:\\s+shadowrootdelegatesfocus)?)(>)\\s*'
+      + '<!--@adopted:([\\w -]+)-->',
+    'g'
+  );
+  let processed = html.replace(
+    TEMPLATE_RE,
+    (_, open, close, specs) =>
+      `${open} shadowrootadoptedstylesheets="${specs.trim()}"${close}`
+  );
+
+  const styleBlocks = Array.from(specifierMap.entries())
+      .map(([name, css]) =>
+        `<style type="module" specifier="${name}">${css}</style>`)
+      .join('\n');
+
+  const headClose = processed.indexOf('</head>');
+  if (headClose !== -1) {
+    processed = `${processed.slice(0, headClose)}${styleBlocks}\n${processed.slice(headClose)}`;
+  } else {
+    processed = `${styleBlocks}\n${processed}`;
+  }
+
+  return processed;
+}
+
 /**
  * Render a page using lit-ssr
  *
  * @param opts
  * @param opts.page
  * @param opts.content
+ * @param opts.slotControllerElements
  */
 export default async function renderPage({
   page,
   content,
   slotControllerElements,
 }: RenderRequestMessage): Promise<RenderResponseMessage> {
+  specifierMap.clear();
   const start = performance.now();
   const tpl = html(new UnsafeHTMLStringsArray(content));
   const result = render(tpl, {
@@ -162,6 +230,7 @@ export default async function renderPage({
     slotControllerElements,
   } as unknown as RenderInfo);
   const rendered = await collectResult(result);
+  const postProcessed = postProcessAdoptedStyleSheets(rendered);
   const end = performance.now();
-  return { page, rendered, durationMs: end - start };
+  return { page, rendered: postProcessed, durationMs: end - start };
 }
