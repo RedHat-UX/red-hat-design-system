@@ -1,0 +1,12 @@
+rh-drawer:not(:defined) {
+  overflow: hidden;
+  opacity: 0;
+  block-size: 0;
+}
+
+@container rh-drawer (min-width: 992px) {
+  rh-drawer:not(:defined) {
+    block-size: auto;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,68 @@
+<meta itemprop="description" content="Mobile-first drawer that upgrades to collapsible at wide container widths. Uses trigger-id for overlay at narrow widths, adds collapsible at 992px.">
+<div id="container">
+  <rh-drawer id="drawer" trigger-id="trigger">
+    <h2 class="visually-hidden">Navigation</h2>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Get Started</a></li>
+        <li><a href="#">Foundations</a></li>
+        <li><a href="#">Release Notes</a></li>
+      </ul>
+    </nav>
+  </rh-drawer>
+  <div id="main">
+    <button id="trigger" type="button">Open drawer</button>
+    <p>At narrow widths, click the trigger to overlay the drawer. At 992px and above, the drawer becomes collapsible and pushes content inline.</p>
+  </div>
+</div>
+
+<style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
+  #container {
+    container: rh-drawer / inline-size;
+    display: grid;
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+    block-size: 100%;
+  }
+
+  rh-drawer {
+    grid-area: drawer;
+  }
+
+  #main {
+    grid-area: main;
+    padding: var(--rh-space-2xl, 32px);
+  }
+
+  @container rh-drawer (min-width: 992px) {
+    #trigger {
+      display: none;
+    }
+  }
+
+  .visually-hidden {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const drawer = document.getElementById('drawer');
+
+  drawer.addEventListener('threshold', (e) => {
+    if (e.direction === 'above') {
+      drawer.collapsible = true;
+      drawer.open = true;
+    } else {
+      drawer.collapsible = false;
+      drawer.open = false;
+    }
+  });
+</script>
