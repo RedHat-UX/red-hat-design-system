@@ -87,7 +87,7 @@
   to = '/patterns/announcement/'
 [[redirects]]
   from = '/components/disclosure/*'
-  to = '/patterns/disclosure/'
+  to = '/elements/disclosure/'
 [[redirects]]
   from = '/components/filter/*'
   to = '/patterns/filter/'
