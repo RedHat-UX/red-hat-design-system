@@ -5,6 +5,7 @@ heading: Developers
 permalink: /get-started/developers/ai-tooling/index.html
 tags:
   - developers
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 55
@@ -15,6 +16,7 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <script type="module" data-helmet>
+
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-table/rh-table.js';
