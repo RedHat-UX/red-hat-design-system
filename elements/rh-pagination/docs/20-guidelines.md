@@ -2,6 +2,10 @@
 
 Use pagination to allow users to navigate through large amounts of data or content divided across multiple pages. Pagination should be used if there are 10 - 20 items in one view. However, the default number varies depending on context.
 
+### Other options
+
+If you need to use a more simple pagination element within a table or toolbar, the [PatternFly](https://www.patternfly.org/) pagination component has a less prominent design.
+
 ## Sizes and style variants
 
 ### Sizes
@@ -12,9 +16,9 @@ While the [default size](/elements/pagination/style/#default) works better in mo
 - If the page amount is not known or cannot be determined
 - If pagination is used on mobile to ensure that users can access every page without page numbers
 
-### Box vs. borderless
+### Box vs. open
 
-The [box variant](/elements/pagination/style/#box-variant) is the default and button backgrounds help users see the touch targets clearly. The [borderless variant](/elements/pagination/style/#borderless-variant) can be used for situations that require a more minimal design.
+The [box variant](/elements/pagination/style/#box-variant) is the default and button backgrounds help users see the touch targets clearly. The [open variant](/elements/pagination/style/#open-variant) can be used for situations that require a more minimal design.
 
 ## Behavior
 
@@ -109,7 +113,7 @@ All of the pagination variants are horizontally centered below content by defaul
 
 ### With page input field
 
-As viewport sizes get smaller, pagination will switch sizes to accommodate the page input field if used on the right. All of the variants behave similarly. If the page input field is used below, pagination will not switch sizes as quickly. This works similarly for the box and borderless variants at both sizes.
+As viewport sizes get smaller, pagination will switch sizes to accommodate the page input field if used on the right. All of the variants behave similarly. If the page input field is used below, pagination will not switch sizes as quickly. This works similarly for the box and open variants at both sizes.
 
 <uxdot-example color-palette="lightest" width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt="Pagination with the page input field on the right"
@@ -140,7 +144,7 @@ Container widths less than 375px
 
 ### Without page input field
 
-When the page input field is not visible, the field will become visible when the default size switches to the mobile version. This works the same for the box and borderless variants.
+When the page input field is not visible, the field will become visible when the default size switches to the mobile version. This works the same for the box and open variants.
 
 <uxdot-example color-palette="lightest" width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt="Pagination on desktop without the page input field"

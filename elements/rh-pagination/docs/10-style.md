@@ -40,13 +40,13 @@ The box variant shows a background color for each page number and navigation con
        height="48">
 </uxdot-example>
 
-### Borderless variant
+### Open variant
 
-The borderless variant has transparent backgrounds for all buttons. The active state for a page number shows a blue border on the bottom.
+The open variant has transparent backgrounds for all buttons. The active state for a page number shows a blue border on the bottom.
 
 <uxdot-example color-palette="lightest" width-adjustment="736px">
   <img alt="Truncated pagination with 50 pages and an input on the right hand side. This version is borderless where there is no background color to denote a box to click on."
-       src="../pagination-style-borderless-variant.svg"
+       src="../pagination-style-open-variant.svg"
        width="736"
        height="48">
 </uxdot-example>
@@ -57,7 +57,7 @@ There are two available sizes: Default and Small.
 
 ### Default
 
-The default pagination button size is `--rh-size-icon-4.1`.
+The default pagination button size is `-rh-size-icon-04`.
 
 <uxdot-example color-palette="lightest" width-adjustment="548px">
   <img alt="A truncated pagination with 50 pages and an input below the pagination."
@@ -79,25 +79,62 @@ The small pagination button size is `--rh-size-icon-03`. The page input field si
 </uxdot-example>
 
 ## Color scheme
-<a id="theme"></a>
 
-Pagination is available in both light and dark color schemes.
-Consumers should strive to place Pagination only on lightest and darkest surface
-colors to prevent background colors of the box variant from bleeding into the surface background color.
+Pagination is available in both light and dark themes. Additionally, because the box variant has a light gray background color that can also be used for surfaces, the button background colors will change based on the container surface color.
 
 ### Light scheme
 
+The box variant button background color changes against `--rh-color-surface-lighter` only. However, the open variant colors do not change.
+
+#### Lightest
+
 <div class="grid sm-two-columns">
   <uxdot-example color-palette="lightest" width-adjustment="348px">
-    <img alt="Light theme pagination"
-         src="../pagination-style-theme-lightest-box.svg"
+    <img alt="Lightest scheme pagination, white background"
+         src="../pagination-style-scheme-lightest-box.svg"
          width="348"
          height="116">
   </uxdot-example>
 
   <uxdot-example color-palette="lightest" width-adjustment="348px">
-    <img alt="Light theme pagination borderless variant"
-         src="../pagination-style-theme-lightest-borderless.svg"
+    <img alt="Lightest scheme pagination open variant, white background"
+         src="../pagination-style-scheme-lightest-open.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+</div>
+
+#### Lighter
+
+<div class="grid sm-two-columns">
+  <uxdot-example color-palette="lighter" width-adjustment="348px">
+    <img alt="Lighter scheme pagination with a light gray background"
+         src="../pagination-style-scheme-lighter-box.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+
+  <uxdot-example color-palette="lighter" width-adjustment="348px">
+    <img alt="Lighter scheme pagination open variant with a light gray background"
+         src="../pagination-style-scheme-lighter-open.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+</div>
+
+#### Light
+
+<div class="grid sm-two-columns">
+  <uxdot-example color-palette="light" width-adjustment="348px">
+    <img alt="Light scheme pagination with a gray background"
+         src="../pagination-style-scheme-light-box.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+
+  <uxdot-example color-palette="light" width-adjustment="348px">
+    <img alt="Light scheme pagination open variant with a gray background"
+         src="../pagination-style-scheme-light-open.svg"
          width="348"
          height="116">
   </uxdot-example>
@@ -105,17 +142,57 @@ colors to prevent background colors of the box variant from bleeding into the su
 
 ### Dark scheme
 
+The box variant button background color changes against `--rh-color-surface-darker` only. However, the open variant colors do not change.
+
+#### Darkest
+
 <div class="grid sm-two-columns">
   <uxdot-example color-palette="darkest" width-adjustment="348px">
-    <img alt="Darkest theme pagination"
-         src="../pagination-style-theme-darkest-box.svg"
+    <img alt="Darkest scheme pagination, near black background"
+         src="../pagination-style-scheme-darkest-box.svg"
          width="348"
          height="116">
   </uxdot-example>
 
   <uxdot-example color-palette="darkest" width-adjustment="348px">
-    <img alt="Darkest theme pagination borderless variant"
-         src="../pagination-style-theme-darkest-borderless.svg"
+    <img alt="Darkest scheme pagination open variant, near black background"
+         src="../pagination-style-scheme-darkest-open.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+</div>
+
+#### Darker
+
+<div class="grid sm-two-columns">
+  <uxdot-example color-palette="darker" width-adjustment="348px">
+    <img alt="Darker scheme pagination, slightly lighter dark gray background"
+         src="../pagination-style-scheme-darker-box.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+
+  <uxdot-example color-palette="darker" width-adjustment="348px">
+    <img alt="Darker scheme pagination open variant, slightly lighter dark gray background"
+         src="../pagination-style-scheme-darker-open.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+</div>
+
+#### Dark
+
+<div class="grid sm-two-columns">
+  <uxdot-example color-palette="dark" width-adjustment="348px">
+    <img alt="Dark scheme pagination with a dark muted gray background"
+         src="../pagination-style-scheme-dark-box.svg"
+         width="348"
+         height="116">
+  </uxdot-example>
+
+  <uxdot-example color-palette="dark" width-adjustment="348px">
+    <img alt="Dark scheme pagination open variant with a dark muted gray background"
+         src="../pagination-style-scheme-dark-open.svg"
          width="348"
          height="116">
   </uxdot-example>
