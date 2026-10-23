@@ -74,6 +74,7 @@
     solid
     /** Trigger focus outline color */
     var(--rh-color-border-focus);
+
   /** Trigger focus outline offset */
   outline-offset: var(--rh-border-width-lg, 3px);
   transition: none;
@@ -84,8 +85,7 @@
   outline-color: var(--rh-color-interactive-primary-hover);
 }
 
-
-[part='trigger']:focus:not(:focus-visible):not(:active) {
+[part='trigger']:focus:not(:focus-visible, :active) {
   outline: none;
 }
 
