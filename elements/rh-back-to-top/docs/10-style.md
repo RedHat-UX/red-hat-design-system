@@ -55,10 +55,10 @@ Back to top is available in both light and dark color schemes.
 
 ## Interaction states
 
-The focus ring in the Hover state is slightly smaller than the ring in the Focus and Active states.
+Hover uses a darker fill. Focus and active share a 3px ring offset from the pill.
 
 <uxdot-example color-palette="lightest">
-  <img alt="Three back to top buttons with a dark blue background and a blue focus ring around it demonstrating identical focus and active states, while the hover state has a slightly smaller ring."
+  <img alt="Three back to top buttons. Hover has a darker fill. Focus and active share a 3px ring offset from the pill."
        src="../back-to-top-focus-hover-active.svg"
        width="418"
        height="73">
