@@ -82,7 +82,7 @@
 
 [part='trigger']:active {
   /** Trigger active outline color */
-  outline-color: var(--rh-color-interactive-primary-hover);
+  outline-color: var(--rh-color-border-focus);
 }
 
 [part='trigger']:focus:not(:focus-visible, :active) {
