@@ -1,0 +1,59 @@
+---
+description: ARIA state and relationships on rh-button are forwarded to the internal button.
+---
+
+<section id="button-aria">
+  <div id="toggle-row">
+    <rh-button id="toggle"
+               type="button"
+               aria-expanded="false"
+               aria-controls="drawer-panel"
+               aria-describedby="drawer-desc">Ask AI</rh-button>
+    <p id="drawer-desc">Shows or hides the assistant panel.</p>
+  </div>
+  <div id="drawer-panel" hidden>
+    <p>Panel content</p>
+  </div>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+
+  const toggle = document.getElementById('toggle');
+  const panel = document.getElementById('drawer-panel');
+
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.ariaExpanded !== 'true';
+    toggle.ariaExpanded = expanded ? 'true' : 'false';
+    panel.hidden = !expanded;
+  });
+</script>
+
+<style>
+  #button-aria {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  #toggle-row,
+  #account-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  #drawer-desc,
+  #drawer-panel p,
+  #account-desc {
+    margin: 0;
+  }
+
+  #drawer-panel {
+    border: 1px solid var(--rh-color-border-subtle, #d2d2d2);
+    border-radius: var(--rh-border-radius-default, 3px);
+    padding: var(--rh-space-lg, 16px);
+  }
+</style>
