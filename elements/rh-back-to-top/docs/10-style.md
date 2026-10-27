@@ -55,7 +55,7 @@ Back to top is available in both light and dark color schemes.
 
 ## Interaction states
 
-Hover uses a darker fill. Focus and active share a 3px ring offset from the pill.
+Hover changes the fill color. Focus and active share a 3px ring offset from the pill. 
 
 <uxdot-example color-palette="lightest">
   <img alt="Three back to top buttons. Hover has a darker fill. Focus and active share a 3px ring offset from the pill."
