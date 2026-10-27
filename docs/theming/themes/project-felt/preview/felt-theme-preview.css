@@ -1533,11 +1533,6 @@
       position: relative;
       z-index: 1;
       background-color: var(--felt-preview-color-interactive-fill-plain-hover);
-      outline:
-        var(--felt-preview-border-width-md)
-        solid
-        var(--felt-preview-color-interactive-primary-default);
-      outline-offset: calc(-1 * var(--felt-preview-border-width-md));
     }
 
     & :is(h1, h2, h3, h4, h5, h6) {
@@ -1575,10 +1570,6 @@
 
       & rh-accordion-header[expanded] {
         border-radius: 0;
-      }
-
-      & rh-accordion-header:focus-within {
-        outline-offset: calc(-1 * var(--felt-preview-border-width-md));
       }
     }
   }
