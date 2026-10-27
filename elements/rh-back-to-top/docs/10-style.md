@@ -60,6 +60,6 @@ Hover changes the fill color. Focus and active share a 3px ring offset from the 
 <uxdot-example color-palette="lightest">
   <img alt="Three back to top buttons. Hover changes the fill color. Focus and active share a 3px ring offset from the pill."
        src="../back-to-top-focus-hover-active.svg"
-       width="418"
+       width="411"
        height="73">
 </uxdot-example>
