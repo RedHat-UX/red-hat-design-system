@@ -180,7 +180,7 @@ an element or pattern.
 | Property             | Light theme                           | Dark theme                            |
 | -------------------- | ------------------------------------- | ------------------------------------- |
 | Color - panel header | `--rh-color-surface-dark-lighter`     | darkened `--rh-color-surface-dark`    |
-| Color - focus ring   | `--rh-color-interative-primary-focus` | `--rh-color-interative-primary-focus` |
+| Color - focus ring   | `--rh-color-border-focus`             | `--rh-color-border-focus`             |
 
 </rh-table>
 
@@ -205,5 +205,6 @@ an element or pattern.
 | Property             | Light theme                       | Dark theme                         |
 | -------------------- | --------------------------------- | ---------------------------------- |
 | Color - panel header | `--rh-color-surface-dark-lighter` | darkened `--rh-color-surface-dark` |
+| Color - focus ring   | `--rh-color-border-focus`         | `--rh-color-border-focus`         |
 
 </rh-table>
