@@ -62,8 +62,8 @@
   pointer-events: all;
 }
 
-[part='trigger']:hover {
-  /** Trigger hover background color */
+[part='trigger']:is(:hover, :focus-visible, :active) {
+  /** Trigger hover/focus-visible/active background color */
   background-color: var(--rh-color-interactive-primary-hover);
 }
 
