@@ -11,15 +11,17 @@ link
 The accessible control is the native button inside the shadow root. These attributes
 may be set on `<rh-button>` and are forwarded to that button:
 
-- `accessible-label` or `aria-label` sets the accessible name. Prefer `accessible-label`.
-- `aria-expanded` sets whether the controlled region is expanded (`true` or `false`).
-- `aria-pressed` sets the toggle state (`true`, `false`, or `mixed`).
-- `aria-haspopup` tells assistive technology what the button opens, for example `menu` or `dialog`.
-- `aria-controls` is the id of the element this button controls.
-- `aria-labelledby` and `aria-describedby` are the ids of elements that name or describe the button.
-- `aria-description` sets the accessible description.
+ - `accessible-label` or `aria-label` sets the accessible name. Prefer `accessible-label`.
+ - `aria-expanded` sets whether the controlled region is expanded (`true` or `false`).
+ - `aria-pressed` sets the toggle state (`true`, `false`, or `mixed`).
+ - `aria-haspopup` tells assistive technology what the button opens, for example
+`menu` or `dialog`.
+ - `aria-controls` is the id of the element this button controls.
+ - `aria-labelledby` and `aria-describedby` are the ids of elements that name or
+describe the button.
+ - `aria-description` sets the accessible description.
 
-```html
+```html rh-code-block
 <rh-button variant="primary"
            icon="robot"
            accessible-label="Ask AI"
