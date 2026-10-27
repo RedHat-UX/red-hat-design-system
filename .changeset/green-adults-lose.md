@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-fix(back-to-top): align the focus indicator with the focus ring token
+`<rh-back-to-top>`:  corrected hover, focus, and active states
