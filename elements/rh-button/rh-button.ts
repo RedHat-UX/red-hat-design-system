@@ -47,6 +47,10 @@ function definedString(value: string | null | undefined): string | undefined {
 // ancestor roots. ID references on the host point at light-DOM elements, which
 // may live in the document or in a shadow root that contains the button.
 function elementById(host: HTMLElement, id: string): Element | null {
+  // On the server there is no real page, so skip this lookup. The ids are still copied.
+  if (isServer) {
+    return null;
+  }
   const seen = new Set<Node>();
   let current: Node | null = host;
   while (current && !seen.has(current)) {
@@ -56,6 +60,11 @@ function elementById(host: HTMLElement, id: string): Element | null {
       break;
     }
     seen.add(root);
+    // This root cannot find elements by id, so check the parent instead.
+    if (typeof root.getElementById !== 'function') {
+      current = root instanceof ShadowRoot ? root.host : null;
+      continue;
+    }
     const found = root.getElementById(id);
     if (found) {
       return found;
