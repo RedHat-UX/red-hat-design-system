@@ -107,13 +107,7 @@ span {
         var(--rh-border-width-lg, 3px)
         solid
         /** Header toggle focus outline color; theme-adaptive */
-        var(--rh-color-border-focus,
-          light-dark(
-            /** Header toggle focus outline color for light scheme */
-            var(--rh-color-border-focus-on-light, #0066cc),
-            /** Header toggle focus outline color for dark scheme */
-            var(--rh-color-border-focus-on-dark, #92c5f9)
-          ));
+        var(--rh-color-border-focus);
 
       /** Header toggle focus outline offset */
       outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
