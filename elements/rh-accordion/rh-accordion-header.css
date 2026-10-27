@@ -66,7 +66,7 @@ span {
     fill: currentcolor;
   }
 
-  &:is(:hover,:active,:focus) {
+  &:hover {
     background-color:
       light-dark(
           /** Button interactive surface color for light scheme */
@@ -76,13 +76,56 @@ span {
         );
 
     & span {
+      /** Header toggle text color */
       color: var(--rh-color-text-primary);
     }
   }
 
-  &:focus {
-    /** Focus ring color on header toggle */
-    outline: 2px solid var(--rh-color-interactive-primary-default);
+  &:is(:focus-visible, :active) {
+    outline: none;
+    background-color:
+      light-dark(
+          /** Button interactive surface color for light scheme */
+          var(--rh-color-surface-lighter, #f2f2f2),
+          /** Button interactive surface color for dark scheme */
+          oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+        );
+
+    & span {
+      /** Header toggle text color */
+      color: var(--rh-color-text-primary);
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      pointer-events: none;
+      outline:
+        /** Header toggle focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Header toggle focus outline color; theme-adaptive */
+        var(--rh-color-border-focus,
+          light-dark(
+            /** Header toggle focus outline color for light scheme */
+            var(--rh-color-border-focus-on-light, #0066cc),
+            /** Header toggle focus outline color for dark scheme */
+            var(--rh-color-border-focus-on-dark, #92c5f9)
+          ));
+
+      /** Header toggle focus outline offset */
+      outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
+
+      /** Header toggle focus corner radius */
+      border-radius: var(--rh-border-width-lg, 3px);
+      transition: none;
+    }
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 
   &:after {
@@ -147,6 +190,7 @@ span {
   &:after {
     content: '';
     position: absolute;
+    z-index: 0;
     inset-block: 0;
     inset-inline-start: 0;
   }
