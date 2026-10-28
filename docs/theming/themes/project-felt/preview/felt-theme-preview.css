@@ -1592,8 +1592,8 @@
     --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
   }
 
-  /* Borderless keeps a plain trigger: no brand-blue text (either resting
-     or hover), a transparent surface at rest, and its own corner radius,
+  /* Borderless keeps a plain trigger: no brand-blue text (resting, hover,
+     or focus), a transparent surface at rest, and its own corner radius,
      sharing the default variant's inline padding set above. Declared
      before the `:not([variant~='borderless'])` rule below so its nested
      reset for borderless hosts isn't flagged as having lower specificity
@@ -1625,10 +1625,18 @@
             var(--rh-color-text-primary-on-dark, #ffffff)
           )
         );
+    --rh-color-interactive-primary-focus:
+      var(
+          --rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          )
+        );
 
     /* The focus ring stays brand-blue even though the tokens above
-       repurpose --rh-color-interactive-primary-default/-hover for the
-       trigger's gray text — see the dedicated outline-color cssprop in
+       repurpose --rh-color-interactive-primary-default/-hover/-focus for
+       the trigger's neutral text. See the outline-color cssprop in
        rh-disclosure.css. */
     --rh-disclosure-summary-outline-color: var(--felt-preview-color-interactive-primary-default);
 
