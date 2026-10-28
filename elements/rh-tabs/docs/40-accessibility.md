@@ -1,3 +1,8 @@
+<style data-helmet>
+  figure {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+</style>
 
 ## Keyboard interactions
 Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus and activates the next or previous tab. Pressing <code>Tab</code> when a tab has focus moves the focus out of the list and onto the next interactive element.
@@ -32,13 +37,25 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom"
-       src="../tabs-a11y-focus-order.png"
-       width="872"
-       height="994">
-</uxdot-example>
+<figure>
+  <uxdot-example color-palette="lightest" width-adjustment="872px">
+    <img alt="Horizontal and vertical tabs groups showing the first focus stop on the leftmost or top tab, arrow navigation across tabs, and the next focus stop on a link inside the panel"
+        src="../tabs-a11y-focus-order-horizontal-vertical.svg"
+        width="872"
+        height="831">
+  </uxdot-example>
+  <figcaption>For horizontal and vertical tabs, the leftmost or top tab is first in the focus order. Focus then moves to first interactive element in the panel, unless user navigates through other tabs with arrow keys.</figcaption>
+</figure>
 
+<figure>
+  <uxdot-example color-palette="lightest" width-adjustment="560px">
+    <img alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom"
+        src="../tabs-a11y-focus-order-overflow.svg"
+        width="560"
+        height="144">
+  </uxdot-example>
+  <figcaption>Moving the focus to a tab that is cut off will shift the list of tabs so that the selected tab is in full view.</figcaption>
+</figure>
 
 ### Touch targets
 
