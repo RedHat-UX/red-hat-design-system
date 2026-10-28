@@ -81,9 +81,7 @@ summary {
     display: none;
   }
 
-  &:hover,
-  &:active,
-  &:focus {
+  &:hover {
     background-color:
       light-dark(
           /** Trigger hover surface for light scheme */
@@ -93,37 +91,51 @@ summary {
         );
   }
 
-  &:active,
-  &:focus {
-    outline:
-      /** Focus outline width */
-      var(--rh-border-width-md, 2px)
-      solid;
-
-    /**
-     * Focus outline color.
-     * Falls back to the interactive-primary token used for the trigger's
-     * resting/hover text, so unthemed consumers get one consistent brand
-     * color. Themes that repurpose that token for text only (e.g. the
-     * borderless variant's gray-text treatment) can set this separately
-     * to keep the focus ring on-brand.
-     * @cssprop --rh-disclosure-summary-outline-color
-     */
-    outline-color:
-      var(
-          --rh-disclosure-summary-outline-color,
-          var(--rh-color-interactive-primary-default)
+  &:is(:focus-visible, :active) {
+    background-color:
+      light-dark(
+          /** Trigger focus surface for light scheme */
+          var(--rh-color-surface-lighter, #f2f2f2),
+          /** Trigger focus surface for dark scheme */
+          var(--rh-color-surface-dark, #383838)
         );
-
-    /**
-     * Offset of the outline on the trigger while focused or active.
-     * Defaults to `-2px`, which insets the ring.
-     * Borderless focus keeps its own outset.
-     * @cssprop --rh-disclosure-summary-outline-offset
-     */
-    outline-offset: var(--rh-disclosure-summary-outline-offset, -2px);
+    outline: none;
     position: relative;
-    z-index: 2;
+
+    &:before {
+      content: '';
+      position: absolute;
+
+      /* Above `details[open]::before`, which draws the red accent at z-index 1. */
+      z-index: 2;
+      inset: 0;
+      pointer-events: none;
+
+      /* Follow the trigger corner radius, including a square theme override. */
+      border-radius: inherit;
+      outline:
+        /** Summary focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Summary focus outline color override */
+        var(--rh-disclosure-summary-outline-color,
+          /** Summary focus outline color; theme-adaptive */
+          var(--rh-color-border-focus));
+
+      /*
+       * Pull the ring inside the trigger.
+       * An outer ring would miss the red accent on an open disclosure.
+       */
+      outline-offset:
+        /** Summary focus outline offset override */
+        var(--rh-disclosure-summary-outline-offset,
+          calc(
+            -1 *
+            /** Summary focus outline offset */
+            var(--rh-border-width-lg, 3px)
+          ));
+      transition: none;
+    }
   }
 
   & ::slotted([slot='summary']) {
@@ -273,6 +285,15 @@ details[open] {
   }
 }
 
+/*
+ * Clears the ring after a pointer click.
+ * Kept after `details[open] summary` so this :not() selector
+ * does not outrank that rule in source order.
+ */
+summary:focus:not(:focus-visible, :active) {
+  outline: none;
+}
+
 /*****************************************************************************
  * COMPACT VARIANT
  *****************************************************************************/
@@ -316,27 +337,18 @@ details[open] {
     /** Borderless trigger text color */
     color: var(--rh-color-interactive-primary-default);
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: var(--_hover-background-color);
 
       /** Borderless trigger hover text color */
       color: var(--rh-color-interactive-primary-hover);
     }
 
-    &:focus {
-      /**
-       * Borderless focus outline offset.
-       * Reuses the same cssprop the default variant uses for its own
-       * (inset) offset, so themes can give borderless its own outset
-       * value without a second property.
-       * @cssprop --rh-disclosure-summary-outline-offset
-       */
-      outline-offset:
-        var(
-            --rh-disclosure-summary-outline-offset,
-            var(--rh-length-3xs, 2px)
-          );
+    &:focus-visible {
+      background-color: var(--_hover-background-color);
+
+      /** Borderless trigger focus text color */
+      color: var(--rh-color-interactive-primary-focus);
     }
   }
 
@@ -359,13 +371,22 @@ details[open] {
     summary {
       background-color: var(--_open-background-color);
 
-      &:hover,
-      &:focus {
+      &:hover {
         background-color:
           light-dark(
               /** Borderless open hover surface for light scheme */
               var(--rh-color-surface-light, #e0e0e0),
               /** Borderless open hover surface for dark scheme */
+              var(--rh-color-surface-dark, #383838)
+            );
+      }
+
+      &:focus-visible {
+        background-color:
+          light-dark(
+              /** Borderless open focus surface for light scheme */
+              var(--rh-color-surface-light, #e0e0e0),
+              /** Borderless open focus surface for dark scheme */
               var(--rh-color-surface-dark, #383838)
             );
       }
