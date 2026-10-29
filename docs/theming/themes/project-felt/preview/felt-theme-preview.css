@@ -1513,6 +1513,9 @@
       /* !important needed to override shadow DOM :host([expanded]) border */
       border-inline-end: none !important;
       border-radius: var(--felt-preview-border-radius-action-plain);
+
+      --_accordion-header-focus-radius: var(--felt-preview-border-radius-action-plain);
+
       line-height: var(--felt-preview-line-height-body-text-md);
     }
 
@@ -1561,6 +1564,8 @@
 
       & rh-accordion-header {
         border-radius: 0;
+
+        --_accordion-header-focus-radius: 0;
       }
 
       & rh-accordion-header:first-child {
