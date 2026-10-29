@@ -1968,16 +1968,19 @@
     }
   }
 
-  & rh-chip-group::part(btn-link):hover,
-  & rh-chip-group::part(btn-link):focus-visible {
+  & rh-chip-group::part(btn-link):is(:hover, :focus-visible, :active) {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  & rh-chip-group::part(btn-link):focus-visible {
+  & rh-chip-group::part(btn-link):is(:focus-visible, :active) {
     outline-offset: -1px;
   }
 
-  & rh-chip::part(chip):after {
+  & rh-chip::part(chip):after,
+  & rh-chip-group::part(btn-link):after {
+    inset:
+      var(--rh-length-3xs, 2px)
+      var(--rh-length-md, 8px);
     border-radius:
       calc(
           var(--felt-preview-border-radius-action-plain)
@@ -1987,15 +1990,6 @@
     width: calc(100% - var(--felt-preview-space-xs));
     translate: calc(-1 * var(--felt-preview-border-radius-action-plain));
     outline-width: var(--felt-preview-border-width-lg);
-  }
-
-  & rh-chip-group::part(btn-link):after {
-    inset: -1px;
-    width: auto;
-    translate: none;
-    outline-width: var(--felt-preview-border-width-lg);
-    outline-offset: calc(var(--felt-preview-space-xs) - var(--felt-preview-border-width-md));
-    border-radius: var(--felt-preview-border-radius-pill);
   }
 
   & rh-chip-group[size='sm'] rh-chip {
