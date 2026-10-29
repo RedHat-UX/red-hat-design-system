@@ -111,9 +111,10 @@ span {
 
       /** Header toggle focus outline offset */
       outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
-
-      /** Header toggle focus corner radius */
-      border-radius: var(--rh-border-width-lg, 3px);
+      border-radius:
+        var(--_accordion-header-focus-radius,
+          /** Header toggle focus corner radius */
+          var(--rh-border-width-lg, 3px));
       transition: none;
     }
   }
