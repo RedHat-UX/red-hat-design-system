@@ -162,17 +162,17 @@ an element or pattern.
 ### Focus
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Light theme accordion with a focus state"
-       src="../accordion-focus-theme-light.png"
+  <img alt="Light theme accordion with a blue focus ring around the accordion trigger"
+       src="../accordion-focus-theme-light.svg"
        width="872"
-       height="213">
+       height="274">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img alt="Dark theme accordion with a focus state"
-       src="../accordion-focus-theme-dark.png"
+  <img alt="Dark theme accordion with a blue focus ring around the accordion trigger"
+       src="../accordion-focus-theme-dark.svg"
        width="872"
-       height="213">
+       height="274">
 </uxdot-example>
 
 <rh-table>
@@ -180,24 +180,24 @@ an element or pattern.
 | Property             | Light theme                           | Dark theme                            |
 | -------------------- | ------------------------------------- | ------------------------------------- |
 | Color - panel header | `--rh-color-surface-dark-lighter`     | darkened `--rh-color-surface-dark`    |
-| Color - focus ring   | `--rh-color-interative-primary-focus` | `--rh-color-interative-primary-focus` |
+| Color - focus ring   | `--rh-color-border-focus`             | `--rh-color-border-focus`             |
 
 </rh-table>
 
 ### Active
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Light theme accordion with an active state"
-       src="../accordion-active-theme-light.png"
+  <img alt="Light theme accordion with an blue focus ring around the accordion trigger"
+       src="../accordion-active-theme-light.svg"
        width="872"
-       height="213">
+       height="274">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Dark theme accordion with an active state"
-       src="../accordion-active-theme-dark.png"
+  <img alt="Dark theme accordion with an blue focus ring around the accordion trigger"
+       src="../accordion-active-theme-dark.svg"
        width="872"
-       height="213">
+       height="274">
 </uxdot-example>
 
 <rh-table>
@@ -205,5 +205,6 @@ an element or pattern.
 | Property             | Light theme                       | Dark theme                         |
 | -------------------- | --------------------------------- | ---------------------------------- |
 | Color - panel header | `--rh-color-surface-dark-lighter` | darkened `--rh-color-surface-dark` |
+| Color - focus ring   | `--rh-color-border-focus`         | `--rh-color-border-focus`         |
 
 </rh-table>
