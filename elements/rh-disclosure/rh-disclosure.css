@@ -394,11 +394,11 @@ summary:focus:not(:focus-visible, :active) {
       background-color:
         var(--_disclosure-panel-background-color,
           light-dark(
-              /** Borderless open panel surface for light scheme */
-              var(--rh-color-surface-lighter, #f2f2f2),
-              /** Borderless open panel surface for dark scheme */
-              var(--rh-color-surface-darker, #1f1f1f)
-            ));
+            /** Borderless open panel surface for light scheme */
+            var(--rh-color-surface-lighter, #f2f2f2),
+            /** Borderless open panel surface for dark scheme */
+            var(--rh-color-surface-darker, #1f1f1f)
+          ));
     }
   }
 }
