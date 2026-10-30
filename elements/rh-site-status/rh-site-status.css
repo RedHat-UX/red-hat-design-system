@@ -46,20 +46,29 @@ span:first-letter {
   text-transform: uppercase;
 }
 
-a:focus {
+a:hover {
+  text-decoration: underline;
+}
+
+a:is(:focus-visible, :active) {
   outline:
-    /** Link focus outline */
-    var(--rh-border-width-md, 2px)
+    /** Link focus outline width */
+    var(--rh-border-width-lg, 3px)
     solid
-    /** Link focus outline color */
-    var(--rh-color-border-interactive);
+    /** Link focus outline color; theme-adaptive */
+    var(--rh-color-border-focus);
+
+  /** Link focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
 
   /** Link focus border radius */
   border-radius: var(--rh-border-radius-default, 3px);
+  transition: none;
+  text-decoration: underline;
 }
 
-a:is(:hover,:focus) {
-  text-decoration: underline;
+a:focus:not(:focus-visible, :active) {
+  outline: none;
 }
 
 rh-icon {
