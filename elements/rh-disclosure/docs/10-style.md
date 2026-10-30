@@ -37,7 +37,7 @@ The box variant, which is the default style, shows a border around the entire di
 
 ### Borderless
 
-The borderless disclosure omits the border and uses `--rh-color-interactive-primary-default` for the title text for improved interactive affordance.
+The borderless disclosure omits the border and uses `--rh-color-interactive-primary-default` for the title text for improved interactive affordance. An expanded panel's background uses `--rh-color-surface-lighter` in the light scheme and `--rh-color-surface-darker` in the dark scheme, and the caret uses `--rh-color-icon-secondary`.
 
 <uxdot-example color-palette="lightest">
   <img alt="Two borderless variant disclosures. One closed, one open on a light color scheme."
