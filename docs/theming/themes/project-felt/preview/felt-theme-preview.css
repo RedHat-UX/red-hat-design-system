@@ -1609,6 +1609,12 @@
        rather than on `--rh-color-surface-light`/`-dark`. */
     --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
     --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
+
+    /* Open panel fill. The default theme paints #details-content with
+       surface-lighter / surface-darker. Those tokens are remapped above
+       to the interactive trigger fill, so the panel stays transparent
+       and that fill stays on the trigger. */
+    --_disclosure-panel-background-color: transparent;
     --rh-color-interactive-primary-default:
       var(
           --rh-color-text-primary,
