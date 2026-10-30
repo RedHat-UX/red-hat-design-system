@@ -333,6 +333,11 @@ summary:focus:not(:focus-visible, :active) {
 
   border: 0;
 
+  #caret {
+    /** Borderless caret icon color; theme-adaptive */
+    color: var(--rh-color-icon-secondary);
+  }
+
   summary {
     /** Borderless trigger text color */
     color: var(--rh-color-interactive-primary-default);
@@ -353,13 +358,6 @@ summary:focus:not(:focus-visible, :active) {
   }
 
   details[open] {
-    /**
-     * Not set here. The open fill belongs on the trigger only; setting
-     * it on `details` would bleed through `#details-content`'s
-     * `transparent` background below, since that's an empty box over
-     * its container rather than a value with no color of its own.
-     */
-
     /** Borderless open panel corner radius */
     border-radius: var(--rh-border-radius-default, 3px);
     box-shadow: none;
@@ -393,7 +391,14 @@ summary:focus:not(:focus-visible, :active) {
     }
 
     #details-content {
-      background-color: transparent;
+      background-color:
+        var(--_disclosure-panel-background-color,
+          light-dark(
+              /** Borderless open panel surface for light scheme */
+              var(--rh-color-surface-lighter, #f2f2f2),
+              /** Borderless open panel surface for dark scheme */
+              var(--rh-color-surface-darker, #1f1f1f)
+            ));
     }
   }
 }
