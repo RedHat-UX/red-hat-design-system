@@ -260,9 +260,27 @@ export class RhButton extends LitElement {
 
   #idRefKey = '';
 
-  #idRefRetried = false;
+  #idRefObserver = new MutationObserver(this.#onIdRefMutation.bind(this));
 
-  #resolveFrame = 0;
+  #onIdRefMutation(mutations: MutationRecord[]): void {
+    let shouldUpdate = false;
+    for (const mutation of mutations) {
+      // If a new element is added or an ID attribute changes, we should re-evaluate.
+      if (mutation.type === 'childList' || (mutation.type === 'attributes' && mutation.attributeName === 'id')) {
+        shouldUpdate = true;
+        break;
+      }
+      // If text content or aria-label/aria-labelledby/aria-describedby changes on a referenced element
+      if (mutation.type === 'attributes' && ['aria-label', 'aria-labelledby', 'aria-describedby'].includes(mutation.attributeName || '')) {
+        shouldUpdate = true;
+        break;
+      }
+    }
+
+    if (shouldUpdate && this.isConnected) {
+      this.requestUpdate();
+    }
+  }
 
   override attributeChangedCallback(name: string, old: string | null, value: string | null): void {
     // The attribute is removed once its value is stored. Ignoring that removal
@@ -278,12 +296,31 @@ export class RhButton extends LitElement {
     }
   }
 
+  #ariaControlsElements: Element[] = [];
+
+  #mo = new MutationObserver(this.#onMutation.bind(this));
+
+  override connectedCallback(): void {
+    super.connectedCallback();
+    this.#mo.observe(this, { attributeFilter: ['aria-controls'] });
+  }
+
   override disconnectedCallback(): void {
     super.disconnectedCallback();
-    if (this.#resolveFrame) {
-      cancelAnimationFrame(this.#resolveFrame);
-      this.#resolveFrame = 0;
+    this.#mo.disconnect();
+    this.#idRefObserver.disconnect();
+  }
+
+  #onMutation(records: MutationRecord[]) {
+    for (const record of records) {
+      if (record.attributeName === 'aria-controls') {
+        this.#updateAriaControlsElements();
+      }
     }
+  }
+
+  #updateAriaControlsElements() {
+    this.#ariaControlsElements = this.#elementsFor(this.ariaControls);
   }
 
   override willUpdate() {
@@ -299,16 +336,31 @@ export class RhButton extends LitElement {
     const idRefKey = `${this.ariaLabelledBy ?? ''}\0${this.ariaDescribedBy ?? ''}`;
     if (idRefKey !== this.#idRefKey) {
       this.#idRefKey = idRefKey;
-      this.#idRefRetried = false;
+      if (this.#idRefObserver) this.#idRefObserver.disconnect();
     }
     this.#missingIdRefs = false;
-    const labelledByText = flattenedText(this.#elementsFor(this.ariaLabelledBy)) || undefined;
-    const describedByText = flattenedText(this.#elementsFor(this.ariaDescribedBy)) || undefined;
-    const accessibleName = definedString(this.accessibleLabel)
+    const labelledByText = isServer ? undefined : flattenedText(this.#elementsFor(this.ariaLabelledBy)) || undefined;
+    const describedByText = isServer ? undefined : flattenedText(this.#elementsFor(this.ariaDescribedBy)) || undefined;
+
+    let accessibleName = definedString(this.accessibleLabel)
       ?? definedString(this.ariaLabel)
       ?? labelledByText;
-    const description = definedString(this.ariaDescription) ?? describedByText;
-    const hideText = !!(accessibleName || definedString(this.ariaLabelledBy));
+
+    let description = definedString(this.ariaDescription)
+      ?? describedByText;
+
+    // During SSR, if aria-labelledby is used but cannot be resolved,
+    // and no explicit accessible name is provided, use the slotted text content as fallback.
+    if (isServer && definedString(this.ariaLabelledBy) && !accessibleName) {
+      accessibleName = definedString(this.textContent) || undefined;
+    }
+
+    // Similar for description during SSR.
+    if (isServer && definedString(this.ariaDescribedBy) && !description) {
+      description = definedString(this.textContent) || undefined;
+    }
+
+    const hideText = !!(accessibleName || (definedString(this.ariaLabelledBy) && !isServer));
     return html`
       <!-- summary: internal button element
            description: |
@@ -320,8 +372,6 @@ export class RhButton extends LitElement {
               aria-pressed="${ifDefined(definedString(this.ariaPressed))}"
               aria-haspopup="${ifDefined(definedString(this.ariaHasPopup))}"
               aria-controls="${ifDefined(definedString(this.ariaControls))}"
-              aria-labelledby="${ifDefined(definedString(this.ariaLabelledBy))}"
-              aria-describedby="${ifDefined(definedString(this.ariaDescribedBy))}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -358,6 +408,7 @@ export class RhButton extends LitElement {
 
   override updated(): void {
     this.#retryUnresolvedIds();
+    this._button.ariaControlsElements = this.#ariaControlsElements;
   }
 
   protected async formDisabledCallback() {
@@ -401,16 +452,26 @@ export class RhButton extends LitElement {
   }
 
   #retryUnresolvedIds(): void {
-    if (isServer || !this.#missingIdRefs || this.#idRefRetried || this.#resolveFrame) {
+    if (isServer) {
       return;
     }
-    this.#idRefRetried = true;
-    this.#resolveFrame = requestAnimationFrame(() => {
-      this.#resolveFrame = 0;
-      if (this.isConnected) {
-        this.requestUpdate();
+    if (!this.#missingIdRefs) {
+      this.#idRefObserver.disconnect();
+      return;
+    }
+    // If there are missing IDs, start observing the document for changes.
+    // If the element is not connected to the DOM, no need to observe.
+    if (this.isConnected) {
+      const root = this.getRootNode();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        this.#idRefObserver.observe(root, {
+          childList: true,
+          attributes: true,
+          attributeFilter: ['id', 'aria-label', 'aria-labelledby', 'aria-describedby'],
+          subtree: true,
+        });
       }
-    });
+    }
   }
 
   #onClick() {
