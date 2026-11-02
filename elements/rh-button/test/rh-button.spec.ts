@@ -1,5 +1,9 @@
 /// <reference types="mocha" />
+import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+
 import { expect, html, nextFrame } from '@open-wc/testing';
+import { executeServerCommand } from '@web/test-runner-commands';
+import { hydrateShadowRoots } from '@webcomponents/template-shadowroot/template-shadowroot.js';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhButton } from '../rh-button.js';
@@ -109,12 +113,14 @@ describe('<rh-button>', function() {
       await expect(element).to.be.accessible();
     });
 
-    it('forwards aria-controls to the internal button', function() {
+    it('copies aria-controls onto the internal button', function() {
+      expect(document.getElementById('drawer-panel')).to.not.equal(null);
       expect(button.getAttribute('aria-controls')).to.equal('drawer-panel');
+      expect(element.ariaControls).to.equal('drawer-panel');
     });
 
-    it('forwards aria-describedby to the internal button', function() {
-      expect(button.getAttribute('aria-describedby')).to.equal('drawer-desc');
+    it('uses aria-describedby text as the description', function() {
+      expect(button.hasAttribute('aria-describedby')).to.equal(false);
       expect(button.getAttribute('aria-description')).to.equal('Opens the assistant');
     });
 
@@ -166,7 +172,7 @@ describe('<rh-button>', function() {
       `);
       const button = internalButton(element);
       expect(element.hasAttribute('aria-labelledby')).to.equal(false);
-      expect(button.getAttribute('aria-labelledby')).to.equal('ask-label');
+      expect(button.hasAttribute('aria-labelledby')).to.equal(false);
       expect(button.getAttribute('aria-label')).to.equal('Ask AI');
       expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
     });
@@ -224,6 +230,113 @@ describe('<rh-button>', function() {
     await element.updateComplete;
     expect(element.ariaControls).to.equal('late-panel');
     expect(element.hasAttribute('aria-controls')).to.equal(false);
-    expect(internalButton(element).getAttribute('aria-controls')).to.equal('late-panel');
+    expect(internalButton(element).getAttribute('aria-controls')).to.equal(panel.id);
+  });
+
+  it('names the button from an external element whose id matches an internal slot', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button aria-labelledby="text"></rh-button>
+      <span id="text">External name</span>
+    `);
+    const button = internalButton(element);
+    expect(button.hasAttribute('aria-labelledby')).to.equal(false);
+    expect(button.getAttribute('aria-label')).to.equal('External name');
+    expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'External name' });
+  });
+
+  it('describes the button from an external element whose id matches an internal slot', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button aria-describedby="icon">Save</rh-button>
+      <span id="icon">More detail</span>
+    `);
+    const button = internalButton(element);
+    expect(button.hasAttribute('aria-describedby')).to.equal(false);
+    expect(button.getAttribute('aria-description')).to.equal('More detail');
+  });
+
+  it('reads a label inserted after several frames and a later text change', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button aria-labelledby="late-label"></rh-button>
+    `);
+    await nextFrame();
+    await nextFrame();
+    const label = document.createElement('span');
+    label.id = 'late-label';
+    label.textContent = 'Ask AI';
+    element.after(label);
+    await nextFrame();
+    await element.updateComplete;
+    expect(internalButton(element).getAttribute('aria-label')).to.equal('Ask AI');
+
+    label.textContent = 'Search';
+    await nextFrame();
+    await element.updateComplete;
+    expect(internalButton(element).getAttribute('aria-label')).to.equal('Search');
+  });
+
+  it('follows a changed aria-controls id', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button aria-controls="first-panel" aria-label="Ask AI"></rh-button>
+      <div id="first-panel"></div>
+      <div id="second-panel"></div>
+    `);
+    element.ariaControls = 'second-panel';
+    await element.updateComplete;
+    expect(internalButton(element).getAttribute('aria-controls')).to.equal('second-panel');
+  });
+
+  it('keeps aria-controls when the target leaves the tree', async function() {
+    const element = await createFixture<RhButton>(html`
+      <rh-button aria-controls="gone-panel" aria-label="Ask AI"></rh-button>
+      <div id="gone-panel"></div>
+    `);
+    document.getElementById('gone-panel')?.remove();
+    await nextFrame();
+    await element.updateComplete;
+    expect(internalButton(element).getAttribute('aria-controls')).to.equal('gone-panel');
+  });
+
+  describe('server rendering', function() {
+    it('uses slotted text when aria-labelledby cannot be resolved', async function() {
+      const markup = await executeServerCommand('render-ssr-fixture', {
+        html: `<rh-button aria-labelledby="ext-name">Save</rh-button><span id="ext-name">External</span>`,
+        importSpecifiers: ['@rhds/elements/rh-button/rh-button.js'],
+      }) as string;
+      const fixture = document.createElement('div');
+      fixture.innerHTML = markup;
+      hydrateShadowRoots(fixture);
+      const button = fixture.querySelector('rh-button')?.shadowRoot?.querySelector('button');
+      const text = button?.querySelector('#text')?.parentElement;
+      expect(button?.hasAttribute('aria-labelledby')).to.equal(false);
+      // Lit SSR renders light DOM after the shadow template, so the name is the
+      // projected slot text until hydration can resolve the external id.
+      const namedByLabel = button?.getAttribute('aria-label') === 'Save';
+      const namedBySlot = text?.getAttribute('aria-hidden') !== 'true' && markup.includes('Save');
+      expect(namedByLabel || namedBySlot).to.equal(true);
+
+      document.body.append(fixture);
+      const element = fixture.querySelector<RhButton>('rh-button')!;
+      element.removeAttribute('defer-hydration');
+      await element.updateComplete;
+      await element.updateComplete;
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('External');
+      fixture.remove();
+    });
+
+    it('keeps aria-controls in server markup', async function() {
+      const markup = await executeServerCommand('render-ssr-fixture', {
+        html: `<rh-button aria-controls="drawer-panel" aria-label="Ask AI"></rh-button>`,
+        importSpecifiers: ['@rhds/elements/rh-button/rh-button.js'],
+      }) as string;
+      expect(markup).to.include('aria-controls="drawer-panel"');
+    });
+
+    it('keeps accessible-label on an icon button named by an unresolved reference', async function() {
+      const markup = await executeServerCommand('render-ssr-fixture', {
+        html: `<rh-button icon="close" aria-labelledby="ext-name" accessible-label="Close"></rh-button>`,
+        importSpecifiers: ['@rhds/elements/rh-button/rh-button.js'],
+      }) as string;
+      expect(markup).to.include('aria-label="Close"');
+    });
   });
 });

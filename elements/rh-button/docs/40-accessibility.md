@@ -31,13 +31,22 @@ describe the button.
 ```
 
 The host element has no role, so these attributes are removed from `<rh-button>` after
-they are read. They are copied onto the internal button. Read or update them through
-the properties (`ariaExpanded`, `ariaControls`, and so on). `aria-controls`,
-`aria-labelledby`, and `aria-describedby` are copied with their id values, and they
-are left off the internal button when no id is set. An id on the internal button
-cannot refer to an element outside its shadow tree, so the text of the elements named
-by `aria-labelledby` and `aria-describedby` is also applied as the accessible name and
-description.
+they are read. Read or update them through the properties (`ariaExpanded`,
+`ariaControls`, and so on). `aria-expanded`, `aria-pressed`, `aria-haspopup`,
+`aria-label`, and `aria-description` are copied onto the internal button.
+
+`aria-labelledby` and `aria-describedby` are not copied as ids. An id on the internal
+button cannot refer to an element outside its shadow tree, and a page id such as
+`text` would point at an internal slot instead of the element the author named. The
+text of the referenced elements is applied as the accessible name and description.
+Those references are watched while the button is connected, including targets that
+are inserted later and text that changes afterward. Server rendering cannot resolve
+the ids. Slotted text is used as the name until hydration. An icon-only button that
+is named only by `aria-labelledby` has no name in server-rendered markup, so set
+`accessible-label` as well.
+
+`aria-controls` is copied onto the internal button as an id, including in
+server-rendered markup. The internal button keeps that id string.
 
 ## Keyboard interactions
 

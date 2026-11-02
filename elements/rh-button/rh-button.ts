@@ -47,7 +47,7 @@ function definedString(value: string | null | undefined): string | undefined {
 // ancestor roots. ID references on the host point at light-DOM elements, which
 // may live in the document or in a shadow root that contains the button.
 function elementById(host: HTMLElement, id: string): Element | null {
-  // On the server there is no real page, so skip this lookup. The ids are still copied.
+  // On the server there is no document to search. Callers use slotted text instead.
   if (isServer) {
     return null;
   }
@@ -95,13 +95,16 @@ function flattenedText(elements: readonly Element[]): string {
  *
  * `aria-expanded`, `aria-pressed`, `aria-haspopup`, `aria-label`,
  * `aria-description`, `aria-controls`, `aria-labelledby`, and
- * `aria-describedby` set on `<rh-button>` are copied onto that internal
- * button, then removed from the host so checkers do not flag ARIA on an
- * element with no role. Read the values back from the properties, for
- * example `button.ariaExpanded`. An id on the internal button cannot refer
- * to an element outside its shadow tree, so `aria-labelledby` and
- * `aria-describedby` also contribute their text as the accessible name and
- * description.
+ * `aria-describedby` set on `<rh-button>` are read onto properties, then
+ * removed from the host so checkers do not flag ARIA on an element with no
+ * role. Read the values back from the properties, for example
+ * `button.ariaExpanded`. An id on the internal button cannot refer to an
+ * element outside its shadow tree, and it can collide with an internal slot
+ * id, so `aria-labelledby` and `aria-describedby` contribute their text as
+ * the accessible name and description instead of being copied as ids.
+ * `aria-controls` is copied onto the internal button as an id. The id string
+ * stays in place; assigning `ariaControlsElements` makes browsers rewrite it
+ * to an empty value.
  *
  * @summary Clickable button that triggers page or form actions
  */
@@ -149,10 +152,12 @@ export class RhButton extends LitElement {
   @property({ attribute: 'aria-label' }) override ariaLabel!: string | null;
 
   /**
-   * Space-separated ids of elements that name the button. Copied onto the
-   * internal button. The text of those elements is also used as the
-   * accessible name, because the id cannot resolve out of the shadow tree.
-   * Removed from the host after it is read.
+   * Space-separated ids of elements that name the button. The text of those
+   * elements is the accessible name. The ids are not copied onto the internal
+   * button, because an id there cannot point outside the shadow tree and can
+   * match an internal slot such as `text`. Removed from the host after it is
+   * read. Server rendering cannot resolve the ids, so slotted text stays the
+   * name. An icon-only button also needs `accessible-label`.
    */
   @property({ attribute: 'aria-labelledby' }) ariaLabelledBy?: string | null;
 
@@ -163,10 +168,10 @@ export class RhButton extends LitElement {
   @property({ attribute: 'aria-description' }) override ariaDescription!: string | null;
 
   /**
-   * Space-separated ids of elements that describe the button. Copied onto
-   * the internal button. The text of those elements is also used as
-   * `aria-description`, because the id cannot resolve out of the shadow
-   * tree. Removed from the host after it is read.
+   * Space-separated ids of elements that describe the button. Their text is
+   * applied as `aria-description`. The ids are not copied onto the internal
+   * button, because an id there cannot point outside the shadow tree.
+   * Removed from the host after it is read.
    */
   @property({ attribute: 'aria-describedby' }) ariaDescribedBy?: string | null;
 
@@ -193,8 +198,7 @@ export class RhButton extends LitElement {
 
   /**
    * Space-separated ids of elements this button controls. Copied onto the
-   * internal button as `aria-controls`. Removed from the host after it is
-   * read.
+   * internal button as `aria-controls`. Removed from the host after it is read.
    */
   @property({ attribute: 'aria-controls' }) ariaControls?: string | null;
 
@@ -258,29 +262,26 @@ export class RhButton extends LitElement {
 
   #missingIdRefs = false;
 
-  #idRefKey = '';
+  #labelElements: Element[] = [];
 
-  #idRefObserver = new MutationObserver(this.#onIdRefMutation.bind(this));
+  #descriptionElements: Element[] = [];
 
-  #onIdRefMutation(mutations: MutationRecord[]): void {
-    let shouldUpdate = false;
-    for (const mutation of mutations) {
-      // If a new element is added or an ID attribute changes, we should re-evaluate.
-      if (mutation.type === 'childList' || (mutation.type === 'attributes' && mutation.attributeName === 'id')) {
-        shouldUpdate = true;
-        break;
-      }
-      // If text content or aria-label/aria-labelledby/aria-describedby changes on a referenced element
-      if (mutation.type === 'attributes' && ['aria-label', 'aria-labelledby', 'aria-describedby'].includes(mutation.attributeName || '')) {
-        shouldUpdate = true;
-        break;
-      }
-    }
+  /** Name and description from the latest render, including values hydration did not write. */
+  #name?: string;
 
-    if (shouldUpdate && this.isConnected) {
+  #descriptionText?: string;
+
+  /** Watches the host's root for id targets that appear, leave, or change id. */
+  #rootObserver = new MutationObserver(records => {
+    this.#onReferenceMutation(records);
+  });
+
+  /** Watches referenced label and description elements for text changes. */
+  #textObserver = new MutationObserver(() => {
+    if (this.isConnected) {
       this.requestUpdate();
     }
-  }
+  });
 
   override attributeChangedCallback(name: string, old: string | null, value: string | null): void {
     // The attribute is removed once its value is stored. Ignoring that removal
@@ -296,31 +297,10 @@ export class RhButton extends LitElement {
     }
   }
 
-  #ariaControlsElements: Element[] = [];
-
-  #mo = new MutationObserver(this.#onMutation.bind(this));
-
-  override connectedCallback(): void {
-    super.connectedCallback();
-    this.#mo.observe(this, { attributeFilter: ['aria-controls'] });
-  }
-
   override disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.#mo.disconnect();
-    this.#idRefObserver.disconnect();
-  }
-
-  #onMutation(records: MutationRecord[]) {
-    for (const record of records) {
-      if (record.attributeName === 'aria-controls') {
-        this.#updateAriaControlsElements();
-      }
-    }
-  }
-
-  #updateAriaControlsElements() {
-    this.#ariaControlsElements = this.#elementsFor(this.ariaControls);
+    this.#rootObserver.disconnect();
+    this.#textObserver.disconnect();
   }
 
   override willUpdate() {
@@ -333,34 +313,33 @@ export class RhButton extends LitElement {
   override render() {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
-    const idRefKey = `${this.ariaLabelledBy ?? ''}\0${this.ariaDescribedBy ?? ''}`;
-    if (idRefKey !== this.#idRefKey) {
-      this.#idRefKey = idRefKey;
-      if (this.#idRefObserver) this.#idRefObserver.disconnect();
-    }
     this.#missingIdRefs = false;
-    const labelledByText = isServer ? undefined : flattenedText(this.#elementsFor(this.ariaLabelledBy)) || undefined;
-    const describedByText = isServer ? undefined : flattenedText(this.#elementsFor(this.ariaDescribedBy)) || undefined;
+    // Id lookup needs a document. Server rendering keeps the id string for
+    // aria-controls and falls back to slotted text for the accessible name.
+    this.#labelElements = isServer ? [] : this.#elementsFor(this.ariaLabelledBy);
+    this.#descriptionElements = isServer ? [] : this.#elementsFor(this.ariaDescribedBy);
+    const labelledByText = flattenedText(this.#labelElements) || undefined;
+    const describedByText = flattenedText(this.#descriptionElements) || undefined;
 
     let accessibleName = definedString(this.accessibleLabel)
       ?? definedString(this.ariaLabel)
       ?? labelledByText;
 
-    let description = definedString(this.ariaDescription)
-      ?? describedByText;
-
-    // During SSR, if aria-labelledby is used but cannot be resolved,
-    // and no explicit accessible name is provided, use the slotted text content as fallback.
-    if (isServer && definedString(this.ariaLabelledBy) && !accessibleName) {
-      accessibleName = definedString(this.textContent) || undefined;
+    // External ids cannot be resolved on the server. Use slotted text when this
+    // render can already see it. Lit SSR emits light DOM after the shadow
+    // template, so textContent is often empty there; the text slot stays
+    // visible and that projected text is the name until hydration. Icon-only
+    // buttons have no slotted text, so they need accessible-label.
+    if (isServer && !accessibleName && definedString(this.ariaLabelledBy)) {
+      accessibleName = definedString(this.textContent);
     }
 
-    // Similar for description during SSR.
-    if (isServer && definedString(this.ariaDescribedBy) && !description) {
-      description = definedString(this.textContent) || undefined;
-    }
-
-    const hideText = !!(accessibleName || (definedString(this.ariaLabelledBy) && !isServer));
+    const description = definedString(this.ariaDescription) ?? describedByText;
+    // Hide slotted text only once a name exists. An unresolved aria-labelledby
+    // must not hide the slot, or the button has no name.
+    const hideText = accessibleName != null;
+    this.#name = accessibleName;
+    this.#descriptionText = description;
     return html`
       <!-- summary: internal button element
            description: |
@@ -398,7 +377,7 @@ export class RhButton extends LitElement {
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers when an
                  accessible name is set with \`accessible-label\`, \`aria-label\`,
-                 or \`aria-labelledby\`. For close and play variants, text is
+                 or the text referenced by \`aria-labelledby\`. For close and play variants, text is
                  visually hidden but remains accessible. -->
           <slot id="text"></slot>
         </span>
@@ -407,8 +386,43 @@ export class RhButton extends LitElement {
   }
 
   override updated(): void {
-    this.#retryUnresolvedIds();
-    this._button.ariaControlsElements = this.#ariaControlsElements;
+    this.#syncForwardedAria();
+    this.#watchReferences();
+  }
+
+  /**
+   * Copy forwarded ARIA onto the internal button when the template commit did
+   * not. Hydration records attribute values without writing them, and
+   * `ariaControlsElements` serializes a cross-shadow id as `aria-controls=""`.
+   * An empty value is removed. The id string is written instead.
+   */
+  #syncForwardedAria(): void {
+    const button = this._button;
+    if (button == null || isServer) {
+      return;
+    }
+    this.#syncAttr(button, 'aria-label', this.#name);
+    this.#syncAttr(button, 'aria-description', this.#descriptionText);
+    this.#syncAttr(button, 'aria-expanded', definedString(this.ariaExpanded));
+    this.#syncAttr(button, 'aria-pressed', definedString(this.ariaPressed));
+    this.#syncAttr(button, 'aria-haspopup', definedString(this.ariaHasPopup));
+    this.#syncAttr(button, 'aria-controls', definedString(this.ariaControls));
+    const text = button.querySelector('#text')?.parentElement;
+    if (text != null) {
+      this.#syncAttr(text, 'aria-hidden', this.#name != null ? 'true' : 'false');
+    }
+  }
+
+  #syncAttr(element: HTMLElement, name: string, value: string | undefined): void {
+    if (!value) {
+      if (element.hasAttribute(name)) {
+        element.removeAttribute(name);
+      }
+      return;
+    }
+    if (element.getAttribute(name) !== value) {
+      element.setAttribute(name, value);
+    }
   }
 
   protected async formDisabledCallback() {
@@ -451,27 +465,82 @@ export class RhButton extends LitElement {
     return elements;
   }
 
-  #retryUnresolvedIds(): void {
-    if (isServer) {
+  /**
+   * Follow label and description targets for as long as the button is connected.
+   * Text changes are watched on the elements themselves.
+   */
+  #watchReferences(): void {
+    this.#rootObserver.disconnect();
+    this.#textObserver.disconnect();
+    if (isServer || !this.isConnected) {
       return;
     }
-    if (!this.#missingIdRefs) {
-      this.#idRefObserver.disconnect();
+    const hasRefs = !!(
+      definedString(this.ariaLabelledBy)
+      || definedString(this.ariaDescribedBy)
+    );
+    if (!hasRefs) {
       return;
     }
-    // If there are missing IDs, start observing the document for changes.
-    // If the element is not connected to the DOM, no need to observe.
-    if (this.isConnected) {
-      const root = this.getRootNode();
-      if (root instanceof Document || root instanceof ShadowRoot) {
-        this.#idRefObserver.observe(root, {
-          childList: true,
-          attributes: true,
-          attributeFilter: ['id', 'aria-label', 'aria-labelledby', 'aria-describedby'],
-          subtree: true,
-        });
+    const root = this.getRootNode();
+    if (root instanceof Document || root instanceof ShadowRoot) {
+      this.#rootObserver.observe(root, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['id'],
+      });
+    }
+    const watched = new Set<Element>([...this.#labelElements, ...this.#descriptionElements]);
+    for (const element of watched) {
+      this.#textObserver.observe(element, {
+        subtree: true,
+        childList: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ['aria-label'],
+      });
+    }
+  }
+
+  #onReferenceMutation(records: MutationRecord[]): void {
+    if (!this.isConnected) {
+      return;
+    }
+    const ids = new Set([
+      ...this.#ids(this.ariaLabelledBy),
+      ...this.#ids(this.ariaDescribedBy),
+    ]);
+    if (ids.size === 0 || !records.some(record => this.#recordMatchesIds(record, ids))) {
+      return;
+    }
+    this.requestUpdate();
+  }
+
+  /** True when a mutation adds, removes, or renames an element our ids point at. */
+  #recordMatchesIds(record: MutationRecord, ids: Set<string>): boolean {
+    if (record.type === 'attributes') {
+      const target = record.target;
+      if (!(target instanceof Element)) {
+        return false;
       }
+      return ids.has(target.id) || (record.oldValue != null && ids.has(record.oldValue));
     }
+    const selector = [...ids].map(id => `#${CSS.escape(id)}`).join(',');
+    return [...record.addedNodes, ...record.removedNodes].some(node => {
+      if (!(node instanceof Element)) {
+        return false;
+      }
+      if (ids.has(node.id)) {
+        return true;
+      }
+      try {
+        return node.querySelector(selector) != null;
+      } catch {
+        return false;
+      }
+    });
   }
 
   #onClick() {
