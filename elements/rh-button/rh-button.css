@@ -45,9 +45,6 @@ button {
   /** Button horizontal spacing */
   padding-inline: var(--rh-space-lg, 16px);
 
-  /** Button focus ring offset */
-  outline-offset: var(--rh-length-4xs, 1px);
-
   &:after {
     position: absolute;
     inset: 0;
@@ -445,17 +442,10 @@ button {
     --_border-width: var(--_hover-border-width);
   }
 
-  &:focus {
+  &:focus-visible {
     --_color: var(--_focus-color);
     --_background-color: var(--_focus-background-color);
     --_border-width: var(--_focus-border-width);
-
-    outline:
-      /** Focus outline width */
-      var(--rh-border-width-md, 2px)
-      solid
-      /** Focus outline color */
-      var(--rh-color-interactive-primary-default);
 
     &:after {
       border-width:
@@ -465,10 +455,28 @@ button {
     }
   }
 
+  /* Keyboard focus and press share the focus ring. A mouse click does not. */
+  &:is(:focus-visible, :active) {
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Focus outline color; theme-adaptive */
+      var(--rh-color-border-focus);
+
+    /** Focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+    transition: none;
+  }
+
   &:active {
     --_color: var(--_active-color);
     --_background-color: var(--_active-background-color);
     --_border-width: var(--_active-border-width);
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 
   & > span {
