@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -14,11 +14,97 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import styles from './rh-button.css' with { type: 'css' };
 
 /**
+ * ARIA attributes that authors set on `<rh-button>`. They are copied onto the
+ * internal button and then removed from the host. The host has no role, so
+ * leaving them there does nothing for assistive technology and fails automated
+ * checkers.
+ */
+const DELEGATED_ARIA_ATTRIBUTES = [
+  'aria-expanded',
+  'aria-pressed',
+  'aria-haspopup',
+  'aria-label',
+  'aria-description',
+  'aria-controls',
+  'aria-labelledby',
+  'aria-describedby',
+] as const;
+
+function isDelegatedAriaAttribute(name: string): boolean {
+  return (DELEGATED_ARIA_ATTRIBUTES as readonly string[]).includes(name);
+}
+
+// Empty and whitespace-only values are treated as unset.
+function definedString(value: string | null | undefined): string | undefined {
+  if (value == null) {
+    return undefined;
+  }
+  const trimmed = value.trim();
+  return trimmed === '' ? undefined : trimmed;
+}
+
+// Find an element by id, starting in the host's root and walking out through
+// ancestor roots. ID references on the host point at light-DOM elements, which
+// may live in the document or in a shadow root that contains the button.
+function elementById(host: HTMLElement, id: string): Element | null {
+  // On the server there is no document to search. Callers use slotted text instead.
+  if (isServer) {
+    return null;
+  }
+  const seen = new Set<Node>();
+  let current: Node | null = host;
+  while (current && !seen.has(current)) {
+    seen.add(current);
+    const root = current.getRootNode();
+    if (!(root instanceof Document || root instanceof ShadowRoot) || seen.has(root)) {
+      break;
+    }
+    seen.add(root);
+    // This root cannot find elements by id, so check the parent instead.
+    if (typeof root.getElementById !== 'function') {
+      current = root instanceof ShadowRoot ? root.host : null;
+      continue;
+    }
+    const found = root.getElementById(id);
+    if (found) {
+      return found;
+    }
+    current = root instanceof ShadowRoot ? root.host : null;
+  }
+  return null;
+}
+
+function flattenedText(elements: readonly Element[]): string {
+  return elements.map(element => {
+    if (element instanceof HTMLElement) {
+      const label = element.ariaLabel?.trim();
+      if (label) {
+        return label;
+      }
+    }
+    return element.textContent ?? '';
+  }).join(' ').replace(/\s+/g, ' ').trim();
+}
+
+/**
  * Triggers actions via click, Enter, or Space. USE `variant` to set
  * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
  * keyboard access. Icon-only buttons must set `accessible-label` to
  * provide an ARIA accessible name. Supports form association (submit/reset).
+ *
+ * `aria-expanded`, `aria-pressed`, `aria-haspopup`, `aria-label`,
+ * `aria-description`, `aria-controls`, `aria-labelledby`, and
+ * `aria-describedby` set on `<rh-button>` are read onto properties, then
+ * removed from the host so checkers do not flag ARIA on an element with no
+ * role. Read the values back from the properties, for example
+ * `button.ariaExpanded`. An id on the internal button cannot refer to an
+ * element outside its shadow tree, and it can collide with an internal slot
+ * id, so `aria-labelledby` and `aria-describedby` contribute their text as
+ * the accessible name and description instead of being copied as ids.
+ * `aria-controls` is copied onto the internal button as an id. The id string
+ * stays in place; assigning `ariaControlsElements` makes browsers rewrite it
+ * to an empty value.
  *
  * @summary Clickable button that triggers page or form actions
  */
@@ -57,6 +143,64 @@ export class RhButton extends LitElement {
    * `aria-hidden="true"`. Defaults to undefined.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * Accessible name forwarded to the internal button as `aria-label`.
+   * Prefer `accessible-label`. When either is set, slotted text is hidden
+   * from assistive technology. Removed from the host after it is read.
+   */
+  @property({ attribute: 'aria-label' }) override ariaLabel!: string | null;
+
+  /**
+   * Space-separated ids of elements that name the button. The text of those
+   * elements is the accessible name. The ids are not copied onto the internal
+   * button, because an id there cannot point outside the shadow tree and can
+   * match an internal slot such as `text`. Removed from the host after it is
+   * read. Server rendering cannot resolve the ids, so slotted text stays the
+   * name. An icon-only button also needs `accessible-label`.
+   */
+  @property({ attribute: 'aria-labelledby' }) ariaLabelledBy?: string | null;
+
+  /**
+   * Accessible description forwarded to the internal button as
+   * `aria-description`. Removed from the host after it is read.
+   */
+  @property({ attribute: 'aria-description' }) override ariaDescription!: string | null;
+
+  /**
+   * Space-separated ids of elements that describe the button. Their text is
+   * applied as `aria-description`. The ids are not copied onto the internal
+   * button, because an id there cannot point outside the shadow tree.
+   * Removed from the host after it is read.
+   */
+  @property({ attribute: 'aria-describedby' }) ariaDescribedBy?: string | null;
+
+  /**
+   * Expanded state forwarded to the internal button as `aria-expanded`.
+   * Use `"true"` or `"false"` when this button shows or hides another
+   * region. Removed from the host after it is read.
+   */
+  @property({ attribute: 'aria-expanded' }) override ariaExpanded!: string | null;
+
+  /**
+   * Toggle state forwarded to the internal button as `aria-pressed`.
+   * Use `"true"`, `"false"`, or `"mixed"`. Removed from the host after
+   * it is read.
+   */
+  @property({ attribute: 'aria-pressed' }) override ariaPressed!: string | null;
+
+  /**
+   * Popup type forwarded to the internal button as `aria-haspopup`, for
+   * example `"menu"`, `"dialog"`, or `"listbox"`. Removed from the host
+   * after it is read.
+   */
+  @property({ attribute: 'aria-haspopup' }) override ariaHasPopup!: string | null;
+
+  /**
+   * Space-separated ids of elements this button controls. Copied onto the
+   * internal button as `aria-controls`. Removed from the host after it is read.
+   */
+  @property({ attribute: 'aria-controls' }) ariaControls?: string | null;
 
   /**
    * Form value submitted with the button when it triggers form submission.
@@ -113,21 +257,100 @@ export class RhButton extends LitElement {
 
   #internals = InternalsController.of(this);
 
+  /** Set while removing delegated attributes so that removal does not clear the property. */
+  #ignoreDelegatedAriaRemoval = false;
+
+  #missingIdRefs = false;
+
+  #labelElements: Element[] = [];
+
+  #descriptionElements: Element[] = [];
+
+  /** Name and description from the latest render, including values hydration did not write. */
+  #name?: string;
+
+  #descriptionText?: string;
+
+  /** Watches the host's root for id targets that appear, leave, or change id. */
+  #rootObserver = new MutationObserver(records => {
+    this.#onReferenceMutation(records);
+  });
+
+  /** Watches referenced label and description elements for text changes. */
+  #textObserver = new MutationObserver(() => {
+    if (this.isConnected) {
+      this.requestUpdate();
+    }
+  });
+
+  override attributeChangedCallback(name: string, old: string | null, value: string | null): void {
+    // The attribute is removed once its value is stored. Ignoring that removal
+    // keeps the property, which is what the internal button renders.
+    if (this.#ignoreDelegatedAriaRemoval && value == null && isDelegatedAriaAttribute(name)) {
+      return;
+    }
+    super.attributeChangedCallback(name, old, value);
+    // Remove it even when the value did not change, so a later render that
+    // sets the same attribute does not leave ARIA on the host.
+    if (!isServer && value != null && isDelegatedAriaAttribute(name)) {
+      this.#releaseDelegatedAriaAttributes();
+    }
+  }
+
+  override disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#rootObserver.disconnect();
+    this.#textObserver.disconnect();
+  }
+
   override willUpdate() {
+    this.#releaseDelegatedAriaAttributes();
     if (this.#hasIcon) {
       import('@rhds/elements/rh-icon/rh-icon.js');
     }
   }
 
   override render() {
-    const { danger, variant, accessibleLabel } = this;
+    const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
+    this.#missingIdRefs = false;
+    // Id lookup needs a document. Server rendering keeps the id string for
+    // aria-controls and falls back to slotted text for the accessible name.
+    this.#labelElements = isServer ? [] : this.#elementsFor(this.ariaLabelledBy);
+    this.#descriptionElements = isServer ? [] : this.#elementsFor(this.ariaDescribedBy);
+    const labelledByText = flattenedText(this.#labelElements) || undefined;
+    const describedByText = flattenedText(this.#descriptionElements) || undefined;
+
+    let accessibleName = definedString(this.accessibleLabel)
+      ?? definedString(this.ariaLabel)
+      ?? labelledByText;
+
+    // External ids cannot be resolved on the server. Use slotted text when this
+    // render can already see it. Lit SSR emits light DOM after the shadow
+    // template, so textContent is often empty there; the text slot stays
+    // visible and that projected text is the name until hydration. Icon-only
+    // buttons have no slotted text, so they need accessible-label.
+    if (isServer && !accessibleName && definedString(this.ariaLabelledBy)) {
+      accessibleName = definedString(this.textContent);
+    }
+
+    const description = definedString(this.ariaDescription) ?? describedByText;
+    // Hide slotted text only once a name exists. An unresolved aria-labelledby
+    // must not hide the slot, or the button has no name.
+    const hideText = accessibleName != null;
+    this.#name = accessibleName;
+    this.#descriptionText = description;
     return html`
       <!-- summary: internal button element
            description: |
              Native button element that receives focus via delegatesFocus.
              Screen readers announce this as a button with the label or slotted text. -->
-      <button aria-label="${ifDefined(accessibleLabel)}"
+      <button aria-label="${ifDefined(accessibleName)}"
+              aria-description="${ifDefined(description)}"
+              aria-expanded="${ifDefined(definedString(this.ariaExpanded))}"
+              aria-pressed="${ifDefined(definedString(this.ariaPressed))}"
+              aria-haspopup="${ifDefined(definedString(this.ariaHasPopup))}"
+              aria-controls="${ifDefined(definedString(this.ariaControls))}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -148,22 +371,176 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden="${String(!!accessibleLabel) as 'true' | 'false'}">
+        <span aria-hidden="${String(hideText) as 'true' | 'false'}">
           <!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
-                 (e.g. "Submit", "Delete"). Hidden from screen readers via
-                 aria-hidden when \`accessible-label\` is set. For close and play
-                 variants, text is visually hidden but remains accessible. -->
+                 (e.g. "Submit", "Delete"). Hidden from screen readers when an
+                 accessible name is set with \`accessible-label\`, \`aria-label\`,
+                 or the text referenced by \`aria-labelledby\`. For close and play variants, text is
+                 visually hidden but remains accessible. -->
           <slot id="text"></slot>
         </span>
       </button>
     `;
   }
 
+  override updated(): void {
+    this.#syncForwardedAria();
+    this.#watchReferences();
+  }
+
+  /**
+   * Copy forwarded ARIA onto the internal button when the template commit did
+   * not. Hydration records attribute values without writing them, and
+   * `ariaControlsElements` serializes a cross-shadow id as `aria-controls=""`.
+   * An empty value is removed. The id string is written instead.
+   */
+  #syncForwardedAria(): void {
+    const button = this._button;
+    if (button == null || isServer) {
+      return;
+    }
+    this.#syncAttr(button, 'aria-label', this.#name);
+    this.#syncAttr(button, 'aria-description', this.#descriptionText);
+    this.#syncAttr(button, 'aria-expanded', definedString(this.ariaExpanded));
+    this.#syncAttr(button, 'aria-pressed', definedString(this.ariaPressed));
+    this.#syncAttr(button, 'aria-haspopup', definedString(this.ariaHasPopup));
+    this.#syncAttr(button, 'aria-controls', definedString(this.ariaControls));
+    const text = button.querySelector('#text')?.parentElement;
+    if (text != null) {
+      this.#syncAttr(text, 'aria-hidden', this.#name != null ? 'true' : 'false');
+    }
+  }
+
+  #syncAttr(element: HTMLElement, name: string, value: string | undefined): void {
+    if (!value) {
+      if (element.hasAttribute(name)) {
+        element.removeAttribute(name);
+      }
+      return;
+    }
+    if (element.getAttribute(name) !== value) {
+      element.setAttribute(name, value);
+    }
+  }
+
   protected async formDisabledCallback() {
     await this.updateComplete;
     this.requestUpdate();
+  }
+
+  /**
+   * Remove delegated ARIA attributes from the host once Lit has stored them.
+   * Assistive technology reads the internal button, and checkers flag these
+   * attributes on a host that has no role.
+   */
+  #releaseDelegatedAriaAttributes(): void {
+    if (isServer || !DELEGATED_ARIA_ATTRIBUTES.some(name => this.hasAttribute(name))) {
+      return;
+    }
+    this.#ignoreDelegatedAriaRemoval = true;
+    for (const name of DELEGATED_ARIA_ATTRIBUTES) {
+      if (this.hasAttribute(name)) {
+        this.removeAttribute(name);
+      }
+    }
+    this.#ignoreDelegatedAriaRemoval = false;
+  }
+
+  #ids(value: string | null | undefined): string[] {
+    return definedString(value)?.split(/\s+/) ?? [];
+  }
+
+  #elementsFor(idList: string | null | undefined): Element[] {
+    const elements: Element[] = [];
+    for (const id of this.#ids(idList)) {
+      const element = elementById(this, id);
+      if (element) {
+        elements.push(element);
+      } else {
+        this.#missingIdRefs = true;
+      }
+    }
+    return elements;
+  }
+
+  /**
+   * Follow label and description targets for as long as the button is connected.
+   * Text changes are watched on the elements themselves.
+   */
+  #watchReferences(): void {
+    this.#rootObserver.disconnect();
+    this.#textObserver.disconnect();
+    if (isServer || !this.isConnected) {
+      return;
+    }
+    const hasRefs = !!(
+      definedString(this.ariaLabelledBy)
+      || definedString(this.ariaDescribedBy)
+    );
+    if (!hasRefs) {
+      return;
+    }
+    const root = this.getRootNode();
+    if (root instanceof Document || root instanceof ShadowRoot) {
+      this.#rootObserver.observe(root, {
+        subtree: true,
+        childList: true,
+        attributes: true,
+        attributeOldValue: true,
+        attributeFilter: ['id'],
+      });
+    }
+    const watched = new Set<Element>([...this.#labelElements, ...this.#descriptionElements]);
+    for (const element of watched) {
+      this.#textObserver.observe(element, {
+        subtree: true,
+        childList: true,
+        characterData: true,
+        attributes: true,
+        attributeFilter: ['aria-label'],
+      });
+    }
+  }
+
+  #onReferenceMutation(records: MutationRecord[]): void {
+    if (!this.isConnected) {
+      return;
+    }
+    const ids = new Set([
+      ...this.#ids(this.ariaLabelledBy),
+      ...this.#ids(this.ariaDescribedBy),
+    ]);
+    if (ids.size === 0 || !records.some(record => this.#recordMatchesIds(record, ids))) {
+      return;
+    }
+    this.requestUpdate();
+  }
+
+  /** True when a mutation adds, removes, or renames an element our ids point at. */
+  #recordMatchesIds(record: MutationRecord, ids: Set<string>): boolean {
+    if (record.type === 'attributes') {
+      const target = record.target;
+      if (!(target instanceof Element)) {
+        return false;
+      }
+      return ids.has(target.id) || (record.oldValue != null && ids.has(record.oldValue));
+    }
+    const selector = [...ids].map(id => `#${CSS.escape(id)}`).join(',');
+    return [...record.addedNodes, ...record.removedNodes].some(node => {
+      if (!(node instanceof Element)) {
+        return false;
+      }
+      if (ids.has(node.id)) {
+        return true;
+      }
+      try {
+        return node.querySelector(selector) != null;
+      } catch {
+        return false;
+      }
+    });
   }
 
   #onClick() {

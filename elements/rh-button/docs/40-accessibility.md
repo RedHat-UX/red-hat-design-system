@@ -8,6 +8,46 @@ icon-only `<rh-button>` to provide its accessible name.
 link
  - Do not place other interactive elements within a button
 
+The accessible control is the native button inside the shadow root. These attributes
+may be set on `<rh-button>` and are forwarded to that button:
+
+ - `accessible-label` or `aria-label` sets the accessible name. Prefer `accessible-label`.
+ - `aria-expanded` sets whether the controlled region is expanded (`true` or `false`).
+ - `aria-pressed` sets the toggle state (`true`, `false`, or `mixed`).
+ - `aria-haspopup` tells assistive technology what the button opens, for example
+`menu` or `dialog`.
+ - `aria-controls` is the id of the element this button controls.
+ - `aria-labelledby` and `aria-describedby` are the ids of elements that name or
+describe the button.
+ - `aria-description` sets the accessible description.
+
+```html rh-code-block
+<rh-button variant="primary"
+           icon="robot"
+           accessible-label="Ask AI"
+           aria-expanded="false"
+           aria-controls="drawer-panel"></rh-button>
+<div id="drawer-panel">Panel content</div>
+```
+
+The host element has no role, so these attributes are removed from `<rh-button>` after
+they are read. Read or update them through the properties (`ariaExpanded`,
+`ariaControls`, and so on). `aria-expanded`, `aria-pressed`, `aria-haspopup`,
+`aria-label`, and `aria-description` are copied onto the internal button.
+
+`aria-labelledby` and `aria-describedby` are not copied as ids. An id on the internal
+button cannot refer to an element outside its shadow tree, and a page id such as
+`text` would point at an internal slot instead of the element the author named. The
+text of the referenced elements is applied as the accessible name and description.
+Those references are watched while the button is connected, including targets that
+are inserted later and text that changes afterward. Server rendering cannot resolve
+the ids. Slotted text is used as the name until hydration. An icon-only button that
+is named only by `aria-labelledby` has no name in server-rendered markup, so set
+`accessible-label` as well.
+
+`aria-controls` is copied onto the internal button as an id, including in
+server-rendered markup. The internal button keeps that id string.
+
 ## Keyboard interactions
 
 Users should have the ability to navigate to and interact with buttons using their keyboard.
