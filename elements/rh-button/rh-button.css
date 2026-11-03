@@ -455,7 +455,6 @@ button {
     }
   }
 
-  /* Keyboard focus and press share the focus ring. A mouse click does not. */
   &:is(:focus-visible, :active) {
     outline:
       /** Focus outline width */
