@@ -54,6 +54,13 @@
 
   /** Page link visited hover color */
   --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  --_numeric-a-color-visited-focus:
+    /** Total link visited focus text color override */
+    var(
+        --rh-pagination-accent-color,
+        /** Total link visited focus text color */
+        var(--rh-color-interactive-primary-visited-focus)
+      );
   --_list-a-bg-color:
     light-dark(
         /** Page link background for light scheme */
@@ -407,12 +414,17 @@ input {
       }
 
       &:is(:focus-visible, :active) {
-        color: var(--_numeric-a-color-visited);
+        color: var(--_numeric-a-color-visited-focus);
       }
     }
 
     &:focus:not(:focus-visible, :active) {
       outline: none;
+    }
+
+    /* A press under the pointer keeps the hover color. */
+    &:visited:hover:active {
+      color: var(--_numeric-a-color-visited-hover);
     }
   }
 }
