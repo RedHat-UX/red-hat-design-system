@@ -174,7 +174,7 @@ maximum width of six columns.
 
 Cards can include complex components if necessary. For example, the
 [Filter](/patterns/filter/) pattern requires an Accordion or a
-[Disclosure](/patterns/disclosure/) to sort a content set. Don't
+[Disclosure](/elements/disclosure/) to sort a content set. Don't
 place any other complex components in card layouts.
 
 <uxdot-example width-adjustment="664px">

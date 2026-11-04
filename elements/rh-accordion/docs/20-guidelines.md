@@ -14,7 +14,7 @@ and less clicking, it is advised to not use an accordion.
 
 ### Accordion vs. disclosure
 An accordion is used to organize important information whereas a 
-[Disclosure](/patterns/disclosure/) can be used to organize secondary 
+[Disclosure](/elements/disclosure/) can be used to organize secondary 
 information that might not be critical to read or impact the experience. An 
 accordion can also accommodate multiple sections of content, whereas a 
 disclosure can only accommodate one.
