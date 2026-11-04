@@ -41,32 +41,32 @@ input {
   border-radius: 50%;
   margin-block: var(--rh-space-md, 8px);
   margin-inline: var(--rh-space-xs, 4px);
-}
-
-input:before {
-  display: block;
-  content: '';
-  background: var(--c);
-  border-radius: 50%;
-  position: absolute;
-  inset: 0;
-  outline: var(--alt-color) solid var(--rh-border-width-sm, 1px);
-}
-
-input:checked:after {
-  display: block;
-  content: '';
-  background: var(--alt-color);
-  border-radius: 50%;
-  position: absolute;
-  inset: 6px;
-}
-
-input:focus-visible {
-  outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-focus);
 
   &:before {
-    outline: 0;
+    display: block;
+    content: '';
+    background: var(--c);
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+    outline: var(--alt-color) solid var(--rh-border-width-sm, 1px);
+  }
+
+  &:checked:after {
+    display: block;
+    content: '';
+    background: var(--alt-color);
+    border-radius: 50%;
+    position: absolute;
+    inset: 6px;
+  }
+
+  &:focus-visible {
+    outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-focus);
+
+    &:before {
+      outline: 0;
+    }
   }
 }
 
