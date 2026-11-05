@@ -33,18 +33,18 @@ Buttons are available for both light and dark color schemes.
 
 ### Light and dark themes
 
-<uxdot-example color-palette="lightest" width-adjustment="494px">
+<uxdot-example color-palette="lightest" width-adjustment="818px">
   <img alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
        src="../button-interaction-state-default-theme-light.png"
-       width="494"
-       height="124">
+       width="818"
+       height="169">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="494px">
+<uxdot-example color-palette="darkest" width-adjustment="818px">
   <img alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
        src="../button-interaction-state-default-theme-dark.png"
-       width="494"
-       height="124">
+       width="818"
+       height="169">
 </uxdot-example>
 
 <rh-table>
@@ -107,18 +107,18 @@ an element or pattern.
 
 ### Hover
 
-<uxdot-example color-palette="lightest" width-adjustment="495px">
+<uxdot-example color-palette="lightest" width-adjustment="818px">
   <img alt="Image of light theme button hover states"
        src="../button-interaction-state-hover-theme-light.png"
-       width="495"
-       height="124">
+       width="818"
+       height="169">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="495px">
+<uxdot-example color-palette="darkest" width-adjustment="818px">
   <img alt="Image of dark theme button hover states"
        src="../button-interaction-state-hover-theme-dark.png"
-       width="495"
-       height="124">
+       width="818"
+       height="169">
 </uxdot-example>
 
 <rh-table>
@@ -143,18 +143,18 @@ an element or pattern.
   <p>The Focus state has the same styles as the Hover state.</p>
 </rh-alert>
 
-<uxdot-example color-palette="lightest" width-adjustment="530px">
+<uxdot-example color-palette="lightest" width-adjustment="818px">
   <img alt="Image of light theme button focus states"
        src="../button-interaction-state-focus-theme-light.png"
-       width="530"
-       height="128">
+       width="818"
+       height="169">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="530px">
+<uxdot-example color-palette="darkest" width-adjustment="818px">
   <img alt="Image of dark theme button focus states"
        src="../button-interaction-state-focus-theme-dark.png"
-       width="530"
-       height="128">
+       width="818"
+       height="169">
 </uxdot-example>
 
 
@@ -173,18 +173,18 @@ an element or pattern.
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 
-<uxdot-example color-palette="lightest" width-adjustment="530px">
+<uxdot-example color-palette="lightest" width-adjustment="818px">
   <img alt="Image of light theme button active states"
        src="../button-interaction-state-active-theme-light.png"
-       width="530"
-       height="128">
+       width="818"
+       height="169">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="530px">
+<uxdot-example color-palette="darkest" width-adjustment="818px">
   <img alt="Image of dark theme button active states"
        src="../button-interaction-state-active-theme-dark.png"
-       width="530"
-       height="128">
+       width="818"
+       height="169">
 </uxdot-example>
 
 <rh-table>
