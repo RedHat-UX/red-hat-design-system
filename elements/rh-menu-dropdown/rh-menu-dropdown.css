@@ -187,6 +187,29 @@
           var(--rh-color-gray-50, #707070)
         ));
 
+    /*
+     * Keyboard focus and press share the standard focus ring.
+     * The toggle already uses the default 3px corner radius.
+     */
+    &:is(:focus-visible, :active) {
+      outline:
+        /** Toggle focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Toggle focus outline color; theme-adaptive */
+        var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
+
+      /** Toggle focus outline offset */
+      outline-offset: var(--rh-border-width-lg, 3px);
+
+      /** Keep the ring from animating in or out */
+      transition: none;
+    }
+
+    &:focus:not(:focus-visible, :active) {
+      outline: none;
+    }
+
     &:not(.open) {
       &:hover {
         box-shadow:
@@ -203,18 +226,6 @@
           /** Toggle active border color */
           var(--rh-menu-dropdown-active-border-color, var(--_interactive-border-color));
       }
-
-      &:focus {
-        outline:
-          /** Focus outline width */
-          var(--rh-length-3xs, 2px)
-          solid
-          /** Toggle focus border color */
-          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
-
-        /** Focus outline offset */
-        outline-offset: var(--rh-length-3xs, 2px);
-      }
     }
 
     &.open {
@@ -224,18 +235,6 @@
         var(--rh-length-3xs, 2px)
         /** Toggle open border color */
         var(--rh-menu-dropdown-open-border-color, var(--_interactive-border-color));
-
-      &:focus {
-        outline:
-          /** Focus outline width */
-          var(--rh-length-3xs, 2px)
-          solid
-          /** Toggle focus border color */
-          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
-
-        /** Focus outline offset */
-        outline-offset: var(--rh-length-3xs, 2px);
-      }
     }
 
     &.disabled {
@@ -267,7 +266,7 @@
       &.open,
       &:hover,
       &:active,
-      &:focus {
+      &:focus-visible {
         background-color:
           light-dark(
               /** Compact hover background for light scheme */
@@ -277,20 +276,35 @@
             );
       }
 
-      &:focus {
-        outline:
-          var(--rh-length-3xs, 2px)
-          solid
-          var(--_interactive-border-color);
-        outline-offset: var(--rh-length-3xs, 2px);
-      }
-
       &:active {
         box-shadow:
           inset 0 0 0
           /** Active border spread width */
           var(--rh-length-3xs, 2px)
           var(--_interactive-border-color);
+      }
+
+      /*
+       * Hover fill stays on keyboard focus. The ring is separate so a mouse click does not keep it.
+       * The toggle already uses the default 3px corner radius.
+       */
+      &:is(:focus-visible, :active) {
+        outline:
+          /** Toggle focus outline width */
+          var(--rh-border-width-lg, 3px)
+          solid
+          /** Toggle focus outline color; theme-adaptive */
+          var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
+
+        /** Toggle focus outline offset */
+        outline-offset: var(--rh-border-width-lg, 3px);
+
+        /** Keep the ring from animating in or out */
+        transition: none;
+      }
+
+      &:focus:not(:focus-visible, :active) {
+        outline: none;
       }
     }
 
