@@ -35,14 +35,14 @@ Buttons are available for both light and dark color schemes.
 
 <uxdot-example color-palette="lightest" width-adjustment="494px">
   <img alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
-       src="../button-theme-light.png"
+       src="../button-interaction-state-default-theme-light.svg"
        width="494"
        height="124">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="494px">
   <img alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
-       src="../button-theme-dark.png"
+       src="../button-interaction-state-default-theme-dark.svg"
        width="494"
        height="124">
 </uxdot-example>
@@ -109,14 +109,14 @@ an element or pattern.
 
 <uxdot-example color-palette="lightest" width-adjustment="495px">
   <img alt="Image of light theme button hover states"
-       src="../button-interaction-state-hover-theme-light.png"
+       src="../button-interaction-state-hover-theme-light.svg"
        width="495"
        height="124">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="495px">
   <img alt="Image of dark theme button hover states"
-       src="../button-interaction-state-hover-theme-dark.png"
+       src="../button-interaction-state-hover-theme-dark.svg"
        width="495"
        height="124">
 </uxdot-example>
@@ -145,14 +145,14 @@ an element or pattern.
 
 <uxdot-example color-palette="lightest" width-adjustment="530px">
   <img alt="Image of light theme button focus states"
-       src="../button-interaction-state-focus-theme-light.png"
+       src="../button-interaction-state-focus-theme-light.svg"
        width="530"
        height="128">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
   <img alt="Image of dark theme button focus states"
-       src="../button-interaction-state-focus-theme-dark.png"
+       src="../button-interaction-state-focus-theme-dark.svg"
        width="530"
        height="128">
 </uxdot-example>
@@ -175,14 +175,14 @@ an element or pattern.
 
 <uxdot-example color-palette="lightest" width-adjustment="530px">
   <img alt="Image of light theme button active states"
-       src="../button-interaction-state-active-theme-light.png"
+       src="../button-interaction-state-active-theme-light.svg"
        width="530"
        height="128">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
   <img alt="Image of dark theme button active states"
-       src="../button-interaction-state-active-theme-dark.png"
+       src="../button-interaction-state-active-theme-dark.svg"
        width="530"
        height="128">
 </uxdot-example>
