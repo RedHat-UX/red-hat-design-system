@@ -45,9 +45,6 @@ button {
   /** Button horizontal spacing */
   padding-inline: var(--rh-space-lg, 16px);
 
-  /** Button focus ring offset */
-  outline-offset: var(--rh-length-4xs, 1px);
-
   &:after {
     position: absolute;
     inset: 0;
@@ -92,21 +89,29 @@ button {
 
     /** Primary border width */
     --_border-width: var(--rh-border-width-sm, 1px);
-
-    /** Primary active text color */
-    --_active-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --_active-color:
+      light-dark(
+          /** Primary active text color for light scheme */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Primary active text color for dark scheme */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
 
     /** Primary active background color */
-    --_active-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_active-background-color: var(--rh-color-interactive-primary-active);
 
     /** Primary active border width */
     --_active-border-width: var(--rh-border-width-sm, 1px);
-
-    /** Primary focus text color */
-    --_focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+    --_focus-color:
+      light-dark(
+          /** Primary focus text color for light scheme */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Primary focus text color for dark scheme */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
 
     /** Primary focus background color */
-    --_focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_focus-background-color: var(--rh-color-interactive-primary-focus);
 
     /** Primary focus border width */
     --_focus-border-width: var(--rh-border-width-md, 2px);
@@ -445,17 +450,10 @@ button {
     --_border-width: var(--_hover-border-width);
   }
 
-  &:focus {
+  &:focus-visible {
     --_color: var(--_focus-color);
     --_background-color: var(--_focus-background-color);
     --_border-width: var(--_focus-border-width);
-
-    outline:
-      /** Focus outline width */
-      var(--rh-border-width-md, 2px)
-      solid
-      /** Focus outline color */
-      var(--rh-color-interactive-primary-default);
 
     &:after {
       border-width:
@@ -465,10 +463,27 @@ button {
     }
   }
 
+  &:is(:focus-visible, :active) {
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Focus outline color; theme-adaptive */
+      var(--rh-color-border-focus);
+
+    /** Focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+    transition: none;
+  }
+
   &:active {
     --_color: var(--_active-color);
     --_background-color: var(--_active-background-color);
     --_border-width: var(--_active-border-width);
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 
   & > span {
