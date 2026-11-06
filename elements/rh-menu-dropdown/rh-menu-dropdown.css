@@ -175,6 +175,29 @@
   }
 
   /*
+   * Keyboard focus and press share one ring for every toggle variant.
+   * The toggle already uses the default 3px corner radius.
+   */
+  &:is(:focus-visible, :active) {
+    outline:
+      /** Toggle focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Toggle focus outline color; theme-adaptive */
+      var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
+
+    /** Toggle focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+
+    /** Keep the ring from animating in or out */
+    transition: none;
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
+  }
+
+  /*
    * Styles “Boxed” toggle (default when `variant` is not `borderless`)
    */
   &.boxed {
@@ -186,29 +209,6 @@
           var(--rh-color-gray-30, #c7c7c7),
           var(--rh-color-gray-50, #707070)
         ));
-
-    /*
-     * Keyboard focus and press share the standard focus ring.
-     * The toggle already uses the default 3px corner radius.
-     */
-    &:is(:focus-visible, :active) {
-      outline:
-        /** Toggle focus outline width */
-        var(--rh-border-width-lg, 3px)
-        solid
-        /** Toggle focus outline color; theme-adaptive */
-        var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
-
-      /** Toggle focus outline offset */
-      outline-offset: var(--rh-border-width-lg, 3px);
-
-      /** Keep the ring from animating in or out */
-      transition: none;
-    }
-
-    &:focus:not(:focus-visible, :active) {
-      outline: none;
-    }
 
     &:not(.open) {
       &:hover {
@@ -282,29 +282,6 @@
           /** Active border spread width */
           var(--rh-length-3xs, 2px)
           var(--_interactive-border-color);
-      }
-
-      /*
-       * Hover fill stays on keyboard focus. The ring is separate so a mouse click does not keep it.
-       * The toggle already uses the default 3px corner radius.
-       */
-      &:is(:focus-visible, :active) {
-        outline:
-          /** Toggle focus outline width */
-          var(--rh-border-width-lg, 3px)
-          solid
-          /** Toggle focus outline color; theme-adaptive */
-          var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
-
-        /** Toggle focus outline offset */
-        outline-offset: var(--rh-border-width-lg, 3px);
-
-        /** Keep the ring from animating in or out */
-        transition: none;
-      }
-
-      &:focus:not(:focus-visible, :active) {
-        outline: none;
       }
     }
 
