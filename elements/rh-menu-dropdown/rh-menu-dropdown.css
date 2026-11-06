@@ -188,9 +188,6 @@
 
     /** Toggle focus outline offset */
     outline-offset: var(--rh-border-width-lg, 3px);
-
-    /** Keep the ring from animating in or out */
-    transition: none;
   }
 
   &:focus:not(:focus-visible, :active) {
