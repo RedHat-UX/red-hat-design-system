@@ -175,6 +175,26 @@
   }
 
   /*
+   * Keyboard focus and press share one ring for every toggle variant.
+   * The toggle already uses the default 3px corner radius.
+   */
+  &:is(:focus-visible, :active) {
+    outline:
+      /** Toggle focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Toggle focus outline color; theme-adaptive */
+      var(--rh-menu-dropdown-focus-border-color, var(--rh-color-border-focus));
+
+    /** Toggle focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
+  }
+
+  /*
    * Styles “Boxed” toggle (default when `variant` is not `borderless`)
    */
   &.boxed {
@@ -203,18 +223,6 @@
           /** Toggle active border color */
           var(--rh-menu-dropdown-active-border-color, var(--_interactive-border-color));
       }
-
-      &:focus {
-        outline:
-          /** Focus outline width */
-          var(--rh-length-3xs, 2px)
-          solid
-          /** Toggle focus border color */
-          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
-
-        /** Focus outline offset */
-        outline-offset: var(--rh-length-3xs, 2px);
-      }
     }
 
     &.open {
@@ -224,18 +232,6 @@
         var(--rh-length-3xs, 2px)
         /** Toggle open border color */
         var(--rh-menu-dropdown-open-border-color, var(--_interactive-border-color));
-
-      &:focus {
-        outline:
-          /** Focus outline width */
-          var(--rh-length-3xs, 2px)
-          solid
-          /** Toggle focus border color */
-          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
-
-        /** Focus outline offset */
-        outline-offset: var(--rh-length-3xs, 2px);
-      }
     }
 
     &.disabled {
@@ -267,7 +263,7 @@
       &.open,
       &:hover,
       &:active,
-      &:focus {
+      &:focus-visible {
         background-color:
           light-dark(
               /** Compact hover background for light scheme */
@@ -275,14 +271,6 @@
               /** Compact hover background for dark scheme */
               var(--rh-color-surface-darker, #1f1f1f)
             );
-      }
-
-      &:focus {
-        outline:
-          var(--rh-length-3xs, 2px)
-          solid
-          var(--_interactive-border-color);
-        outline-offset: var(--rh-length-3xs, 2px);
       }
 
       &:active {
