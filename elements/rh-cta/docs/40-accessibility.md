@@ -12,7 +12,7 @@ Every call to action style and variant must be able to receive focus and be navi
 
 <uxdot-example color-palette="lightest" width-adjustment="570px">
   <img src="../cta-a11y-keyboard-interactions.svg"
-        alt="The four different CTAs, each showing a blue focus ring around it and the words 'Tab' underneath."
+        alt="Four calls to action in keyboard focus. Each has a 3px blue ring. Secondary keeps a gray fill. The word Tab sits under each one."
         width="570"
         height="103">
 </uxdot-example>
