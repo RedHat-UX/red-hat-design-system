@@ -1513,6 +1513,9 @@
       /* !important needed to override shadow DOM :host([expanded]) border */
       border-inline-end: none !important;
       border-radius: var(--felt-preview-border-radius-action-plain);
+
+      --_accordion-header-focus-radius: var(--felt-preview-border-radius-action-plain);
+
       line-height: var(--felt-preview-line-height-body-text-md);
     }
 
@@ -1533,11 +1536,6 @@
       position: relative;
       z-index: 1;
       background-color: var(--felt-preview-color-interactive-fill-plain-hover);
-      outline:
-        var(--felt-preview-border-width-md)
-        solid
-        var(--felt-preview-color-interactive-primary-default);
-      outline-offset: calc(-1 * var(--felt-preview-border-width-md));
     }
 
     & :is(h1, h2, h3, h4, h5, h6) {
@@ -1566,6 +1564,8 @@
 
       & rh-accordion-header {
         border-radius: 0;
+
+        --_accordion-header-focus-radius: 0;
       }
 
       & rh-accordion-header:first-child {
@@ -1575,10 +1575,6 @@
 
       & rh-accordion-header[expanded] {
         border-radius: 0;
-      }
-
-      & rh-accordion-header:focus-within {
-        outline-offset: calc(-1 * var(--felt-preview-border-width-md));
       }
     }
   }
