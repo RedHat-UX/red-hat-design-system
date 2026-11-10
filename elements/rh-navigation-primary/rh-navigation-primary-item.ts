@@ -66,7 +66,7 @@ export class RhNavigationPrimaryItem extends LitElement {
    */
   @consume({ context: searchInlineContext, subscribe: true })
   @state()
-  private searchInline?: boolean;
+  searchInline?: boolean;
 
   /**
    * Whether the item is currently expanded. Applies when `variant` is
