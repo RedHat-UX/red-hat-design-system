@@ -14,7 +14,7 @@ rh-navigation-primary {
       }
     }
 
-    &:not([slot='links']) {
+    &:not([slot='links'], [slot='search']) {
       /** Navigation item text color */
       color:
         var(--rh-color-text-primary,
