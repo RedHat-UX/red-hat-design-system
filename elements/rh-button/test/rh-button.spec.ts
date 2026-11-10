@@ -113,10 +113,15 @@ describe('<rh-button>', function() {
       await expect(element).to.be.accessible();
     });
 
-    it('copies aria-controls onto the internal button', function() {
-      expect(document.getElementById('drawer-panel')).to.not.equal(null);
-      expect(button.getAttribute('aria-controls')).to.equal('drawer-panel');
+    it('links aria-controls to the internal button', function() {
+      const panel = document.getElementById('drawer-panel');
+      expect(panel).to.not.equal(null);
       expect(element.ariaControls).to.equal('drawer-panel');
+      if ('ariaControlsElements' in Element.prototype) {
+        expect(button.ariaControlsElements?.[0]).to.equal(panel);
+      } else {
+        expect(button.getAttribute('aria-controls')).to.equal('drawer-panel');
+      }
     });
 
     it('uses aria-describedby text as the description', function() {
@@ -162,6 +167,55 @@ describe('<rh-button>', function() {
       await element.updateComplete;
       expect(button.getAttribute('aria-label')).to.equal('Search');
     });
+
+    it('prefers aria-labelledby text over aria-label', async function() {
+      const labelled = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="precedence-label" aria-label="Literal">Slotted</rh-button>
+        <span id="precedence-label">Referenced</span>
+      `);
+      expect(internalButton(labelled).getAttribute('aria-label')).to.equal('Referenced');
+    });
+
+    it('prefers aria-describedby text over aria-description', async function() {
+      const described = await createFixture<RhButton>(html`
+        <rh-button aria-describedby="precedence-desc"
+                   aria-description="Literal">Slotted</rh-button>
+        <span id="precedence-desc">Referenced</span>
+      `);
+      expect(internalButton(described).getAttribute('aria-description')).to.equal('Referenced');
+    });
+  });
+
+  describe('when element reflection is supported', function() {
+    const supportsReflection = typeof Element !== 'undefined'
+      && 'ariaLabelledByElements' in Element.prototype;
+
+    (supportsReflection ? it : it.skip)('reflects the referenced label element', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="reflected-label"></rh-button>
+        <span id="reflected-label">Ask AI</span>
+      `);
+      expect(internalButton(element).ariaLabelledByElements?.[0])
+          .to.equal(document.getElementById('reflected-label'));
+    });
+
+    (supportsReflection ? it : it.skip)('reflects the referenced description element', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-describedby="reflected-desc">Save</rh-button>
+        <span id="reflected-desc">Opens the assistant</span>
+      `);
+      expect(internalButton(element).ariaDescribedByElements?.[0])
+          .to.equal(document.getElementById('reflected-desc'));
+    });
+
+    (supportsReflection ? it : it.skip)('gives accessible-label precedence over reflected labels', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="reflected-override" accessible-label="Search"></rh-button>
+        <span id="reflected-override">Ask AI</span>
+      `);
+      expect(internalButton(element).ariaLabelledByElements).to.equal(null);
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('Search');
+    });
   });
 
   describe('aria-labelledby', function() {
@@ -175,6 +229,79 @@ describe('<rh-button>', function() {
       expect(button.hasAttribute('aria-labelledby')).to.equal(false);
       expect(button.getAttribute('aria-label')).to.equal('Ask AI');
       expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
+    });
+  });
+
+  describe('referenced text', function() {
+    it('excludes aria-hidden descendants from a referenced label', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="hidden-label"></rh-button>
+        <span id="hidden-label">Ask AI <span aria-hidden="true">hidden</span></span>
+      `);
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('Ask AI');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
+    });
+
+    it('excludes hidden descendants from a referenced description', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-describedby="hidden-desc">Save</rh-button>
+        <span id="hidden-desc">Visible <span hidden>hidden</span></span>
+      `);
+      expect(internalButton(element).getAttribute('aria-description')).to.equal('Visible');
+    });
+
+    it('names the button from an SVG label', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="svg-label"></rh-button>
+        <svg id="svg-label" aria-label="SVG name"></svg>
+      `);
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('SVG name');
+    });
+  });
+
+  describe('references across shadow roots', function() {
+    it('follows a label inserted in an ancestor root', async function() {
+      const outer = document.createElement('div');
+      document.body.append(outer);
+      const outerRoot = outer.attachShadow({ mode: 'open' });
+      outerRoot.innerHTML = '<div id="inner-host"></div>';
+      const innerHost = outerRoot.querySelector<HTMLElement>('#inner-host')!;
+      const innerRoot = innerHost.attachShadow({ mode: 'open' });
+      innerRoot.innerHTML = '<rh-button aria-labelledby="outer-late"></rh-button>';
+      const element = innerRoot.querySelector<RhButton>('rh-button')!;
+      await element.updateComplete;
+
+      const label = document.createElement('span');
+      label.id = 'outer-late';
+      label.textContent = 'Outer late';
+      document.body.append(label);
+      await nextFrame();
+      await element.updateComplete;
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('Outer late');
+
+      label.textContent = 'Outer changed';
+      await nextFrame();
+      await element.updateComplete;
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('Outer changed');
+      outer.remove();
+      label.remove();
+    });
+
+    it('keeps following references after the button is moved', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="moved-label"></rh-button>
+        <span id="moved-label">First</span>
+      `);
+      const label = document.getElementById('moved-label')!;
+      element.remove();
+      document.body.append(element);
+      await element.updateComplete;
+
+      label.textContent = 'Second';
+      await nextFrame();
+      await element.updateComplete;
+      expect(internalButton(element).getAttribute('aria-label')).to.equal('Second');
+      element.remove();
     });
   });
 
