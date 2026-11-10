@@ -65,6 +65,15 @@ rh-breadcrumb {
         /** Visited link hover color for dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
+  --_breadcrumb-focus-outline-color:
+    /** Focus outline color */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** Focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
 
   display: block;
 
@@ -160,14 +169,7 @@ rh-breadcrumb {
             /** Link focus outline width */
             var(--rh-border-width-lg, 3px)
             solid
-            /** Link focus outline color; theme-adaptive */
-            var(--rh-color-border-focus,
-              light-dark(
-                /** Link focus outline color for light scheme */
-                var(--rh-color-border-focus-on-light, #0066cc),
-                /** Link focus outline color for dark scheme */
-                var(--rh-color-border-focus-on-dark, #92c5f9)
-              ));
+            var(--_breadcrumb-focus-outline-color);
 
           /** Link focus outline offset */
           outline-offset: var(--rh-border-width-lg, 3px);
@@ -245,14 +247,7 @@ rh-breadcrumb {
         /** Truncation button focus outline width */
         var(--rh-border-width-lg, 3px)
         solid
-        /** Truncation button focus outline color; theme-adaptive */
-        var(--rh-color-border-focus,
-          light-dark(
-            /** Truncation button focus outline color for light scheme */
-            var(--rh-color-border-focus-on-light, #0066cc),
-            /** Truncation button focus outline color for dark scheme */
-            var(--rh-color-border-focus-on-dark, #92c5f9)
-          ));
+        var(--_breadcrumb-focus-outline-color);
 
       /** Truncation button focus outline offset */
       outline-offset: var(--rh-border-width-lg, 3px);
