@@ -35,18 +35,29 @@ they are read. Read or update them through the properties (`ariaExpanded`,
 `ariaControls`, and so on). `aria-expanded`, `aria-pressed`, `aria-haspopup`,
 `aria-label`, and `aria-description` are copied onto the internal button.
 
-`aria-labelledby` and `aria-describedby` are not copied as ids. An id on the internal
-button cannot refer to an element outside its shadow tree, and a page id such as
-`text` would point at an internal slot instead of the element the author named. The
-text of the referenced elements is applied as the accessible name and description.
-Those references are watched while the button is connected, including targets that
-are inserted later and text that changes afterward. Server rendering cannot resolve
-the ids. Slotted text is used as the name until hydration. An icon-only button that
-is named only by `aria-labelledby` has no name in server-rendered markup, so set
-`accessible-label` as well.
+`aria-labelledby`, `aria-describedby`, and `aria-controls` point at elements outside
+the internal button's shadow tree. Browsers that support element reflection
+(`ariaLabelledByElements`, `ariaDescribedByElements`, and `ariaControlsElements`) get
+a live relationship to those elements. That is the supported way to reference
+elements across shadow roots.
 
-`aria-controls` is copied onto the internal button as an id, including in
-server-rendered markup. The internal button keeps that id string.
+In other browsers, `aria-labelledby` and `aria-describedby` contribute the text of
+the referenced elements instead of ids. An id on the internal button cannot refer
+outside its shadow tree, and a page id such as `text` would point at an internal slot
+instead of the element the author named. Referenced labels win over `aria-label`, and
+referenced descriptions win over `aria-description`. `accessible-label` still wins
+over both. Hidden descendants are excluded, as they are from accessible name
+computation. Those references are watched while the button is connected, including
+targets that are inserted later and text that changes afterward.
+
+Server rendering cannot resolve the ids. Slotted text is used as the name until
+hydration. An icon-only button that is named only by `aria-labelledby` has no name in
+server-rendered markup, so set `accessible-label` as well.
+
+`aria-controls` is kept as an id string on the internal button in server-rendered
+markup. A browser that reflects the referenced element rewrites the serialized id to
+an empty value; the relationship still exists and is exposed to assistive
+technology.
 
 ## Keyboard interactions
 
