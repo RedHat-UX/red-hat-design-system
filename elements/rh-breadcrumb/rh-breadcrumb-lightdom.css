@@ -173,7 +173,6 @@ rh-breadcrumb {
 
           /** Link focus outline offset */
           outline-offset: var(--rh-border-width-lg, 3px);
-          transition: none;
         }
 
         &:visited {
@@ -251,7 +250,6 @@ rh-breadcrumb {
 
       /** Truncation button focus outline offset */
       outline-offset: var(--rh-border-width-lg, 3px);
-      transition: none;
     }
 
     & .visually-hidden {
