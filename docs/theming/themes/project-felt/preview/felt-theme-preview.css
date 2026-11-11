@@ -1513,6 +1513,9 @@
       /* !important needed to override shadow DOM :host([expanded]) border */
       border-inline-end: none !important;
       border-radius: var(--felt-preview-border-radius-action-plain);
+
+      --_accordion-header-focus-radius: var(--felt-preview-border-radius-action-plain);
+
       line-height: var(--felt-preview-line-height-body-text-md);
     }
 
@@ -1533,11 +1536,6 @@
       position: relative;
       z-index: 1;
       background-color: var(--felt-preview-color-interactive-fill-plain-hover);
-      outline:
-        var(--felt-preview-border-width-md)
-        solid
-        var(--felt-preview-color-interactive-primary-default);
-      outline-offset: calc(-1 * var(--felt-preview-border-width-md));
     }
 
     & :is(h1, h2, h3, h4, h5, h6) {
@@ -1566,6 +1564,8 @@
 
       & rh-accordion-header {
         border-radius: 0;
+
+        --_accordion-header-focus-radius: 0;
       }
 
       & rh-accordion-header:first-child {
@@ -1575,10 +1575,6 @@
 
       & rh-accordion-header[expanded] {
         border-radius: 0;
-      }
-
-      & rh-accordion-header:focus-within {
-        outline-offset: calc(-1 * var(--felt-preview-border-width-md));
       }
     }
   }
@@ -1592,8 +1588,8 @@
     --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
   }
 
-  /* Borderless keeps a plain trigger: no brand-blue text (either resting
-     or hover), a transparent surface at rest, and its own corner radius,
+  /* Borderless keeps a plain trigger: no brand-blue text (resting, hover,
+     or focus), a transparent surface at rest, and its own corner radius,
      sharing the default variant's inline padding set above. Declared
      before the `:not([variant~='borderless'])` rule below so its nested
      reset for borderless hosts isn't flagged as having lower specificity
@@ -1609,6 +1605,12 @@
        rather than on `--rh-color-surface-light`/`-dark`. */
     --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
     --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
+
+    /* Open panel fill. The default theme paints #details-content with
+       surface-lighter / surface-darker. Those tokens are remapped above
+       to the interactive trigger fill, so the panel stays transparent
+       and that fill stays on the trigger. */
+    --_disclosure-panel-background-color: transparent;
     --rh-color-interactive-primary-default:
       var(
           --rh-color-text-primary,
@@ -1625,10 +1627,18 @@
             var(--rh-color-text-primary-on-dark, #ffffff)
           )
         );
+    --rh-color-interactive-primary-focus:
+      var(
+          --rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          )
+        );
 
     /* The focus ring stays brand-blue even though the tokens above
-       repurpose --rh-color-interactive-primary-default/-hover for the
-       trigger's gray text — see the dedicated outline-color cssprop in
+       repurpose --rh-color-interactive-primary-default/-hover/-focus for
+       the trigger's neutral text. See the outline-color cssprop in
        rh-disclosure.css. */
     --rh-disclosure-summary-outline-color: var(--felt-preview-color-interactive-primary-default);
 
@@ -1968,16 +1978,19 @@
     }
   }
 
-  & rh-chip-group::part(btn-link):hover,
-  & rh-chip-group::part(btn-link):focus-visible {
+  & rh-chip-group::part(btn-link):is(:hover, :focus-visible, :active) {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  & rh-chip-group::part(btn-link):focus-visible {
+  & rh-chip-group::part(btn-link):is(:focus-visible, :active) {
     outline-offset: -1px;
   }
 
-  & rh-chip::part(chip):after {
+  & rh-chip::part(chip):after,
+  & rh-chip-group::part(btn-link):after {
+    inset:
+      var(--rh-length-3xs, 2px)
+      var(--rh-length-md, 8px);
     border-radius:
       calc(
           var(--felt-preview-border-radius-action-plain)
@@ -1987,15 +2000,6 @@
     width: calc(100% - var(--felt-preview-space-xs));
     translate: calc(-1 * var(--felt-preview-border-radius-action-plain));
     outline-width: var(--felt-preview-border-width-lg);
-  }
-
-  & rh-chip-group::part(btn-link):after {
-    inset: -1px;
-    width: auto;
-    translate: none;
-    outline-width: var(--felt-preview-border-width-lg);
-    outline-offset: calc(var(--felt-preview-space-xs) - var(--felt-preview-border-width-md));
-    border-radius: var(--felt-preview-border-radius-pill);
   }
 
   & rh-chip-group[size='sm'] rh-chip {

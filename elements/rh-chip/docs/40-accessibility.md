@@ -16,7 +16,7 @@ Chips in a chip group can be can be navigated with a keyboard.
 
 <uxdot-example color-palette="lightest">
   <img src="../chip-a11y-keyboard-interactions.svg"
-        alt="Four chips and a clear all button. All show the focus outline around the chip text. The legend exists on the left."
+        alt="Four chips and a clear all button. Each has a 3px focus ring offset from the pill. The legend is on the left."
         width="720"
         height="42">
 </uxdot-example>
