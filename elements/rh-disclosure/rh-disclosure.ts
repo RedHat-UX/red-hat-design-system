@@ -88,7 +88,8 @@ export class RhDisclosure extends LitElement {
 
   /**
    * Borderless: Removes the outer and left border from the disclosure.
-   * The background is `surface-light`/`surface-dark` when expanded.
+   * When expanded, the panel background is `surface-lighter` /
+   * `surface-darker`. The caret uses `icon-secondary`.
    * Compact: decreases disclosure padding.
    */
   @property({ reflect: true }) variant?: 'borderless' | 'compact';
