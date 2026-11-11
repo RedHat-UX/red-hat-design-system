@@ -482,6 +482,14 @@ button {
     --_border-width: var(--_active-border-width);
   }
 
+  /*
+   * A focused disabled secondary or tertiary button keeps its 1px border.
+   * The focus ring is the only added indicator.
+   */
+  &[aria-disabled='true']:is(.secondary, .tertiary):is(:focus-visible, :active) {
+    --_border-width: var(--rh-border-width-sm, 1px);
+  }
+
   &:focus:not(:focus-visible, :active) {
     outline: none;
   }

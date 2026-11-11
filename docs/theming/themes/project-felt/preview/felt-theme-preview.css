@@ -836,6 +836,12 @@
       --rh-space-sm: var(--felt-preview-button-padding-block-compact);
       --rh-space-lg: var(--felt-preview-button-padding-inline-compact);
     }
+
+    /* Disabled focus keeps the 1px border. The focus ring is the only added indicator. */
+    &[variant='secondary']:disabled::part(button):focus-visible,
+    &[variant='tertiary']:disabled::part(button):focus-visible {
+      --rh-border-width-sm: var(--felt-preview-border-width-sm);
+    }
   }
 
   /* Element: Card */
