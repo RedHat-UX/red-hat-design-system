@@ -37,7 +37,7 @@ The box variant, which is the default style, shows a border around the entire di
 
 ### Borderless
 
-The borderless disclosure omits the border and uses `--rh-color-interactive-primary-default` for the title text for improved interactive affordance.
+The borderless disclosure omits the border and uses `--rh-color-interactive-primary-default` for the title text for improved interactive affordance. An expanded panel's background uses `--rh-color-surface-lighter` in the light scheme and `--rh-color-surface-darker` in the dark scheme, and the caret uses `--rh-color-icon-secondary`.
 
 <uxdot-example color-palette="lightest">
   <img alt="Two borderless variant disclosures. One closed, one open on a light color scheme."
@@ -174,17 +174,17 @@ The entire trigger button surface changes color on hover.
 
 ### Focus and Active
 
-A focus ring wraps around the entire trigger button in both focus and active states.
+Focus and active share a 3px ring inset inside the trigger. On an open disclosure, that ring sits over the red accent. The trigger surface changes color in both states.
 
 <uxdot-example color-palette="lightest">
-  <img alt="Two open disclosures, one open, one closed. Each showing the gray focus state of the disclosure's trigger plus the blue focus outline."
+  <img alt="Two disclosures, one open and one closed. Each trigger is gray with a 3px blue ring inset inside the trigger. The open trigger's ring sits over the red accent."
        src="../disclosure-style-interaction-states-focus-active-scheme-light.svg"
        width="1012"
        height="323">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
-  <img alt="Two open disclosures on a dark color scheme, one open, one closed. Each showing the gray focus state of the disclosure's trigger plus the blue focus outline."
+  <img alt="Two disclosures on a dark color scheme, one open and one closed. Each trigger is gray with a 3px blue ring inset inside the trigger. The open trigger's ring sits over the red accent."
        src="../disclosure-style-interaction-states-focus-active-scheme-dark.svg"
        width="1012"
        height="315">

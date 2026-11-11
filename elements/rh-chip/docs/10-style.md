@@ -91,42 +91,4 @@ The `--rh-space-lg` token is used when chips are stacked.
 
 ## Interaction states
 
-### Hover
-
-Styles will change on hover depending on how a chip is used.
-
-- The Default and Selected chip borders change to `--rh-border-width-md` on hover
-- The Clear all chip border becomes visible and is `--rh-border-width-sm` on hover
-- A disabled chip has no states
-
-<uxdot-example color-palette="lightest">
-    <img src="../chip-style-interaction-states-hover-color-scheme-light.svg"
-        alt="Three sets of two chips on a light color scheme each showing the hover state on the right and the normal state on the left."
-        width="712"
-        height="32">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest">
-    <img src="../chip-style-interaction-states-hover-color-scheme-dark.svg"
-        alt="Three sets of two chips a dark color scheme each showing the hover state on the right and the normal state on the left."
-        width="712"
-        height="32">
-</uxdot-example>
-
-### Focus and Active
-
-A focus ring wraps around the text and icon in both focus and active states. Hover state styles remain the same.
-
-<uxdot-example color-palette="lightest">
-    <img src="../chip-style-interaction-states-focus-color-scheme-light.svg"
-        alt="Three sets of two chips on a light color scheme each showing the focus state on the right and the normal state on the left."
-        width="902"
-        height="29">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest">
-    <img src="../chip-style-interaction-states-focus-color-scheme-dark.svg"
-        alt="Three sets of two chips a dark color scheme each showing the focus state on the right and the normal state on the left."
-        width="902"
-        height="29">
-</uxdot-example>
+To see live interaction states, go to the [Demos](/elements/chip/demos/) page.
