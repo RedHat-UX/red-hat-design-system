@@ -5,8 +5,8 @@ The menu toggle and the menu items options can be interacted with using the <kbd
 <uxdot-example color-palette="lightest">
   <img alt="Diagram showing the keyboard interactions for an expanded menu dropdown."
        src="../menu-dropdown-accessibility-keyboard-interactions.svg"
-       width="256"
-       height="333">
+       width="261"
+       height="344">
 </uxdot-example>
 
 <rh-table>
@@ -64,7 +64,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
   <img alt="Diagram showing the focus order for an expanded menu dropdown."
        src="../menu-dropdown-accessibility-focus-order.svg"
        width="300"
-       height="333">
+       height="344">
 </uxdot-example>
 
 ## Touch targets
@@ -74,8 +74,8 @@ All toggles and menu items exceed the WCAG [Level AA success criteria for target
 <uxdot-example color-palette="lightest">
   <img alt="Diagram showing the touch target size in relation to a menu toggle and menu items."
        src="../menu-dropdown-accessibility-touch-targets.svg"
-       width="303"
-       height="272">
+       width="317"
+       height="283">
 </uxdot-example>
 
 ## Additional guidelines
