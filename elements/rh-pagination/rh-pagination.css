@@ -42,18 +42,11 @@
       );
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
-    /** Page link focus color override */
+    /** Total link focus text color override */
     var(
         --rh-pagination-accent-color,
-        /** Page link focus color */
-        var(--rh-color-interactive-primary-default)
-      );
-  --_numeric-a-color-focus-outline:
-    /** Page link focus outline color override */
-    var(
-        --rh-pagination-accent-color,
-        /** Page link focus outline color */
-        var(--rh-color-interactive-primary-default)
+        /** Total link focus text color */
+        var(--rh-color-interactive-primary-focus)
       );
 
   /** Page link visited color */
@@ -61,6 +54,13 @@
 
   /** Page link visited hover color */
   --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  --_numeric-a-color-visited-focus:
+    /** Total link visited focus text color override */
+    var(
+        --rh-pagination-accent-color,
+        /** Total link visited focus text color */
+        var(--rh-color-interactive-primary-visited-focus)
+      );
   --_list-a-bg-color:
     light-dark(
         /** Page link background for light scheme */
@@ -192,52 +192,36 @@ svg {
   text-decoration: none;
   inline-size: var(--_stepper-size);
 
-  &:focus {
-    /** Stepper focus corner rounding */
-    border-radius: var(--rh-border-radius-default, 3px);
-    outline-offset: -2px;
-
-    /** Pagination focus outline */
-    outline: var(--rh-border-width-md, 2px) solid transparent;
-    outline-color:
-      /** Sets the accent color for focus outlines */
-      var(
-          --rh-pagination-accent-color,
-          /** Stepper focus outline color */
-          var(--rh-color-interactive-primary-default)
-        );
-  }
-
-  &:hover:after,
-  &:focus:before,
-  &:focus:after {
+  &:hover:after {
     border-block-start-style: solid;
+    border-block-color: var(--_border-top-hover-color);
     content: '';
     inset-inline-start: -1px;
     position: absolute;
     inset-block-start: -1px;
     inline-size: 104%;
-  }
 
-  &:hover:after,
-  &:focus:before {
-    border-block-color: var(--_border-top-hover-color);
-
-    /** Stepper hover/focus border width */
+    /** Stepper hover border width */
     border-block-width: var(--rh-border-width-lg, 3px);
   }
 
-  &:focus:after {
-    border-block-color:
-      /** Stepper focus accent border color override */
-      var(
-          --rh-pagination-accent-color,
-          /** Stepper focus accent border color */
-          var(--rh-color-border-interactive)
-        );
+  &:is(:focus-visible, :active) {
+    /** Stepper focus corner rounding */
+    border-radius: var(--rh-border-radius-default, 3px);
+    outline:
+      /** Stepper focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Stepper focus outline color */
+      var(--rh-color-border-focus);
 
-    /** Stepper focus accent border width */
-    border-block-width: var(--rh-border-width-md, 2px);
+    /** Stepper focus outline inset */
+    outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
+    transition: none;
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 
   & svg {
@@ -306,12 +290,14 @@ input {
 
   &:focus {
     border:
-      /** Input focus border width */ var(--rh-border-width-md, 2px)
-      solid /** Input focus border color override */
+      /** Input focus border width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Input focus border color override */
       var(
           --rh-pagination-accent-color,
           /** Input focus border color */
-          var(--rh-color-interactive-primary-default)
+          var(--rh-color-border-interactive)
         );
 
     /** Pagination vertical spacing */
@@ -320,6 +306,20 @@ input {
     /** Pagination horizontal spacing */
     padding-inline: calc(var(--rh-space-md, 8px) - 1px);
     outline: none;
+  }
+
+  &:is(:focus-visible, :active) {
+    /** Input focus corner rounding */
+    border-radius: var(--rh-border-radius-default, 3px);
+    outline:
+      /** Input focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Input focus outline color */
+      var(--rh-color-border-focus);
+
+    /** Input focus outline inset */
+    outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
   }
 
   &:invalid {
@@ -332,6 +332,11 @@ input {
     &:focus {
       border-block-end-width: var(--rh-border-width-md, 2px);
     }
+  }
+
+  /* After :invalid so this selector does not outrank it. */
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 }
 
@@ -384,14 +389,19 @@ input {
       text-underline-offset: max(6px, 0.33em);
     }
 
-    &:focus {
+    &:is(:focus-visible, :active) {
       /** Total link focus corner rounding */
       border-radius: var(--rh-border-radius-default, 3px);
       color: var(--_numeric-a-color-focus);
+      outline:
+        /** Total link focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Total link focus outline color */
+        var(--rh-color-border-focus);
 
-      /** Total link focus outline width */
-      outline: var(--rh-border-width-md, 2px) solid transparent;
-      outline-color: var(--_numeric-a-color-focus-outline);
+      /** Total link focus outline offset */
+      outline-offset: var(--rh-border-width-lg, 3px);
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
     }
@@ -402,6 +412,19 @@ input {
       &:hover {
         color: var(--_numeric-a-color-visited-hover);
       }
+
+      &:is(:focus-visible, :active) {
+        color: var(--_numeric-a-color-visited-focus);
+      }
+    }
+
+    &:focus:not(:focus-visible, :active) {
+      outline: none;
+    }
+
+    /* A press under the pointer keeps the hover color. */
+    &:visited:hover:active {
+      color: var(--_numeric-a-color-visited-hover);
     }
   }
 }
@@ -446,9 +469,7 @@ input {
   & .stepper {
     --_stepper-bg-color: transparent;
 
-    &:hover:after,
-    &:focus:before,
-    &:focus:after {
+    &:hover:after {
       border-block-start-style: none;
       border-block-end-style: solid;
       inset-block-end: -1px;
