@@ -293,15 +293,32 @@ button {
   background-color: var(--rh-tabs-overflow-hover-background, transparent);
 }
 
-:is(#previous-tab, #next-tab):focus .overflow-icon {
+:is(#previous-tab, #next-tab):focus-visible .overflow-icon {
   /** Overflow icon pill focus background */
   background-color: var(--rh-tabs-overflow-focus-background, transparent);
 
   /** Overflow icon pill focus outline */
-  outline: var(--rh-tabs-overflow-focus-outline, none);
+  outline:
+    var(
+        --rh-tabs-overflow-focus-outline,
+        /** Overflow icon pill focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Overflow icon pill focus outline color; theme-adaptive */
+        var(--rh-color-border-focus)
+      );
 
   /** Overflow icon pill focus outline offset */
-  outline-offset: var(--rh-tabs-overflow-focus-outline-offset, 0);
+  outline-offset:
+    var(
+        --rh-tabs-overflow-focus-outline-offset,
+        var(--rh-border-width-lg, 3px)
+      );
+}
+
+/* Clears the ring after a pointer click. */
+:is(#previous-tab, #next-tab):focus:not(:focus-visible) .overflow-icon {
+  outline: none;
 }
 /* stylelint-enable rhds/no-unknown-token-name */
 
