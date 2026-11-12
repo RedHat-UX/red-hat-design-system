@@ -307,7 +307,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-footer/rh-footer-copyright.ts',
       'elements/rh-footer/rh-footer-universal.ts',
       'elements/rh-health-index/rh-health-index.ts',
-      'elements/rh-icon/rh-icon.ts',
+      'elements/rh-icon/rh-icon.ssr.ts',
       'elements/rh-jump-links/rh-jump-link.ts',
       'elements/rh-jump-links/rh-jump-links-list.ts',
       'elements/rh-jump-links/rh-jump-links.ts',

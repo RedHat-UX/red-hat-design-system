@@ -8,6 +8,9 @@ describe('<rh-icon> server-side rendering', function() {
       importSpecifiers: ['@rhds/elements/rh-icon/rh-icon.js'],
     });
 
+    // declarative shadow root with rendered icon content
+    expect(markup).to.include('shadowrootmode="open"');
+    expect(markup).to.include('<div id="container"');
     expect(markup).to.include('<svg');
   });
 
@@ -17,6 +20,11 @@ describe('<rh-icon> server-side rendering', function() {
       importSpecifiers: ['@rhds/elements/rh-icon/rh-icon.js'],
     });
 
+    // slotted light-DOM content
     expect(markup).to.include('fallback');
+    // the declarative shadow root and its fallback span/slot
+    expect(markup).to.include('shadowrootmode="open"');
+    expect(markup).to.include('<span part="fallback"');
+    expect(markup).to.include('<slot');
   });
 });

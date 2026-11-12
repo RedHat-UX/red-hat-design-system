@@ -3,6 +3,8 @@ generate:
   files:
     - elements/*/rh-*.ts
     - lib/**/*.ts
+  exclude:
+    - elements/*/rh-*.ssr.ts
   output: custom-elements.json
   noDefaultExcludes: false
   designTokens:
