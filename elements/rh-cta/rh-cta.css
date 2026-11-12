@@ -201,6 +201,12 @@ a:focus-visible:after,
   --_text-decoration: var(--_active-text-decoration, var(--_hover-text-decoration));
 }
 
+:host(:not([variant]):active) #container,
+:host(:not([variant]):active) #container:has(a:focus-visible),
+:host(:not([variant]):active:state(slotted-focus)) #container {
+  background-color: var(--_active-container-background-color);
+}
+
 /*****************************************************************************
  * VARIANTS                                                                  *
  *****************************************************************************/
