@@ -59,6 +59,8 @@ export class RhNavigationPrimary extends LitElement {
 
   #ro?: ResizeObserver;
 
+  #hasSlottedSearch = false;
+
   #slots = new SlotController(this,
                               'logo',
                               'summary',
@@ -230,10 +232,15 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  protected updated(): void {
-    // recompute when slotted content changes, e.g. a search region is
-    // added or removed after the initial render
-    if (!isServer && this.offsetWidth > 0) {
+  protected willUpdate(): void {
+    if (isServer) {
+      return;
+    }
+    // recompute when a search region is added or removed; width changes are
+    // handled by the ResizeObserver
+    const hasSlottedSearch = this.#slots.hasSlotted('search');
+    if (hasSlottedSearch !== this.#hasSlottedSearch) {
+      this.#hasSlottedSearch = hasSlottedSearch;
       this.#setCompact(this.#isCompact(this.offsetWidth));
     }
   }

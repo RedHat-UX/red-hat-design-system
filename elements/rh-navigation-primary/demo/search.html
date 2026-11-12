@@ -1,5 +1,5 @@
 ---
-description: "Primary navigation with a search field placeholder. Below 992px a search toggle opens the field in a dropdown panel below the bar, capped at 576px wide; at 992px and above the field is inline and open in the utility cluster."
+description: "Primary navigation with a search field placeholder. Below 992px a search toggle opens the field in a dropdown panel below the bar; at 992px and above the field is inline and open in the utility cluster."
 ---
 <rh-navigation-primary role="navigation">
   <rh-navigation-primary-item variant="dropdown">
@@ -70,8 +70,9 @@ description: "Primary navigation with a search field placeholder. Below 992px a 
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="search" variant="search">
-    <!-- input is only placholder slotted content, replace with full seach pattern -->
-    <input type="text" class="search-placeholder" placeholder="placeholder search"></input>
+    <!-- input is only placeholder slotted content, replace with full search pattern -->
+    <label class="visually-hidden" for="demo-search">Search</label>
+    <input id="demo-search" type="text" class="search-placeholder" placeholder="placeholder search">
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
@@ -176,6 +177,18 @@ description: "Primary navigation with a search field placeholder. Below 992px a 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
+  .visually-hidden {
+    border: 0;
+    block-size: 1px;
+    clip-path: inset(50%);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+  }
+
   .search-placeholder {
     display: flex;
     align-items: center;
@@ -195,7 +208,7 @@ description: "Primary navigation with a search field placeholder. Below 992px a 
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
     @container navigation-primary (min-width: 576px) {
-      /* Fill the search panel's 576px max, less it's panels inline padding. */
+      /* Match the design's 576px search panel, less the panel's inline padding. */
       min-inline-size: calc(576px - (var(--rh-space-lg, 16px) * 2));
     }
 

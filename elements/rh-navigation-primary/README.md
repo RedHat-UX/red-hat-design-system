@@ -69,8 +69,8 @@ Use the `search` slot with an item whose `variant` is `search` to
 reserve space for search content in the navigation. Below a 992px container
 width the navigation shows a search toggle in the utility cluster; activating
 it displays the slotted content in a dropdown panel below the bar, full width
-up to 576px and capped at 576px on wider containers, and the panel is closed by
-default. At 992px and above the content is placed
+up to 576px and sized to its slotted content on wider containers, and the panel
+is closed by default. At 992px and above the content is placed
 inline and open, before the utility menus, and the toggle is hidden. When a
 search region is present, primary menu items collapse into the hamburger below
 1440px, because the inline search takes space in the bar. Set `summary` on the

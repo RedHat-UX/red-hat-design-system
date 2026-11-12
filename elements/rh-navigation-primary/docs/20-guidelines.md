@@ -152,7 +152,7 @@ The Primary navigation is always sticky on scroll on every page it is used on.
 
 Some elements disappear and the bar gets shorter as the Primary navigation gets smaller. To see more, go to the [Demos](/elements/primary-navigation/demos/) page.
 
-When a search region is present, the navigation shows a search toggle below 992px. The region is closed by default; activating the toggle displays it in a dropdown panel below the bar, full width up to 576px and capped at 576px on wider containers. At 992px and above the region is displayed inline and open in the utility cluster, and the toggle is hidden.
+When a search region is present, the navigation shows a search toggle below 992px. The region is closed by default; activating the toggle displays it in a dropdown panel below the bar, full width up to 576px and sized to its slotted content on wider containers. At 992px and above the region is displayed inline and open in the utility cluster, and the toggle is hidden.
 
 <uxdot-example variant="full" color-palette="lightest" no-border>
   <img alt="Four primary navigations shown at various viewport sizes from large to small"

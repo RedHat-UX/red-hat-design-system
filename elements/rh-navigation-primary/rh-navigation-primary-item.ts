@@ -42,7 +42,6 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   #highlight = false;
 
-  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   #hydrated = false;
@@ -123,16 +122,30 @@ export class RhNavigationPrimaryItem extends LitElement {
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this.#hydrated = true;
-      /**
-       * SSR Adds the role, but then removes when ElementInternals is hydrated
-       * However, axe-dev tools then complains as it doesn't handle Internals correctly
-       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
-       * we can remove at a later date.
-       */
-      if (this.variant !== 'search') {
-        // The search variant sits in the nav's search region, not a list.
-        this.role = 'listitem';
-      }
+      this.#updateRole();
+    }
+  }
+
+  @observes('variant')
+  protected variantChanged(): void {
+    this.#updateRole();
+  }
+
+  /**
+   * The search variant sits in the nav's search region, not a list, so it
+   * exposes no role.
+   *
+   * SSR adds the role, but then removes it when ElementInternals is hydrated.
+   * However, axe-dev tools then complain as they don't handle Internals
+   * correctly, so the host attribute is set as well for brevity. When axe
+   * fixes this, the attribute can be removed.
+   */
+  #updateRole(): void {
+    if (this.variant === 'search') {
+      this.#internals.role = null;
+    } else {
+      this.#internals.role = 'listitem';
+      this.role = 'listitem';
     }
   }
 
