@@ -180,6 +180,7 @@ rh-cta[variant='primary']:not(:defined):has(:focus-visible) {
 
 rh-cta[variant='secondary']:not(:defined):has(:focus-visible) {
   background-color: var(--rh-cta-focus-background-color);
+  border-color: var(--rh-cta-focus-border-color);
   color: var(--rh-cta-focus-color);
 }
 
