@@ -58,11 +58,6 @@ rh-cta:not(:defined):hover {
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
 
-rh-cta[variant]:not(:defined):active {
-  background-color: var(--rh-cta-active-background-color);
-  color: var(--rh-cta-active-color);
-}
-
 rh-cta[variant='primary']:not(:defined) {
   border-style: solid;
 
@@ -186,6 +181,12 @@ rh-cta[variant='primary']:not(:defined):has(:focus-visible) {
 rh-cta[variant='secondary']:not(:defined):has(:focus-visible) {
   background-color: var(--rh-cta-focus-background-color);
   color: var(--rh-cta-focus-color);
+}
+
+rh-cta[variant]:not(:defined):active,
+rh-cta[variant]:not(:defined):has(:active) {
+  background-color: var(--rh-cta-active-background-color);
+  color: var(--rh-cta-active-color);
 }
 
 rh-cta:not(:defined) * {
