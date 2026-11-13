@@ -1,5 +1,18 @@
 # @rhds/elements
 
+## 5.0.1
+### Patch Changes
+
+- 7454a99: `<rh-chip>`: corrected hover, focus, and active states
+- 47e6d27: `<rh-back-to-top>`:  corrected hover, focus, and active states
+- ff07239: fix(site-status): align the focus indicator with the focus ring token
+- 2a18645: `<rh-disclosure>`: fix background color of borderless variant
+- 5dc7595: `<rh-button>`: corrected hover, focus, and active states
+- a05c646: `<rh-pagination>`: corrected hover, focus, and active states
+- fead21b: `<rh-video-embed>`: corrected hover, focus, and active states
+- 02087f2: `<rh-accordion>`: corrected hover, focus, and active states
+- 2a18645: `<rh-disclosure>`: corrected hover, focus, and active states
+
 ## 5.0.0
 ### Major Changes
 
