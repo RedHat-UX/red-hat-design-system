@@ -10,6 +10,9 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-cta.css' with { type: 'css' };
 
+const supportsCustomState = typeof ElementInternals !== 'undefined'
+  && 'states' in ElementInternals.prototype;
+
 /**
  * Provides a styled link or button for prominent user actions when you need to
  * draw attention to a key interaction. Must contain an `href` attribute or a
@@ -118,6 +121,10 @@ export class RhCta extends LitElement {
    * @param event `focusin` or `focusout` from the slot
    */
   #syncSlottedFocus(event: Event) {
+    if (!supportsCustomState) {
+      return;
+    }
+
     if (event.type === 'focusout') {
       this.#internals.states.delete('slotted-focus');
       return;
