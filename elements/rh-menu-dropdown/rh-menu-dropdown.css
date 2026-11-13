@@ -272,14 +272,6 @@
               var(--rh-color-surface-darker, #1f1f1f)
             );
       }
-
-      &:active {
-        box-shadow:
-          inset 0 0 0
-          /** Active border spread width */
-          var(--rh-length-3xs, 2px)
-          var(--_interactive-border-color);
-      }
     }
 
     &.disabled {
