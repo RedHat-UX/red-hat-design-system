@@ -590,29 +590,31 @@
     &[variant='primary'] {
       --rh-color-text-primary-on-light: var(--rh-color-gray-90, #1f1f1f);
 
-      &::part(button):hover {
-        background-color: var(--felt-preview-color-interactive-primary-hover);
-      }
-
-      &::part(button):focus-visible {
-        background-color: var(--felt-preview-color-interactive-primary-focus);
-      }
-
-      &::part(button):active {
-        background-color: var(--felt-preview-color-interactive-primary-active);
-      }
-
-      &[danger] {
+      &:not(:disabled) {
         &::part(button):hover {
-          background-color: var(--felt-preview-color-status-danger-hover);
+          background-color: var(--felt-preview-color-interactive-primary-hover);
         }
 
         &::part(button):focus-visible {
-          background-color: var(--felt-preview-color-status-danger-focus);
+          background-color: var(--felt-preview-color-interactive-primary-focus);
         }
 
         &::part(button):active {
-          background-color: var(--felt-preview-color-status-danger-active);
+          background-color: var(--felt-preview-color-interactive-primary-active);
+        }
+
+        &[danger] {
+          &::part(button):hover {
+            background-color: var(--felt-preview-color-status-danger-hover);
+          }
+
+          &::part(button):focus-visible {
+            background-color: var(--felt-preview-color-status-danger-focus);
+          }
+
+          &::part(button):active {
+            background-color: var(--felt-preview-color-status-danger-active);
+          }
         }
       }
     }
@@ -833,6 +835,12 @@
       --felt-preview-button-padding-block: var(--felt-preview-button-padding-block-compact);
       --rh-space-sm: var(--felt-preview-button-padding-block-compact);
       --rh-space-lg: var(--felt-preview-button-padding-inline-compact);
+    }
+
+    /* Disabled focus keeps the 1px border. The focus ring is the only added indicator. */
+    &[variant='secondary']:disabled::part(button):focus-visible,
+    &[variant='tertiary']:disabled::part(button):focus-visible {
+      --rh-border-width-sm: var(--felt-preview-border-width-sm);
     }
   }
 
