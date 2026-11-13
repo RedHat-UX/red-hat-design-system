@@ -29,29 +29,27 @@ rh-pagination {
       text-decoration: none;
       width: var(--_link-size);
 
-      &:focus {
+      &:is(:focus-visible, :active) {
         /** Page link focus corner rounding */
         border-radius: var(--rh-border-radius-default, 3px);
-        outline-offset: -2px;
-
-        /** Pagination focus outline */
-        outline: var(--rh-border-width-md, 2px) solid transparent;
-        outline-color:
-          /** Page link focus outline color override */
-          var(--rh-pagination-accent-color,
-            /** Page link focus outline color; theme-adaptive */
-            var(--rh-color-interactive-primary-default,
+        outline:
+          /** Page link focus outline width */
+          var(--rh-border-width-lg, 3px)
+          solid
+          /** Page link focus outline color; theme-adaptive */
+          var(--rh-color-border-focus,
             light-dark(
               /** Page link focus outline color for light scheme */
-              var(--rh-color-interactive-primary-default-on-light, #0066cc),
+              var(--rh-color-border-focus-on-light, #0066cc),
               /** Page link focus outline color for dark scheme */
-              var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
-            )));
+              var(--rh-color-border-focus-on-dark, #92c5f9)
+            ));
+
+        /** Page link focus outline inset */
+        outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
       }
 
       &:hover:after,
-      &:focus:before,
-      &:focus:after,
       &[aria-current='page']:after {
         border-block-start-style: solid;
         content: '';
@@ -59,23 +57,13 @@ rh-pagination {
         position: absolute;
         inset-block-start: -1px;
         width: 104%;
-      }
 
-      &:hover:after,
-      &:focus:before,
-      &[aria-current='page']:after {
-        /** Page link hover/focus/active border width */
+        /** Page link hover or current border width */
         border-block-width: var(--rh-border-width-lg, 3px);
       }
 
-      &:focus:before,
       &:hover:after {
         border-block-color: var(--_border-top-hover-color);
-      }
-
-      &:focus:after {
-        /** Page link focus accent border width */
-        border-block-width: var(--rh-border-width-md, 2px);
       }
 
       &[aria-current='page'] {
@@ -84,17 +72,16 @@ rh-pagination {
         border-block-start-color: transparent;
       }
 
-      &:focus:after,
       &[aria-current='page']:after {
         border-block-color:
-          /** Page link focus/active accent color override */
+          /** Page link current accent color override */
           var(--rh-pagination-accent-color,
-            /** Page link focus/active accent color; theme-adaptive */
+            /** Page link current accent color; theme-adaptive */
             var(--rh-color-border-interactive,
             light-dark(
-              /** Page link focus/active accent color for light scheme */
+              /** Page link current accent color for light scheme */
               var(--rh-color-border-interactive-on-light, #0066cc),
-              /** Page link focus/active accent color for dark scheme */
+              /** Page link current accent color for dark scheme */
               var(--rh-color-border-interactive-on-dark, #92c5f9)
             )));
       }
@@ -153,8 +140,6 @@ rh-pagination {
       background-color: transparent;
 
       &:hover:after,
-      &:focus:before,
-      &:focus:after,
       &[aria-current='page']:after {
         border-block-start-style: none;
         border-block-end-style: solid;
@@ -166,4 +151,9 @@ rh-pagination {
       }
     }
   }
+}
+
+/* Clears the ring after a pointer click. Last so it does not outrank later link rules. */
+rh-pagination li > a:focus:not(:focus-visible, :active) {
+  outline: none;
 }
