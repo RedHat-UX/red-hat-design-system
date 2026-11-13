@@ -65,14 +65,14 @@ rh-breadcrumb {
         /** Visited link hover color for dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
-  --_breadcrumb-link-focus-outline-color:
-    /** Link focus outline color */
-    var(--rh-color-border-interactive,
+  --_breadcrumb-focus-outline-color:
+    /** Focus outline color */
+    var(--rh-color-border-focus,
       light-dark(
-        /** Link focus outline color for light scheme */
-        var(--rh-color-border-interactive-on-light, #0066cc),
-        /** Link focus outline color for dark scheme */
-        var(--rh-color-border-interactive-on-dark, #92c5f9)
+        /** Focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
       ));
 
   display: block;
@@ -148,7 +148,7 @@ rh-breadcrumb {
       & > a {
         text-decoration: none;
 
-        &:is(:hover, :focus, :active) {
+        &:is(:hover, :focus-visible, :active) {
           color: var(--_breadcrumb-link-color-hover);
           text-decoration:
             underline
@@ -162,10 +162,17 @@ rh-breadcrumb {
           transition-duration: 0.3s;
         }
 
-        &:is(:focus, :focus-visible) {
+        &:is(:focus-visible, :active) {
           /** Link focus border radius */
           border-radius: var(--rh-border-radius-default, 3px);
-          outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+          outline:
+            /** Link focus outline width */
+            var(--rh-border-width-lg, 3px)
+            solid
+            var(--_breadcrumb-focus-outline-color);
+
+          /** Link focus outline offset */
+          outline-offset: var(--rh-border-width-lg, 3px);
         }
 
         &:visited {
@@ -228,15 +235,21 @@ rh-breadcrumb {
     padding: 0;
     text-decoration: none;
 
-    &:hover,
-    &:focus {
+    &:is(:hover, :focus-visible, :active) {
       color: var(--_breadcrumb-link-color-hover);
     }
 
-    &:focus {
+    &:is(:focus-visible, :active) {
       /** Truncation button focus border radius */
       border-radius: var(--rh-border-radius-default, 3px);
-      outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+      outline:
+        /** Truncation button focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        var(--_breadcrumb-focus-outline-color);
+
+      /** Truncation button focus outline offset */
+      outline-offset: var(--rh-border-width-lg, 3px);
     }
 
     & .visually-hidden {
@@ -250,5 +263,15 @@ rh-breadcrumb {
       white-space: nowrap;
       inline-size: 1px;
     }
+  }
+
+  /* Clears the ring after a pointer click. Last so it does not outrank earlier link rules. */
+  & > ol > li > a:focus:not(:focus-visible, :active) {
+    outline: none;
+  }
+
+  /* Clears the ring after a pointer click. Last so it does not outrank earlier button rules. */
+  & .truncate-btn:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 }
