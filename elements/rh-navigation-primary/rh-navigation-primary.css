@@ -162,14 +162,14 @@
       }
     }
 
-    &:is(:focus-visible, :hover:focus-visible) {
+    &:is(:focus-visible, :active) {
       outline-offset: 4px;
       outline:
         /** Logo focus ring width */
-        var(--rh-border-width-md, 2px)
+        var(--rh-border-width-lg, 3px)
         solid
-        /** Logo focus ring color */
-        var(--rh-color-interactive-primary-default);
+        /** Logo focus ring color; theme-adaptive */
+        var(--rh-color-border-focus);
 
       /** Logo focus ring radius */
       border-radius: var(--rh-border-radius-default, 3px);
@@ -181,16 +181,15 @@
   grid-area: sub-domain;
   display: none;
 
-  & ::slotted(a:focus-visible),
-  & ::slotted(:hover:focus-visible),
-  & a:is(:focus-visible, :hover:focus-visible) {
+  & ::slotted(:is(:focus-visible, :active)),
+  & a:is(:focus-visible, :active) {
     outline-offset: -2px;
     outline:
       /** Subdomain focus ring width */
-      var(--rh-border-width-md, 2px)
+      var(--rh-border-width-lg, 3px)
       solid
-      /** Subdomain focus ring color */
-      var(--rh-color-interactive-primary-default);
+      /** Subdomain focus ring color; theme-adaptive */
+      var(--rh-color-border-focus);
 
     /** Subdomain focus ring radius */
     border-radius: var(--rh-border-radius-default, 3px);
@@ -259,13 +258,13 @@
       }
     }
 
-    &:is(:focus-visible, :hover:focus-visible) {
+    &:is(:focus-visible, :active) {
       outline:
         /** Hamburger focus ring border width */
-        var(--rh-border-width-md, 2px)
+        var(--rh-border-width-lg, 3px)
         solid
-        /** Hamburger focus ring color */
-        var(--rh-color-interactive-primary-default);
+        /** Hamburger focus ring color; theme-adaptive */
+        var(--rh-color-border-focus);
       outline-offset: 3px;
     }
 
@@ -428,13 +427,13 @@
         }
       }
 
-      &:is(:focus-visible, :hover:focus-visible) {
+      &:is(:focus-visible, :active) {
         outline:
           /** Links menu toggle focus ring width */
-          var(--rh-border-width-md, 2px)
+          var(--rh-border-width-lg, 3px)
           solid
-          /** Links menu toggle focus ring color */
-          var(--rh-color-interactive-primary-default);
+          /** Links menu toggle focus ring color; theme-adaptive */
+          var(--rh-color-border-focus);
         outline-offset: 2px;
       }
 
@@ -483,17 +482,24 @@
           var(--rh-space-2xl, 32px);
         padding-inline: /** Open links menu panel inline padding */
           var(--rh-space-lg, 16px);
+        inline-size: 100%;
+        max-block-size: calc(100dvh - var(--_navbar-height));
+        overflow-y: auto;
+
+        /** Open Links menu start rounded corner */
+        border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+
+        /** Open Links menu end rounded corner */
+        border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
 
         @container navigation-primary (min-width: 576px) {
           padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
           padding-inline: var(--rh-space-2xl, 32px);
+          inline-size: fit-content;
+
+          /** Links menu content max inline size */
+          max-inline-size: 576px;
         }
-
-        /** Open Links menu start rounded corner */
-        border-end-start-radius: var(--rh-border-radius-default, 3px);
-
-        /** Open Links menu end rounded corner */
-        border-end-end-radius: var(--rh-border-radius-default, 3px);
 
         & ::slotted(rh-navigation-primary-item),
         & ::slotted(rh-navigation-link) {
@@ -523,6 +529,9 @@
           box-shadow: none;
           padding: 0;
           border-radius: 0;
+          max-inline-size: none;
+          max-block-size: none;
+          overflow: visible;
           min-inline-size: unset;
           block-size: 100%;
 
@@ -539,6 +548,25 @@
           }
         }
       }
+
+      @supports (anchor-name: --_links-menu-trigger) {
+        @container navigation-primary (min-width: 992px) {
+          /*
+           * An inline search region sits after the bento toggle in the
+           * utility cluster, so the content-sized panel no longer lines up
+           * with its trigger once the search becomes inline. Anchor the
+           * panel's inline-start edge to the trigger's.
+           */
+          #container.search & summary {
+            anchor-name: --_links-menu-trigger;
+          }
+
+          #container.search & #links-menu-content {
+            position-anchor: --_links-menu-trigger;
+            inset-inline: anchor(start) auto;
+          }
+        }
+      }
     }
 
     &:not([open]) {
@@ -551,6 +579,16 @@
   #dropdowns {
     display: flex;
     flex-direction: row;
+    block-size: 100%;
+  }
+}
+
+#search {
+  display: none;
+
+  & ::slotted(rh-navigation-primary-item),
+  & ::slotted([slot='search']) {
+    inline-size: 100%;
     block-size: 100%;
   }
 }
@@ -925,6 +963,31 @@
             }
           }
         }
+      }
+    }
+  }
+
+  &.search {
+    & #search {
+      display: flex;
+      align-items: center;
+      block-size: 100%;
+    }
+
+    @container navigation-primary (min-width: 992px) {
+      & #search {
+        flex: 0 1 360px; /* non standard value */
+        min-inline-size: 288px; /* non standard value */
+
+        /** Search inline margin */
+        margin-inline: var(--rh-space-lg, 16px);
+      }
+    }
+
+    /* Existing #secondary gap supplies the spacing at xl. */
+    @container navigation-primary (min-width: 1440px) {
+      & #search {
+        margin-inline: 0;
       }
     }
   }

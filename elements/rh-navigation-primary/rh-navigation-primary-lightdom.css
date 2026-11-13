@@ -14,7 +14,7 @@ rh-navigation-primary {
       }
     }
 
-    &:not([slot='links']) {
+    &:not([slot='links'], [slot='search']) {
       /** Navigation item text color */
       color:
         var(--rh-color-text-primary,
@@ -84,16 +84,6 @@ rh-navigation-primary {
             /** Navigation link separator color for dark scheme */
             var(--rh-color-border-subtle-on-dark, #707070)
           ));
-
-      @container (min-width: 1200px) {
-        --_navigation-link-container-inline-size: fit-content;
-        --_navigation-link-container-display: inline-block;
-        --_navigation-link-inline-size: fit-content;
-
-        display: block;
-        inline-size: fit-content;
-        border-block-start: none;
-      }
     }
 
     &:nth-last-child(1 of rh-navigation-link:not([slot])) {
@@ -109,8 +99,44 @@ rh-navigation-primary {
             /** Last navigation link separator color for dark scheme */
             var(--rh-color-border-subtle-on-dark, #707070)
           ));
+    }
+  }
 
-      @container (min-width: 1200px) {
+  /**
+   * Links display inline at 1200px, or at 1440px when a search region is
+   * present, matching the navigation's menu breakpoint.
+   */
+  @container (min-width: 1200px) {
+    &:not(:has(rh-navigation-primary-item[slot='search'])) {
+      & rh-navigation-link:not([slot]) {
+        --_navigation-link-container-inline-size: fit-content;
+        --_navigation-link-container-display: inline-block;
+        --_navigation-link-inline-size: fit-content;
+
+        display: block;
+        inline-size: fit-content;
+        border-block-start: none;
+      }
+
+      & rh-navigation-link:nth-last-child(1 of rh-navigation-link:not([slot])) {
+        border-block-end: none;
+      }
+    }
+  }
+
+  @container (min-width: 1440px) {
+    &:has(rh-navigation-primary-item[slot='search']) {
+      & rh-navigation-link:not([slot]) {
+        --_navigation-link-container-inline-size: fit-content;
+        --_navigation-link-container-display: inline-block;
+        --_navigation-link-inline-size: fit-content;
+
+        display: block;
+        inline-size: fit-content;
+        border-block-start: none;
+      }
+
+      & rh-navigation-link:nth-last-child(1 of rh-navigation-link:not([slot])) {
         border-block-end: none;
       }
     }

@@ -100,6 +100,30 @@ const NAV = html`
   </rh-navigation-primary>
 `;
 
+const SEARCH_NAV = html`
+  <rh-navigation-primary>
+    <rh-navigation-primary-item variant="dropdown" summary="Item 1">
+      Item 1 Content
+    </rh-navigation-primary-item>
+
+    <rh-navigation-primary-item variant="dropdown" summary="Item 2">
+      Item 2 Content
+    </rh-navigation-primary-item>
+
+    <rh-navigation-primary-item slot="search" variant="search">
+      <form role="search" aria-label="Site search">
+        <label for="site-search">Search</label>
+        <input id="site-search" type="search">
+        <button>Search</button>
+      </form>
+    </rh-navigation-primary-item>
+
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="Utility">
+      Utility Content
+    </rh-navigation-primary-item>
+  </rh-navigation-primary>
+`;
+
 
 function isCompact() {
   const { matches } = window.matchMedia('(min-width: 1200px)');
@@ -107,6 +131,7 @@ function isCompact() {
 }
 
 let element: RhNavigationPrimary;
+let wrapper: HTMLDivElement;
 
 describe('<rh-navigation-primary>', function() {
   describe('simply instantiating', function() {
@@ -824,6 +849,414 @@ describe('<rh-navigation-primary>', function() {
             });
           });
         });
+      });
+    });
+  });
+
+  describe('search', function() {
+    function searchItem(): RhNavigationPrimaryItem {
+      return element.querySelector('rh-navigation-primary-item[slot="search"]') as RhNavigationPrimaryItem;
+    }
+
+    function searchSummary(): HTMLElement {
+      return searchItem().shadowRoot?.querySelector('summary') as HTMLElement;
+    }
+
+    function searchDetails(): HTMLDetailsElement {
+      return searchItem().shadowRoot?.querySelector('details') as HTMLDetailsElement;
+    }
+
+    function searchContent(): HTMLElement {
+      return searchItem().shadowRoot?.querySelector('.details-content') as HTMLElement;
+    }
+
+    beforeEach(async function() {
+      wrapper = await fixture<HTMLDivElement>(html`
+        <div style="inline-size: 1200px">${SEARCH_NAV}</div>
+      `);
+      element = wrapper.querySelector('rh-navigation-primary') as RhNavigationPrimary;
+    });
+    beforeEach(async () => await element.updateComplete);
+    beforeEach(nextFrame);
+
+    it('should have the search class', function() {
+      const container = element.shadowRoot?.querySelector('#container');
+      expect(container?.classList.contains('search')).to.be.true;
+    });
+
+    it('should show the search region', function() {
+      const search = element.shadowRoot?.querySelector('#search') as HTMLElement;
+      expect(search.classList.contains('hidden')).to.be.false;
+      expect(getComputedStyle(search).display).to.not.equal('none');
+    });
+
+    it('should not set role="listitem" on the search item', function() {
+      expect(searchItem().getAttribute('role')).to.not.equal('listitem');
+    });
+
+    it('should render the search item as a native disclosure', function() {
+      expect(searchItem().shadowRoot?.querySelector('#container')?.classList.contains('search')).to.be.true;
+      expect(searchDetails()).to.exist;
+      expect(searchItem().shadowRoot?.querySelector('button')).to.not.exist;
+    });
+
+    it('should have an accessible search summary', function() {
+      const summary = searchSummary();
+      expect(summary.getAttribute('aria-label')).to.equal('Search');
+    });
+
+    describe('primary menu breakpoint', function() {
+      it('should remain compact at 1200px because a search region is present', function() {
+        const hamburgerSummary = element.shadowRoot?.querySelector('#hamburger summary') as HTMLElement;
+        expect(element.compact).to.be.true;
+        expect(getComputedStyle(hamburgerSummary).display).to.not.equal('none');
+      });
+
+      it('should not be compact at 1440px', async function() {
+        wrapper.style.inlineSize = '1440px';
+        await element.updateComplete;
+        await nextFrame();
+        await element.updateComplete;
+        await nextFrame();
+        expect(element.compact).to.be.false;
+      });
+    });
+
+    describe('bento box menu', function() {
+      beforeEach(async function() {
+        wrapper = await fixture<HTMLDivElement>(html`
+          <div style="inline-size: 1200px">
+            <rh-navigation-primary>
+              <rh-navigation-primary-item slot="links">
+                <a href="#">Docs</a>
+              </rh-navigation-primary-item>
+              <rh-navigation-primary-item slot="search" variant="search">
+                <input type="search" aria-label="Site search">
+              </rh-navigation-primary-item>
+            </rh-navigation-primary>
+          </div>
+        `);
+        element = wrapper.querySelector('rh-navigation-primary') as RhNavigationPrimary;
+        await element.updateComplete;
+        await nextFrame();
+        element.shadowRoot?.querySelector<HTMLElement>('#links-menu summary')?.click();
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('should size the menu to its content and pin it below its trigger', function() {
+        const trigger = element.shadowRoot?.querySelector('#links-menu summary') as HTMLElement;
+        const panel = element.shadowRoot?.querySelector('#links-menu-content') as HTMLElement;
+        const triggerRect = trigger.getBoundingClientRect();
+        const panelRect = panel.getBoundingClientRect();
+        expect(getComputedStyle(panel).position).to.equal('absolute');
+        expect(panelRect.width).to.be.lessThan(576);
+        expect(Math.round(panelRect.left)).to.equal(Math.round(triggerRect.left));
+        expect(Math.round(panelRect.top)).to.equal(Math.round(triggerRect.bottom));
+        expect(getComputedStyle(panel).borderEndStartRadius).to.equal('6px');
+      });
+
+      it('should span the bar below 576px', async function() {
+        wrapper.style.inlineSize = '480px';
+        await element.updateComplete;
+        await nextFrame();
+        await nextFrame();
+        const container = element.shadowRoot?.querySelector('#container') as HTMLElement;
+        const panel = element.shadowRoot?.querySelector('#links-menu-content') as HTMLElement;
+        const containerRect = container.getBoundingClientRect();
+        const panelRect = panel.getBoundingClientRect();
+        expect(getComputedStyle(panel).position).to.equal('absolute');
+        expect(Math.round(panelRect.width)).to.equal(Math.round(containerRect.width));
+        expect(Math.round(panelRect.left)).to.equal(Math.round(containerRect.left));
+        expect(getComputedStyle(panel).borderEndStartRadius).to.equal('6px');
+      });
+    });
+
+    describe('accessibility', function() {
+      it('should be accessible', async function() {
+        await expect(element).to.be.accessible();
+      });
+    });
+
+    describe('when narrower than 992px', function() {
+      beforeEach(async function() {
+        wrapper.style.inlineSize = '991px';
+        await element.updateComplete;
+        await nextFrame();
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('should hide the search content', function() {
+        const bar = element.shadowRoot?.querySelector('#bar') as HTMLElement;
+        const navHeight = parseFloat(getComputedStyle(bar).getPropertyValue('--_navbar-height'));
+        expect(getComputedStyle(searchContent()).display).to.equal('none');
+        expect(Math.round(bar.getBoundingClientRect().height)).to.equal(Math.round(navHeight));
+      });
+
+      it('should show the search summary', function() {
+        const summary = searchSummary();
+        expect(getComputedStyle(summary).display).to.not.equal('none');
+        expect(searchDetails().open).to.be.false;
+      });
+
+      it('should not report the item as open after leaving the inline layout', function() {
+        expect(searchItem().open).to.be.false;
+        expect(searchDetails().open).to.be.false;
+        expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+      });
+
+      describe('when the search summary is activated', function() {
+        beforeEach(async function() {
+          searchSummary().click();
+        });
+        beforeEach(async () => await element.updateComplete);
+        beforeEach(nextFrame);
+
+        it('should open the search content below the bar', function() {
+          const bar = element.shadowRoot?.querySelector('#bar') as HTMLElement;
+          const content = searchContent();
+          expect(searchItem().open).to.be.true;
+          expect(getComputedStyle(content).position).to.equal('absolute');
+          expect(getComputedStyle(content).display).to.equal('flex');
+          expect(Math.round(content.getBoundingClientRect().top))
+              .to.equal(Math.round(bar.getBoundingClientRect().bottom));
+        });
+
+        it('should mark the search summary as expanded', function() {
+          expect(searchDetails().open).to.be.true;
+        });
+
+        it('should size the search content to its content and align it to the end', function() {
+          const content = searchContent();
+          const container = element.shadowRoot?.querySelector('#container') as HTMLElement;
+          const rect = content.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+          expect(rect.width).to.be.at.most(576);
+          expect(rect.width).to.be.lessThan(containerRect.width);
+          expect(Math.round(rect.right)).to.equal(Math.round(containerRect.right));
+          expect(getComputedStyle(content).borderEndEndRadius).to.equal('6px');
+        });
+
+        it('should open the overlay', function() {
+          expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+        });
+      });
+
+      describe('when the overlay is clicked while the search is open', function() {
+        beforeEach(async function() {
+          searchSummary().click();
+          await element.updateComplete;
+          await nextFrame();
+        });
+        beforeEach(async function() {
+          element.shadowRoot?.querySelector<HTMLElement>('#overlay')?.click();
+          await element.updateComplete;
+          await nextFrame();
+        });
+
+        it('should close the search content', function() {
+          expect(searchItem().open).to.be.false;
+          expect(getComputedStyle(searchContent()).display).to.equal('none');
+        });
+
+        it('should close the overlay', function() {
+          expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+        });
+      });
+
+      describe('when a dropdown is already open', function() {
+        beforeEach(async function() {
+          const item = element.querySelector('rh-navigation-primary-item[slot="dropdowns"]') as RhNavigationPrimaryItem;
+          item.show();
+          await element.updateComplete;
+          await nextFrame();
+        });
+        beforeEach(async function() {
+          searchSummary().click();
+        });
+        beforeEach(async () => await element.updateComplete);
+        beforeEach(nextFrame);
+
+        it('should close the dropdown', function() {
+          const item = element.querySelector('rh-navigation-primary-item[slot="dropdowns"]') as RhNavigationPrimaryItem;
+          expect(item.open).to.be.false;
+        });
+
+        it('should open the search content', function() {
+          expect(searchItem().open).to.be.true;
+          expect(getComputedStyle(searchContent()).position).to.equal('absolute');
+        });
+      });
+
+      describe('when a dropdown opens while the search is open', function() {
+        beforeEach(async function() {
+          searchSummary().click();
+          await element.updateComplete;
+          await nextFrame();
+        });
+        beforeEach(async function() {
+          const item = element.querySelector('rh-navigation-primary-item[slot="dropdowns"]') as RhNavigationPrimaryItem;
+          item.show();
+          await element.updateComplete;
+          await nextFrame();
+        });
+
+        it('should close the search content', function() {
+          expect(searchItem().open).to.be.false;
+          expect(getComputedStyle(searchContent()).display).to.equal('none');
+        });
+
+        it('should collapse the search summary', function() {
+          expect(searchDetails().open).to.be.false;
+        });
+      });
+
+      describe('when the hamburger menu opens while the search is open', function() {
+        beforeEach(async function() {
+          searchSummary().click();
+          await element.updateComplete;
+          await nextFrame();
+          const summary = element.shadowRoot?.querySelector('#hamburger summary') as HTMLElement;
+          summary.click();
+          await element.updateComplete;
+          await nextFrame();
+        });
+
+        it('should close the search content', function() {
+          expect(searchItem().open).to.be.false;
+          expect(getComputedStyle(searchContent()).display).to.equal('none');
+        });
+      });
+
+      describe('when tabbing out of the search panel', function() {
+        beforeEach(async function() {
+          searchSummary().click();
+          await element.updateComplete;
+          await nextFrame();
+        });
+
+        it('should keep the search open while focus stays inside the panel', async function() {
+          searchItem().querySelector('input')?.focus();
+          await sendKeys({ press: 'Tab' });
+          await element.updateComplete;
+          await nextFrame();
+          expect(searchItem().open).to.be.true;
+        });
+
+        it('should close the search when focus leaves the panel', async function() {
+          searchItem().querySelector('button')?.focus();
+          await sendKeys({ press: 'Tab' });
+          await element.updateComplete;
+          await nextFrame();
+          await searchItem().updateComplete;
+          await nextFrame();
+          expect(searchItem().open).to.be.false;
+          expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+        });
+      });
+    });
+
+    describe('when 992px or wider', function() {
+      beforeEach(async function() {
+        wrapper.style.inlineSize = '992px';
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('should position the search inline', function() {
+        const bar = element.shadowRoot?.querySelector('#bar') as HTMLElement;
+        const navHeight = parseFloat(getComputedStyle(bar).getPropertyValue('--_navbar-height'));
+        expect(getComputedStyle(searchContent()).position).to.equal('static');
+        expect(getComputedStyle(searchContent()).display).to.equal('flex');
+        expect(Math.round(bar.getBoundingClientRect().height)).to.equal(Math.round(navHeight));
+      });
+
+      it('should hide the search summary', function() {
+        expect(getComputedStyle(searchSummary()).display).to.equal('none');
+      });
+
+      it('should size the search between 288px and 360px', function() {
+        const search = element.shadowRoot?.querySelector('#search') as HTMLElement;
+        const { width } = search.getBoundingClientRect();
+        expect(width).to.be.greaterThanOrEqual(288);
+        expect(width).to.be.lessThanOrEqual(360);
+      });
+
+      it('should fill the inline search item with the search content', function() {
+        expect(Math.round(searchContent().getBoundingClientRect().width))
+            .to.equal(Math.round(searchItem().getBoundingClientRect().width));
+      });
+
+      it('should not report the item as open from the forced inline disclosure', function() {
+        expect(searchItem().open).to.be.false;
+        expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+      });
+    });
+
+    describe('when the search is open and the viewport grows to the inline layout', function() {
+      beforeEach(function() {
+        // let the fixture follow the viewport instead of its fixed 1200px width
+        wrapper.style.inlineSize = '';
+      });
+      beforeEach(async function() {
+        await setViewport({ width: 900, height: 800 });
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+      beforeEach(async function() {
+        searchSummary().click();
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('should start in the disclosure layout with the overlay open', function() {
+        expect(searchItem().open).to.be.true;
+        expect(searchDetails().open).to.be.true;
+        expect(getComputedStyle(searchContent()).position).to.equal('absolute');
+        expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+      });
+
+      describe('after growing the viewport to 1200px', function() {
+        beforeEach(async function() {
+          await setViewport({ width: 1200, height: 800 });
+        });
+        beforeEach(async () => await element.updateComplete);
+        beforeEach(nextFrame);
+        beforeEach(async () => await searchItem().updateComplete);
+        beforeEach(nextFrame);
+
+        it('should collapse the item state', function() {
+          expect(searchItem().open).to.be.false;
+        });
+
+        it('should keep the content inline and open', function() {
+          expect(searchDetails().open).to.be.true;
+          expect(getComputedStyle(searchContent()).position).to.equal('static');
+          expect(getComputedStyle(searchContent()).display).to.equal('flex');
+          expect(getComputedStyle(searchSummary()).display).to.equal('none');
+        });
+
+        it('should close the overlay', function() {
+          expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+        });
+      });
+    });
+
+    describe('with the subdomain layout', function() {
+      beforeEach(async function() {
+        wrapper.style.inlineSize = '992px';
+        element.siteName = 'Ecosystem Catalog';
+        element.siteHref = '#ecosystem-catalog';
+        await element.updateComplete;
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('should keep the search inline', function() {
+        expect(getComputedStyle(searchContent()).position).to.equal('static');
       });
     });
   });

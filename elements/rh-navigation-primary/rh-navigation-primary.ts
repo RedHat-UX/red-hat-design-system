@@ -7,7 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
-import { context } from './context.js';
+import { context, searchInlineContext } from './context.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -59,11 +59,14 @@ export class RhNavigationPrimary extends LitElement {
 
   #ro?: ResizeObserver;
 
+  #hasSlottedSearch = false;
+
   #slots = new SlotController(this,
                               'logo',
                               'summary',
                               'event',
                               'links',
+                              'search',
                               'dropdowns',
                               null,
   );
@@ -78,6 +81,15 @@ export class RhNavigationPrimary extends LitElement {
   @state() compact = true;
 
   @state() linksCompact = true;
+
+  /**
+   * Whether the navigation is wide enough for a slotted search region to be
+   * displayed inline and open rather than in its disclosure panel. Provided
+   * to items so the search breakpoint has a single source of truth.
+   * @internal
+   */
+  @provide({ context: searchInlineContext })
+  @state() private _searchInline = false;
 
   @state()
   private _hydrated = false;
@@ -178,15 +190,8 @@ export class RhNavigationPrimary extends LitElement {
       this.#ro = new ResizeObserver(entries => {
         for (const entry of entries) {
           const [contentBoxSize] = entry.contentBoxSize;
-          const oldState = this.compact;
-          const newState = contentBoxSize.inlineSize < 1200;
-          if (oldState !== newState) {
-            this.compact = newState;
-            if (this.#openPrimaryDropdowns.size === 0
-              && this.#openSecondaryDropdowns.size === 0 && !this.compact) {
-              this.#closeOverlay();
-            }
-          }
+          this.#setCompact(this.#isCompact(contentBoxSize.inlineSize));
+          this._searchInline = contentBoxSize.inlineSize >= 992;
           const linksOldState = this.linksCompact;
           const linksNewState = contentBoxSize.inlineSize < 1440;
           if (linksOldState !== linksNewState) {
@@ -201,12 +206,51 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  /**
+   * Container width below which the primary menus collapse into the
+   * hamburger. A search region takes space in the bar, so when one is
+   * present the menus collapse at a wider breakpoint, mirroring the
+   * exposed variant of the design.
+   */
+  #menuBreakpoint(): number {
+    return this.#slots.hasSlotted('search') ? 1440 : 1200;
+  }
+
+  #isCompact(width: number): boolean {
+    return width < this.#menuBreakpoint();
+  }
+
+  #setCompact(compact: boolean): void {
+    if (compact === this.compact) {
+      return;
+    }
+    this.compact = compact;
+    if (!compact
+      && this.#openPrimaryDropdowns.size === 0
+      && this.#openSecondaryDropdowns.size === 0) {
+      this.#closeOverlay();
+    }
+  }
+
+  protected willUpdate(): void {
+    if (isServer) {
+      return;
+    }
+    // recompute when a search region is added or removed; width changes are
+    // handled by the ResizeObserver
+    const hasSlottedSearch = this.#slots.hasSlotted('search');
+    if (hasSlottedSearch !== this.#hasSlottedSearch) {
+      this.#hasSlottedSearch = hasSlottedSearch;
+      this.#setCompact(this.#isCompact(this.offsetWidth));
+    }
+  }
+
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this._hydrated = true;
-      this.compact = this.offsetWidth < 1200;
+      this.compact = this.#isCompact(this.offsetWidth);
       // Open links menu at desktop viewport
       this.linksCompact = this.offsetWidth < 1440;
     }
@@ -241,10 +285,12 @@ export class RhNavigationPrimary extends LitElement {
     // Match SSR even if the resize observer ran before the first client render.
     const compact = this.hasUpdated ? this.compact : true;
     const subdomain = !!(this.siteName && this.siteHref);
+    const hasSearch = this.#slots.hasSlotted('search');
     const classes = {
-      compact,
-      dehydrated: !this._hydrated,
-      subdomain: subdomain,
+      'compact': compact,
+      'dehydrated': !this._hydrated,
+      'subdomain': subdomain,
+      'search': hasSearch,
     };
 
     const hasSlottedDefault = this.#slots.hasSlotted();
@@ -327,6 +373,16 @@ export class RhNavigationPrimary extends LitElement {
                 <slot name="links"></slot>
               </div>
             </details>
+            <div id="search" class="${classMap({ 'hidden': !hasSearch })}">
+              <!--
+                Accepts an \`<rh-navigation-primary-item slot="search"
+                variant="search">\`. Below 992px the item renders a
+                search toggle that opens the slotted content in a dropdown
+                panel below the bar; at 992px and above the content is
+                displayed inline and open, and the toggle is hidden.
+              -->
+              <slot name="search"></slot>
+            </div>
             <div id="dropdowns" role="list" class="${classMap({ 'hidden': !hasDropdowns })}">
               <!--
                 Accepts \`<rh-navigation-primary-item slot="dropdowns"
@@ -364,6 +420,7 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   #onOverlayClick() {
+    this.#closeSearch();
     this.#closePrimaryDropdowns();
     this.#closeSecondaryDropdowns();
 
@@ -375,6 +432,21 @@ export class RhNavigationPrimary extends LitElement {
     }
 
     this.#closeOverlay();
+  }
+
+  #searchItem(): RhNavigationPrimaryItem | null {
+    return this.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[slot="search"]');
+  }
+
+  #closeSearch() {
+    const search = this.#searchItem();
+    if (search?.open) {
+      search.open = false;
+    }
+  }
+
+  #searchOpen(): boolean {
+    return !!this.#searchItem()?.open;
   }
 
   #primaryItems(): RhNavigationPrimaryItem[] {
@@ -404,12 +476,31 @@ export class RhNavigationPrimary extends LitElement {
 
   async #onDropdownToggle(event: Event) {
     const item = event.target as RhNavigationPrimaryItem;
+
+    if (item.variant === 'search') {
+      if (item.open) {
+        this.#closePrimaryDropdowns();
+        this.#closeSecondaryDropdowns();
+        this.#closeHamburger();
+        this.#closeLinksMenu();
+        this.#openOverlay();
+      } else if (!this._hamburgerOpen
+        && !this._linksMenuOpen
+        && !this.#searchOpen()
+        && this.#openPrimaryDropdowns.size === 0
+        && this.#openSecondaryDropdowns.size === 0) {
+        this.#closeOverlay();
+      }
+      return;
+    }
+
     // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
     const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
     const secondaryEventToggle = slottedSecondary.find(node =>
       node.isEqualNode(item));
 
     if (item.open) {
+      this.#closeSearch();
       this.#closePrimaryDropdowns(item);
       this.#closeSecondaryDropdowns();
 
@@ -432,7 +523,8 @@ export class RhNavigationPrimary extends LitElement {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(item);
         if (this.#openSecondaryDropdowns.size === 0
-          && (this.compact && !this._hamburgerOpen && !this._linksMenuOpen)) {
+          && (this.compact && !this._hamburgerOpen && !this._linksMenuOpen)
+          && !this.#searchOpen()) {
           this.#closeOverlay();
         }
       } else {
@@ -442,6 +534,7 @@ export class RhNavigationPrimary extends LitElement {
       if (!this.compact
         && this.#openPrimaryDropdowns.size === 0
         && this.#openSecondaryDropdowns.size === 0
+        && !this.#searchOpen()
         && (!this._linksMenuOpen || !this.linksCompact)) {
         this.#closeOverlay();
       }
@@ -508,7 +601,15 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   async #onFocusout(event: FocusEvent) {
-    const target = event.relatedTarget as HTMLElement;
+    const target = event.relatedTarget as HTMLElement | null;
+    const search = this.#searchItem();
+    if (search?.open
+        && !this._searchInline
+        && target
+        && !search.contains(target)) {
+      // focus left the search panel while it is in disclosure mode
+      this.#closeSearch();
+    }
     if (target?.closest('rh-navigation-primary') === this || target === null) {
       // if the focus is still inside the rh-navigation-secondary exit
       return;
@@ -552,6 +653,10 @@ export class RhNavigationPrimary extends LitElement {
     } else if (this._linksMenuOpen && (this.linksCompact)) {
       this.#closeLinksMenu();
       this._linksMenu.querySelector('summary')?.focus();
+    } else if (this.#searchItem()?.open) {
+      const search = this.#searchItem()!;
+      search.open = false;
+      search.shadowRoot?.querySelector<HTMLElement>('summary')?.focus();
     }
   }
 
@@ -600,6 +705,7 @@ export class RhNavigationPrimary extends LitElement {
   #hamburgerToggle(event: Event) {
     if (event instanceof ToggleEvent) {
       if (event.newState === 'open') {
+        this.#closeSearch();
         this.#openHamburger();
         // close links menu when hamburger opens
         if (this.compact && this._linksMenuOpen) {
@@ -617,7 +723,8 @@ export class RhNavigationPrimary extends LitElement {
         if (this.#openPrimaryDropdowns.size > 0) {
           this.#closePrimaryDropdowns();
         }
-        if (this.compact && this.#openSecondaryDropdowns.size === 0 && !this._linksMenuOpen) {
+        if (this.compact && this.#openSecondaryDropdowns.size === 0
+            && !this._linksMenuOpen && !this.#searchOpen()) {
           this.#closeOverlay();
         }
       }
@@ -627,6 +734,7 @@ export class RhNavigationPrimary extends LitElement {
   #linksMenuToggle(event: Event) {
     if (event instanceof ToggleEvent) {
       if (event.newState === 'open') {
+        this.#closeSearch();
         this.#openLinksMenu();
         // close hamburger menu when links menu opens
         if (this.compact && this._hamburgerOpen) {
@@ -645,6 +753,7 @@ export class RhNavigationPrimary extends LitElement {
         this.#closeLinksMenu();
         if (this.linksCompact && this.#openSecondaryDropdowns.size === 0
             && this.#openPrimaryDropdowns.size === 0
+            && !this.#searchOpen()
             && (!this._hamburgerOpen || !this.compact)) {
           this.#closeOverlay();
         }
@@ -701,6 +810,7 @@ export class RhNavigationPrimary extends LitElement {
    * @param skip Boolean - closes hamburger menu if true and in a small viewport, default false;
    */
   close(skip = false): void {
+    this.#closeSearch();
     if (this.#openPrimaryDropdowns.size > 0) {
       this.#closePrimaryDropdowns();
     } else if (this.#openSecondaryDropdowns.size > 0) {
