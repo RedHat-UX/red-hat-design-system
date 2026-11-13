@@ -10,6 +10,9 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-cta.css' with { type: 'css' };
 
+const supportsCustomState = typeof ElementInternals !== 'undefined'
+  && 'states' in ElementInternals.prototype;
+
 /**
  * Provides a styled link or button for prominent user actions when you need to
  * draw attention to a key interaction. Must contain an `href` attribute or a
@@ -55,6 +58,8 @@ export class RhCta extends LitElement {
   /** Icon set to load from. Defaults to `ui`. */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
+  #internals = this.attachInternals();
+
   override async scheduleUpdate() {
     if (this.icon || !this.variant && !customElements.get('rh-icon')) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
@@ -81,7 +86,8 @@ export class RhCta extends LitElement {
           description: |
             Slot an anchor or button as the first child, or set href on the host. Screen readers
             announce this content as the CTA label. For long words, supply wbr at appropriate break points.
-    --><slot></slot>`;
+    --><slot @focusin=${this.#syncSlottedFocus}
+             @focusout=${this.#syncSlottedFocus}></slot>`;
     const linkContent =
         !href ? slot
       : html`<a href=${href}
@@ -105,6 +111,33 @@ export class RhCta extends LitElement {
       for (const dupe of duplicateContainers) {
         dupe.remove();
       }
+    }
+  }
+
+  /**
+   * Mirror keyboard focus on a slotted link, button, or input.
+   * The container fill cannot use `:host(:has(:focus-visible))`; that selector is invalid.
+   *
+   * @param event `focusin` or `focusout` from the slot
+   */
+  #syncSlottedFocus(event: Event) {
+    if (!supportsCustomState) {
+      return;
+    }
+
+    if (event.type === 'focusout') {
+      this.#internals.states.delete('slotted-focus');
+      return;
+    }
+
+    const [target] = event.composedPath();
+    // :focus-visible is already current when focusin runs.
+    const keyboardFocus = target instanceof Element
+      && target.matches(':is(a, button, input):focus-visible');
+    if (keyboardFocus) {
+      this.#internals.states.add('slotted-focus');
+    } else {
+      this.#internals.states.delete('slotted-focus');
     }
   }
 }
