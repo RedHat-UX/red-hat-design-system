@@ -50,10 +50,23 @@
 
   /** Action button height */
   height: var(--rh-length-2xl, 32px);
-}
 
-.shadow-fab:is(:hover, :focus, :active) {
-  background-color: var(--_fab-bg-color);
+  &:hover {
+    background-color: var(--_fab-bg-color);
+  }
+
+  &:is(:focus-visible, :active) {
+    background-color: var(--_fab-bg-color);
+    outline:
+      /** Action button focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Action button focus outline color; theme-adaptive */
+      var(--rh-color-border-focus);
+
+    /** Action button focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+  }
 }
 
 #container,
@@ -527,8 +540,21 @@
   /** Expand button line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 
-  &:is(:hover, :focus-visible, :active) {
+  &:hover {
     background-color: var(--_fab-bg-color);
+  }
+
+  &:is(:focus-visible, :active) {
+    background-color: var(--_fab-bg-color);
+    outline:
+      /** Expand button focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Expand button focus outline color; theme-adaptive */
+      var(--rh-color-border-focus);
+
+    /** Expand button focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
   }
 
   rh-icon {
@@ -576,6 +602,23 @@
   pointer-events: none;
   grid-column: -1/1;
   background: var(--_gradient);
+}
+
+/* Keyboard focus rings the code region. A mouse click does not. */
+#content-lines:focus-visible {
+  outline:
+    /** Code region focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Code region focus outline color; theme-adaptive */
+    var(--rh-color-border-focus);
+
+  /** Code region focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Code region focus corner radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+  z-index: 3;
 }
 
 :host([line-numbers='hidden']) #content-lines {
