@@ -322,15 +322,17 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 ### Focus
 
+Tabbing to a page button, stepper, or the page input shows a 3px solid ring inset 3px, in `--rh-color-border-focus`. The total-page link keeps that ring 3px outside the text. Holding the mouse button shows the same ring. The page input keeps its blue border while you edit the page number.
+
 <uxdot-example color-palette="lightest" width-adjustment="736px">
-  <img alt="Light theme pagination focus states"
+  <img alt="Light theme pagination. A 3px blue ring sits inside the focused page button, stepper, and page input. The total-page link ring sits 3px outside the text."
        src="../pagination-style-int-states-focus-theme-light.svg"
        width="736"
        height="608">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="736px">
-  <img alt="Dark theme pagination focus states"
+  <img alt="Dark theme pagination. A 3px blue ring sits inside the focused page button, stepper, and page input. The total-page link ring sits 3px outside the text."
        src="../pagination-style-int-states-focus-theme-dark.svg"
        width="736"
        height="608">
@@ -338,15 +340,17 @@ Control and inactive page number buttons have the same hover state. Truncation i
 
 ### Active
 
+Holding a control shows the same 3px ring as keyboard focus.
+
 <uxdot-example color-palette="lightest" width-adjustment="736px">
-  <img alt="Light theme pagination active states"
+  <img alt="Light theme pagination. Press shows a 3px blue ring inside the control. The total-page link ring sits outside the text."
        src="../pagination-style-int-states-active-theme-light.svg"
        width="736"
        height="611">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="736px">
-  <img alt="Dark theme pagination active states"
+  <img alt="Dark theme pagination. Press shows a 3px blue ring inside the control. The total-page link ring sits outside the text."
        src="../pagination-style-int-states-active-theme-dark.svg"
        width="736"
        height="611">
