@@ -16,6 +16,10 @@
   },
   "exports": {
     ".": "./elements.js",
+    "./rh-icon/rh-icon.js": {
+      "node": "./elements/rh-icon/rh-icon.ssr.js",
+      "default": "./elements/rh-icon/rh-icon.js"
+    },
     "./lib/*": "./lib/*",
     "./react/*": "./react/*",
     "./*": "./elements/*"
