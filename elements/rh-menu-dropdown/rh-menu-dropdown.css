@@ -215,11 +215,16 @@
           var(--rh-menu-dropdown-hover-border-color, var(--_interactive-border-color));
       }
 
+      &:focus-visible {
+        box-shadow:
+          inset 0 0 0 1px
+          /** Toggle focus border color */
+          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
+      }
+
       &:active {
         box-shadow:
-          inset 0 0 0
-          /** Active border spread width */
-          var(--rh-length-3xs, 2px)
+          inset 0 0 0 1px
           /** Toggle active border color */
           var(--rh-menu-dropdown-active-border-color, var(--_interactive-border-color));
       }
