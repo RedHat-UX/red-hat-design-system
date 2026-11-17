@@ -136,18 +136,18 @@ Interaction states are visual representations used to communicate the status of 
 
 <rh-alert state="info">
   <h3 slot="header">Helpful tip</h3>
-  <p>The Focus state has the same styles as the Hover state.</p>
+  <p>Keyboard focus adds a 3px solid focus ring. Menu items use an inset ring. A mouse click does not leave the ring.</p>
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="715px">
-  <img alt="Image of light theme audio player focus states"
+  <img alt="Light theme audio player keyboard focus with a 3px focus ring"
        src="../audio-player-interaction-state-focus-theme-light.png"
        width="715"
        height="504">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="712px">
-  <img alt="Image of dark theme audio player focus states"
+  <img alt="Dark theme audio player keyboard focus with a 3px focus ring"
        src="../audio-player-interaction-state-focus-theme-dark.png"
        width="712"
        height="504">
@@ -157,18 +157,18 @@ Interaction states are visual representations used to communicate the status of 
 
 <rh-alert state="info">
   <h3 slot="header">Helpful tip</h3>
-  <p>The Active state has the same styles as the Hover state.</p>
+  <p>Press uses the same 3px focus ring as keyboard focus.</p>
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="715px">
-  <img alt="Image of light theme audio player active states"
+  <img alt="Light theme audio player press state with a 3px focus ring"
        src="../audio-player-interaction-state-active-theme-light.png"
        width="715"
        height="504">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="712px">
-  <img alt="Image of dark theme audio player active states"
+  <img alt="Dark theme audio player press state with a 3px focus ring"
        src="../audio-player-interaction-state-active-theme-dark.png"
        width="712"
        height="504">
