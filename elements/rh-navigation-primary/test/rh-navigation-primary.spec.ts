@@ -124,6 +124,53 @@ describe('<rh-navigation-primary>', function() {
     });
   });
 
+  describe('breakpoint measurement', function() {
+    let OriginalResizeObserver: typeof ResizeObserver;
+
+    beforeEach(function() {
+      // Isolate the initial measurement in `firstUpdated` from later corrections.
+      OriginalResizeObserver = window.ResizeObserver;
+      window.ResizeObserver = class {
+        observe() {
+          return;
+        }
+
+        unobserve() {
+          return;
+        }
+
+        disconnect() {
+          return;
+        }
+      } as unknown as typeof ResizeObserver;
+    });
+
+    afterEach(function() {
+      window.ResizeObserver = OriginalResizeObserver;
+    });
+
+    it('measures the content box, like the container queries', async function() {
+      const nav = document.createElement('rh-navigation-primary');
+      // Border box 1400px -> content box 1400 - 300 padding - 10 border = 1090px.
+      nav.setAttribute('style', `
+        box-sizing: border-box;
+        border-inline: 5px solid;
+        inline-size: 1400px;
+        padding-inline: 150px;
+      `);
+      nav.innerHTML = '<rh-navigation-primary-item>Item</rh-navigation-primary-item>';
+      document.body.append(nav);
+      await nav.updateComplete;
+
+      // 1090px is below the 1200px breakpoint even though the border box is 1400px,
+      // which is what the `@container` query on the host sees as well.
+      expect(nav.compact).to.be.true;
+      expect(nav.shadowRoot?.querySelector('#container')?.classList.contains('compact')).to.be.true;
+
+      nav.remove();
+    });
+  });
+
   describe('breakpoint boundaries', function() {
     let wrapper: HTMLDivElement;
     let nav: RhNavigationPrimary;
@@ -153,13 +200,19 @@ describe('<rh-navigation-primary>', function() {
         const hamburger = nav.shadowRoot!.querySelector<HTMLDetailsElement>('#hamburger')!;
         const linksMenu = nav.shadowRoot!.querySelector<HTMLDetailsElement>('#links-menu')!;
         const linksSummary = linksMenu.querySelector('summary')!;
+        const style = getComputedStyle(container);
 
-        // JS state matches the CSS thresholds.
+        // JS state matches the CSS-owned thresholds.
         expect(nav.compact).to.equal(width < 1200);
         expect(nav.linksCompact).to.equal(width < 1440);
         expect(container.classList.contains('compact')).to.equal(width < 1200);
 
-        // The layout those thresholds drive.
+        // The sentinels `#readBreakpointState()` reads.
+        expect(style.getPropertyValue('--_compact').trim()).to.equal(width < 1200 ? '1' : '0');
+        expect(style.getPropertyValue('--_links-compact').trim()).to.equal(width < 1440 ? '1' : '0');
+        expect(style.getPropertyValue('--_links-menu-visible').trim()).to.equal(width < 320 ? '0' : '1');
+
+        // The layout the sentinels are meant to mirror.
         expect(hamburger.open).to.equal(width >= 1200);
         expect(linksMenu.open).to.equal(width >= 1440);
         expect(getComputedStyle(linksMenu).display).to.equal(width < 320 ? 'none' : 'flex');
