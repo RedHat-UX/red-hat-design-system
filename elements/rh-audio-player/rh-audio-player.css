@@ -100,7 +100,7 @@ button {
       );
 
   /** Cue text underline color */
-  --_static-undeline-color: var(--rh-color-border-subtle);
+  --_static-underline-color: var(--rh-color-border-subtle);
   --_static-surface-color:
     light-dark(
         /** Static panel surface for light scheme */
