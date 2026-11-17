@@ -176,7 +176,6 @@ export class RhNavigationPrimary extends LitElement {
       // Open links menu at desktop viewport
       this.linksCompact = this.offsetWidth < 1440;
       this.#internals.ariaLabelledByElements = [this._title];
-    } else {
       this._hydrated = true;
       // TODO: Perf look into debouncing the resize observer
       // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
@@ -203,6 +202,7 @@ export class RhNavigationPrimary extends LitElement {
             this.#closeLinksMenu();
           }
         }
+        this.#ro?.observe(this);
       });
     }
   }
@@ -216,8 +216,6 @@ export class RhNavigationPrimary extends LitElement {
       // Moved inside the !isServer check as there still could be a race condition on ssr hydration that
       // connectedCallback() runs before hydration completes removing the reset role attribute.
       this.role = 'navigation';
-
-      this.#ro?.observe(this);
       this.addEventListener('toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
