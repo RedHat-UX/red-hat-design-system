@@ -826,6 +826,48 @@ describe('<rh-navigation-primary>', function() {
         });
       });
     });
+
+    describe('crossing desktop breakpoints with an open menu', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 1000, height: 800 });
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('keeps the hamburger and dropdown open when resizing to desktop widths', async function() {
+        const hamburger = element.shadowRoot!.querySelector<HTMLDetailsElement>('#hamburger')!;
+        const summary = hamburger.querySelector('summary')!;
+        const navItem = element.querySelector<RhNavigationPrimaryItem>(
+          'rh-navigation-primary-item[variant="dropdown"]:not([slot])')!;
+
+        summary.focus();
+        await sendKeys({ press: 'Enter' });
+        await element.updateComplete;
+        await nextFrame();
+        await navItem.show();
+        await nextFrame();
+
+        const details = () => navItem.shadowRoot!.querySelector('details')!;
+        expect(hamburger.open, 'hamburger at 1000').to.be.true;
+        expect(details().open, 'dropdown at 1000').to.be.true;
+
+        await setViewport({ width: 1300, height: 800 });
+        await nextFrame();
+        await nextFrame();
+        await element.updateComplete;
+        expect(hamburger.open, 'hamburger at 1300').to.be.true;
+        expect(getComputedStyle(summary).display, 'summary at 1300').to.equal('none');
+        expect(details().open, 'dropdown at 1300').to.be.true;
+
+        await setViewport({ width: 1500, height: 800 });
+        await nextFrame();
+        await nextFrame();
+        await element.updateComplete;
+        expect(hamburger.open, 'hamburger at 1500').to.be.true;
+        expect(getComputedStyle(summary).display, 'summary at 1500').to.equal('none');
+        expect(details().open, 'dropdown at 1500').to.be.true;
+      });
+    });
   });
 
   describe('dark mode', function() {
