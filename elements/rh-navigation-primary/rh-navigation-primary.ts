@@ -169,9 +169,15 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'logo-href' }) logoHref = 'https://www.redhat.com/en';
 
-  constructor() {
-    super();
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
     if (!isServer) {
+      this.compact = this.offsetWidth < 1200;
+      // Open links menu at desktop viewport
+      this.linksCompact = this.offsetWidth < 1440;
+      this.#internals.ariaLabelledByElements = [this._title];
+    } else {
+      this._hydrated = true;
       // TODO: Perf look into debouncing the resize observer
       // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
       // lea verou style observer: https://github.com/LeaVerou/style-observer/
@@ -201,22 +207,6 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  protected firstUpdated(): void {
-    // ensure we update initially on client hydration
-    const _isHydrated = isServer && !this.hasUpdated;
-    if (!_isHydrated) {
-      this._hydrated = true;
-      this.compact = this.offsetWidth < 1200;
-      // Open links menu at desktop viewport
-      this.linksCompact = this.offsetWidth < 1440;
-    }
-    if (!isServer) {
-      if (this._title) {
-        this.#internals.ariaLabelledByElements = [this._title];
-      }
-    }
-  }
-
   async connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
@@ -235,7 +225,6 @@ export class RhNavigationPrimary extends LitElement {
       this.#upgradeAccessibility();
     }
   }
-
 
   render() {
     // Match SSR even if the resize observer ran before the first client render.
