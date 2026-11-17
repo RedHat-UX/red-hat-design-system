@@ -123,7 +123,17 @@
     border:
       var(--rh-border-width-lg, 3px) solid light-dark(var(--rh-color-accent-base-on-light, #0066cc),
         var(--rh-color-accent-base-on-dark, #92c5f9));
-    border-radius: var(--rh-border-radius-default, 3px);
+
+    /*
+     * The 3px stroke is drawn inside this radius. A 3px radius leaves square
+     * inner corners, so the outer radius stays at least twice the stroke.
+     * A larger theme radius, such as Felt's 6px, is kept as-is.
+     */
+    border-radius:
+      max(
+          var(--rh-border-radius-default, 3px),
+          calc(var(--rh-border-width-lg, 3px) * 2)
+        );
   }
 
   #item {
