@@ -265,12 +265,8 @@ rh-breadcrumb {
     }
   }
 
-  /* Clears the ring after a pointer click. Last so it does not outrank earlier link rules. */
-  & > ol > li > a:focus:not(:focus-visible, :active) {
-    outline: none;
-  }
-
-  /* Clears the ring after a pointer click. Last so it does not outrank earlier button rules. */
+  /* Clears the ring after a pointer click. Last so it does not outrank earlier link and button rules. */
+  & > ol > li > a:focus:not(:focus-visible, :active),
   & .truncate-btn:focus:not(:focus-visible, :active) {
     outline: none;
   }
