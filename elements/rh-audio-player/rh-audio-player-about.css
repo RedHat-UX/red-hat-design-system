@@ -93,3 +93,24 @@ div[part='body'] ::slotted(*:last-of-type) {
   /** Profile block start margin */
   margin-block-start: var(--rh-space-lg, 16px);
 }
+
+div[part='body']:is(:focus-visible, :active) {
+  outline:
+    /** About body focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** About body focus outline color; theme-adaptive */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** About body focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** About body focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
+
+  /** About body focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** About body focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}

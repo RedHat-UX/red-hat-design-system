@@ -76,3 +76,33 @@ a #start {
 a:hover #start {
   text-decoration: none;
 }
+
+a:is(:focus-visible, :active) {
+  outline:
+    /** Cue focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Cue focus outline color; theme-adaptive */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** Cue focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Cue focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
+
+  /** Cue focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Cue focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+a[id$='text']:is(:focus-visible, :active) {
+  background-color: var(--_static-surface-color);
+  border-block-end-color: var(--_static-underline-color);
+}
+
+a:is(:focus-visible, :active) #start {
+  text-decoration: none;
+}

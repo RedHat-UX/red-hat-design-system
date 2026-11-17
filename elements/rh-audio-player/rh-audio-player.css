@@ -110,10 +110,10 @@ button {
       );
   --_static-surface-focus-color:
     light-dark(
-        /** Panel focus surface for light scheme */
-        var(--rh-color-surface-light, #e0e0e0),
-        /** Panel focus surface for dark scheme */
-        var(--rh-color-surface-dark, #383838)
+        /** Menu item hover surface for light scheme */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Menu item hover surface for dark scheme */
+        var(--rh-color-surface-darker, #1f1f1f)
       );
 
   /** Tooltip block start padding override */
@@ -150,7 +150,9 @@ button {
     --_static-overlay-color: rgba(0, 0, 0, 0.5);
     --_static-highlight-color: var(--rh-color-interactive-primary-hover);
     --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
-    --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
+
+    /** Menu item hover surface on an accent background */
+    --_static-surface-focus-color: var(--rh-color-surface-lighter, #f2f2f2);
   }
 
   &.show-menu {
@@ -541,8 +543,33 @@ rh-menu > button:hover {
   background: var(--_static-overlay-focus-color, var(--_static-surface-focus-color));
 }
 
-rh-menu > button:focus {
+rh-menu > button:is(:focus, :active) {
   z-index: 2;
+}
+
+rh-menu > button:is(:focus-visible, :active) {
+  outline: none;
+  border-radius: 0;
+  position: relative;
+  background: var(--_static-overlay-focus-color, var(--_static-surface-focus-color));
+
+  &:after {
+    content: '';
+    position: absolute;
+    background-color: transparent;
+
+    /** Menu item focus ring inset */
+    inset: var(--rh-menu-item-focus-inset, 3px 4px);
+    border:
+      /** Menu item focus ring width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Menu item focus ring color; theme-adaptive */
+      var(--rh-color-border-focus);
+
+    /** Menu item focus ring radius */
+    border-radius: var(--rh-border-radius-default, 3px);
+  }
 }
 
 #container.has-accent-color rh-menu > button {
