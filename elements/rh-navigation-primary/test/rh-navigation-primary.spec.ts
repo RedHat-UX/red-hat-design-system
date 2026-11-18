@@ -124,6 +124,90 @@ describe('<rh-navigation-primary>', function() {
     });
   });
 
+  describe('breakpoint boundaries', function() {
+    let wrapper: HTMLDivElement;
+    let nav: RhNavigationPrimary;
+
+    afterEach(function() {
+      wrapper?.remove();
+    });
+
+    for (const width of [319, 320, 1199, 1200, 1439, 1440]) {
+      it(`matches the container queries at ${width}px`, async function() {
+        wrapper = document.createElement('div');
+        wrapper.style.width = `${width}px`;
+        nav = document.createElement('rh-navigation-primary');
+        nav.innerHTML = `
+          <rh-navigation-primary-item><a href="#primary">Primary</a></rh-navigation-primary-item>
+          <rh-navigation-primary-item slot="links"><a href="#links">Links</a></rh-navigation-primary-item>
+        `;
+        wrapper.append(nav);
+        document.body.append(wrapper);
+
+        // Let the ResizeObserver run and the resulting Lit update commit.
+        await nextFrame();
+        await nextFrame();
+        await nav.updateComplete;
+
+        const container = nav.shadowRoot!.querySelector('#container')!;
+        const hamburger = nav.shadowRoot!.querySelector<HTMLDetailsElement>('#hamburger')!;
+        const linksMenu = nav.shadowRoot!.querySelector<HTMLDetailsElement>('#links-menu')!;
+        const linksSummary = linksMenu.querySelector('summary')!;
+
+        // JS state matches the CSS thresholds.
+        expect(nav.compact).to.equal(width < 1200);
+        expect(nav.linksCompact).to.equal(width < 1440);
+        expect(container.classList.contains('compact')).to.equal(width < 1200);
+
+        // The layout those thresholds drive.
+        expect(hamburger.open).to.equal(width >= 1200);
+        expect(linksMenu.open).to.equal(width >= 1440);
+        expect(getComputedStyle(linksMenu).display).to.equal(width < 320 ? 'none' : 'flex');
+        expect(getComputedStyle(linksSummary).display).to.equal(width >= 1440 ? 'none' : 'flex');
+      });
+    }
+
+    it('tracks resizes after the first update', async function() {
+      wrapper = document.createElement('div');
+      wrapper.style.width = '1440px';
+      nav = document.createElement('rh-navigation-primary');
+      nav.innerHTML = `
+        <rh-navigation-primary-item><a href="#primary">Primary</a></rh-navigation-primary-item>
+        <rh-navigation-primary-item slot="links"><a href="#links">Links</a></rh-navigation-primary-item>
+      `;
+      wrapper.append(nav);
+      document.body.append(wrapper);
+
+      const settle = async () => {
+        await nextFrame();
+        await nextFrame();
+        await nav.updateComplete;
+      };
+      const hamburger = () => nav.shadowRoot!.querySelector<HTMLDetailsElement>('#hamburger')!;
+      const linksMenu = () => nav.shadowRoot!.querySelector<HTMLDetailsElement>('#links-menu')!;
+
+      await settle();
+      expect(nav.compact, '1440 compact').to.be.false;
+      expect(nav.linksCompact, '1440 linksCompact').to.be.false;
+      expect(hamburger().open, '1440 hamburger').to.be.true;
+      expect(linksMenu().open, '1440 links menu').to.be.true;
+
+      wrapper.style.width = '1100px';
+      await settle();
+      expect(nav.compact, '1100 compact').to.be.true;
+      expect(nav.linksCompact, '1100 linksCompact').to.be.true;
+      expect(hamburger().open, '1100 hamburger').to.be.false;
+      expect(linksMenu().open, '1100 links menu').to.be.false;
+
+      wrapper.style.width = '1440px';
+      await settle();
+      expect(nav.compact, '1440 compact again').to.be.false;
+      expect(nav.linksCompact, '1440 linksCompact again').to.be.false;
+      expect(hamburger().open, '1440 hamburger again').to.be.true;
+      expect(linksMenu().open, '1440 links menu again').to.be.true;
+    });
+  });
+
   describe('accessibility', function() {
     beforeEach(async function() {
       element = await fixture<RhNavigationPrimary>(NAV);

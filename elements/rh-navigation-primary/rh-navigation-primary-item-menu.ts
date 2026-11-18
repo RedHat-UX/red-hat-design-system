@@ -30,22 +30,11 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
   @state()
   private compact?: boolean;
 
-  protected async firstUpdated(): Promise<void> {
+  protected firstUpdated(): void {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this.#hydrated = true;
-      const root = this.getRootNode();
-      if (root === document || !(root instanceof ShadowRoot)) {
-        return;
-      }
-      const nav = root.host.closest('rh-navigation-primary');
-      await nav?.updateComplete;
-      if (!nav) {
-        this.compact = true; /* default to true if nav returns false */
-      } else {
-        this.compact = nav.offsetWidth < 1200;
-      }
       this.requestUpdate();
     }
   }
