@@ -39,7 +39,6 @@ figure,
 }
 
 figure {
-  --_video-focus-border-color: var(--rh-color-border-interactive);
   --_video-play-btn-bkg-color:
     light-dark(rgb(31 31 31 / var(--rh-opacity-50, 50%)),
       rgb(255 255 255 / var(--rh-opacity-20, 20%)));
@@ -137,17 +136,6 @@ figcaption ::slotted(p) {
   width: 100%;
 }
 
-#play:focus-within {
-  /** Focus border radius */
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /** Focus outline width */
-  outline: var(--rh-border-width-lg, 3px) solid var(--_video-focus-border-color);
-
-  /** Focus outline offset */
-  outline-offset: var(--rh-border-width-md, 2px);
-}
-
 #play::part(button) {
   /** Play button background color */
   background-color: var(--_video-play-btn-bkg-color, var(--rh-color-surface-darkest, #151515));
@@ -163,9 +151,25 @@ figcaption ::slotted(p) {
   width: var(--rh-length-4xl, 64px);
 }
 
-#play:hover::part(button),
-#play:focus::part(button),
-#play:active::part(button) {
+#play:focus-within {
+  /** Play control focus radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+  outline:
+    /** Play control focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Play control focus outline color; theme-adaptive */
+    var(--rh-color-border-focus);
+
+  /** Play control focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+}
+
+#play:is(:focus-within, :active)::part(button) {
+  background-color: var(--_video-play-btn-interactive-bkg-color);
+}
+
+#play:hover::part(button) {
   background-color: var(--_video-play-btn-interactive-bkg-color);
 }
 

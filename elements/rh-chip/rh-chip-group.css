@@ -59,37 +59,40 @@ legend {
     var(--rh-space-md, 8px);
   position: relative;
 
-  &:hover,
-  &:focus {
-    /** Clear all button hover/focus text color */
+  &:hover {
+    /** Clear all button hover text color */
     color: var(--rh-color-interactive-primary-hover);
 
-    /** Clear all button hover/focus outline color */
+    /** Clear all button hover outline color */
     outline-color: var(--rh-color-border-subtle);
   }
 
-  &:focus {
-    /** Clear all button focus outline offset */
-    outline-offset: var(--rh-border-width-md, 2px);
+  &:is(:focus-visible, :active) {
+    /** Clear all button focus/active text color */
+    color: var(--rh-color-interactive-primary-focus);
+
+    /** Clear all button focus/active outline color */
+    outline-color: var(--rh-color-border-subtle);
   }
 
-  &:focus:after {
+  &:is(:focus-visible, :active):after {
     content: '';
 
-    /** Focus ring border radius */
-    border-radius: var(--rh-border-radius-default, 3px);
-    inset:
-      /** Focus ring block inset */
-      var(--rh-length-4xs, 1px)
-      /** Focus ring inline inset */
-      var(--rh-length-md, 8px);
+    /** Focus ring pill radius */
+    border-radius: var(--rh-border-radius-pill, 64px);
+    inset: 0;
     outline:
-      /** Focus ring outline width */
-      var(--rh-border-width-md, 2px)
+      /** Clear all button focus/active outline width */
+      var(--rh-border-width-lg, 3px)
       solid
-      /** Focus ring outline color */
-      var(--rh-color-border-interactive);
+      /** Clear all button focus/active outline color */
+      var(--rh-color-border-focus);
+
+    /** Clear all button focus/active outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+    pointer-events: none;
     position: absolute;
+    transition: none;
   }
 }
 

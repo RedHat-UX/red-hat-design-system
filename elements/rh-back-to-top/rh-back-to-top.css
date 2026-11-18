@@ -54,11 +54,6 @@
 
   /** Trigger line height */
   line-height: var(--rh-line-height-body-text, 1.5);
-  outline:
-    /** Trigger outline width */
-    var(--rh-border-width-md, 2px)
-    solid
-    transparent;
   border:
     /** Trigger border width */
     var(--rh-border-width-md, 2px)
@@ -67,26 +62,26 @@
   pointer-events: all;
 }
 
-[part='trigger']:is(:hover, :focus) {
-  outline:
-    /** Trigger hover/focus outline width */
-    var(--rh-border-width-md, 2px)
-    solid
-    /** Trigger hover/focus outline color */
-    var(--rh-color-interactive-primary-hover);
-  border:
-    /** Trigger hover/focus border width */
-    var(--rh-border-width-md, 2px)
-    solid
-    light-dark(
-        /** Trigger hover/focus border color for light scheme */
-        var(--rh-color-border-strong-on-dark, #ffffff),
-        /** Trigger hover/focus border color for dark scheme */
-        var(--rh-color-border-strong-on-light, #151515)
-      );
-
-  /** Trigger hover/focus background color */
+[part='trigger']:is(:hover, :focus-visible, :active) {
+  /** Trigger hover/focus-visible/active background color */
   background-color: var(--rh-color-interactive-primary-hover);
+}
+
+[part='trigger']:is(:focus-visible, :active) {
+  outline:
+    /** Trigger focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Trigger focus outline color; theme-adaptive */
+    var(--rh-color-border-focus);
+
+  /** Trigger focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+  transition: none;
+}
+
+[part='trigger']:focus:not(:focus-visible, :active) {
+  outline: none;
 }
 
 [part='trigger'][hidden] {

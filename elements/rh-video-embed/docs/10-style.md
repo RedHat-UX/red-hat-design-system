@@ -111,18 +111,18 @@ The play button’s opacity increases upon hover.
 
 ### Focus
 
-On focus, the entire video embed element is outlined by a focus ring, and the play button uses the same opacity as the hover state.
+Keyboard focus outlines the video with a 3px ring, offset 3px. The play button uses the same opacity as hover.
 
 <div class="grid xs-two-columns">
   <uxdot-example color-palette="lightest" width-adjustment="420px">
-    <img alt="Light theme video with a focus ring outlining the video and a darker play button"
+    <img alt="Light theme video with a 3px focus ring offset from the video and a darker play button"
          src="../video-focus-light.svg"
          width="428"
          height="275">
   </uxdot-example>
 
   <uxdot-example color-palette="darkest" width-adjustment="420px">
-    <img alt="Dark theme video with a focus ring outlining the video and a lighter play button"
+    <img alt="Dark theme video with a 3px focus ring offset from the video and a lighter play button"
          src="../video-focus-dark.svg"
          width="428"
          height="276">
@@ -131,18 +131,18 @@ On focus, the entire video embed element is outlined by a focus ring, and the pl
 
 ### Active
 
-The active state is the same as the focus state.
+Press uses the same 3px ring and play button opacity as keyboard focus.
 
 <div class="grid xs-two-columns">
   <uxdot-example color-palette="lightest" width-adjustment="420px">
-    <img alt="Light theme video with a focus ring outlining the video and a darker play button"
+    <img alt="Light theme video pressed, with a 3px ring offset from the video and a darker play button"
          src="../video-active-light.svg"
          width="428"
          height="275">
   </uxdot-example>
 
   <uxdot-example color-palette="darkest" width-adjustment="420px">
-    <img alt="Dark theme video with a focus ring outlining the video and a lighter play button"
+    <img alt="Dark theme video pressed, with a 3px ring offset from the video and a lighter play button"
          src="../video-active-dark.svg"
          width="428"
          height="276">

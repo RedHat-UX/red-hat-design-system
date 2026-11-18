@@ -68,11 +68,4 @@ Site status is available in both light and dark color schemes.
 
 ## Interaction states
 
-Only the link is selectable and should be underlined in all interaction states.
-
-<uxdot-example>
-  <img src="../site-status-style-interaction-states.svg"
-        alt="Three site status elements with a green checkmark and the text 'All systems operational'. The first is the default state, second is the hover state with a dashed underline on the text, and the third is the focus state which has a blue outline around the link text."
-        width="760"
-        height="53">
-</uxdot-example>
+To see live interaction states, go to the [Demos](/elements/site-status/demos/) page.
