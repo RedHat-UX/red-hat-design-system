@@ -551,6 +551,7 @@ rh-menu > button:is(:focus-visible, :active) {
   outline: none;
   border-radius: 0;
   position: relative;
+  box-sizing: border-box;
   background: var(--_static-overlay-focus-color, var(--_static-surface-focus-color));
 
   &:after {
@@ -567,8 +568,12 @@ rh-menu > button:is(:focus-visible, :active) {
       /** Menu item focus ring color; theme-adaptive */
       var(--rh-color-border-focus);
 
-    /** Menu item focus ring radius */
-    border-radius: var(--rh-border-radius-default, 3px);
+    border-radius:
+      max(
+          /** Menu item focus ring radius */
+          var(--rh-border-radius-default, 3px),
+          calc(var(--rh-border-width-lg, 3px) * 2)
+        );
   }
 }
 
