@@ -81,8 +81,12 @@ formats and helpers.
 Apply defaults to the document root by importing the global stylesheet as seen above, then use our
 tokens in your CSS:
 
-```html rhcodeblock
-
+```css rhcodeblock
+:is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--rh-font-family-heading);
+  font-weight: var(--rh-font-weight-heading-medium);
+  margin-block-end: var(--rh-space-xl);
+}
 ```
 
 ### Reset the shadowroot
