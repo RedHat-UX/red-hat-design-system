@@ -3,15 +3,12 @@
 
   /** Default icon size */
   --rh-icon-size: var(--rh-size-icon-03, 32px);
-}
-
-#container {
   --_outline:
     /** Focus outline width */
-    var(--rh-border-width-md, 2px)
+    var(--rh-border-width-lg, 3px)
     solid
-    /** Focus outline color */
-    var(--rh-color-border-interactive);
+    /** Focus outline color; theme-adaptive */
+    var(--rh-color-border-focus);
 }
 
 rh-tooltip {
@@ -36,9 +33,22 @@ rh-tooltip * {
   outline: none;
 }
 
-select:focus,
-button:focus {
+select:is(:focus-visible, :active),
+button:is(:focus-visible, :active) {
   outline: var(--_outline);
+
+  /** Focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+  transition: none;
+}
+
+/* A mouse click focuses the control, but must not leave the ring. */
+select:focus:not(:focus-visible, :active),
+button:focus:not(:focus-visible, :active) {
+  outline: none;
 }
 
 button[disabled],

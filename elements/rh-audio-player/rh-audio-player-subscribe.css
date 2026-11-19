@@ -7,6 +7,27 @@
   display: block;
 }
 
+::slotted(a:is(:focus-visible, :active)) {
+  outline:
+    /** Subscribe link focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Subscribe link focus outline color; theme-adaptive */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** Subscribe link focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Subscribe link focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
+
+  /** Subscribe link focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Subscribe link focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
 @container (min-width: 576px) {
   slot[part='links'] {
     display: flex;

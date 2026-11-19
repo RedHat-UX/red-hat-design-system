@@ -7,7 +7,7 @@ import { RhCue, getFormattedTime } from './rh-cue.js';
 
 import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import buttonStyles from './rh-audio-player-button.css' with { type: 'css' };
 import panelStyles from './rh-audio-player-panel.css' with { type: 'css' };
@@ -70,7 +70,7 @@ export class RhTranscript extends LitElement {
   #headings = new HeadingLevelContextConsumer(this);
 
   get downloadText() {
-    return this.#slots.getSlotted<RhCue>('cues').map(cue =>cue.downloadText).join('\n\n');
+    return this.#slots.getSlotted<RhCue>().map(cue =>cue.downloadText).join('\n\n');
   }
 
   constructor() {
@@ -89,7 +89,7 @@ export class RhTranscript extends LitElement {
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <!-- toolbar area above cues list -->
-      <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty('cues') ? '' : html`
+      <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty() ? '' : html`
         <label>
           <input id="autoscroll"
                  type="checkbox"
@@ -115,7 +115,7 @@ export class RhTranscript extends LitElement {
 
   #updateCues(currentTime?: number) {
     let activeCue: RhCue;
-    this.#slots.getSlotted<RhCue>('cues').forEach((cue, index, a)=>{
+    this.#slots.getSlotted<RhCue>().forEach((cue, index, a) => {
       if (!cue.start) {
         const prevCue = a[index - 1];
         const prevEnd = prevCue?.end;

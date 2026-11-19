@@ -45,12 +45,19 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const direction = this.#style?.direction ?? 'auto';
+    const computedDirection = this.#style?.direction ?? '';
+    const directionClass = computedDirection === 'rtl' || computedDirection === 'ltr' ?
+      computedDirection
+      : '';
     const scrolling = this.#scrolling;
     const scrollable = this.#isScrollable;
+    const outerClassMap = {
+      ltr: directionClass === 'ltr',
+      rtl: directionClass === 'rtl',
+    };
     return html`
       <div id="outer"
-           class="${classMap({ [direction]: true })}"
+           class="${classMap(outerClassMap)}"
            @mouseover=${this.startScrolling}
            @mouseout=${this.stopScrolling}
            @focus=${this.startScrolling}
