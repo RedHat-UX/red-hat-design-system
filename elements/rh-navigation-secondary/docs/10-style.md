@@ -137,6 +137,8 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Focus
 
+Keyboard focus uses a 3px solid `--rh-color-border-focus` ring. On top-level navigation links the ring sits 3px outside the link, and on the menu button it is inset 3px so the navigation bar's scrolling container does not clip it.
+
 <uxdot-example color-palette="lightest" width-adjustment="992px">
   <img alt="Image of light scheme secondary navigation focus states"
        src="../nav-secondary-interaction-state-focus-scheme-light.avif"
@@ -153,6 +155,8 @@ Interaction states are visual representations used to communicate the status of 
 
 
 ### Active
+
+Press uses the same 3px ring as keyboard focus. A mouse click does not leave the ring behind.
 
 <uxdot-example color-palette="lightest" width-adjustment="992px">
   <img alt="Image of light scheme secondary navigation active states"

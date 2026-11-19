@@ -188,9 +188,30 @@ button[aria-expanded='true']:after {
   transform: var(--_chevron-transform-expanded);
 }
 
-button:focus {
+button:is(:focus-visible, :active) {
   /** Navigation menu toggle top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
+
+  /** Navigation menu toggle focus indicator outline */
+  outline:
+    /** Navigation menu toggle focus indicator width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Navigation menu toggle focus indicator color; theme-adaptive */
+    var(--rh-color-border-focus);
+
+  /**
+   * Navigation menu toggle focus indicator offset
+   * inset so the ring is not clipped by the navigation bar's scrolling container
+   */
+  outline-offset: calc(-1 * var(--rh-border-width-lg, 3px));
+
+  /** Navigation menu toggle focus indicator radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+button:focus:not(:focus-visible, :active) {
+  outline: none;
 }
 
 :host([color-palette='dark']) button {
