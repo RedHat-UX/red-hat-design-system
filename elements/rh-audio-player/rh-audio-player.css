@@ -567,7 +567,6 @@ rh-menu > button:is(:focus-visible, :active) {
       solid
       /** Menu item focus ring color; theme-adaptive */
       var(--rh-color-border-focus);
-
     border-radius:
       max(
           /** Menu item focus ring radius */
