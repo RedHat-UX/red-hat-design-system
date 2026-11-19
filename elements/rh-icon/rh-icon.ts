@@ -13,10 +13,6 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import style from './rh-icon.css' with { type: 'css' };
 
-if (isServer) {
-  await import('./ssr.js');
-}
-
 type Renderable = unknown;
 
 export type IconResolverFunction = (set: string, icon: string) =>
