@@ -9,7 +9,7 @@ The menu dropdown is composed of a toggle, which opens a container with menu ite
     <img alt="An expanded menu dropdown with a menu toggle annotated with #1, a menu item annotated with a #2, and a menu group annotated with #3."
          src="../menu-dropdown-style-anatomy.svg"
          width="211"
-         height="272">
+         height="283">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -32,7 +32,7 @@ Menu dropdowns, including the different types of toggles, are available for both
       <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in light scheme."
         src="../menu-dropdown-style-light-scheme-default-toggle.svg"
         width="482"
-        height="176">
+        height="187">
     </uxdot-example>
     <figcaption>
       <p>Basic (default) toggle - collapsed and expanded</p>
@@ -59,7 +59,7 @@ Menu dropdowns, including the different types of toggles, are available for both
       <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in dark scheme."
         src="../menu-dropdown-style-dark-scheme-default-toggle.svg"
         width="482"
-        height="176">
+        height="187">
     </uxdot-example>
     <figcaption>
       <p>Basic (default) toggle - collapsed and expanded</p>
@@ -87,8 +87,8 @@ The element that triggers the menu can be displayed in two ways. The basic toggl
 <uxdot-example color-palette="lightest">
   <img alt="Expanded menu dropdowns with one toggle that shrinks to fit its text and another that is the same width as the dropdown list."
        src="../menu-dropdown-style-configuration-toggle-variants-1.svg"
-       width="358"
-       height="272">
+       width="372"
+       height="283">
 </uxdot-example>
 
 The other option is to use a compact toggle, which omits a text label and displays only the ellipsis-vertical-fill icon. This dropdown toggle is available with or without a border. A compact toggle requires a descriptive aria-label to communicate its purpose to screen readers.
@@ -96,8 +96,8 @@ The other option is to use a compact toggle, which omits a text label and displa
 <uxdot-example color-palette="lightest">
   <img alt="Two examples of a compact toggle that's collapsed and expanded to show the borderless and box variants."
        src="../menu-dropdown-style-configuratoin-toggle-variants-2.svg"
-       width="432"
-       height="176">
+       width="439"
+       height="187">
 </uxdot-example>
 
 ### Menu item types
@@ -111,8 +111,8 @@ Some menu items may need to be links. In their default states, links will always
 <uxdot-example color-palette="lightest">
   <img alt="An expanded menu dropdown with actions only and an expanded menu dropdown with links that are blue and have dashed underlines."
        src="../menu-dropdown-style-menu-item-types.svg"
-       width="477"
-       height="272">
+       width="491"
+       height="283">
 </uxdot-example>
 
 ### Menu item options
@@ -122,8 +122,8 @@ Menu items can include an icon and a description.
 <uxdot-example color-palette="lightest">
   <img alt="An expanded menu dropdown with small group headings and menu items that include an icon on the left and a description."
        src="../menu-dropdown-style-menu-item-options.svg"
-       width="280"
-       height="442">
+       width="294"
+       height="453">
 </uxdot-example>
 
 ## Space
@@ -133,7 +133,7 @@ Space values all viewport sizes. The image below shows the spacing for a basic m
 <uxdot-example color-palette="lightest">
   <img alt="Diagrams showing the spacing in a collapsed menu toggle and an expanded menu dropdown."
        src="../menu-dropdown-style-space-1.svg"
-       width="519"
+       width="526"
        height="454">
 </uxdot-example>
 
@@ -157,15 +157,15 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Hover states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-hover-light.svg"
-       width="943"
-       height="272">
+       width="950"
+       height="283">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Hover states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-hover-dark.svg"
-       width="943"
-       height="272">
+       width="950"
+       height="283">
 </uxdot-example>
 
 ### Active
@@ -173,15 +173,15 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Active states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-active-light.svg"
-       width="945"
-       height="272">
+       width="969"
+       height="289">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Active states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-active-dark.svg"
-       width="945"
-       height="272">
+       width="969"
+       height="289">
 </uxdot-example>
 
 ### Focus
@@ -189,13 +189,13 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Focus states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-focus-light.svg"
-       width="957"
-       height="274">
+       width="976"
+       height="289">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Focus states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-focus-dark.svg"
-       width="957"
-       height="274">
+       width="976"
+       height="289">
 </uxdot-example>
