@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`rh-cta`: corrected hover, focus, and active states
+`<rh-cta>`: corrected hover, focus, and active states
