@@ -72,7 +72,7 @@ select {
     border-color: var(--rh-color-border-interactive);
   }
 
-  &:focus {
+  &:is(:focus-visible, :active) {
     /** Focus border color; theme-adaptive */
     border-color: var(--rh-color-border-interactive);
     outline:
@@ -80,10 +80,14 @@ select {
       var(--rh-border-width-lg, 3px)
       solid
       /** Focus outline color; theme-adaptive */
-      var(--rh-color-border-interactive);
+      var(--rh-color-border-focus);
 
-    /** Focus outline offset  */
-    outline-offset: var(--rh-length-2xs, 3px);
+    /** Focus outline offset */
+    outline-offset: var(--rh-border-width-lg, 3px);
+  }
+
+  &:focus:not(:focus-visible, :active) {
+    outline: none;
   }
 }
 
@@ -149,12 +153,17 @@ select {
     }
 
     &:open {
-      outline:
-        /** Open state outline width */
-        var(--rh-border-width-md, 2px)
-        solid
-        /** Open state outline color; theme-adaptive */
+      border-color: transparent;
+      box-shadow:
+        inset 0 0 0
+        /** Open border width */
+        var(--rh-length-3xs, 2px)
+        /** Open border color; theme-adaptive */
         var(--rh-color-border-interactive);
+    }
+
+    &:open:not(:focus-visible, :active) {
+      outline: none;
     }
 
     &::picker-icon {
@@ -195,8 +204,7 @@ select {
       var(--rh-space-lg, 16px);
     position: relative;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color:
         light-dark(
             /** Option hover surface for light scheme */
@@ -206,17 +214,46 @@ select {
           );
     }
 
+    /* Drop the UA border for any focus, including a mouse click. */
     &:focus {
-      /** Option focus corner radius */
-      border-radius: var(--rh-border-radius-default, 3px);
       border: 0;
-      outline:
-        /** Option focus outline width */
-        var(--rh-border-width-lg, 3px)
-        solid
-        /** Option focus outline color; theme-adaptive */
-        var(--rh-color-border-interactive);
-      outline-offset: -3px;
+    }
+
+    &:is(:focus-visible, :active) {
+      background-color:
+        light-dark(
+            /** Option focus surface for light scheme */
+            var(--rh-color-surface-lighter, #f2f2f2),
+            /** Option focus surface for dark scheme */
+            var(--rh-color-surface-darker, #1f1f1f)
+          );
+      outline: none;
+
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 3px 4px;
+        background-color: transparent;
+        border:
+          /** Option focus ring width */
+          var(--rh-border-width-lg, 3px)
+          solid
+          /** Option focus ring color; theme-adaptive */
+          var(--rh-color-border-focus);
+        border-radius:
+          max(
+              /** Option focus ring radius */
+              var(--rh-border-radius-default, 3px),
+              calc(
+                /** Option focus ring minimum radius */
+                var(--rh-border-width-lg, 3px) * 2
+              )
+            );
+      }
+    }
+
+    &:focus:not(:focus-visible, :active) {
+      outline: none;
     }
 
     &::checkmark {
