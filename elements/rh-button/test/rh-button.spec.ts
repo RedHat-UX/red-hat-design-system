@@ -469,11 +469,11 @@ describe('<rh-button>', function() {
     it('falls back to alt text nested in the referenced label', async function() {
       const element = await createFixture<RhButton>(html`
         <rh-button aria-labelledby="nested-image-label"></rh-button>
-        <span id="nested-image-label">Search <img alt="images"></span>
+        <span id="nested-image-label">Search <img alt="results"></span>
       `);
       const button = internalButton(element);
-      expect(button.getAttribute('aria-label')).to.equal('Search images');
-      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Search images' });
+      expect(button.getAttribute('aria-label')).to.equal('Search results');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Search results' });
 
       document.querySelector('#nested-image-label img')!.setAttribute('alt', 'photos');
       await nextFrame();
