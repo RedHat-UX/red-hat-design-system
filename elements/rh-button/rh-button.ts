@@ -76,6 +76,27 @@ function sameElements(
     && next.every((element, index) => current[index] === element);
 }
 
+function sameIds(current: ReadonlySet<string>, next: ReadonlySet<string>): boolean {
+  if (current.size !== next.size) {
+    return false;
+  }
+  for (const id of next) {
+    if (!current.has(id)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/** Root identity, ignoring order so a stable walk does not rebuild observers. */
+function sameNodes(current: readonly Node[], next: readonly Node[]): boolean {
+  if (current.length !== next.length) {
+    return false;
+  }
+  const members = new Set<Node>(current);
+  return next.every(node => members.has(node));
+}
+
 // Empty and whitespace-only values are treated as unset.
 function definedString(value: string | null | undefined): string | undefined {
   if (value == null) {
@@ -414,6 +435,9 @@ export class RhButton extends LitElement {
 
   #referenceSelector = '';
 
+  /** Label and description elements the text observer is currently watching. */
+  #watchedElements: readonly Element[] = [];
+
   /** Watches referenced label and description elements for text changes. */
   #textObserver = new MutationObserver(() => {
     if (this.isConnected) {
@@ -678,11 +702,13 @@ export class RhButton extends LitElement {
   /**
    * Follow label, description, and control targets for as long as the button
    * is connected. Ids are watched in every root that lookup searches, and text
-   * changes are watched on the referenced elements themselves.
+   * changes are watched on the referenced elements themselves. Unchanged ids,
+   * roots, and elements keep their subscriptions. A reconnect, or a change to
+   * any of those, installs the watches again.
    */
   #watchReferences(): void {
-    this.#stopWatchingReferences();
     if (isServer || !this.isConnected) {
+      this.#stopWatchingReferences();
       return;
     }
     const ids = new Set([
@@ -690,16 +716,66 @@ export class RhButton extends LitElement {
       ...this.#ids(this.ariaDescribedBy),
       ...this.#ids(this.ariaControls),
     ]);
-    this.#referenceIds = ids;
-    this.#referenceSelector = [...ids].map(id => `#${CSS.escape(id)}`).join(',');
-    if (ids.size > 0) {
-      for (const root of this.#referenceRoots()) {
-        observeRoot(root, this, records => this.#onReferenceMutation(records));
-        this.#observedRoots.push(root);
+    const roots = ids.size > 0 ? this.#referenceRoots() : [];
+    const elements = this.#textElements();
+    const idsChanged = !sameIds(this.#referenceIds, ids);
+    const rootsChanged = !sameNodes(this.#observedRoots, roots);
+    const elementsChanged = !sameElements(this.#watchedElements, elements);
+    if (!idsChanged && !rootsChanged && !elementsChanged) {
+      return;
+    }
+    if (idsChanged) {
+      this.#referenceIds = ids;
+      this.#referenceSelector = [...ids].map(id => `#${CSS.escape(id)}`).join(',');
+    }
+    if (rootsChanged) {
+      this.#syncObservedRoots(roots);
+    }
+    if (elementsChanged) {
+      this.#syncTextObservation(elements);
+    }
+  }
+
+  /** Label and description targets, in reference order, without duplicates. */
+  #textElements(): Element[] {
+    const elements: Element[] = [];
+    const seen = new Set<Element>();
+    for (const element of [...this.#labelElements, ...this.#descriptionElements]) {
+      if (seen.has(element)) {
+        continue;
+      }
+      seen.add(element);
+      elements.push(element);
+    }
+    return elements;
+  }
+
+  /** Subscribe to new roots and drop roots that are no longer searched. */
+  #syncObservedRoots(roots: readonly ReferenceRoot[]): void {
+    const next = new Set<ReferenceRoot>(roots);
+    for (const root of this.#observedRoots) {
+      if (!next.has(root)) {
+        unobserveRoot(root, this);
       }
     }
-    const watched = new Set<Element>([...this.#labelElements, ...this.#descriptionElements]);
-    for (const element of watched) {
+    const previous = new Set<ReferenceRoot>(this.#observedRoots);
+    for (const root of roots) {
+      if (!previous.has(root)) {
+        observeRoot(root, this, records => this.#onReferenceMutation(records));
+      }
+    }
+    this.#observedRoots = [...roots];
+  }
+
+  /**
+   * Watch the current label and description elements. Mutation observers cannot
+   * drop a single target, so a changed set is disconnected and observed again.
+   * @param elements elements whose text contributes to the name or description
+   */
+  #syncTextObservation(elements: readonly Element[]): void {
+    this.#textObserver.disconnect();
+    this.#watchedElements = elements;
+    for (const element of elements) {
       this.#textObserver.observe(element, {
         subtree: true,
         childList: true,
@@ -710,12 +786,19 @@ export class RhButton extends LitElement {
     }
   }
 
+  /**
+   * Drop every watch. Cleared state makes the next connected update install
+   * the watches again, which is what a reconnect needs.
+   */
   #stopWatchingReferences(): void {
     this.#textObserver.disconnect();
     for (const root of this.#observedRoots) {
       unobserveRoot(root, this);
     }
     this.#observedRoots = [];
+    this.#watchedElements = [];
+    this.#referenceIds = new Set();
+    this.#referenceSelector = '';
   }
 
   /**

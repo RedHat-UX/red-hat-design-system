@@ -16,6 +16,54 @@ function internalButton(element: RhButton): HTMLButtonElement {
   return button;
 }
 
+interface RecordedObserver {
+  disconnects: number;
+  readonly targets: readonly Node[];
+}
+
+/** Install a MutationObserver that records its targets and disconnects. */
+function recordObservers(): {
+  observers: RecordedObserver[];
+  restore: () => void;
+  rootObservers: () => RecordedObserver[];
+} {
+  const observers: RecordedObserver[] = [];
+  const original = globalThis.MutationObserver;
+
+  class RecordingMutationObserver extends original {
+    disconnects = 0;
+    readonly targets: Node[] = [];
+
+    constructor(callback: MutationCallback) {
+      super(callback);
+      observers.push(this);
+    }
+
+    override observe(target: Node, options?: MutationObserverInit): void {
+      this.targets.push(target);
+      super.observe(target, options);
+    }
+
+    override disconnect(): void {
+      this.disconnects += 1;
+      super.disconnect();
+    }
+  }
+
+  globalThis.MutationObserver = RecordingMutationObserver as typeof MutationObserver;
+  return {
+    observers,
+    restore() {
+      globalThis.MutationObserver = original;
+    },
+    rootObservers() {
+      return observers.filter(observer =>
+        observer.targets.some(target =>
+          target instanceof Document || target instanceof ShadowRoot));
+    },
+  };
+}
+
 const template = html`
   <rh-button></rh-button>
 `;
@@ -302,6 +350,63 @@ describe('<rh-button>', function() {
       await element.updateComplete;
       expect(internalButton(element).getAttribute('aria-label')).to.equal('Second');
       element.remove();
+    });
+  });
+
+  describe('reference watches', function() {
+    it('keeps the root observer across an unrelated update', async function() {
+      const recorded = recordObservers();
+      try {
+        const element = await createFixture<RhButton>(html`
+          <rh-button aria-labelledby="kept-label" aria-controls="kept-panel"></rh-button>
+          <span id="kept-label">Name</span>
+        `);
+        const roots = recorded.rootObservers();
+        expect(roots.length).to.be.greaterThan(0);
+        const disconnects = recorded.observers.map(observer => observer.disconnects);
+
+        element.requestUpdate();
+        await element.updateComplete;
+        recorded.observers.forEach((observer, index) => {
+          expect(observer.disconnects).to.equal(disconnects[index]);
+        });
+
+        const panel = document.createElement('div');
+        panel.id = 'kept-panel';
+        element.after(panel);
+        await nextFrame();
+        await element.updateComplete;
+        expect(internalButton(element).getAttribute('aria-controls')).to.equal('kept-panel');
+      } finally {
+        recorded.restore();
+      }
+    });
+
+    it('keeps the root observer when the referenced label changes', async function() {
+      const recorded = recordObservers();
+      try {
+        const element = await createFixture<RhButton>(html`
+          <rh-button aria-labelledby="first-ref"></rh-button>
+          <span id="first-ref">First</span>
+          <span id="second-ref">Second</span>
+        `);
+        const roots = recorded.rootObservers();
+        const disconnects = roots.map(observer => observer.disconnects);
+
+        element.ariaLabelledBy = 'second-ref';
+        await element.updateComplete;
+        roots.forEach((observer, index) => {
+          expect(observer.disconnects).to.equal(disconnects[index]);
+        });
+        expect(internalButton(element).getAttribute('aria-label')).to.equal('Second');
+
+        document.getElementById('second-ref')!.textContent = 'Updated';
+        await nextFrame();
+        await element.updateComplete;
+        expect(internalButton(element).getAttribute('aria-label')).to.equal('Updated');
+      } finally {
+        recorded.restore();
+      }
     });
   });
 
