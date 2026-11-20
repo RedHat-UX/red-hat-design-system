@@ -10,13 +10,6 @@
 
 Every call to action style and variant must be able to receive focus and be navigated with a keyboard.
 
-<uxdot-example color-palette="lightest" width-adjustment="570px">
-  <img src="../cta-a11y-keyboard-interactions.svg"
-        alt="The four different CTAs, each showing a blue focus ring around it and the words 'Tab' underneath."
-        width="570"
-        height="103">
-</uxdot-example>
-
 <rh-table id="kbd-interactions">
 
 | Key                  | Result                                                            |
@@ -30,13 +23,6 @@ Every call to action style and variant must be able to receive focus and be navi
 ## Focus order
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is left to right and top to bottom.
-
-<uxdot-example color-palette="lightest" width-adjustment="906px">
-  <img src="../cta-a11y-focus-order.svg"
-        alt="Two Groups of three variants with numbers one through three moving from left to right and top to bottom"
-        width="906"
-        height="238">
-</uxdot-example>
 
 ## Touch targets
 
