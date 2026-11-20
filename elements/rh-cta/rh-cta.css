@@ -148,16 +148,7 @@ a:focus-visible:after,
 }
 
 :host([variant='primary']) #container:has(a:focus-visible),
-:host([variant='secondary']) #container:has(a:focus-visible) {
-  background-color: var(--_focus-background-color);
-  border-color: var(--_focus-border-color);
-  color: var(--_focus-color);
-}
-
-/*
- * Separate the `:state()` rule so that older browsers still see the internal-link focus fill.
- * (In a comma-separated selector list, one invalid selector drops the whole rule)
- */
+:host([variant='secondary']) #container:has(a:focus-visible),
 :host([variant='primary']:state(slotted-focus)) #container,
 :host([variant='secondary']:state(slotted-focus)) #container {
   background-color: var(--_focus-background-color);
