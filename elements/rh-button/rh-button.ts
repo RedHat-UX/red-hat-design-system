@@ -88,7 +88,11 @@ function sameIds(current: ReadonlySet<string>, next: ReadonlySet<string>): boole
   return true;
 }
 
-/** Root identity, ignoring order so a stable walk does not rebuild observers. */
+/**
+ * Root identity, ignoring order so a stable walk does not rebuild observers.
+ * @param current roots from the previous watch
+ * @param next roots for the current watch
+ */
 function sameNodes(current: readonly Node[], next: readonly Node[]): boolean {
   if (current.length !== next.length) {
     return false;
@@ -750,7 +754,10 @@ export class RhButton extends LitElement {
     return elements;
   }
 
-  /** Subscribe to new roots and drop roots that are no longer searched. */
+  /**
+   * Subscribe to new roots and drop roots that are no longer searched.
+   * @param roots roots that should stay under observation
+   */
   #syncObservedRoots(roots: readonly ReferenceRoot[]): void {
     const next = new Set<ReferenceRoot>(roots);
     for (const root of this.#observedRoots) {
