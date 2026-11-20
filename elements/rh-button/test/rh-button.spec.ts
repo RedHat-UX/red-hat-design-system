@@ -344,6 +344,38 @@ describe('<rh-button>', function() {
       expect(button.getAttribute('aria-description')).to.equal('Opens the assistant');
       expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
     });
+
+    it('falls back to the alt text of an image label', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="image-label"></rh-button>
+        <img id="image-label" alt="Search">
+      `);
+      const button = internalButton(element);
+      expect(button.getAttribute('aria-label')).to.equal('Search');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Search' });
+
+      document.getElementById('image-label')!.setAttribute('alt', 'Find');
+      await nextFrame();
+      await element.updateComplete;
+      expect(button.getAttribute('aria-label')).to.equal('Find');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Find' });
+    });
+
+    it('falls back to alt text nested in the referenced label', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-labelledby="nested-image-label"></rh-button>
+        <span id="nested-image-label">Search <img alt="images"></span>
+      `);
+      const button = internalButton(element);
+      expect(button.getAttribute('aria-label')).to.equal('Search images');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Search images' });
+
+      document.querySelector('#nested-image-label img')!.setAttribute('alt', 'photos');
+      await nextFrame();
+      await element.updateComplete;
+      expect(button.getAttribute('aria-label')).to.equal('Search photos');
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Search photos' });
+    });
   });
 
   it('resolves aria-controls when the target is parsed after the button', async function() {

@@ -122,8 +122,10 @@ function isHiddenElement(element: Element): boolean {
 
 /**
  * Text of a referenced element as accessible name computation sees it: an
- * element's own `aria-label` wins, and hidden descendants are skipped. A
- * directly referenced element contributes its text even when it is hidden.
+ * element's own `aria-label` wins, then a native image `alt`, and hidden
+ * descendants are skipped. A directly referenced element contributes its text
+ * even when it is hidden. Images nested inside a referenced element contribute
+ * their `alt` as well. An empty `alt` is decorative and contributes nothing.
  * @param node node to read
  * @param isReferenceRoot true for the element an id points at
  */
@@ -138,6 +140,13 @@ function nodeText(node: Node, isReferenceRoot = false): string {
   const label = node.getAttribute('aria-label')?.trim();
   if (label) {
     return label;
+  }
+  // Images have no text nodes. Alt is their name, including when nested.
+  if (node.localName === 'img') {
+    const alt = node.getAttribute('alt');
+    if (alt != null) {
+      return alt;
+    }
   }
   let text = '';
   for (const child of node.childNodes) {
@@ -696,7 +705,7 @@ export class RhButton extends LitElement {
         childList: true,
         characterData: true,
         attributes: true,
-        attributeFilter: ['aria-label', 'aria-hidden', 'hidden'],
+        attributeFilter: ['aria-label', 'aria-hidden', 'hidden', 'alt'],
       });
     }
   }
