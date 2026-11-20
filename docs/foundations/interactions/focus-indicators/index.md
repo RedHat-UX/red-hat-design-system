@@ -57,7 +57,7 @@ In CSS terms, here is some minimal code that meets these requirements:
 
 ```css rh-code-block
 :is(*, :hover):focus-visible {
-  outline-color: var(--rh-color-border-interactive, #0066cc);
+  outline-color: var(--rh-color-border-focus, #0066cc);
   outline-offset: var(--rh-border-width-lg, 3px);
   outline-style: solid;
   outline-width: var(--rh-border-width-lg, 3px);
@@ -73,7 +73,7 @@ In CSS terms, here is some minimal code that meets these requirements:
 
 Adjust the offset as needed. If an offset risks overflowing the focus ring outside the boundary of a page or the visible edge of a region, that offset can be removed or even made inset (see the example CSS below).
 
-We have designated focus ring colors that align with our brand standards for both light and dark schemes. Prefer the theming token <code>--rh-color-border-interactive</code>, which resolves to the correct on-light or on-dark value via <code>light-dark()</code>. Use the on-light and on-dark tokens when you need to override based on the background behind the focus ring.
+We have designated focus ring colors that align with our brand standards for both light and dark schemes. Prefer the theming token <code>--rh-color-border-focus</code>, which resolves to the correct on-light or on-dark value via <code>light-dark()</code>. Use the on-light and on-dark tokens when you need to override based on the background behind the focus ring.
 
 <rh-table>
   <table>
@@ -92,8 +92,8 @@ We have designated focus ring colors that align with our brand standards for bot
     <tbody>
       <tr>
         <td>Focus ring color</td>
-        <td><code>--rh-color-border-interactive-on-light</code></td>
-        <td><code>--rh-color-border-interactive-on-dark</code></td>
+        <td><code>--rh-color-border-focus-on-light</code></td>
+        <td><code>--rh-color-border-focus-on-dark</code></td>
       </tr>
     </tbody>
   </table>
@@ -102,7 +102,7 @@ We have designated focus ring colors that align with our brand standards for bot
 
 #### Styling considerations
 
-Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-border-interactive-on-dark</code>) with the light scheme color (<code>--rh-color-border-interactive-on-light</code>).
+Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-border-focus-on-dark</code>) with the light scheme color (<code>--rh-color-border-focus-on-light</code>).
 
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
@@ -111,8 +111,8 @@ Note that there may be cases where a focus ring appears against a light backgrou
 ```css rh-code-block
 :is(*, :hover):focus-visible {
   outline-color: light-dark(
-    var(--rh-color-border-interactive-on-light, #0066cc),
-    var(--rh-color-border-interactive-on-dark, #92c5f9)
+    var(--rh-color-border-focus-on-light, #0066cc),
+    var(--rh-color-border-focus-on-dark, #92c5f9)
   );
   outline-offset: var(--rh-border-width-lg, 3px);
   outline-style: solid;
@@ -136,12 +136,12 @@ Note that there may be cases where a focus ring appears against a light backgrou
 
 /* Placeholder `.light-bg` class for focus against light backgrounds. */
 .light-bg:is(*, :hover):focus-visible {
-  outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
+  outline-color: var(--rh-color-border-focus-on-light, #0066cc);
 }
 
 /* Placeholder `.dark-bg` class for focus against dark backgrounds. */
 .dark-bg:is(*, :hover):focus-visible {
-  outline-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
+  outline-color: var(--rh-color-border-focus-on-dark, #92c5f9);
 }
 
 :focus:not(:focus-visible) {
@@ -151,7 +151,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 
 ### Technical notes on the CSS
 
-- We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-border-interactive-on-light</code> (<code>#0066cc</code>) is **WCAG conformant** against both our dark and light backgrounds.
+- We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-border-focus-on-light</code> (<code>#0066cc</code>) is **WCAG conformant** against both our dark and light backgrounds.
 - The <code>:is(*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.
 - WCAG 2.2 requires 2px outlines for AAA conformance when focus is offset. However, **inset** focus must be greater than 2px. So, for the sake of consistency, we go with 3px in **all cases**.
 - We add a <code>transition: none</code> property to **temporarily remove any animations** that may be on the element, so the focus ring appearance does not animate.
