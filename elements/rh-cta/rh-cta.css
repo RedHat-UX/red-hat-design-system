@@ -122,38 +122,61 @@ a:focus-within,
   outline: none !important;
 }
 
-:host(:is(:focus, :focus-within)) {
-  /** Outer focus ring */
+/* Add single focus ring for `:focus-visible` and `:active` */
+a:focus-visible:after,
+::slotted(a:focus-visible):after,
+::slotted(:is(button, input):focus-visible):after,
+:host(:active) a:after,
+:host(:active) ::slotted(:is(a, button, input)):after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  /** Focus ring corner radius */
+  border-radius: var(--rh-border-radius-default, 3px);
   outline:
-    var(--rh-border-width-md, 2px)
+    /** Focus ring width */
+    var(--rh-border-width-lg, 3px)
     solid
-    /** Container outline color on keyboard focus */
+    /** Focus ring color override */
     var(--rh-cta-focus-container-outline-color,
-      /** Focus indicator outline color */
-      var(--rh-cta-focus-outline-color));
-  outline-offset: 2px;
+      /** Focus ring color */
+      var(--rh-color-border-focus));
+
+  /** Focus ring offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+}
+
+:host([variant='primary']) #container:has(a:focus-visible),
+:host([variant='secondary']) #container:has(a:focus-visible),
+:host([variant='primary']:state(slotted-focus)) #container,
+:host([variant='secondary']:state(slotted-focus)) #container {
+  background-color: var(--_focus-background-color);
+  border-color: var(--_focus-border-color);
+  color: var(--_focus-color);
+}
+
+:host([variant='brick']) #container:has(a:focus-visible),
+:host([variant='brick']:state(slotted-focus)) #container {
+  background-color: var(--_focus-background-color);
+  color: var(--_focus-color);
+}
+
+:host(:not([variant])) #container:has(a:focus-visible),
+:host(:not([variant]):state(slotted-focus)) #container {
+  color: var(--_focus-color);
 }
 
 :host(:is(:focus, :focus-within)) #container {
-  --_background-color: var(--rh-cta-focus-background-color);
-  --_color: var(--_focus-color);
-
-  /** Focus text decoration */
-  --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
+  --_text-decoration:
+    /** Focus text decoration */
+    var(--rh-cta-focus-text-decoration,
+      var(--_focus-text-decoration));
   --_text-underline-offset:
     /** Focus text underline offset */
     var(--rh-cta-focus-text-underline-offset,
+      /** Hover text underline offset */
       var(--rh-cta-hover-text-underline-offset));
-
-  border-color: var(--_focus-border-color);
-  background-color:
-    var(--_focus-container-background-color,
-      var(--_focus-background-color));
-  color: var(--rh-cta-focus-color, var(--_color));
-
-  /** Inner focus ring */
-  outline: var(--rh-border-width-sm, 1px) solid var(--_focus-inner-border-color);
-  outline-offset: -3px;
 }
 
 /*****************************************************************************
@@ -182,18 +205,31 @@ a:focus-within,
  * ACTIVE STATE                                                              *
  *****************************************************************************/
 
-:host(:active) #container {
-  background-color: var(--_background-color);
+:host(:where([variant]):active) #container,
+:host(:where([variant]):active) #container:has(a:focus-visible),
+:host([variant]:active:state(slotted-focus)) #container {
+  background-color: var(--_active-background-color);
+  border-color: var(--_active-border-color);
   color: var(--_active-color);
 
-  --_background-color:
-    var(--rh-cta-background-color,
-      var(--rh-cta-active-container-background-color,
-      var(--rh-cta-active-background-color)));
+  --_text-decoration:
+    /** Active text decoration */
+    var(--rh-cta-active-text-decoration,
+      var(--_active-text-decoration,
+      var(--_hover-text-decoration)));
+  --_text-underline-offset:
+    /** Active text underline offset */
+    var(--rh-cta-active-text-underline-offset,
+      /** Focus text underline offset */
+      var(--rh-cta-focus-text-underline-offset,
+      /** Hover text underline offset */
+      var(--rh-cta-hover-text-underline-offset)));
+}
 
-  /** Inner active ring */
-  outline: var(--rh-border-width-sm, 1px) solid var(--_active-inner-border-color);
-  outline-offset: -3px;
+:host(:not([variant]):active) #container,
+:host(:not([variant]):active) #container:has(a:focus-visible),
+:host(:not([variant]):active:state(slotted-focus)) #container {
+  color: var(--_active-color);
 }
 
 /*****************************************************************************
@@ -280,20 +316,16 @@ a:focus-within,
     var(--rh-cta-focus-border-color, transparent);
   --_focus-color: /** Default focus text color */
     var(--rh-cta-focus-color,
-      var(--rh-color-interactive-primary-default));
+      var(--rh-color-interactive-primary-hover));
   --_focus-inner-border-color: /** Default focus inner border color */
     var(--rh-cta-focus-inner-border-color, transparent);
   --_focus-text-decoration: /** Default focus text decoration */
     var(--rh-cta-focus-text-decoration, none);
-
-  /* --rh-color-border-interactive-on-light with 10% opacity */
-
-  --_active-container-background-color:
-    light-dark(
-        /** Default active container background */
-        var(--rh-cta-active-container-background-color, #0066cc1a),
-        var(--rh-cta-active-container-background-color, #73bcf740)
-      );
+  --_active-container-background-color: /** Default active container background */
+    var(--rh-cta-active-container-background-color, transparent);
+  --_active-color: /** Default active text color */
+    var(--rh-cta-active-color,
+      var(--_hover-color));
   --_active-inner-border-color: /** Default active inner border color */
     var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: /** Default active text decoration */
@@ -338,6 +370,7 @@ a:focus-within,
   --_active-background-color: /** Primary variant active background color */
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
+  --_active-border-color: var(--_active-background-color);
   --_active-inner-border-color: /** Primary variant active inner border color */
     var(--rh-cta-active-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
@@ -378,29 +411,33 @@ a:focus-within,
         var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515))
       );
   --_focus-background-color:
-    light-dark(
-        /** Secondary variant focus background for light scheme */
-        var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-        /** Secondary variant focus background for dark scheme */
-        var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838))
-      );
+    /** Secondary variant focus background override */
+    var(--rh-cta-focus-background-color,
+      var(--_hover-background-color));
   --_focus-border-color: /** Secondary variant focus border color */
     var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
-  --_focus-color: var(--rh-color-text-primary);
+  --_focus-color:
+    /** Secondary variant focus text color override */
+    var(--rh-cta-focus-color,
+      var(--_hover-color));
   --_focus-inner-border-color: /** Secondary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
   --_focus-text-decoration: /** Secondary variant focus text decoration */
     var(--rh-cta-focus-text-decoration, none);
-  --_active-color: /** Secondary variant active text color */
-    var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color:
+    /** Secondary variant active text color override */
+    var(--rh-cta-active-color,
+      var(--_hover-color));
+  --_active-border-color:
+    /** Secondary variant border color override */
+    var(--rh-cta-border-color,
+      /** Secondary variant border color */
+      var(--rh-color-border-strong));
   --_active-background-color:
-    light-dark(
-        /** Secondary variant active background for light scheme */
-        var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
-        /** Secondary variant active background for dark scheme */
-        var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff))
-      );
+    /** Secondary variant active background override */
+    var(--rh-cta-active-background-color,
+      var(--_hover-background-color));
   --_active-inner-border-color:
     light-dark(
         /** Secondary variant active inner border for light scheme */
@@ -459,8 +496,13 @@ a:focus-within,
           /** Brick variant hover text decoration for dark scheme */
           var(--rh-cta-hover-text-decoration, underline)
         );
+    --_focus-background-color:
+      /** Brick variant focus background override */
+      var(--rh-cta-focus-background-color,
+        var(--_hover-background-color));
     --_focus-color: /** Brick variant focus text color */
-      var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
+      var(--rh-cta-focus-color,
+        var(--_hover-color));
     --_focus-border-color: /** Brick variant focus border color */
       var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
     --_focus-inner-border-color: /** Brick variant focus inner border color */
@@ -480,6 +522,15 @@ a:focus-within,
           /** Brick variant active background for dark scheme */
           var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f))
         );
+    --_active-border-color:
+      /** Brick variant border color override */
+      var(--rh-cta-border-color,
+        /** Brick variant border color */
+        var(--rh-color-border-subtle));
+    --_active-color:
+      /** Brick variant active text color override */
+      var(--rh-cta-active-color,
+        var(--_hover-color));
     --_active-inner-border-color: /** Brick variant active inner border color */
       var(--rh-cta-active-inner-border-color,
         var(--rh-color-border-subtle));
