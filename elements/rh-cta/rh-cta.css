@@ -156,6 +156,12 @@ a:focus-visible:after,
   color: var(--_focus-color);
 }
 
+:host([variant='brick']) #container:has(a:focus-visible),
+:host([variant='brick']:state(slotted-focus)) #container {
+  background-color: var(--_focus-background-color);
+  color: var(--_focus-color);
+}
+
 :host(:not([variant])) #container:has(a:focus-visible),
 :host(:not([variant]):state(slotted-focus)) #container {
   color: var(--_focus-color);
@@ -464,8 +470,13 @@ a:focus-visible:after,
           /** Brick variant hover text decoration for dark scheme */
           var(--rh-cta-hover-text-decoration, underline)
         );
+    --_focus-background-color:
+      /** Brick variant focus background override */
+      var(--rh-cta-focus-background-color,
+        var(--_hover-background-color));
     --_focus-color: /** Brick variant focus text color */
-      var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
+      var(--rh-cta-focus-color,
+        var(--_hover-color));
     --_focus-border-color: /** Brick variant focus border color */
       var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
     --_focus-inner-border-color: /** Brick variant focus inner border color */
