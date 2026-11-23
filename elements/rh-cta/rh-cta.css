@@ -167,6 +167,18 @@ a:focus-visible:after,
   color: var(--_focus-color);
 }
 
+:host(:is(:focus, :focus-within)) #container {
+  --_text-decoration:
+    /** Focus text decoration */
+    var(--rh-cta-focus-text-decoration,
+      var(--_focus-text-decoration));
+  --_text-underline-offset:
+    /** Focus text underline offset */
+    var(--rh-cta-focus-text-underline-offset,
+      /** Hover text underline offset */
+      var(--rh-cta-hover-text-underline-offset));
+}
+
 /*****************************************************************************
  * HOVER STATE                                                               *
  *****************************************************************************/
@@ -200,13 +212,24 @@ a:focus-visible:after,
   border-color: var(--_active-border-color);
   color: var(--_active-color);
 
-  --_text-decoration: var(--_active-text-decoration, var(--_hover-text-decoration));
+  --_text-decoration:
+    /** Active text decoration */
+    var(--rh-cta-active-text-decoration,
+      var(--_active-text-decoration,
+      var(--_hover-text-decoration)));
+  --_text-underline-offset:
+    /** Active text underline offset */
+    var(--rh-cta-active-text-underline-offset,
+      /** Focus text underline offset */
+      var(--rh-cta-focus-text-underline-offset,
+      /** Hover text underline offset */
+      var(--rh-cta-hover-text-underline-offset)));
 }
 
 :host(:not([variant]):active) #container,
 :host(:not([variant]):active) #container:has(a:focus-visible),
 :host(:not([variant]):active:state(slotted-focus)) #container {
-  background-color: var(--_active-container-background-color);
+  color: var(--_active-color);
 }
 
 /*****************************************************************************
@@ -300,6 +323,9 @@ a:focus-visible:after,
     var(--rh-cta-focus-text-decoration, none);
   --_active-container-background-color: /** Default active container background */
     var(--rh-cta-active-container-background-color, transparent);
+  --_active-color: /** Default active text color */
+    var(--rh-cta-active-color,
+      var(--_hover-color));
   --_active-inner-border-color: /** Default active inner border color */
     var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: /** Default active text decoration */
