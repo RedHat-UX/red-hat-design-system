@@ -632,8 +632,11 @@ export class RhNavigationPrimary extends LitElement {
         if (this.compact && this._hamburgerOpen) {
           this.#closeHamburger();
         }
-        // close any open primary dropdowns when links menu opens
-        this.#closePrimaryDropdowns();
+        // Close open primary dropdowns only while the links menu is a popup. At
+        // desktop the links menu is inline, so an open dropdown stays open.
+        if (this.linksCompact) {
+          this.#closePrimaryDropdowns();
+        }
         // close any open secondary dropdowns when links menu opens
         if (this.linksCompact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
