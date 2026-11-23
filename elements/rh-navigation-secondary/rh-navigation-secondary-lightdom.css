@@ -238,10 +238,35 @@ rh-navigation-secondary-dropdown > a:hover {
   color: var(--_nav-link-color) !important;
 }
 
-rh-navigation-secondary > [slot='nav'] > li > a:focus,
-rh-navigation-secondary-dropdown > a:focus {
+rh-navigation-secondary > [slot='nav'] > li > a:is(:focus-visible, :active),
+rh-navigation-secondary-dropdown > a:is(:focus-visible, :active) {
   position: relative;
   z-index: 1;
+
+  /** Navigation slotted link focus indicator outline */
+  outline:
+    /** Navigation slotted link focus indicator width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Navigation slotted link focus indicator color; theme-adaptive */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** Navigation slotted link focus indicator color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Navigation slotted link focus indicator color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
+
+  /** Navigation slotted link focus indicator offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Navigation slotted link focus indicator radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+rh-navigation-secondary > [slot='nav'] > li > a:focus:not(:focus-visible, :active),
+rh-navigation-secondary-dropdown > a:focus:not(:focus-visible, :active) {
+  outline: none;
 }
 
 rh-navigation-secondary > [slot='nav'] > li {
@@ -397,10 +422,10 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
       var(--rh-space-lg, 16px);
   }
 
-  rh-navigation-secondary > [slot='nav'] > li > a:focus,
+  rh-navigation-secondary > [slot='nav'] > li > a:is(:focus-visible, :active),
   rh-navigation-secondary > [slot='nav'] > li > a:hover,
   rh-navigation-secondary-dropdown > a[aria-expanded='true'],
-  rh-navigation-secondary-dropdown > a:focus,
+  rh-navigation-secondary-dropdown > a:is(:focus-visible, :active),
   rh-navigation-secondary-dropdown > a:hover {
     /** Navigation link and dropdown block-start accent color at viewport >= lg */
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
