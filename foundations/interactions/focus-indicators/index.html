@@ -4294,7 +4294,7 @@
              no content is slotted. -->
       <!--lit-node 21--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">:is(*, :hover):focus-visible</span> <span class="token punctuation">{</span>
-  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-interactive<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-focus<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">outline-offset</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-border-width-lg<span class="token punctuation">,</span> 3px<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">outline-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
   <span class="token property">outline-width</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-border-width-lg<span class="token punctuation">,</span> 3px<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -4332,7 +4332,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>Adjust the offset as needed. If an offset risks overflowing the focus ring outside the boundary of a page or the visible edge of a region, that offset can be removed or even made inset (see the example CSS below).</p>
-<p>We have designated focus ring colors that align with our brand standards for both light and dark schemes. Prefer the theming token <code>--rh-color-border-interactive</code>, which resolves to the correct on-light or on-dark value via <code>light-dark()</code>. Use the on-light and on-dark tokens when you need to override based on the background behind the focus ring.</p>
+<p>We have designated focus ring colors that align with our brand standards for both light and dark schemes. Prefer the theming token <code>--rh-color-border-focus</code>, which resolves to the correct on-light or on-dark value via <code>light-dark()</code>. Use the on-light and on-dark tokens when you need to override based on the background behind the focus ring.</p>
 <rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
       <div id="container" part="container">
         <!-- summary: Default slot for the table element
@@ -4370,8 +4370,8 @@
     <tbody>
       <tr>
         <td>Focus ring color</td>
-        <td><code>--rh-color-border-interactive-on-light</code></td>
-        <td><code>--rh-color-border-interactive-on-dark</code></td>
+        <td><code>--rh-color-border-focus-on-light</code></td>
+        <td><code>--rh-color-border-focus-on-dark</code></td>
       </tr>
     </tbody>
   </table>
@@ -4403,7 +4403,7 @@
     <a href="#styling-considerations">Styling considerations</a><a>
   </a></h4>
 </uxdot-copy-permalink>
-<p>Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-border-interactive-on-dark</code>) with the light scheme color (<code>--rh-color-border-interactive-on-light</code>).</p>
+<p>Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-border-focus-on-dark</code>) with the light scheme color (<code>--rh-color-border-focus-on-light</code>).</p>
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;" loading="lazy">
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg,16px);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default,3px);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -4626,8 +4626,8 @@
       <!--lit-node 21--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">:is(*, :hover):focus-visible</span> <span class="token punctuation">{</span>
   <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">light-dark</span><span class="token punctuation">(</span>
-    <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-interactive-on-light<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-interactive-on-dark<span class="token punctuation">,</span> #92c5f9<span class="token punctuation">)</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-focus-on-light<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-focus-on-dark<span class="token punctuation">,</span> #92c5f9<span class="token punctuation">)</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">outline-offset</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-border-width-lg<span class="token punctuation">,</span> 3px<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token property">outline-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>
@@ -4651,12 +4651,12 @@
 
 <span class="token comment">/* Placeholder `.light-bg` class for focus against light backgrounds. */</span>
 <span class="token selector">.light-bg:is(*, :hover):focus-visible</span> <span class="token punctuation">{</span>
-  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-interactive-on-light<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-focus-on-light<span class="token punctuation">,</span> #0066cc<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">/* Placeholder `.dark-bg` class for focus against dark backgrounds. */</span>
 <span class="token selector">.dark-bg:is(*, :hover):focus-visible</span> <span class="token punctuation">{</span>
-  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-interactive-on-dark<span class="token punctuation">,</span> #92c5f9<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">outline-color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-border-focus-on-dark<span class="token punctuation">,</span> #92c5f9<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token selector">:focus:not(:focus-visible)</span> <span class="token punctuation">{</span>
@@ -4690,7 +4690,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <ul>
-<li>We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-border-interactive-on-light</code> (<code>#0066cc</code>) is <strong>WCAG conformant</strong> against both our dark and light backgrounds.</li>
+<li>We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-border-focus-on-light</code> (<code>#0066cc</code>) is <strong>WCAG conformant</strong> against both our dark and light backgrounds.</li>
 <li>The <code>:is(*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.</li>
 <li>WCAG 2.2 requires 2px outlines for AAA conformance when focus is offset. However, <strong>inset</strong> focus must be greater than 2px. So, for the sake of consistency, we go with 3px in <strong>all cases</strong>.</li>
 <li>We add a <code>transition: none</code> property to <strong>temporarily remove any animations</strong> that may be on the element, so the focus ring appearance does not animate.</li>
