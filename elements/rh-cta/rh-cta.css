@@ -379,15 +379,15 @@ a:focus-visible:after,
         var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515))
       );
   --_focus-background-color:
-    light-dark(
-        /** Secondary variant focus background for light scheme */
-        var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-        /** Secondary variant focus background for dark scheme */
-        var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838))
-      );
+    /** Secondary variant focus background override */
+    var(--rh-cta-focus-background-color,
+      var(--_hover-background-color));
   --_focus-border-color: /** Secondary variant focus border color */
     var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
-  --_focus-color: var(--rh-color-text-primary);
+  --_focus-color:
+    /** Secondary variant focus text color override */
+    var(--rh-cta-focus-color,
+      var(--_hover-color));
   --_focus-inner-border-color: /** Secondary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
@@ -396,15 +396,16 @@ a:focus-visible:after,
   --_active-color:
     /** Secondary variant active text color override */
     var(--rh-cta-active-color,
-      /** Secondary variant active text color */
-      var(--rh-color-text-primary));
+      var(--_hover-color));
   --_active-border-color:
     /** Secondary variant border color override */
     var(--rh-cta-border-color,
       /** Secondary variant border color */
       var(--rh-color-border-strong));
-  --_active-background-color: /** Secondary variant active background override */
-    var(--rh-cta-active-background-color, transparent);
+  --_active-background-color:
+    /** Secondary variant active background override */
+    var(--rh-cta-active-background-color,
+      var(--_hover-background-color));
   --_active-inner-border-color:
     light-dark(
         /** Secondary variant active inner border for light scheme */
