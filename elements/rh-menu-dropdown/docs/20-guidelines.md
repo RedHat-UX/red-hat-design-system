@@ -48,8 +48,8 @@ users know they will be navigating away from their current view.</p>
 <uxdot-example color-palette="lightest">
   <img alt="An expanded menu dropdown with actions only and another with links only."
        src="../menu-dropdown-style-menu-item-types.svg"
-       width="477"
-       height="272">
+       width="491"
+       height="283">
 </uxdot-example>
 
 ## Variants
