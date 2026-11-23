@@ -176,6 +176,13 @@ export class RhNavigationPrimary extends LitElement {
       // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
       // lea verou style observer: https://github.com/LeaVerou/style-observer/
       this.#ro = new ResizeObserver(entries => {
+        // Do not mutate layout state while Lit's hydration update is paused. The
+        // hydration pass caches computed values without writing them to the DOM, so a
+        // pre-hydration state change can leave the shadow tree permanently out of sync.
+        // `firstUpdated` measures once; the observer takes over afterwards.
+        if (!this.hasUpdated) {
+          return;
+        }
         for (const entry of entries) {
           const [contentBoxSize] = entry.contentBoxSize;
           const oldState = this.compact;
@@ -238,7 +245,8 @@ export class RhNavigationPrimary extends LitElement {
 
 
   render() {
-    // Match SSR even if the resize observer ran before the first client render.
+    // The ResizeObserver is gated until `firstUpdated`, so `compact` is the SSR default
+    // during the hydration render and is measured before the next render.
     const compact = this.hasUpdated ? this.compact : true;
     const subdomain = !!(this.siteName && this.siteHref);
     const classes = {
