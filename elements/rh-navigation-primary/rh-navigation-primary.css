@@ -562,12 +562,33 @@
   block-size: var(--_navbar-height);
   z-index: 2;
 
+  /** Compact layout state for scripts, so the breakpoints live in CSS only */
+  --_compact: 1;
+
+  /** Compact links menu state for scripts, so the breakpoints live in CSS only */
+  --_links-compact: 1;
+
+  /** Links menu visibility for scripts, so the breakpoints live in CSS only */
+  --_links-menu-visible: 0;
+
+  @container navigation-primary (min-width: 320px) {
+    --_links-menu-visible: 1;
+  }
+
   @container navigation-primary (min-width: 480px) {
     --_navbar-height: 66px;
   }
 
   @container navigation-primary (min-width: 576px) {
     --_navbar-height: 82px;
+  }
+
+  @container navigation-primary (min-width: 1200px) {
+    --_compact: 0;
+  }
+
+  @container navigation-primary (min-width: 1440px) {
+    --_links-compact: 0;
   }
 
   &.subdomain {

@@ -175,7 +175,7 @@ export class RhNavigationPrimary extends LitElement {
       // TODO: Perf look into debouncing the resize observer
       // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
       // lea verou style observer: https://github.com/LeaVerou/style-observer/
-      this.#ro = new ResizeObserver(entries => {
+      this.#ro = new ResizeObserver(() => {
         // Do not mutate layout state while Lit's hydration update is paused. The
         // hydration pass caches computed values without writing them to the DOM, so a
         // pre-hydration state change can leave the shadow tree permanently out of sync.
@@ -183,26 +183,25 @@ export class RhNavigationPrimary extends LitElement {
         if (!this.hasUpdated) {
           return;
         }
-        for (const entry of entries) {
-          const [contentBoxSize] = entry.contentBoxSize;
-          const oldState = this.compact;
-          const newState = contentBoxSize.inlineSize < 1200;
-          if (oldState !== newState) {
-            this.compact = newState;
-            if (this.#openPrimaryDropdowns.size === 0
-              && this.#openSecondaryDropdowns.size === 0 && !this.compact) {
-              this.#closeOverlay();
-            }
+        const {
+          compact: newState,
+          linksCompact: linksNewState,
+          linksMenuVisible,
+        } = this.#readBreakpointState();
+        const oldState = this.compact;
+        if (oldState !== newState) {
+          this.compact = newState;
+          if (this.#openPrimaryDropdowns.size === 0
+            && this.#openSecondaryDropdowns.size === 0 && !this.compact) {
+            this.#closeOverlay();
           }
-          const linksOldState = this.linksCompact;
-          const linksNewState = contentBoxSize.inlineSize < 1440;
-          if (linksOldState !== linksNewState) {
-            this.linksCompact = linksNewState;
-          }
-          // Close links menu when container goes below 320px (where it's hidden via CSS)
-          if (contentBoxSize.inlineSize < 320 && this._linksMenuOpen) {
-            this.#closeLinksMenu();
-          }
+        }
+        if (this.linksCompact !== linksNewState) {
+          this.linksCompact = linksNewState;
+        }
+        // Close links menu when its toggle is hidden by the container queries
+        if (!linksMenuVisible && this._linksMenuOpen) {
+          this.#closeLinksMenu();
         }
       });
     }
@@ -213,15 +212,38 @@ export class RhNavigationPrimary extends LitElement {
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this._hydrated = true;
-      this.compact = this.offsetWidth < 1200;
-      // Open links menu at desktop viewport
-      this.linksCompact = this.offsetWidth < 1440;
+      // Read the layout state from the container queries, which own the breakpoints.
+      const { compact, linksCompact } = this.#readBreakpointState();
+      this.compact = compact;
+      this.linksCompact = linksCompact;
     }
     if (!isServer) {
       if (this._title) {
         this.#internals.ariaLabelledByElements = [this._title];
       }
     }
+  }
+
+  /**
+   * Reads the breakpoint state from the container queries, which are the only
+   * place the breakpoints are defined. The `@container` rules set these internal
+   * custom properties to `0` or `1`; the fallback matches the mobile-first base styles.
+   */
+  #readBreakpointState(): {
+    compact: boolean;
+    linksCompact: boolean;
+    linksMenuVisible: boolean;
+  } {
+    const container = this.shadowRoot?.querySelector('#container');
+    if (!container) {
+      return { compact: true, linksCompact: true, linksMenuVisible: false };
+    }
+    const style = getComputedStyle(container);
+    return {
+      compact: style.getPropertyValue('--_compact').trim() !== '0',
+      linksCompact: style.getPropertyValue('--_links-compact').trim() !== '0',
+      linksMenuVisible: style.getPropertyValue('--_links-menu-visible').trim() === '1',
+    };
   }
 
   async connectedCallback() {
