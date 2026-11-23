@@ -60,14 +60,14 @@ input[type='range'] {
         var(--rh-color-gray-50, #707070)
       );
 
-  /** Focus ring color */
-  --_interactive-color: var(--rh-color-border-interactive);
+  /** Focus ring color; theme-adaptive */
+  --_interactive-color: var(--rh-color-border-focus);
 
   /** Brand accent for thumb and progress fill */
   --_accent-color: var(--rh-color-accent-brand);
   --_outline:
     /** Focus outline width */
-    var(--rh-border-width-md, 2px)
+    var(--rh-border-width-lg, 3px)
     solid
     var(--_interactive-color);
 
@@ -77,8 +77,14 @@ input[type='range'] {
   /** Filled range track color */
   --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));
 
-  &:focus {
+  &:is(:focus-visible, :active) {
     outline: var(--_outline);
+
+    /** Focus outline offset */
+    outline-offset: calc(var(--rh-border-width-lg, 3px) * -1);
+
+    /** Focus outline radius */
+    border-radius: calc(var(--rh-border-radius-default, 3px) * 2);
   }
 
   &,

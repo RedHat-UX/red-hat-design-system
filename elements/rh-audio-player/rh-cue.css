@@ -37,8 +37,8 @@ a[id$='text']:hover {
 }
 
 a[active][id$='text'] {
-  /** Active cue text color */
-  color: var(--_static-text-color);
+  /** Active cue text on a dark highlight */
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
 
   /** Active cue highlight surface */
   background-color: var(--_static-highlight-color);
@@ -74,5 +74,30 @@ a #start {
 }
 
 a:hover #start {
+  text-decoration: none;
+}
+
+a:is(:focus-visible, :active) {
+  outline:
+    /** Cue focus outline width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    /** Cue focus outline color; theme-adaptive */
+    var(--rh-color-border-focus,
+      light-dark(
+        /** Cue focus outline color for light scheme */
+        var(--rh-color-border-focus-on-light, #0066cc),
+        /** Cue focus outline color for dark scheme */
+        var(--rh-color-border-focus-on-dark, #92c5f9)
+      ));
+
+  /** Cue focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Cue focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+}
+
+a:is(:focus-visible, :active) #start {
   text-decoration: none;
 }

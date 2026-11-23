@@ -37,9 +37,15 @@ button {
   padding: 0;
 }
 
-select:focus,
-button:focus {
+select:is(:focus-visible, :active),
+button:is(:focus-visible, :active) {
   outline: var(--_outline);
+
+  /** Focus outline offset */
+  outline-offset: var(--rh-border-width-lg, 3px);
+
+  /** Focus outline radius */
+  border-radius: var(--rh-border-radius-default, 3px);
 }
 
 button[disabled],
