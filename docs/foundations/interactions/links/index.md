@@ -163,8 +163,8 @@ Use the focus interactive tokens for the text and underline. Those values match 
     <tbody>
       <tr>
         <td>Focus ring color</td>
-        <td><code>--rh-color-border-interactive</code></td>
-        <td><code>--rh-color-border-interactive</code></td>
+        <td><code>--rh-color-border-focus</code></td>
+        <td><code>--rh-color-border-focus</code></td>
       </tr>
       <tr>
         <td>Color - text</td>
