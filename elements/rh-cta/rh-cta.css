@@ -156,6 +156,11 @@ a:focus-visible:after,
   color: var(--_focus-color);
 }
 
+:host(:not([variant])) #container:has(a:focus-visible),
+:host(:not([variant]):state(slotted-focus)) #container {
+  color: var(--_focus-color);
+}
+
 /*****************************************************************************
  * HOVER STATE                                                               *
  *****************************************************************************/
@@ -282,20 +287,13 @@ a:focus-visible:after,
     var(--rh-cta-focus-border-color, transparent);
   --_focus-color: /** Default focus text color */
     var(--rh-cta-focus-color,
-      var(--rh-color-interactive-primary-default));
+      var(--rh-color-interactive-primary-hover));
   --_focus-inner-border-color: /** Default focus inner border color */
     var(--rh-cta-focus-inner-border-color, transparent);
   --_focus-text-decoration: /** Default focus text decoration */
     var(--rh-cta-focus-text-decoration, none);
-
-  /* --rh-color-border-interactive-on-light with 10% opacity */
-
-  --_active-container-background-color:
-    light-dark(
-        /** Default active container background */
-        var(--rh-cta-active-container-background-color, #0066cc1a),
-        var(--rh-cta-active-container-background-color, #73bcf740)
-      );
+  --_active-container-background-color: /** Default active container background */
+    var(--rh-cta-active-container-background-color, transparent);
   --_active-inner-border-color: /** Default active inner border color */
     var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: /** Default active text decoration */
