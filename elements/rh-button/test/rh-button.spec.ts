@@ -16,6 +16,16 @@ function internalButton(element: RhButton): HTMLButtonElement {
   return button;
 }
 
+/**
+ * The internal button keeps the author id. Element reflection would replace it
+ * with an empty attribute.
+ * @param button internal button
+ * @param id author id
+ */
+function expectControlsLink(button: HTMLButtonElement, id: string): void {
+  expect(button.getAttribute('aria-controls')).to.equal(id);
+}
+
 interface RecordedObserver {
   disconnects: number;
   readonly targets: readonly Node[];
@@ -139,6 +149,7 @@ describe('<rh-button>', function() {
       expect(button.getAttribute('aria-label')).to.equal('Ask AI');
       expect(element.getAttribute('aria-expanded')).to.equal(null);
       expect(element.getAttribute('aria-controls')).to.equal(null);
+      expect(element.getAttribute('aria-describedby')).to.equal(null);
       expect(element.getAttribute('aria-label')).to.equal(null);
       expect(element.ariaExpanded).to.equal('false');
       expect(element.ariaControls).to.equal('drawer-panel');
@@ -162,18 +173,14 @@ describe('<rh-button>', function() {
     });
 
     it('links aria-controls to the internal button', function() {
-      const panel = document.getElementById('drawer-panel');
-      expect(panel).to.not.equal(null);
       expect(element.ariaControls).to.equal('drawer-panel');
-      if ('ariaControlsElements' in Element.prototype) {
-        expect(button.ariaControlsElements?.[0]).to.equal(panel);
-      } else {
-        expect(button.getAttribute('aria-controls')).to.equal('drawer-panel');
-      }
+      expect(element.hasAttribute('aria-controls')).to.equal(false);
+      expectControlsLink(button, 'drawer-panel');
     });
 
     it('uses aria-describedby text as the description', function() {
-      expect(button.hasAttribute('aria-describedby')).to.equal(false);
+      expect(element.hasAttribute('aria-describedby')).to.equal(false);
+      expect(button.getAttribute('aria-describedby')).to.equal('drawer-desc');
       expect(button.getAttribute('aria-description')).to.equal('Opens the assistant');
     });
 
@@ -193,6 +200,37 @@ describe('<rh-button>', function() {
       element.ariaExpanded = null;
       await element.updateComplete;
       expect(button.hasAttribute('aria-expanded')).to.equal(false);
+    });
+
+    it('clears forwarded references when the properties are set to null', async function() {
+      const referenced = await createFixture<RhButton>(html`
+        <rh-button aria-controls="clear-panel"
+                   aria-labelledby="clear-label"
+                   aria-describedby="clear-desc"
+                   aria-expanded="true">Save</rh-button>
+        <div id="clear-panel"></div>
+        <span id="clear-label">Name</span>
+        <span id="clear-desc">Detail</span>
+      `);
+      referenced.ariaControls = null;
+      referenced.ariaLabelledBy = null;
+      referenced.ariaDescribedBy = null;
+      referenced.ariaExpanded = null;
+      await referenced.updateComplete;
+      const inner = internalButton(referenced);
+      expect(referenced.ariaControls).to.equal(null);
+      expect(referenced.ariaLabelledBy).to.equal(null);
+      expect(referenced.ariaDescribedBy).to.equal(null);
+      expect(referenced.ariaExpanded).to.equal(null);
+      expect(referenced.hasAttribute('aria-controls')).to.equal(false);
+      expect(referenced.hasAttribute('aria-labelledby')).to.equal(false);
+      expect(referenced.hasAttribute('aria-describedby')).to.equal(false);
+      expect(referenced.hasAttribute('aria-expanded')).to.equal(false);
+      expect(inner.hasAttribute('aria-controls')).to.equal(false);
+      expect(inner.hasAttribute('aria-labelledby')).to.equal(false);
+      expect(inner.hasAttribute('aria-describedby')).to.equal(false);
+      expect(inner.hasAttribute('aria-expanded')).to.equal(false);
+      expect(inner.hasAttribute('aria-label')).to.equal(false);
     });
 
     it('accepts a later attribute change', async function() {
@@ -243,17 +281,24 @@ describe('<rh-button>', function() {
         <rh-button aria-labelledby="reflected-label"></rh-button>
         <span id="reflected-label">Ask AI</span>
       `);
-      expect(internalButton(element).ariaLabelledByElements?.[0])
+      const button = internalButton(element);
+      expect(element.hasAttribute('aria-labelledby')).to.equal(false);
+      expect(element.ariaLabelledBy).to.equal('reflected-label');
+      expect(button.ariaLabelledByElements?.[0])
           .to.equal(document.getElementById('reflected-label'));
+      expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
     });
 
-    (supportsReflection ? it : it.skip)('reflects the referenced description element', async function() {
+    (supportsReflection ? it : it.skip)('keeps the describedby id instead of an empty attribute', async function() {
       const element = await createFixture<RhButton>(html`
         <rh-button aria-describedby="reflected-desc">Save</rh-button>
         <span id="reflected-desc">Opens the assistant</span>
       `);
-      expect(internalButton(element).ariaDescribedByElements?.[0])
-          .to.equal(document.getElementById('reflected-desc'));
+      const button = internalButton(element);
+      expect(element.hasAttribute('aria-describedby')).to.equal(false);
+      expect(element.ariaDescribedBy).to.equal('reflected-desc');
+      expect(button.getAttribute('aria-describedby')).to.equal('reflected-desc');
+      expect(button.getAttribute('aria-description')).to.equal('Opens the assistant');
     });
 
     (supportsReflection ? it : it.skip)('gives accessible-label precedence over reflected labels', async function() {
@@ -261,7 +306,7 @@ describe('<rh-button>', function() {
         <rh-button aria-labelledby="reflected-override" accessible-label="Search"></rh-button>
         <span id="reflected-override">Ask AI</span>
       `);
-      expect(internalButton(element).ariaLabelledByElements).to.equal(null);
+      expect(internalButton(element).ariaLabelledByElements?.length ?? 0).to.equal(0);
       expect(internalButton(element).getAttribute('aria-label')).to.equal('Search');
     });
   });
@@ -274,7 +319,7 @@ describe('<rh-button>', function() {
       `);
       const button = internalButton(element);
       expect(element.hasAttribute('aria-labelledby')).to.equal(false);
-      expect(button.hasAttribute('aria-labelledby')).to.equal(false);
+      expect(element.ariaLabelledBy).to.equal('ask-label');
       expect(button.getAttribute('aria-label')).to.equal('Ask AI');
       expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'Ask AI' });
     });
@@ -376,7 +421,7 @@ describe('<rh-button>', function() {
         element.after(panel);
         await nextFrame();
         await element.updateComplete;
-        expect(internalButton(element).getAttribute('aria-controls')).to.equal('kept-panel');
+        expectControlsLink(internalButton(element), 'kept-panel');
       } finally {
         recorded.restore();
       }
@@ -494,7 +539,7 @@ describe('<rh-button>', function() {
     await element.updateComplete;
     expect(element.ariaControls).to.equal('late-panel');
     expect(element.hasAttribute('aria-controls')).to.equal(false);
-    expect(internalButton(element).getAttribute('aria-controls')).to.equal(panel.id);
+    expectControlsLink(internalButton(element), panel.id);
   });
 
   it('names the button from an external element whose id matches an internal slot', async function() {
@@ -503,7 +548,12 @@ describe('<rh-button>', function() {
       <span id="text">External name</span>
     `);
     const button = internalButton(element);
-    expect(button.hasAttribute('aria-labelledby')).to.equal(false);
+    expect(element.hasAttribute('aria-labelledby')).to.equal(false);
+    if ('ariaLabelledByElements' in Element.prototype) {
+      expect(button.ariaLabelledByElements?.[0]).to.equal(document.getElementById('text'));
+    } else {
+      expect(button.hasAttribute('aria-labelledby')).to.equal(false);
+    }
     expect(button.getAttribute('aria-label')).to.equal('External name');
     expect(await a11ySnapshot()).to.axContainQuery({ role: 'button', name: 'External name' });
   });
@@ -514,6 +564,8 @@ describe('<rh-button>', function() {
       <span id="icon">More detail</span>
     `);
     const button = internalButton(element);
+    expect(element.hasAttribute('aria-describedby')).to.equal(false);
+    // The id matches the internal icon slot, so it is not copied onto the button.
     expect(button.hasAttribute('aria-describedby')).to.equal(false);
     expect(button.getAttribute('aria-description')).to.equal('More detail');
   });
@@ -546,7 +598,9 @@ describe('<rh-button>', function() {
     `);
     element.ariaControls = 'second-panel';
     await element.updateComplete;
-    expect(internalButton(element).getAttribute('aria-controls')).to.equal('second-panel');
+    expect(element.hasAttribute('aria-controls')).to.equal(false);
+    expect(element.ariaControls).to.equal('second-panel');
+    expectControlsLink(internalButton(element), 'second-panel');
   });
 
   it('keeps aria-controls when the target leaves the tree', async function() {

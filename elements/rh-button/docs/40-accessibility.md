@@ -31,33 +31,40 @@ describe the button.
 ```
 
 The host element has no role, so these attributes are removed from `<rh-button>` after
-they are read. Read or update them through the properties (`ariaExpanded`,
-`ariaControls`, and so on). `aria-expanded`, `aria-pressed`, `aria-haspopup`,
-`aria-label`, and `aria-description` are copied onto the internal button.
+they are read: `aria-expanded`, `aria-pressed`, `aria-haspopup`, `aria-label`,
+`aria-description`, `aria-controls`, `aria-labelledby`, and `aria-describedby`.
+Read or update them through the properties (`ariaExpanded`, `ariaPressed`,
+`ariaHasPopup`, `ariaLabel`, `ariaDescription`, `ariaControls`, `ariaLabelledBy`,
+and `ariaDescribedBy`). Clear a value by setting the property to `null`.
+`aria-expanded`, `aria-pressed`, `aria-haspopup`, `aria-label`, and
+`aria-description` are copied onto the internal button.
 
-`aria-labelledby`, `aria-describedby`, and `aria-controls` point at elements outside
-the internal button's shadow tree. Browsers that support element reflection
-(`ariaLabelledByElements`, `ariaDescribedByElements`, and `ariaControlsElements`) get
-a live relationship to those elements. That is the supported way to reference
-elements across shadow roots.
+`aria-controls` and `aria-describedby` are copied onto the internal button as the
+author's ids. Element reflection would replace a cross-root id with an empty
+attribute, so those two keep the id string. Referenced description text is also
+applied as `aria-description`, because an id inside the shadow tree cannot point at
+the host's document. An id that matches an internal slot, such as `text` or `icon`,
+is not copied.
 
-In other browsers, `aria-labelledby` and `aria-describedby` contribute the text of
-the referenced elements instead of ids. An id on the internal button cannot refer
-outside its shadow tree, and a page id such as `text` would point at an internal slot
-instead of the element the author named. Referenced labels win over `aria-label`, and
-referenced descriptions win over `aria-description`. `accessible-label` still wins
-over both. Hidden descendants are excluded, as they are from accessible name
+`aria-labelledby` uses element reflection where the browser supports
+`ariaLabelledByElements`. Elsewhere the referenced text becomes `aria-label`.
+
+Referenced labels win over `aria-label`, and referenced descriptions win over
+`aria-description`. `accessible-label` is the supported name for an icon-only button
+and wins over both. Hidden descendants are excluded, as they are from accessible name
 computation. Those references are watched while the button is connected, including
-targets that are inserted later and text that changes afterward.
+targets in ancestor roots, targets that are inserted later, text that changes
+afterward, and a button that is disconnected and connected again.
+
+A button that does not set these references does not get an empty `aria-controls`,
+`aria-labelledby`, or `aria-describedby` on the internal button.
 
 Server rendering cannot resolve the ids. Slotted text is used as the name until
 hydration. An icon-only button that is named only by `aria-labelledby` has no name in
 server-rendered markup, so set `accessible-label` as well.
 
-`aria-controls` is kept as an id string on the internal button in server-rendered
-markup. A browser that reflects the referenced element rewrites the serialized id to
-an empty value; the relationship still exists and is exposed to assistive
-technology.
+`disabled` still sets `aria-disabled` on the internal button. The `label` attribute
+is not supported; use `accessible-label`.
 
 ## Keyboard interactions
 
