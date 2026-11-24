@@ -39,12 +39,18 @@ and `ariaDescribedBy`). Clear a value by setting the property to `null`.
 `aria-expanded`, `aria-pressed`, `aria-haspopup`, `aria-label`, and
 `aria-description` are copied onto the internal button.
 
-`aria-controls` and `aria-describedby` are copied onto the internal button as the
-author's ids. Element reflection would replace a cross-root id with an empty
-attribute, so those two keep the id string. Referenced description text is also
-applied as `aria-description`, because an id inside the shadow tree cannot point at
-the host's document. An id that matches an internal slot, such as `text` or `icon`,
-is not copied.
+Where the browser supports `ariaControlsElements`, `aria-controls` resolves to the
+named elements and the internal button receives those elements directly. This creates
+the accessible relationship across the shadow boundary. The resulting serialized
+`aria-controls` attribute is empty, so it does not retain the author's ID string;
+read or update that string through the host's `ariaControls` property. Browsers without
+element reflection retain the author's `aria-controls` ID string on the internal
+button as a fallback.
+
+`aria-describedby` is copied onto the internal button as the author's id. Referenced
+description text is also applied as `aria-description`, because an id inside the
+shadow tree cannot point at the host's document. An id that matches an internal slot,
+such as `text` or `icon`, is not copied.
 
 `aria-labelledby` uses element reflection where the browser supports
 `ariaLabelledByElements`. Elsewhere the referenced text becomes `aria-label`.

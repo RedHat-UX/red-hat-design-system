@@ -17,13 +17,17 @@ function internalButton(element: RhButton): HTMLButtonElement {
 }
 
 /**
- * The internal button keeps the author id. Element reflection would replace it
- * with an empty attribute.
+ * Assert the accessible controls relationship, not just its serialization.
  * @param button internal button
  * @param id author id
  */
 function expectControlsLink(button: HTMLButtonElement, id: string): void {
-  expect(button.getAttribute('aria-controls')).to.equal(id);
+  if ('ariaControlsElements' in Element.prototype) {
+    expect(button.ariaControlsElements?.[0]).to.equal(document.getElementById(id));
+    expect(button.getAttribute('aria-controls')).to.not.equal(id);
+  } else {
+    expect(button.getAttribute('aria-controls')).to.equal(id);
+  }
 }
 
 interface RecordedObserver {
@@ -275,6 +279,23 @@ describe('<rh-button>', function() {
   describe('when element reflection is supported', function() {
     const supportsReflection = typeof Element !== 'undefined'
       && 'ariaLabelledByElements' in Element.prototype;
+    const supportsControlsReflection = typeof Element !== 'undefined'
+      && 'ariaControlsElements' in Element.prototype;
+
+    (supportsControlsReflection ? it : it.skip)(
+      'reflects the controlled element instead of retaining its id string',
+      async function() {
+        const element = await createFixture<RhButton>(html`
+          <rh-button aria-controls="reflected-panel">Show panel</rh-button>
+          <div id="reflected-panel"></div>
+        `);
+        const button = internalButton(element);
+        expect(element.ariaControls).to.equal('reflected-panel');
+        expect(button.ariaControlsElements?.[0])
+            .to.equal(document.getElementById('reflected-panel'));
+        expect(button.getAttribute('aria-controls')).to.not.equal('reflected-panel');
+      },
+    );
 
     (supportsReflection ? it : it.skip)('reflects the referenced label element', async function() {
       const element = await createFixture<RhButton>(html`
@@ -528,6 +549,31 @@ describe('<rh-button>', function() {
     });
   });
 
+  describe('when ariaControls element reflection is unavailable', function() {
+    const property = 'ariaControlsElements';
+    let descriptor: PropertyDescriptor | undefined;
+
+    beforeEach(function() {
+      descriptor = Object.getOwnPropertyDescriptor(Element.prototype, property);
+      delete Element.prototype[property as keyof Element];
+    });
+
+    afterEach(function() {
+      if (descriptor) {
+        Object.defineProperty(Element.prototype, property, descriptor);
+      }
+    });
+
+    it('keeps the author id on the internal button as a fallback', async function() {
+      const element = await createFixture<RhButton>(html`
+        <rh-button aria-controls="fallback-panel">Show panel</rh-button>
+        <div id="fallback-panel"></div>
+      `);
+      expect(element.ariaControls).to.equal('fallback-panel');
+      expect(internalButton(element).getAttribute('aria-controls')).to.equal('fallback-panel');
+    });
+  });
+
   it('resolves aria-controls when the target is parsed after the button', async function() {
     const element = await createFixture<RhButton>(html`
       <rh-button aria-controls="late-panel" aria-label="Ask AI"></rh-button>
@@ -603,7 +649,7 @@ describe('<rh-button>', function() {
     expectControlsLink(internalButton(element), 'second-panel');
   });
 
-  it('keeps aria-controls when the target leaves the tree', async function() {
+  it('clears the live controls relationship when the target leaves the tree', async function() {
     const element = await createFixture<RhButton>(html`
       <rh-button aria-controls="gone-panel" aria-label="Ask AI"></rh-button>
       <div id="gone-panel"></div>
@@ -611,7 +657,13 @@ describe('<rh-button>', function() {
     document.getElementById('gone-panel')?.remove();
     await nextFrame();
     await element.updateComplete;
-    expect(internalButton(element).getAttribute('aria-controls')).to.equal('gone-panel');
+    const button = internalButton(element);
+    if ('ariaControlsElements' in Element.prototype) {
+      expect(button.ariaControlsElements?.length ?? 0).to.equal(0);
+      expect(button.hasAttribute('aria-controls')).to.equal(false);
+    } else {
+      expect(button.getAttribute('aria-controls')).to.equal('gone-panel');
+    }
   });
 
   describe('server rendering', function() {

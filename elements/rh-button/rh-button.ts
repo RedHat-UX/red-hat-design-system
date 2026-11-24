@@ -248,12 +248,13 @@ function unobserveRoot(root: ReferenceRoot, button: RhButton): void {
  * removed from the host so checkers do not flag ARIA on an element with no
  * role. Read the values back from the properties, for example
  * `button.ariaExpanded`, and clear one by setting it to `null`.
- * `aria-controls` and `aria-describedby` are copied onto the internal button
- * as those id strings. Element reflection serializes a cross-root reference as
- * an empty attribute, so it is not used for those two. Referenced description
- * text is also applied as `aria-description`, because an id inside the shadow
- * tree cannot point at the host's document. Where `ariaLabelledByElements` is
- * supported, the internal button points at the labelling elements directly.
+ * Where `ariaControlsElements` is supported, the internal button points at the
+ * controlled elements directly across shadow roots; its serialized attribute is
+ * empty. Otherwise, `aria-controls` keeps the author id string. `aria-describedby`
+ * keeps its id string. Referenced description text is also applied as
+ * `aria-description`, because an id inside the shadow tree cannot point at the
+ * host's document. Where `ariaLabelledByElements` is supported, the internal
+ * button points at the labelling elements directly.
  * Elsewhere their text is the accessible name. An id on the internal button is
  * omitted when it would match an internal slot such as `text` or `icon`. A
  * button with none of these references does not get an empty `aria-controls`,
@@ -357,11 +358,12 @@ export class RhButton extends LitElement {
   @property({ attribute: 'aria-haspopup' }) override ariaHasPopup!: string | null;
 
   /**
-   * Space-separated ids of elements this button controls. Copied onto the
-   * internal button as `aria-controls`. Element reflection would replace that
-   * id with an empty attribute, so the id string is what the internal button
-   * keeps. Removed from the host after it is read. Set the property to `null`
-   * to clear it.
+   * Space-separated ids of elements this button controls. Where
+   * `ariaControlsElements` is supported, the internal button points at those
+   * elements directly across shadow roots. Its serialized `aria-controls`
+   * attribute is then empty; this property retains the author ids. Browsers
+   * without element reflection keep the id string on the internal button.
+   * Removed from the host after it is read. Set the property to `null` to clear it.
    */
   @property({ attribute: 'aria-controls' }) ariaControls?: string | null;
 
@@ -426,6 +428,9 @@ export class RhButton extends LitElement {
   #labelElements: Element[] = [];
 
   #descriptionElements: Element[] = [];
+
+  /** Controlled elements resolved from the author's aria-controls ids. */
+  #controlElements: Element[] = [];
 
   /** Name and description from the latest render, including values hydration did not write. */
   #name?: string;
@@ -497,6 +502,7 @@ export class RhButton extends LitElement {
     // aria-controls and falls back to slotted text for the accessible name.
     this.#labelElements = isServer ? [] : this.#elementsFor(this.ariaLabelledBy);
     this.#descriptionElements = isServer ? [] : this.#elementsFor(this.ariaDescribedBy);
+    this.#controlElements = isServer ? [] : this.#elementsFor(this.ariaControls);
     const labelledByText = flattenedText(this.#labelElements) || undefined;
     const describedByText = flattenedText(this.#descriptionElements) || undefined;
 
@@ -575,9 +581,10 @@ export class RhButton extends LitElement {
   }
 
   /**
-   * Point the internal button at referenced labels. `accessible-label` replaces
-   * that relationship. `aria-controls` and `aria-describedby` keep their id
-   * strings; element reflection would serialize them as empty attributes.
+   * Point the internal button at referenced labels and controlled elements.
+   * `accessible-label` replaces the label relationship. Cross-root controls
+   * require element reflection; its empty serialized attribute is distinct
+   * from the live accessible relationship.
    */
   #applyElementReferences(): void {
     const button = this._button;
@@ -586,11 +593,11 @@ export class RhButton extends LitElement {
     }
     const labelElements = definedString(this.accessibleLabel) ? [] : this.#labelElements;
     this.#setElementReference(button, 'ariaLabelledByElements', labelElements);
+    this.#setElementReference(button, 'ariaControlsElements', this.#controlElements);
     this.#clearElementReference(button, 'ariaDescribedByElements', []);
-    this.#clearElementReference(button, 'ariaControlsElements', []);
     this.#dropEmptyIdAttribute(button, 'aria-labelledby', 'ariaLabelledByElements');
     this.#restoreIdReference(button, 'aria-describedby', this.ariaDescribedBy);
-    this.#restoreIdReference(button, 'aria-controls', this.ariaControls);
+    this.#dropEmptyIdAttribute(button, 'aria-controls', 'ariaControlsElements');
   }
 
   /** Clear references whose elements are gone, including after a property is set to null. */
@@ -602,7 +609,7 @@ export class RhButton extends LitElement {
     const labelElements = definedString(this.accessibleLabel) ? [] : this.#labelElements;
     this.#clearElementReference(button, 'ariaLabelledByElements', labelElements);
     this.#clearElementReference(button, 'ariaDescribedByElements', []);
-    this.#clearElementReference(button, 'ariaControlsElements', []);
+    this.#clearElementReference(button, 'ariaControlsElements', this.#controlElements);
   }
 
   #clearElementReference(
@@ -655,9 +662,11 @@ export class RhButton extends LitElement {
   /**
    * Copy forwarded ARIA onto the internal button when the template commit did
    * not. Hydration records attribute values without writing them.
-   * `aria-controls` and `aria-describedby` are the author ids. An id that
-   * matches an element inside this shadow root is omitted, because it would
-   * point at an internal slot instead of the element the author named.
+   * `aria-describedby` is the author id. `aria-controls` uses the author id
+   * only when element reflection is unavailable; where supported, the live
+   * element reference supplies the accessible relationship. An id that matches
+   * an element inside this shadow root is omitted, because it would point at an
+   * internal slot instead of the element the author named.
    */
   #syncForwardedAria(): void {
     const button = this._button;
@@ -669,7 +678,10 @@ export class RhButton extends LitElement {
     this.#syncAttr(button, 'aria-expanded', definedString(this.ariaExpanded));
     this.#syncAttr(button, 'aria-pressed', definedString(this.ariaPressed));
     this.#syncAttr(button, 'aria-haspopup', definedString(this.ariaHasPopup));
-    this.#syncAttr(button, 'aria-controls', this.#idReferenceAttribute(this.ariaControls));
+    const controls = supportsElementReflection('ariaControlsElements') ?
+      undefined
+      : this.#idReferenceAttribute(this.ariaControls);
+    this.#syncAttr(button, 'aria-controls', controls);
     this.#syncAttr(button, 'aria-describedby', this.#idReferenceAttribute(this.ariaDescribedBy));
     const text = button.querySelector('#text')?.parentElement;
     if (text != null) {
