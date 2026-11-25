@@ -114,3 +114,6 @@ profiles/
 
 # Claude
 .claude/settings.local.json
+
+# Local Netlify folder
+.netlify
