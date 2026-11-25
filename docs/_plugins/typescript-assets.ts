@@ -83,7 +83,15 @@ export default function(eleventyConfig: UserConfig) {
         switch (scope) {
           case 'rhds':
             switch (pkg) {
-              case 'elements': return transformTypescriptSource(join(cwd, `${path}.ts`));
+              case 'elements': {
+                const jsPath = join(cwd, `${path}.js`);
+                const body = await readFile(jsPath, 'utf8');
+                return {
+                  body,
+                  status: 200,
+                  headers: { 'Content-Type': 'text/javascript' },
+                };
+              }
               default: return;
             }
           case 'uxdot':
